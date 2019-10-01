@@ -1,0 +1,11 @@
+<?php
+
+namespace ClassNamespace;
+
+use Illuminate\Http\Request;
+use Pandorga\Laramie\Http\Controllers\BaseResourceController;
+
+class PluralBaseClassController extends BaseResourceController
+{
+	protected $resource = \App\Resources\SingularBaseClass::class;
+}

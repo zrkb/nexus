@@ -1,0 +1,1 @@
+{{ $item->parent->name }}

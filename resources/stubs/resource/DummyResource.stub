@@ -1,0 +1,57 @@
+<?php
+
+namespace App\Resources;
+
+use Illuminate\Http\Request;
+use Pandorga\Laramie\Fields\ID;
+use Pandorga\Laramie\Fields\Text;
+use Pandorga\Laramie\Resources\Resource;
+
+class DummyResource extends Resource
+{
+    /**
+     * The underlying model resource instance.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    public static $model = \App\Models\DummyResource::class;
+
+    /**
+     * The single value that should be used to represent the resource when being displayed.
+     *
+     * @var string
+     */
+    public static $title = 'id';
+
+    /**
+     * The columns that should be searched.
+     *
+     * @var array
+     */
+    public static $search = [
+        'id',
+    ];
+
+    /**
+     * Get the fields displayed by the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function fields()
+    {
+        return [
+            ID::make(),
+        ];
+    }
+
+    public function createRules() : array
+    {
+        return [];
+    }
+
+    public function updateRules($resourceId) : array
+    {
+        return [];
+    }
+}
