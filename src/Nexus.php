@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus;
+namespace Nexus;
 
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +13,7 @@ class Nexus
 	{
 		$attributes = [
 			'prefix'     => config('nexus.route.prefix'),
-			'namespace'  => '\Pandorga\Nexus\Http\Controllers\Auth',
+			'namespace'  => '\Nexus\Http\Controllers\Auth',
 			'middleware' => 'web',
 		];
 

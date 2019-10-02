@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Requests;
+namespace Nexus\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

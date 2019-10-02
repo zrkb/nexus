@@ -1,9 +1,9 @@
 <?php
 
-namespace Pandorga\Nexus\Traits;
+namespace Nexus\Traits;
 
-use Pandorga\Nexus\Models\Permission;
-use Pandorga\Nexus\Models\Role;
+use Nexus\Models\Permission;
+use Nexus\Models\Role;
 use Illuminate\Http\Request;
 
 trait PermissionModerator
@@ -25,7 +25,7 @@ trait PermissionModerator
 	 * Update Admin Roles.
 	 * 
 	 * @param $request \Illuminate\Http\Request
-	 * @param $admin \Pandorga\Nexus\Models\Admin
+	 * @param $admin \Nexus\Models\Admin
 	 */
 	public function manageAdmin(Request $request, $admin)
 	{

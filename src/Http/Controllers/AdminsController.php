@@ -1,9 +1,9 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Controllers;
+namespace Nexus\Http\Controllers;
 
-use Pandorga\Nexus\Models\Role;
-use Pandorga\Nexus\Traits\PermissionModerator;
+use Nexus\Models\Role;
+use Nexus\Traits\PermissionModerator;
 use Illuminate\Http\Request;
 
 class AdminsController extends BaseController

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Nexus\Libraries\ImageManager;
+namespace Nexus\Libraries\ImageManager;
 
 use Illuminate\Support\HtmlString;
 use MediaUploader;
-use Pandorga\Nexus\Models\Media;
+use Nexus\Models\Media;
 use Plank\Mediable\Mediable;
 
 trait HasMedia

@@ -1,14 +1,14 @@
 <?php
 
-namespace Pandorga\Nexus\Console\Commands;
+namespace Nexus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Pandorga\Nexus\Models\AuthorizeAction;
-use Pandorga\Nexus\Models\Permission;
-use Pandorga\Nexus\Models\Role;
+use Nexus\Models\AuthorizeAction;
+use Nexus\Models\Permission;
+use Nexus\Models\Role;
 
 class ForgeResource extends Command
 {

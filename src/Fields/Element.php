@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Nexus\Fields;
+namespace Nexus\Fields;
 
 use Illuminate\Http\Request;
 use JsonSerializable;
-use Pandorga\Nexus\Traits\Metable;
+use Nexus\Traits\Metable;
 
 abstract class Element implements JsonSerializable
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Nexus\Resources;
+namespace Nexus\Resources;
 
 use Illuminate\Support\Str;
-use Pandorga\Nexus\Exceptions\MissingModelException;
-use Pandorga\Nexus\Traits\ResourceFields;
+use Nexus\Exceptions\MissingModelException;
+use Nexus\Traits\ResourceFields;
 
 abstract class Resource
 {

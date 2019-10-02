@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Middleware;
+namespace Nexus\Http\Middleware;
 
 use Closure;
 use Carbon\Carbon;

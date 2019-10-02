@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Models;
+namespace Nexus\Models;
 
 use Illuminate\Auth\Authenticatable as BaseAutenticatable;
 use Illuminate\Auth\MustVerifyEmail;

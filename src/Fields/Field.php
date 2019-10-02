@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Fields;
+namespace Nexus\Fields;
 
 use Closure;
 use Illuminate\Contracts\Support\Htmlable;

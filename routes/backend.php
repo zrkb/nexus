@@ -23,7 +23,7 @@ Route::group([
 
 	// Nexus Controllers
 	Route::group([
-		'namespace' => '\Pandorga\\Nexus\\Http\\Controllers'
+		'namespace' => '\Nexus\\Http\\Controllers'
 	], function () {
 		// Activity Log
 		Route::get('activities',					'ActivitiesController@index')->name('activities.index');

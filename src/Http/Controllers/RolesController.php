@@ -1,18 +1,18 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Controllers;
+namespace Nexus\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Pandorga\Nexus\Http\Controllers\BaseController;
-use Pandorga\Nexus\Models\Permission;
-use Pandorga\Nexus\Models\Role;
-use Pandorga\Nexus\Traits\PermissionModerator;
+use Nexus\Http\Controllers\BaseController;
+use Nexus\Models\Permission;
+use Nexus\Models\Role;
+use Nexus\Traits\PermissionModerator;
 
 class RolesController extends BaseController
 {
 	use PermissionModerator;
 
-	protected $model = \Pandorga\Nexus\Models\Role::class;
+	protected $model = \Nexus\Models\Role::class;
 
 	public function index()
 	{

@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Nexus\Database\Seeds;
+namespace Nexus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-use Pandorga\Nexus\Models\Permission;
-use Pandorga\Nexus\Models\Role;
+use Nexus\Models\Permission;
+use Nexus\Models\Role;
 
 class NexusSeeder extends Seeder
 {

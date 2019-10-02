@@ -28,7 +28,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Pandorga\\Nexus\\": "src"
+            "Nexus\\": "src"
         },
         "files": [
             "src/Helpers/nexus_helper.php"
@@ -36,16 +36,16 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Pandorga\\Nexus\\": "tests"
+            "Nexus\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Pandorga\\Nexus\\NexusServiceProvider"
+                "Nexus\\NexusServiceProvider"
             ],
             "aliases": {
-                "Nexus": "Pandorga\\Nexus\\Facades\\Nexus"
+                "Nexus": "Nexus\\Facades\\Nexus"
             }
         }
     },

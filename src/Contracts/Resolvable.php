@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Contracts;
+namespace Nexus\Contracts;
 
 interface Resolvable
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Controllers\Auth;
+namespace Nexus\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Pandorga\Nexus\Models\Admin;
+use Nexus\Models\Admin;
 
 class RegisterController extends Controller
 {

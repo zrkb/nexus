@@ -33,7 +33,7 @@ return [
         'providers' => [
             'admins' => [
                 'driver' => 'eloquent',
-                'model'  => \Pandorga\Nexus\Models\Admin::class,
+                'model'  => \Nexus\Models\Admin::class,
             ],
         ],
 

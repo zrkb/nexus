@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Nexus\Fields;
+namespace Nexus\Fields;
 
-use Pandorga\Nexus\Models\Permission;
+use Nexus\Models\Permission;
 
 class PermissionActions extends Field
 {

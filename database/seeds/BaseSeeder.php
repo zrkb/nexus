@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Database\Seeds;
+namespace Nexus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 

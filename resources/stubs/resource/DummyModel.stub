@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Pandorga\Nexus\Models\BaseModel as Model;
+use Nexus\Models\BaseModel as Model;
 
 class DummyModel extends Model
 {

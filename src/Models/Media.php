@@ -1,15 +1,15 @@
 <?php
 
-namespace Pandorga\Nexus\Models;
+namespace Nexus\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use MediaUploader;
-use Pandorga\Nexus\Traits\HasCustomFilters;
-use Pandorga\Nexus\Traits\HasPrevNext;
-use Pandorga\Nexus\Traits\ResourceModel;
+use Nexus\Traits\HasCustomFilters;
+use Nexus\Traits\HasPrevNext;
+use Nexus\Traits\ResourceModel;
 use Plank\Mediable\Media as PlankMedia;
 use Plank\Mediable\SourceAdapters\SourceAdapterInterface;
 

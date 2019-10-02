@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Segments;
+namespace Nexus\Segments;
 
 abstract class Segment
 {

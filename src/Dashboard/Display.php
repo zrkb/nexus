@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Dashboard;
+namespace Nexus\Dashboard;
 
 class Display {
 

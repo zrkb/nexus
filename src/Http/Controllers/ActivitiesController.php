@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Controllers;
+namespace Nexus\Http\Controllers;
 
-use Pandorga\Nexus\Models\Activity;
+use Nexus\Models\Activity;
 
 class ActivitiesController extends BaseController
 {

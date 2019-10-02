@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Nexus\Traits;
+namespace Nexus\Traits;
 
 use Illuminate\Auth\Access\AuthorizationException;
-use Pandorga\Nexus\Exceptions\AuthorityException;
-use Pandorga\Nexus\Models\AuthorizeAction;
+use Nexus\Exceptions\AuthorityException;
+use Nexus\Models\AuthorizeAction;
 
 trait Authorizable
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Pandorga\Nexus\Libraries\ImageManager\ImageUploader;
-use Pandorga\Nexus\Models\File;
+use Nexus\Libraries\ImageManager\ImageUploader;
+use Nexus\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Plank\Mediable\Exceptions\MediaUploadException;

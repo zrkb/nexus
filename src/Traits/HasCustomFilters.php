@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Nexus\Traits;
+namespace Nexus\Traits;
 
-use Pandorga\Nexus\Exceptions\MissingFilterException;
+use Nexus\Exceptions\MissingFilterException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 

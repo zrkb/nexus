@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Fields;
+namespace Nexus\Fields;
 
 class BelongsTo extends Select
 {	

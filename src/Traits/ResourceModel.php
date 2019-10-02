@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Traits;
+namespace Nexus\Traits;
 
 use Spatie\Activitylog\Traits\LogsActivity;
 

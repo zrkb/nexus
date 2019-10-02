@@ -1,15 +1,15 @@
 <?php
 
-namespace Pandorga\Nexus\Models;
+namespace Nexus\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
-use Pandorga\Nexus\Traits\HasCustomFilters;
-use Pandorga\Nexus\Traits\HasPrevNext;
-use Pandorga\Nexus\Traits\HasSegments;
-use Pandorga\Nexus\Traits\ResourceModel;
+use Nexus\Traits\HasCustomFilters;
+use Nexus\Traits\HasPrevNext;
+use Nexus\Traits\HasSegments;
+use Nexus\Traits\ResourceModel;
 
 abstract class BaseModel extends Model
 {

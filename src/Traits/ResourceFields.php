@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Nexus\Traits;
+namespace Nexus\Traits;
 
-use Pandorga\Nexus\Contracts\Resolvable;
+use Nexus\Contracts\Resolvable;
 
 trait ResourceFields
 {

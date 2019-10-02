@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Controllers\Interfaces;
+namespace Nexus\Http\Controllers\Interfaces;
 
 trait Displayable
 {

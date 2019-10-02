@@ -1,14 +1,14 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Controllers;
+namespace Nexus\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Pandorga\Nexus\Http\Controllers\BaseController;
-use Pandorga\Nexus\Models\Permission;
+use Nexus\Http\Controllers\BaseController;
+use Nexus\Models\Permission;
 
 class PermissionsController extends BaseResourceController
 {
-	protected $resource = '\Pandorga\Nexus\Resources\PermissionResource';
+	protected $resource = '\Nexus\Resources\PermissionResource';
 
     public function create()
     {

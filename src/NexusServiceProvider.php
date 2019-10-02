@@ -1,12 +1,12 @@
 <?php
 
-namespace Pandorga\Nexus;
+namespace Nexus;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Pandorga\Nexus\Http\Middleware\AppLocale;
+use Nexus\Http\Middleware\AppLocale;
 
 class NexusServiceProvider extends ServiceProvider
 {
@@ -16,12 +16,12 @@ class NexusServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'admin.auth'       => \Pandorga\Nexus\Http\Middleware\Authenticate::class,
-        'can_register'		=> \Pandorga\Nexus\Http\Middleware\CanRegister::class,
-        // 'admin.pjax'       => \Pandorga\Nexus\Middleware\Pjax::class,
-        // 'admin.log'        => \Pandorga\Nexus\Middleware\LogOperation::class,
-        // 'admin.permission' => \Pandorga\Nexus\Middleware\Permission::class,
-        // 'admin.bootstrap'  => \Pandorga\Nexus\Middleware\Bootstrap::class,
+        'admin.auth'       => \Nexus\Http\Middleware\Authenticate::class,
+        'can_register'		=> \Nexus\Http\Middleware\CanRegister::class,
+        // 'admin.pjax'       => \Nexus\Middleware\Pjax::class,
+        // 'admin.log'        => \Nexus\Middleware\LogOperation::class,
+        // 'admin.permission' => \Nexus\Middleware\Permission::class,
+        // 'admin.bootstrap'  => \Nexus\Middleware\Bootstrap::class,
     ];
 
     /**

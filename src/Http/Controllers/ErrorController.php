@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Http\Controllers;
+namespace Nexus\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;

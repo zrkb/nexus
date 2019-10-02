@@ -1,5 +1,5 @@
 <?php
 
-namespace Pandorga\Nexus\Models;
+namespace Nexus\Models;
 
 class Activity extends \Spatie\Activitylog\Models\Activity {}

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Layout;
+namespace Nexus\Layout;
 
 use Illuminate\Contracts\Support\Renderable;
 

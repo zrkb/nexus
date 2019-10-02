@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Exceptions;
+namespace Nexus\Exceptions;
 
 use Exception;
 

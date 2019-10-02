@@ -102,7 +102,7 @@ Your admin user must subclass from Nexus Admin Model, you can change this in `ne
 'providers' => [
     'admins' => [
         'driver' => 'eloquent',
-        'model' => \Pandorga\Nexus\Models\Admin::class,
+        'model' => \Nexus\Models\Admin::class,
     ],
 
     // ...

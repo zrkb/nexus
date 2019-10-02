@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Models;
+namespace Nexus\Models;
 
 class AuthorizeAction
 {

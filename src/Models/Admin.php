@@ -1,13 +1,13 @@
 <?php
 
-namespace Pandorga\Nexus\Models;
+namespace Nexus\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Schema;
-use Pandorga\Nexus\Models\Authenticatable;
-use Pandorga\Nexus\Presenters\AdminPresenter;
+use Nexus\Models\Authenticatable;
+use Nexus\Presenters\AdminPresenter;
 use Spatie\Permission\Traits\HasRoles;
 
 class Admin extends Authenticatable

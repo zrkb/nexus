@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Pandorga\Nexus\Html\Html;
-use Pandorga\Nexus\Html\Elements\Form;
-use Pandorga\Nexus\Nexus;
+use Nexus\Html\Html;
+use Nexus\Html\Elements\Form;
+use Nexus\Nexus;
 
 if (! function_exists('assets_path')) {
     /**
@@ -18,7 +18,7 @@ if (! function_exists('assets_path')) {
 
 if (! function_exists('nexus')) {
     /**
-     * @return \Pandorga\Nexus\Nexus
+     * @return \Nexus\Nexus
      */
     function nexus()
     {
@@ -55,7 +55,7 @@ if (! function_exists('admin')) {
     /**
      * Returns auth admin.
      * 
-     * @return \Pandorga\Nexus\Models\Admin
+     * @return \Nexus\Models\Admin
      */
     function admin()
     {
@@ -67,7 +67,7 @@ if (! function_exists('user')) {
     /**
      * Returns auth admin.
      * 
-     * @return \Pandorga\Nexus\Models\Admin
+     * @return \Nexus\Models\Admin
      */
     function user()
     {

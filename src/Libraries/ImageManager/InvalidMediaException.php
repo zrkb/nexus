@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Libraries\ImageManager;
+namespace Nexus\Libraries\ImageManager;
 
 use Exception;
 

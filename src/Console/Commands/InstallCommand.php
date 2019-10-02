@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Nexus\Console\Commands;
+namespace Nexus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -63,7 +63,7 @@ class InstallCommand extends Command
 
 		$this->line('→ Publishing Nexus Service Provider ... <info>✔</info>');
 		$this->callSilent('vendor:publish', [
-			'--provider' => 'Pandorga\Nexus\NexusServiceProvider',
+			'--provider' => 'Nexus\NexusServiceProvider',
 		]);
 		$this->callSilent('vendor:publish', [
 			'--tag' => 'nexus-factories',
