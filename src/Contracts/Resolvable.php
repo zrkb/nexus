@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Contracts;
+namespace Pandorga\Nexus\Contracts;
 
 interface Resolvable
 {

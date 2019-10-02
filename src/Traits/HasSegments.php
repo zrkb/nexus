@@ -1,9 +1,9 @@
 <?php
 
-namespace Pandorga\Laramie\Traits;
+namespace Pandorga\Nexus\Traits;
 
-use Pandorga\Laramie\Exceptions\MissingFilterException;
-use Pandorga\Laramie\Segments\Segment;
+use Pandorga\Nexus\Exceptions\MissingFilterException;
+use Pandorga\Nexus\Segments\Segment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;

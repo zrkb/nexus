@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Laramie\Resources;
+namespace Pandorga\Nexus\Resources;
 
 use Illuminate\Support\Str;
-use Pandorga\Laramie\Exceptions\MissingModelException;
-use Pandorga\Laramie\Traits\ResourceFields;
+use Pandorga\Nexus\Exceptions\MissingModelException;
+use Pandorga\Nexus\Traits\ResourceFields;
 
 abstract class Resource
 {
@@ -20,27 +20,27 @@ abstract class Resource
     /**
      * @var string
      */
-    public $viewForIndex = 'laramie::resources/index';
+    public $viewForIndex = 'nexus::resources/index';
 
     /**
      * @var string
      */
-    public $viewForDetail = 'laramie::resources/show';
+    public $viewForDetail = 'nexus::resources/show';
 
     /**
      * @var string
      */
-    public $viewForCreation = 'laramie::resources/create';
+    public $viewForCreation = 'nexus::resources/create';
 
     /**
      * @var string
      */
-    public $viewForUpdate = 'laramie::resources/edit';
+    public $viewForUpdate = 'nexus::resources/edit';
 
     /**
      * @var string
      */
-    public $viewForForm = 'laramie::resources/form';
+    public $viewForForm = 'nexus::resources/form';
 
     /**
      * Create a new resource instance.

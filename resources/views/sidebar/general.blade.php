@@ -1,6 +1,6 @@
 <!-- Heading -->
 <h6 class="navbar-heading">
-	@lang('laramie::messages.sidebar-group-general-title')
+	@lang('nexus::messages.sidebar-group-general-title')
 </h6>
 
 <!-- Navigation -->
@@ -8,11 +8,11 @@
 <ul class="navbar-nav">
 	<li class="nav-item">
 		<a class="nav-link" href="{{ route('app') }}" role="button" aria-expanded="true">
-			<i class='bx bx-home-alt'></i> @lang('laramie::messages.sidebar-group-general-item-welcome')
+			<i class='bx bx-home-alt'></i> @lang('nexus::messages.sidebar-group-general-item-welcome')
 		</a>
 	</li>
 
-	@includeIf('laramie::sidebar/user')
+	@includeIf('nexus::sidebar/user')
 	
 	{{-- <li class="nav-item">
 		<a class="nav-link" href="#sidebarDashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">

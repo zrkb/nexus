@@ -1,12 +1,12 @@
-@extends('laramie::layouts/master')
+@extends('nexus::layouts/master')
 
 @section('app')
-	@include('laramie::layouts/sidebar')
+	@include('nexus::layouts/sidebar')
 	
 	<!-- MAIN CONTENT
     ================================================== -->
     <div class="main-content">
-    	@include('laramie::layouts/nav')
+    	@include('nexus::layouts/nav')
 
 		<div class="container-fluid">
     		@yield('content')

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Layout;
+namespace Pandorga\Nexus\Layout;
 
 use Closure;
 use Illuminate\Contracts\Support\Renderable;
@@ -15,7 +15,7 @@ class Content implements Htmlable, Renderable
 	 *
 	 * @var string
 	 */
-	protected $view = 'laramie::layouts/content';
+	protected $view = 'nexus::layouts/content';
 
 	/**
 	 * Content title.

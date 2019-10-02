@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers;
+namespace Pandorga\Nexus\Http\Controllers;
 
-use Pandorga\Laramie\Models\Activity;
+use Pandorga\Nexus\Models\Activity;
 
 class ActivitiesController extends BaseController
 {
@@ -10,6 +10,6 @@ class ActivitiesController extends BaseController
 	{
 		$activities = Activity::latest()->get();
 
-		return view('laramie::activities/index', compact('activities'));
+		return view('nexus::activities/index', compact('activities'));
 	}
 }

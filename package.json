@@ -1,7 +1,7 @@
 {
     "private": true,
-    "name": "Laramie",
-    "author": "Pandorga",
+    "name": "Nexus",
+    "author": "Felix Ayala",
     "description": "",
     "main": "gulpfile.js",
     "scripts": {

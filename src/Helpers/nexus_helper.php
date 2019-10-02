@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Pandorga\Laramie\Html\Html;
-use Pandorga\Laramie\Html\Elements\Form;
-use Pandorga\Laramie\Laramie;
+use Pandorga\Nexus\Html\Html;
+use Pandorga\Nexus\Html\Elements\Form;
+use Pandorga\Nexus\Nexus;
 
 if (! function_exists('assets_path')) {
     /**
@@ -12,17 +12,17 @@ if (! function_exists('assets_path')) {
      */
     function assets_path()
     {
-        return '/vendor/laramie';
+        return '/vendor/nexus';
     }
 }
 
-if (! function_exists('laramie')) {
+if (! function_exists('nexus')) {
     /**
-     * @return \Pandorga\Laramie\Laramie
+     * @return \Pandorga\Nexus\Nexus
      */
-    function laramie()
+    function nexus()
     {
-        return app(Laramie::class);
+        return app(Nexus::class);
     }
 }
 
@@ -55,7 +55,7 @@ if (! function_exists('admin')) {
     /**
      * Returns auth admin.
      * 
-     * @return \Pandorga\Laramie\Models\Admin
+     * @return \Pandorga\Nexus\Models\Admin
      */
     function admin()
     {
@@ -67,7 +67,7 @@ if (! function_exists('user')) {
     /**
      * Returns auth admin.
      * 
-     * @return \Pandorga\Laramie\Models\Admin
+     * @return \Pandorga\Nexus\Models\Admin
      */
     function user()
     {

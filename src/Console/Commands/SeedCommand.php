@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Console\Commands;
+namespace Pandorga\Nexus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -13,14 +13,14 @@ class SeedCommand extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'laramie:seed';
+	protected $signature = 'nexus:seed';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Seed Laramie Data';
+	protected $description = 'Seed Nexus Data';
 
 	/**
 	 * Execute the console command.
@@ -29,10 +29,10 @@ class SeedCommand extends Command
 	 */
 	public function handle()
 	{
-		$this->comment(PHP_EOL . 'Laramie seed started' . PHP_EOL);
+		$this->comment(PHP_EOL . 'Nexus seed started' . PHP_EOL);
 
 		$this->line('→ Running wizard ... <info>✔</info>');
-		$this->call('db:seed', ['--class' => 'Pandorga\Laramie\Database\Seeds\LaramieSeeder']);
+		$this->call('db:seed', ['--class' => 'Pandorga\Nexus\Database\Seeds\NexusSeeder']);
 
 		$this->info(PHP_EOL . 'Done.');
 	}

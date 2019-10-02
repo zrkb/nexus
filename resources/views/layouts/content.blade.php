@@ -1,10 +1,10 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
-			@include('laramie::misc/models/segments')
+		@component('nexus::misc/page-title')
+			@include('nexus::misc/models/segments')
 
 			{{ $title }}
 		@endcomponent

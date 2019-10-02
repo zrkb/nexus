@@ -3,9 +3,9 @@
 namespace App\Resources;
 
 use Illuminate\Http\Request;
-use Pandorga\Laramie\Fields\ID;
-use Pandorga\Laramie\Fields\Text;
-use Pandorga\Laramie\Resources\Resource;
+use Pandorga\Nexus\Fields\ID;
+use Pandorga\Nexus\Fields\Text;
+use Pandorga\Nexus\Resources\Resource;
 
 class DummyResource extends Resource
 {

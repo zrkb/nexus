@@ -1,13 +1,13 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<div class="float-right">
 					<a href="{{ resource('index') }}" class="btn btn-default">
-						@lang('laramie::resource.back-to-list')
+						@lang('nexus::resource.back-to-list')
 						<i class="bx bx-right-arrow-alt ml-1"></i>
 					</a>
 				</div>
@@ -29,18 +29,18 @@
 			<div class="card card-body">
 				<h5 class="card-title mb-4 pb-3 border-bottom">
 					<i class="bx bxs-edit-alt mr-2 text-primary"></i>
-					@lang('laramie::resource.complete-form')
+					@lang('nexus::resource.complete-form')
 				</h5>
 
 				@include('PluralSnakeBaseClass/form')
 
 				<div class="form-group mt-5 mb-3">
 					<a href="{{ resource('index') }}" class="btn btn-light text-primary mr-2">
-						@lang('laramie::resource.cancel-form-button')
+						@lang('nexus::resource.cancel-form-button')
 					</a>
 
 					<button type="submit" class="btn btn-primary btn-activity">
-						@lang('laramie::resource.submit-form-button')
+						@lang('nexus::resource.submit-form-button')
 					</button>
 				</div>
 			</div>

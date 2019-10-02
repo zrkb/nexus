@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Middleware;
+namespace Pandorga\Nexus\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;

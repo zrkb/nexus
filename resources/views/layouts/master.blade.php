@@ -9,14 +9,14 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>{{ isset($title) ? $title  . ' -' : '' }} {{ env('APP_NAME', 'Laramie') }}</title>
+	<title>{{ isset($title) ? $title  . ' -' : '' }} {{ env('APP_NAME', 'Nexus') }}</title>
 
-	@include('laramie::layouts/styles')
+	@include('nexus::layouts/styles')
 </head>
 <body>
 
 	@yield('app')
 
-	@include('laramie::layouts/scripts')
+	@include('nexus::layouts/scripts')
 </body>
 </html>

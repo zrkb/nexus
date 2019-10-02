@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Laramie\Traits;
+namespace Pandorga\Nexus\Traits;
 
-use Pandorga\Laramie\Contracts\Resolvable;
+use Pandorga\Nexus\Contracts\Resolvable;
 
 trait ResourceFields
 {

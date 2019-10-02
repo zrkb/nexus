@@ -1,24 +1,24 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers;
+namespace Pandorga\Nexus\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Pandorga\Laramie\Http\Controllers\BaseController;
-use Pandorga\Laramie\Models\Permission;
-use Pandorga\Laramie\Models\Role;
-use Pandorga\Laramie\Traits\PermissionModerator;
+use Pandorga\Nexus\Http\Controllers\BaseController;
+use Pandorga\Nexus\Models\Permission;
+use Pandorga\Nexus\Models\Role;
+use Pandorga\Nexus\Traits\PermissionModerator;
 
 class RolesController extends BaseController
 {
 	use PermissionModerator;
 
-	protected $model = \Pandorga\Laramie\Models\Role::class;
+	protected $model = \Pandorga\Nexus\Models\Role::class;
 
 	public function index()
 	{
 		$roles = Role::all();
 
-		return view('laramie::roles/index', compact('roles'));
+		return view('nexus::roles/index', compact('roles'));
 	}
 
 	public function show($id)
@@ -26,14 +26,14 @@ class RolesController extends BaseController
 		$role = Role::find($id);
 		$permissions = Permission::groupedByRoutes();
 		
-		return view('laramie::roles/show', compact('role', 'permissions'));
+		return view('nexus::roles/show', compact('role', 'permissions'));
 	}
 
 	public function create()
 	{
 		$permissions = Permission::groupedByRoutes();
 
-		return view('laramie::roles/create', compact('permissions'));
+		return view('nexus::roles/create', compact('permissions'));
 	}
 
 	public function store(Request $request)
@@ -61,7 +61,7 @@ class RolesController extends BaseController
 		$role = Role::find($id);
 		$permissions = Permission::groupedByRoutes();
 
-		return view('laramie::roles/edit', compact('role', 'permissions'));
+		return view('nexus::roles/edit', compact('role', 'permissions'));
 	}
 
 	public function update(Request $request, $id)

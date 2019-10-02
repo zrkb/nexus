@@ -1,7 +1,7 @@
 {
-    "name": "pandorga/laramie",
-    "description": "Laramie is a nice dashboard based on Laravel 5.8+ Framework",
-    "keywords": [ "laramie", "admin", "laravel", "dashboard", "php"],
+    "name": "imfx/nexus",
+    "description": "Nexus is an Admin Panela based on Laravel Framework",
+    "keywords": [ "nexus", "admin", "laravel", "dashboard", "php"],
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,7 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/imfx/laramie",
+    "homepage": "https://github.com/imfx/nexus",
     "require": {
         "php": "^7.2",
         "illuminate/support": "~5.1",
@@ -28,24 +28,24 @@
     },
     "autoload": {
         "psr-4": {
-            "Pandorga\\Laramie\\": "src"
+            "Pandorga\\Nexus\\": "src"
         },
         "files": [
-            "src/Helpers/laramie_helper.php"
+            "src/Helpers/nexus_helper.php"
         ]
     },
     "autoload-dev": {
         "psr-4": {
-            "Pandorga\\Laramie\\": "tests"
+            "Pandorga\\Nexus\\": "tests"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Pandorga\\Laramie\\LaramieServiceProvider"
+                "Pandorga\\Nexus\\NexusServiceProvider"
             ],
             "aliases": {
-                "Laramie": "Pandorga\\Laramie\\Facades\\Laramie"
+                "Nexus": "Pandorga\\Nexus\\Facades\\Nexus"
             }
         }
     },

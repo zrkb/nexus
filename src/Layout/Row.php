@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Layout;
+namespace Pandorga\Nexus\Layout;
 
 use Spatie\Html\BaseElement;
 

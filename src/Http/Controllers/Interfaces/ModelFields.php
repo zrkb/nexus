@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers\Interfaces;
+namespace Pandorga\Nexus\Http\Controllers\Interfaces;
 
 interface ModelFields
 {

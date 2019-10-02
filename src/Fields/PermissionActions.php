@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Laramie\Fields;
+namespace Pandorga\Nexus\Fields;
 
-use Pandorga\Laramie\Models\Permission;
+use Pandorga\Nexus\Models\Permission;
 
 class PermissionActions extends Field
 {

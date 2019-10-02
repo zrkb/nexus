@@ -1,12 +1,12 @@
 <?php
 
-namespace Pandorga\Laramie\Database\Seeds;
+namespace Pandorga\Nexus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-use Pandorga\Laramie\Models\Permission;
-use Pandorga\Laramie\Models\Role;
+use Pandorga\Nexus\Models\Permission;
+use Pandorga\Nexus\Models\Role;
 
-class LaramieSeeder extends Seeder
+class NexusSeeder extends Seeder
 {
 	public function run()
 	{
@@ -86,7 +86,7 @@ class LaramieSeeder extends Seeder
 	 */
 	private function createAdmin($role, $options = [])
 	{
-		$admin = factory(config('laramie.models.admin'))->create($options);
+		$admin = factory(config('nexus.models.admin'))->create($options);
 
 		$admin->assignRole($role->name);
 

@@ -1,15 +1,15 @@
 <?php
 
-namespace Pandorga\Laramie\Models;
+namespace Pandorga\Nexus\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
 use MediaUploader;
-use Pandorga\Laramie\Traits\HasCustomFilters;
-use Pandorga\Laramie\Traits\HasPrevNext;
-use Pandorga\Laramie\Traits\ResourceModel;
+use Pandorga\Nexus\Traits\HasCustomFilters;
+use Pandorga\Nexus\Traits\HasPrevNext;
+use Pandorga\Nexus\Traits\ResourceModel;
 use Plank\Mediable\Media as PlankMedia;
 use Plank\Mediable\SourceAdapters\SourceAdapterInterface;
 
@@ -69,10 +69,10 @@ class Media extends PlankMedia
 	public function render($collection = null)
 	{
 		return new HtmlString(
-			view('laramie::misc/media', ['media' => $this])
+			view('nexus::misc/media', ['media' => $this])
 		);
 		// return new HtmlString(
-		// 	view('laramie::misc/icon-block', ['media' => $this])
+		// 	view('nexus::misc/icon-block', ['media' => $this])
 		// );
 	}
 

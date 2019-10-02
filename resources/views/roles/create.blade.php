@@ -1,11 +1,11 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
-				@include('laramie::components/back-to-resource')
+				@include('nexus::components/back-to-resource')
 			@endslot
 
 			@slot('icon')
@@ -28,15 +28,15 @@
 						Completa los campos del formulario
 					</h5>
 
-					@include('laramie::roles/form')
+					@include('nexus::roles/form')
 
 					<div class="form-group mt-5 mb-3">
 						<a href="{{ resource('index') }}" class="btn btn-white mr-2">
-							@lang('laramie::resource.cancel-form-button')
+							@lang('nexus::resource.cancel-form-button')
 						</a>
 
 						<button type="submit" class="btn btn-primary btn-activity">
-							@lang('laramie::resource.submit-form-button')
+							@lang('nexus::resource.submit-form-button')
 						</button>
 					</div>
 				</div>

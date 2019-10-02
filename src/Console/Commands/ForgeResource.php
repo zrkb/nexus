@@ -1,14 +1,14 @@
 <?php
 
-namespace Pandorga\Laramie\Console\Commands;
+namespace Pandorga\Nexus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
-use Pandorga\Laramie\Models\AuthorizeAction;
-use Pandorga\Laramie\Models\Permission;
-use Pandorga\Laramie\Models\Role;
+use Pandorga\Nexus\Models\AuthorizeAction;
+use Pandorga\Nexus\Models\Permission;
+use Pandorga\Nexus\Models\Role;
 
 class ForgeResource extends Command
 {
@@ -17,7 +17,7 @@ class ForgeResource extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'laramie:resource {name}';
+	protected $signature = 'nexus:resource {name}';
 
 	/**
 	 * The console command description.
@@ -70,7 +70,7 @@ class ForgeResource extends Command
 	{
 		$model = Str::singular(Str::studly(class_basename($this->argument('name'))));
 
-		$this->call('laramie:model', [
+		$this->call('nexus:model', [
 			'name' => $model,
 			'--force',
 		]);
@@ -78,7 +78,7 @@ class ForgeResource extends Command
 
 	public function createController()
 	{
-		$this->call('laramie:controller', [
+		$this->call('nexus:controller', [
 			'name' => $this->argument('name'),
 			'--force',
 		]);
@@ -88,7 +88,7 @@ class ForgeResource extends Command
 	{
 		$model = Str::singular(Str::studly(class_basename($this->argument('name'))));
 
-		$this->call('laramie:resource-model', [
+		$this->call('nexus:resource-model', [
 			'name' => $model,
 			'--force',
 		]);

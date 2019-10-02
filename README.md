@@ -1,6 +1,6 @@
-# Laramie
+# Nexus
 
-> Laramie is a nice dashboard based on Laravel 5.8+ Framework
+> Nexus is an Admin Panel based on Laravel 5.8+ Framework
 
 ## Installation
 
@@ -11,12 +11,12 @@
 * Laravel Mix
 * Node.js & NPM
 
-### Installing Laramie
+### Installing Nexus
 
 Run the following command in your console terminal:
 
 ```bash
-$ composer require pandorga/laramie
+$ composer require imfx/nexus
 ```
 
 Or if you want to download the files, add the following configuration to the composer.json file:
@@ -25,7 +25,7 @@ Or if you want to download the files, add the following configuration to the com
     "repositories": [
         {
             "type": "path",
-            "url": "../laramie"
+            "url": "../nexus"
         }
     ],
 ```
@@ -33,7 +33,7 @@ Or if you want to download the files, add the following configuration to the com
 or if you are symlinking the package locally:
 
 ```bash
-$ ln -s ../laramie laramie
+$ ln -s ../nexus nexus
 ```
 
 ```json
@@ -41,7 +41,7 @@ $ ln -s ../laramie laramie
     "repositories": [
         {
             "type": "path",
-            "url": "laramie",
+            "url": "nexus",
             "symlink": true
         }
     ],
@@ -55,7 +55,7 @@ Next, add the package to the require section of your composer.json file:
     "fideloper/proxy": "^4.0",
     "laravel/framework": "5.8.*",
     "laravel/tinker": "^1.0",
-    "pandorga/laramie": "*"
+    "imfx/nexus": "*"
 },
 ```
 
@@ -81,7 +81,7 @@ DB_PASSWORD=secret
 Finally, run the install command and migrate Artisan commands.
 
 ```bash
-$ php artisan laramie:install
+$ php artisan nexus:install
 
 $ php artisan migrate
 ```
@@ -91,18 +91,18 @@ $ php artisan migrate
 In order to init the wizard, run the next command:
 
 ```bash
-$ php artisan laramie:seed
+$ php artisan nexus:seed
 ```
 
 ### Admin User Provider
 
-Your admin user must subclass from Laramie Admin Model, you can change this in `laramie.php` config file:
+Your admin user must subclass from Nexus Admin Model, you can change this in `nexus.php` config file:
 
 ```php
 'providers' => [
     'admins' => [
         'driver' => 'eloquent',
-        'model' => \Pandorga\Laramie\Models\Admin::class,
+        'model' => \Pandorga\Nexus\Models\Admin::class,
     ],
 
     // ...
@@ -113,10 +113,10 @@ Your admin user must subclass from Laramie Admin Model, you can change this in `
 
 ### Defining resources
 
-You may want to generate a new resource using the `laramie:resource` Artisan command:
+You may want to generate a new resource using the `nexus:resource` Artisan command:
 
 ```bash
-$ php artisan laramie:resource bookmarks --icon=bookmark
+$ php artisan nexus:resource bookmarks --icon=bookmark
 ```
 
 > Specify an icon from [BoxIcons](https://feathericons.com/) with the `--icon` option.
@@ -153,8 +153,8 @@ Edit your `routes/web.php` and the new resource:
 
 ```php
 Route::group([
-	'prefix' => config('laramie.route.prefix'),
-	'middleware' => config('laramie.route.middleware'),
+	'prefix' => config('nexus.route.prefix'),
+	'middleware' => config('nexus.route.middleware'),
 ], function () {
 	Route::resource('bookmarks', 'BookmarkController');
 });
@@ -170,7 +170,7 @@ Now it's time to assign your new permissions your role. You can do so by navigat
 
 #### 3. Add to sidebar
 
-Edit your `resources/views/vendor/laramie/sidebar/general.blade.php` file and add the code below:
+Edit your `resources/views/vendor/nexus/sidebar/general.blade.php` file and add the code below:
 
 ```php
 <li>

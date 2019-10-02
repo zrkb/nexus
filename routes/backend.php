@@ -5,25 +5,25 @@
 | Backend Routes - (Private)
 |----------------------------------------------
 */
-Laramie::authRoutes();
+Nexus::authRoutes();
 
 // Global
 Route::group([
-	'prefix'		=> config('laramie.route.prefix'),
-	'middleware'	=> config('laramie.route.middleware'),
+	'prefix'		=> config('nexus.route.prefix'),
+	'middleware'	=> config('nexus.route.middleware'),
 ], function () {
 	
 	// Project Controllers
 	Route::group([
-		'namespace' => config('laramie.route.namespace')
+		'namespace' => config('nexus.route.namespace')
 	], function () {
 		// App Route
 		Route::get('/',                         	'AppController@index')->name('app');
 	});
 
-	// Laramie Controllers
+	// Nexus Controllers
 	Route::group([
-		'namespace' => '\Pandorga\\Laramie\\Http\\Controllers'
+		'namespace' => '\Pandorga\\Nexus\\Http\\Controllers'
 	], function () {
 		// Activity Log
 		Route::get('activities',					'ActivitiesController@index')->name('activities.index');

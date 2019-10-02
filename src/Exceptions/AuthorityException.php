@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Exceptions;
+namespace Pandorga\Nexus\Exceptions;
 
 use Illuminate\Auth\Access\AuthorizationException;
 

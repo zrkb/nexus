@@ -1,9 +1,9 @@
 <?php
 
-namespace Pandorga\Laramie\Traits;
+namespace Pandorga\Nexus\Traits;
 
-use Pandorga\Laramie\Models\Permission;
-use Pandorga\Laramie\Models\Role;
+use Pandorga\Nexus\Models\Permission;
+use Pandorga\Nexus\Models\Role;
 use Illuminate\Http\Request;
 
 trait PermissionModerator
@@ -25,7 +25,7 @@ trait PermissionModerator
 	 * Update Admin Roles.
 	 * 
 	 * @param $request \Illuminate\Http\Request
-	 * @param $admin \Pandorga\Laramie\Models\Admin
+	 * @param $admin \Pandorga\Nexus\Models\Admin
 	 */
 	public function manageAdmin(Request $request, $admin)
 	{

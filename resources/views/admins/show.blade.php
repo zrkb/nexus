@@ -1,12 +1,12 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
 
-		@include('laramie::misc/models/restore-panel', ['model' => $admin])
+		@include('nexus::misc/models/restore-panel', ['model' => $admin])
 
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<div class="float-right">
 					<a href="{{ resource('edit', ['id' => $admin->id]) }}" class="btn btn-success">
@@ -61,7 +61,7 @@
 			{{-- END col --}}
 
 			<div class="col-md-4">
-				@include('laramie::misc/models/additional-information', ['model' => $admin])
+				@include('nexus::misc/models/additional-information', ['model' => $admin])
 			</div>
 			{{-- END col --}}
 		</div>
@@ -70,7 +70,7 @@
 		@if ($admin->id != admin()->id)
 			<div class="row mb-5 justify-content-center">
 				<div class="col-md-12">
-					@include('laramie::misc/models/delete-action', ['model' => $admin])
+					@include('nexus::misc/models/delete-action', ['model' => $admin])
 				</div>
 				{{-- END col --}}
 			</div>

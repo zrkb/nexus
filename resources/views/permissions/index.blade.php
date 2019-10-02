@@ -1,9 +1,9 @@
-@extends('laramie::layouts/table')
+@extends('nexus::layouts/table')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<a href="{{ resource('create') }}" class="btn btn-primary">
 					Añadir 
@@ -22,7 +22,7 @@
 			Permisos
 		@endcomponent
 
-		@include('laramie::misc/table-tools')
+		@include('nexus::misc/table-tools')
 
 		<div class="card">
 			@if ($permissions->isNotEmpty())
@@ -53,7 +53,7 @@
 										{{ $permission->created_at }}
 									</td>
 									<td class="actions text-center">
-										@include('laramie::misc/models/crud-actions', ['model' => $permission])
+										@include('nexus::misc/models/crud-actions', ['model' => $permission])
 									</td>
 								</tr>
 							@endforeach
@@ -63,7 +63,7 @@
 				</div>
 				{{-- END table-responsive --}}
 			@else
-				@include('laramie::layouts/empty', [
+				@include('nexus::layouts/empty', [
 					'route' => resource('create'),
 				])
 			@endif

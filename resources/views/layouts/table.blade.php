@@ -1,8 +1,8 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 	
-	@include('laramie::misc/scripts/datatables')
+	@include('nexus::misc/scripts/datatables')
 	@yield('content')
 
 @endsection

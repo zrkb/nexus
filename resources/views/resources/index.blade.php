@@ -1,8 +1,8 @@
-@extends('laramie::layouts/table')
+@extends('nexus::layouts/table')
 
 @section('content')
 
-	@component('laramie::misc/page-title')
+	@component('nexus::misc/page-title')
 		@slot('superactions')
 			<a href="{{ resource('create') }}" class="btn btn-primary lift">
 				Añadir
@@ -10,19 +10,19 @@
 			</a>
 		@endslot
 
-		@include('laramie::misc/models/segments')
+		@include('nexus::misc/models/segments')
 
 		{{ $resource->label() }}
 	@endcomponent
 
-    @include('laramie::layouts/errors')
-    @include('laramie::layouts/flash')
+    @include('nexus::layouts/errors')
+    @include('nexus::layouts/flash')
 
 	<div class="card">
 
 		@if ($items->isNotEmpty())
 			<div class="card-header">
-				@include('laramie::misc/table-tools')
+				@include('nexus::misc/table-tools')
 			</div>
 			
 			<div class="table-responsive">
@@ -57,12 +57,12 @@
 
 								@if ($item->hasSoftDelete())
 									<td class="actions text-center">
-										@include('laramie::misc/models/status-badge', ['model' => $item])
+										@include('nexus::misc/models/status-badge', ['model' => $item])
 									</td>
 								@endif
 								
 								<td class="actions text-center">
-									@include('laramie::misc/models/crud-actions', ['model' => $item])
+									@include('nexus::misc/models/crud-actions', ['model' => $item])
 								</td>
 							</tr>
 						@endforeach
@@ -72,7 +72,7 @@
 			</div>
 			{{-- END table-responsive --}}
 		@else
-			@include('laramie::layouts/empty', [
+			@include('nexus::layouts/empty', [
 				'route' => resource('create'),
 			])
 		@endif

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Segments;
+namespace Pandorga\Nexus\Segments;
 
 abstract class Segment
 {

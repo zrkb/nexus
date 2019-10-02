@@ -1,9 +1,9 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<div class="float-right">
 					<a href="{{ resource('index') }}" class="btn btn-default">

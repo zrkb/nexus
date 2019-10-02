@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Console\Commands;
+namespace Pandorga\Nexus\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
@@ -13,7 +13,7 @@ class ForgeResourceModel extends GeneratorCommand
 	 *
 	 * @var string
 	 */
-	protected $name = 'laramie:resource-model {name}';
+	protected $name = 'nexus:resource-model {name}';
 
 	/**
 	 * The console command description.

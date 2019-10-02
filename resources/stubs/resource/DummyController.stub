@@ -3,7 +3,7 @@
 namespace ClassNamespace;
 
 use Illuminate\Http\Request;
-use Pandorga\Laramie\Http\Controllers\BaseResourceController;
+use Pandorga\Nexus\Http\Controllers\BaseResourceController;
 
 class PluralBaseClassController extends BaseResourceController
 {

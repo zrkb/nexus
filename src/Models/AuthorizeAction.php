@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Models;
+namespace Pandorga\Nexus\Models;
 
 class AuthorizeAction
 {

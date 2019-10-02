@@ -21,6 +21,6 @@
 <script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
 
 <!-- Theme JS -->
-<script src="{{ mix('/assets/js/app.js', 'vendor/laramie') }}" defer></script>
+<script src="{{ mix('/assets/js/app.js', 'vendor/nexus') }}" defer></script>
 
 @stack('scripts')

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Layout;
+namespace Pandorga\Nexus\Layout;
 
 use Closure;
 use Illuminate\Contracts\Support\Renderable;
@@ -16,7 +16,7 @@ class Table implements Htmlable, Renderable
 	 *
 	 * @var String
 	 */
-	protected $view = 'laramie::layouts/table';
+	protected $view = 'nexus::layouts/table';
 
     /**
      * @var Illuminate\Support\Collection

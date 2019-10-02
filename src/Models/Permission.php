@@ -1,9 +1,9 @@
 <?php
 
-namespace Pandorga\Laramie\Models;
+namespace Pandorga\Nexus\Models;
 
-use Pandorga\Laramie\Traits\HasPrevNext;
-use Pandorga\Laramie\Traits\ResourceModel;
+use Pandorga\Nexus\Traits\HasPrevNext;
+use Pandorga\Nexus\Traits\ResourceModel;
 
 class Permission extends \Spatie\Permission\Models\Permission
 {

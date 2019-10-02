@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Middleware;
+namespace Pandorga\Nexus\Http\Middleware;
 
 use Closure;
 
@@ -18,7 +18,7 @@ class CanRegister
      */
     public function handle($request, Closure $next, ...$guards)
 	{
-		if (! config('laramie.registration_enabled')) {
+		if (! config('nexus.registration_enabled')) {
 			return redirect()->guest(admin_base_path('login'));
 		}
 

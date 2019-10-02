@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Traits;
+namespace Pandorga\Nexus\Traits;
 
 use Illuminate\Database\Eloquent\Model;
 

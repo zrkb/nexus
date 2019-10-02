@@ -1,11 +1,11 @@
-@extends('laramie::layouts/table')
+@extends('nexus::layouts/table')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
-				@include('laramie::misc/models/segments')
+				@include('nexus::misc/models/segments')
 				
 				<a href="{{ resource('create') }}" class="btn btn-primary">
 					Añadir
@@ -25,7 +25,7 @@
 			<small class="text-muted">({{ $PluralLowercaseBaseClass->count() }})</small>
 		@endcomponent
 
-		@include('laramie::misc/table-tools')
+		@include('nexus::misc/table-tools')
 
 		<div class="card">
 			@if ($PluralLowercaseBaseClass->isNotEmpty())
@@ -57,10 +57,10 @@
 										{{ $SingularLowercaseBaseClass->created_at }}
 									</td>
 									<td>
-										@include('laramie::misc/models/status-badge', ['model' => $SingularLowercaseBaseClass])
+										@include('nexus::misc/models/status-badge', ['model' => $SingularLowercaseBaseClass])
 									</td>
 									<td class="actions text-center">
-										@include('laramie::misc/models/crud-actions', ['model' => $SingularLowercaseBaseClass])
+										@include('nexus::misc/models/crud-actions', ['model' => $SingularLowercaseBaseClass])
 									</td>
 								</tr>
 							@endforeach
@@ -70,7 +70,7 @@
 				</div>
 				{{-- END table-responsive --}}
 			@else
-				@include('laramie::layouts/empty', [
+				@include('nexus::layouts/empty', [
 					'route' => resource('create'),
 				])
 			@endif

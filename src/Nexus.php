@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Laramie;
+namespace Pandorga\Nexus;
 
 use Illuminate\Support\Facades\Route;
 
-class Laramie
+class Nexus
 {
 	/**
 	 * Auth routes.
@@ -12,8 +12,8 @@ class Laramie
 	public function authRoutes()
 	{
 		$attributes = [
-			'prefix'     => config('laramie.route.prefix'),
-			'namespace'  => '\Pandorga\Laramie\Http\Controllers\Auth',
+			'prefix'     => config('nexus.route.prefix'),
+			'namespace'  => '\Pandorga\Nexus\Http\Controllers\Auth',
 			'middleware' => 'web',
 		];
 
@@ -32,7 +32,7 @@ class Laramie
 
 
     /**
-     * Route a laramie resource to a controller.
+     * Route a nexus resource to a controller.
      *
      * @param  string  $name
      * @param  string  $controller
@@ -42,9 +42,9 @@ class Laramie
 	public function resource($name, $controller, array $options = [])
 	{
 		$attributes = [
-			'prefix'     => config('laramie.route.prefix'),
-			'namespace'  => config('laramie.route.namespace'),
-			'middleware' => config('laramie.route.middleware'),
+			'prefix'     => config('nexus.route.prefix'),
+			'namespace'  => config('nexus.route.namespace'),
+			'middleware' => config('nexus.route.middleware'),
 		];
 
 		Route::group($attributes, function () use ($name, $controller, $options) {

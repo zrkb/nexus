@@ -5,12 +5,12 @@
 | Backend - (Private)
 |----------------------------------------------
 */
-Laramie::authRoutes();
+Nexus::authRoutes();
 
 Route::group([
-	'prefix'        => config('laramie.route.prefix'),
-	'namespace'     => config('laramie.route.namespace'),
-	'middleware'    => config('laramie.route.middleware'),
+	'prefix'        => config('nexus.route.prefix'),
+	'namespace'     => config('nexus.route.namespace'),
+	'middleware'    => config('nexus.route.middleware'),
 ], function () {
 	
 	Route::get('/', 'AppController@index')->name('app');

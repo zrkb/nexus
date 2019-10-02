@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Fields;
+namespace Pandorga\Nexus\Fields;
 
 class ID extends Field
 {

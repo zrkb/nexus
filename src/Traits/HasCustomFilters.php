@@ -1,8 +1,8 @@
 <?php
 
-namespace Pandorga\Laramie\Traits;
+namespace Pandorga\Nexus\Traits;
 
-use Pandorga\Laramie\Exceptions\MissingFilterException;
+use Pandorga\Nexus\Exceptions\MissingFilterException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 

@@ -2247,8 +2247,8 @@ jQuery(document).ready(function ($) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/zerokb/Documents/Code/www/laramie/resources/assets/js/app.js */"./resources/assets/js/app.js");
-module.exports = __webpack_require__(/*! /Users/zerokb/Documents/Code/www/laramie/resources/assets/scss/app.scss */"./resources/assets/scss/app.scss");
+__webpack_require__(/*! /Users/zerokb/Documents/Code/www/nexus/resources/assets/js/app.js */"./resources/assets/js/app.js");
+module.exports = __webpack_require__(/*! /Users/zerokb/Documents/Code/www/nexus/resources/assets/scss/app.scss */"./resources/assets/scss/app.scss");
 
 
 /***/ })

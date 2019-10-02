@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(config('laramie.models.admin'), function (Faker $faker) {
+$factory->define(config('nexus.models.admin'), function (Faker $faker) {
 	return [
 		'firstname' => $faker->firstName,
 		'lastname' => $faker->lastName,

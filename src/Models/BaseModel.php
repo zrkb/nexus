@@ -1,15 +1,15 @@
 <?php
 
-namespace Pandorga\Laramie\Models;
+namespace Pandorga\Nexus\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
-use Pandorga\Laramie\Traits\HasCustomFilters;
-use Pandorga\Laramie\Traits\HasPrevNext;
-use Pandorga\Laramie\Traits\HasSegments;
-use Pandorga\Laramie\Traits\ResourceModel;
+use Pandorga\Nexus\Traits\HasCustomFilters;
+use Pandorga\Nexus\Traits\HasPrevNext;
+use Pandorga\Nexus\Traits\HasSegments;
+use Pandorga\Nexus\Traits\ResourceModel;
 
 abstract class BaseModel extends Model
 {

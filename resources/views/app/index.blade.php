@@ -1,4 +1,4 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 <div class="row justify-content-center">

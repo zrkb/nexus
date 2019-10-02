@@ -1,14 +1,14 @@
 <?php
 
-namespace Pandorga\Laramie;
+namespace Pandorga\Nexus;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
-use Pandorga\Laramie\Http\Middleware\AppLocale;
+use Pandorga\Nexus\Http\Middleware\AppLocale;
 
-class LaramieServiceProvider extends ServiceProvider
+class NexusServiceProvider extends ServiceProvider
 {
     /**
      * The application's route middleware.
@@ -16,12 +16,12 @@ class LaramieServiceProvider extends ServiceProvider
      * @var array
      */
     protected $routeMiddleware = [
-        'admin.auth'       => \Pandorga\Laramie\Http\Middleware\Authenticate::class,
-        'can_register'		=> \Pandorga\Laramie\Http\Middleware\CanRegister::class,
-        // 'admin.pjax'       => \Pandorga\Laramie\Middleware\Pjax::class,
-        // 'admin.log'        => \Pandorga\Laramie\Middleware\LogOperation::class,
-        // 'admin.permission' => \Pandorga\Laramie\Middleware\Permission::class,
-        // 'admin.bootstrap'  => \Pandorga\Laramie\Middleware\Bootstrap::class,
+        'admin.auth'       => \Pandorga\Nexus\Http\Middleware\Authenticate::class,
+        'can_register'		=> \Pandorga\Nexus\Http\Middleware\CanRegister::class,
+        // 'admin.pjax'       => \Pandorga\Nexus\Middleware\Pjax::class,
+        // 'admin.log'        => \Pandorga\Nexus\Middleware\LogOperation::class,
+        // 'admin.permission' => \Pandorga\Nexus\Middleware\Permission::class,
+        // 'admin.bootstrap'  => \Pandorga\Nexus\Middleware\Bootstrap::class,
     ];
 
     /**
@@ -54,7 +54,7 @@ class LaramieServiceProvider extends ServiceProvider
 		$this->loadResources();
 		
         if (! $this->app->configurationIsCached()) {
-			$this->mergeConfigFrom(__DIR__ . '/../config/laramie.php', 'laramie');
+			$this->mergeConfigFrom(__DIR__ . '/../config/nexus.php', 'nexus');
 		}
 
         // Middlewares
@@ -64,7 +64,7 @@ class LaramieServiceProvider extends ServiceProvider
         $this->registerHelpers();
 
 		// Register Blade Components
-		Blade::component('laramie::components/model-property', 'modelProperty');
+		Blade::component('nexus::components/model-property', 'modelProperty');
 	}
 
 	public function registerMiddlewares()
@@ -77,32 +77,32 @@ class LaramieServiceProvider extends ServiceProvider
 	public function publishResources()
 	{
 		$this->publishes([
-			__DIR__ . '/../config/laramie.php' => config_path('laramie.php')
-		], 'laramie-config');
+			__DIR__ . '/../config/nexus.php' => config_path('nexus.php')
+		], 'nexus-config');
 
 		$this->publishes([
-			__DIR__ . '/../public' => public_path('vendor/laramie')
-		], 'laramie-assets');
+			__DIR__ . '/../public' => public_path('vendor/nexus')
+		], 'nexus-assets');
 
 		$this->publishes([
 			__DIR__ . '/../database/factories' => database_path('factories')
-		], 'laramie-factories');
+		], 'nexus-factories');
 
 		$this->publishes([
 			__DIR__ . '/../database/migrations' => database_path('migrations')
-		], 'laramie-migrations');
+		], 'nexus-migrations');
 
 		$this->publishes([
-			__DIR__ . '/../resources/lang' => resource_path('lang/vendor/laramie')
-		], 'laramie-translations');
+			__DIR__ . '/../resources/lang' => resource_path('lang/vendor/nexus')
+		], 'nexus-translations');
 
 		$this->publishes([
-			__DIR__ . '/../resources/views' => resource_path('views/vendor/laramie'),
-		], 'laramie-views');
+			__DIR__ . '/../resources/views' => resource_path('views/vendor/nexus'),
+		], 'nexus-views');
 
 		$this->publishes([
 			__DIR__ . '/../resources/fonts' => public_path('fonts'),
-		], 'laramie-fonts');
+		], 'nexus-fonts');
 	}
 
     /**
@@ -112,7 +112,7 @@ class LaramieServiceProvider extends ServiceProvider
      */
 	protected function loadAdminAuthConfig()
     {
-        config(array_dot(config('laramie.auth', []), 'auth.'));
+        config(array_dot(config('nexus.auth', []), 'auth.'));
     }
 
 	public function loadResources()
@@ -121,10 +121,10 @@ class LaramieServiceProvider extends ServiceProvider
 		$this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // Translations
-        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'laramie');
+        $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'nexus');
 
 		// Views
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laramie');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nexus');
 
 		// Route Initiator
 		$this->loadRoutes();

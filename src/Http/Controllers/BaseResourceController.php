@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers;
+namespace Pandorga\Nexus\Http\Controllers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Pandorga\Laramie\Traits\HasResource;
+use Pandorga\Nexus\Traits\HasResource;
 
 class BaseResourceController extends BaseController
 {

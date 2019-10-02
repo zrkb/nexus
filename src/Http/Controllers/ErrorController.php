@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers;
+namespace Pandorga\Nexus\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,6 +11,6 @@ class ErrorController extends Controller
 	{
 		$error = $request->route('error');
 
-		return view('laramie::errors/' . $error);
+		return view('nexus::errors/' . $error);
 	}
 }

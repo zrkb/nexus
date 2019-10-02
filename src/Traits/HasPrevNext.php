@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Traits;
+namespace Pandorga\Nexus\Traits;
 
 trait HasPrevNext
 {

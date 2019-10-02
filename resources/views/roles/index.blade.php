@@ -1,9 +1,9 @@
-@extends('laramie::layouts/table')
+@extends('nexus::layouts/table')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<a href="{{ resource('create') }}" class="btn btn-primary">
 					Añadir 
@@ -23,7 +23,7 @@
 			<small class="text-muted">({{ $roles->count() }})</small>
 		@endcomponent
 
-		@include('laramie::misc/table-tools')
+		@include('nexus::misc/table-tools')
 
 		<div class="card">
 			@if ($roles->isNotEmpty())
@@ -50,7 +50,7 @@
 										{{ $role->created_at }}
 									</td>
 									<td class="actions text-center">
-										@include('laramie::misc/models/crud-actions', ['model' => $role])
+										@include('nexus::misc/models/crud-actions', ['model' => $role])
 									</td>
 								</tr>
 							@endforeach
@@ -60,7 +60,7 @@
 				</div>
 				{{-- END table-responsive --}}
 			@else
-				@include('laramie::layouts/empty', [
+				@include('nexus::layouts/empty', [
 					'route' => resource('create'),
 				])
 			@endif

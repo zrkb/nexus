@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Console\Commands;
+namespace Pandorga\Nexus\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
@@ -13,7 +13,7 @@ class ForgeController extends GeneratorCommand
 	 *
 	 * @var string
 	 */
-	protected $name = 'laramie:controller';
+	protected $name = 'nexus:controller';
 
 	/**
 	 * The console command description.
@@ -82,7 +82,7 @@ class ForgeController extends GeneratorCommand
         $stub = parent::replaceClass($stub, $name);
 
         // Extract first dash for class namespace
-        $baseNamespace = preg_replace('/\\\/', '', config('laramie.route.namespace'), 1);
+        $baseNamespace = preg_replace('/\\\/', '', config('nexus.route.namespace'), 1);
 
         $substitutions = [
             'ClassNamespace'             => $baseNamespace,

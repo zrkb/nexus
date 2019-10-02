@@ -1,10 +1,10 @@
 <?php
 
-namespace Pandorga\Laramie\Traits;
+namespace Pandorga\Nexus\Traits;
 
 use Illuminate\Auth\Access\AuthorizationException;
-use Pandorga\Laramie\Exceptions\AuthorityException;
-use Pandorga\Laramie\Models\AuthorizeAction;
+use Pandorga\Nexus\Exceptions\AuthorityException;
+use Pandorga\Nexus\Models\AuthorizeAction;
 
 trait Authorizable
 {

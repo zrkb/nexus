@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers;
+namespace Pandorga\Nexus\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 
@@ -8,6 +8,6 @@ class AppController extends Controller
 {
 	public function index()
 	{
-		return view('laramie::app/index');
+		return view('nexus::app/index');
 	}
 }

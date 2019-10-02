@@ -1,9 +1,9 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers;
+namespace Pandorga\Nexus\Http\Controllers;
 
-use Pandorga\Laramie\Models\Role;
-use Pandorga\Laramie\Traits\PermissionModerator;
+use Pandorga\Nexus\Models\Role;
+use Pandorga\Nexus\Traits\PermissionModerator;
 use Illuminate\Http\Request;
 
 class AdminsController extends BaseController
@@ -12,23 +12,23 @@ class AdminsController extends BaseController
 
 	public function index()
 	{
-		$admins = config('laramie.models.admin')::withTrashed()->get();
+		$admins = config('nexus.models.admin')::withTrashed()->get();
 
-		return view('laramie::admins/index', compact('admins'));
+		return view('nexus::admins/index', compact('admins'));
 	}
 
 	public function show($id)
 	{
-		$admin = config('laramie.models.admin')::withTrashed()->find($id);
+		$admin = config('nexus.models.admin')::withTrashed()->find($id);
 
-		return view('laramie::admins/show', compact('admin'));
+		return view('nexus::admins/show', compact('admin'));
 	}
 
 	public function create()
 	{
 		$roles = Role::all();
 
-		return view('laramie::admins/create', compact('roles'));
+		return view('nexus::admins/create', compact('roles'));
 	}
 
 	public function store(Request $request)
@@ -42,7 +42,7 @@ class AdminsController extends BaseController
 		// Remove unexistent data from rules
 		$data = array_intersect_key($request->all(), $creationRules);
 
-		$admin = config('laramie.models.admin')::create(array_merge($data, [
+		$admin = config('nexus.models.admin')::create(array_merge($data, [
 			'email_verified_at' => now(),
 			'remember_token'    => str_random(10),
 		]));
@@ -59,15 +59,15 @@ class AdminsController extends BaseController
 
 	public function edit($id)
 	{
-		$admin = config('laramie.models.admin')::withTrashed()->find($id);
+		$admin = config('nexus.models.admin')::withTrashed()->find($id);
 		$roles = Role::all();
 
-		return view('laramie::admins/edit', compact('admin', 'roles'));
+		return view('nexus::admins/edit', compact('admin', 'roles'));
 	}
 
 	public function update(Request $request, $id)
 	{
-		$admin = config('laramie.models.admin')::withTrashed()->find($id);
+		$admin = config('nexus.models.admin')::withTrashed()->find($id);
 		
 		$updateRules = $this->updateRules($admin->id);
 		$this->validate($request, $updateRules);

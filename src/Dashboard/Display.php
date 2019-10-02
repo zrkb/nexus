@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Dashboard;
+namespace Pandorga\Nexus\Dashboard;
 
 class Display {
 

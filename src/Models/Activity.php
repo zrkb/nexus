@@ -1,5 +1,5 @@
 <?php
 
-namespace Pandorga\Laramie\Models;
+namespace Pandorga\Nexus\Models;
 
 class Activity extends \Spatie\Activitylog\Models\Activity {}

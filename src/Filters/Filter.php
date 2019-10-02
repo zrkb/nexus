@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Filters;
+namespace Pandorga\Nexus\Filters;
 
 abstract class Filter
 {

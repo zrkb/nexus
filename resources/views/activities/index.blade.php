@@ -1,9 +1,9 @@
-@extends('laramie::layouts/table')
+@extends('nexus::layouts/table')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('icon')
 				<a class="page-icon">
 					<span class="bg-primary text-white">
@@ -15,7 +15,7 @@
 			Actividades
 		@endcomponent
 
-		@include('laramie::misc/table-tools')
+		@include('nexus::misc/table-tools')
 
 		<div class="card">
 			@if ($activities->isNotEmpty())
@@ -75,7 +75,7 @@
 				</div>
 				{{-- END table-responsive --}}
 			@else
-				@include('laramie::layouts/empty', [
+				@include('nexus::layouts/empty', [
 					'route' => resource('create'),
 				])
 			@endif

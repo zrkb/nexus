@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Console\Commands;
+namespace Pandorga\Nexus\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
@@ -13,7 +13,7 @@ class ForgeViews extends GeneratorCommand
 	 *
 	 * @var string
 	 */
-	protected $signature = 'laramie:views {name} {--i|icon=smile}';
+	protected $signature = 'nexus:views {name} {--i|icon=smile}';
 
 	/**
 	 * The console command description.

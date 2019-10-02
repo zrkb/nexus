@@ -13139,7 +13139,7 @@ a.text-white:focus {
 }
 
 .navbar-dark.navbar-vibrant {
-  background-image: linear-gradient(to bottom right, rgba(18, 111, 235, 0.9), rgba(114, 3, 225, 0.9)), url(/vendor/laramie/assets/img/covers/sidebar-cover.jpg);
+  background-image: linear-gradient(to bottom right, rgba(18, 111, 235, 0.9), rgba(114, 3, 225, 0.9)), url(/vendor/nexus/assets/img/covers/sidebar-cover.jpg);
   background-repeat: no-repeat, no-repeat;
   background-position: center center, center center;
   background-size: cover, cover;
@@ -14870,24 +14870,24 @@ button:focus {
 
 @font-face {
   font-family: "Cerebri Sans";
-  src: url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-regular.eot");
-  src: url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-regular.eot?#iefix") format("embedded-opentype"), url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-regular.woff") format("woff"), url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-regular.ttf") format("truetype");
+  src: url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-regular.eot");
+  src: url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-regular.eot?#iefix") format("embedded-opentype"), url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-regular.woff") format("woff"), url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Cerebri Sans";
-  src: url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-medium.eot");
-  src: url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-medium.eot?#iefix") format("embedded-opentype"), url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-medium.woff") format("woff"), url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-medium.ttf") format("truetype");
+  src: url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-medium.eot");
+  src: url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-medium.eot?#iefix") format("embedded-opentype"), url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-medium.woff") format("woff"), url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-medium.ttf") format("truetype");
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Cerebri Sans";
-  src: url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-semibold.eot");
-  src: url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-semibold.eot?#iefix") format("embedded-opentype"), url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-semibold.woff") format("woff"), url("/vendor/laramie/assets/fonts/cerebrisans/cerebrisans-semibold.ttf") format("truetype");
+  src: url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-semibold.eot");
+  src: url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-semibold.eot?#iefix") format("embedded-opentype"), url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-semibold.woff") format("woff"), url("/vendor/nexus/assets/fonts/cerebrisans/cerebrisans-semibold.ttf") format("truetype");
   font-weight: 600;
   font-style: normal;
 }
@@ -14992,7 +14992,7 @@ button:focus {
 }
 
 .bg-hero {
-  background-image: linear-gradient(to bottom, rgba(18, 38, 63, 0.85), rgba(18, 38, 63, 0.85)), url(/vendor/laramie/assets/img/covers/header-cover.jpg);
+  background-image: linear-gradient(to bottom, rgba(18, 38, 63, 0.85), rgba(18, 38, 63, 0.85)), url(/vendor/nexus/assets/img/covers/header-cover.jpg);
   background-repeat: no-repeat, no-repeat;
   background-position: center center, center center;
   background-size: cover, cover;
@@ -15135,7 +15135,7 @@ button:focus {
   position: absolute;
   width: 0;
   height: 0;
-  background-image: url(/vendor/laramie/assets/img/masks/avatar-status.svg), url(/vendor/laramie/assets/img/masks/avatar-group.svg), url(/vendor/laramie/assets/img/masks/avatar-group-hover.svg), url(/vendor/laramie/assets/img/masks/avatar-group-hover-last.svg);
+  background-image: url(/vendor/nexus/assets/img/masks/avatar-status.svg), url(/vendor/nexus/assets/img/masks/avatar-group.svg), url(/vendor/nexus/assets/img/masks/avatar-group-hover.svg), url(/vendor/nexus/assets/img/masks/avatar-group-hover-last.svg);
 }
 
 .avatar-img {
@@ -15168,8 +15168,8 @@ button:focus {
 
 .avatar-online .avatar-img,
 .avatar-offline .avatar-img {
-  -webkit-mask-image: url(/vendor/laramie/assets/img/masks/avatar-status.svg);
-          mask-image: url(/vendor/laramie/assets/img/masks/avatar-status.svg);
+  -webkit-mask-image: url(/vendor/nexus/assets/img/masks/avatar-status.svg);
+          mask-image: url(/vendor/nexus/assets/img/masks/avatar-status.svg);
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%;
 }
@@ -15273,8 +15273,8 @@ button:focus {
 }
 
 .avatar-group .avatar:not(:last-child) {
-  -webkit-mask-image: url(/vendor/laramie/assets/img/masks/avatar-group.svg);
-          mask-image: url(/vendor/laramie/assets/img/masks/avatar-group.svg);
+  -webkit-mask-image: url(/vendor/nexus/assets/img/masks/avatar-group.svg);
+          mask-image: url(/vendor/nexus/assets/img/masks/avatar-group.svg);
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%;
 }
@@ -15286,15 +15286,15 @@ button:focus {
 }
 
 .avatar-group .avatar:hover + .avatar {
-  -webkit-mask-image: url(/vendor/laramie/assets/img/masks/avatar-group-hover.svg);
-          mask-image: url(/vendor/laramie/assets/img/masks/avatar-group-hover.svg);
+  -webkit-mask-image: url(/vendor/nexus/assets/img/masks/avatar-group-hover.svg);
+          mask-image: url(/vendor/nexus/assets/img/masks/avatar-group-hover.svg);
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%;
 }
 
 .avatar-group .avatar:hover + .avatar:last-child {
-  -webkit-mask-image: url(/vendor/laramie/assets/img/masks/avatar-group-hover-last.svg);
-          mask-image: url(/vendor/laramie/assets/img/masks/avatar-group-hover-last.svg);
+  -webkit-mask-image: url(/vendor/nexus/assets/img/masks/avatar-group-hover-last.svg);
+          mask-image: url(/vendor/nexus/assets/img/masks/avatar-group-hover-last.svg);
 }
 
 .chart {
@@ -15450,8 +15450,8 @@ button:focus {
 }
 
 .icon.active > .fe {
-  -webkit-mask-image: url(/vendor/laramie/assets/img/masks/icon-status.svg);
-          mask-image: url(/vendor/laramie/assets/img/masks/icon-status.svg);
+  -webkit-mask-image: url(/vendor/nexus/assets/img/masks/icon-status.svg);
+          mask-image: url(/vendor/nexus/assets/img/masks/icon-status.svg);
   -webkit-mask-size: 100% 100%;
           mask-size: 100% 100%;
 }

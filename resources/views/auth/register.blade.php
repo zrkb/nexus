@@ -1,4 +1,4 @@
-@extends('laramie::layouts/master')
+@extends('nexus::layouts/master')
 
 @section('app')
 
@@ -8,7 +8,7 @@
             <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
                 <!-- Image -->
                 <div class="text-center">
-                    <img src="{{ asset('vendor/laramie/assets/img/illustrations/happiness.svg') }}" alt="..." class="img-fluid">
+                    <img src="{{ asset('vendor/nexus/assets/img/illustrations/happiness.svg') }}" alt="..." class="img-fluid">
                 </div>
             </div>
             <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
@@ -16,19 +16,19 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-wrapper">
-                            @include('laramie::layouts/errors')
+                            @include('nexus::layouts/errors')
                         </div>
                     </div>
                 </div>
                 
                 <!-- Heading -->
                 <h1 class="display-4 text-center mb-3">
-                    @lang('laramie::register.welcome-title')
+                    @lang('nexus::register.welcome-title')
                 </h1>
                 
                 <!-- Subheading -->
                 <p class="text-muted text-center mb-5">
-                    @lang('laramie::register.welcome-slogan')
+                    @lang('nexus::register.welcome-slogan')
                 </p>
                 <!-- Form -->
                 <form action="{{ admin_base_path('register') }}" method="POST">
@@ -37,46 +37,46 @@
                     <div class="form-group">
                         <!-- Label -->
                         <label>
-                            @lang('laramie::register.name-label')
+                            @lang('nexus::register.name-label')
                         </label>
                         <!-- Input -->
-                        {{ form()->text('firstname', null, ['class' => 'form-control', 'placeholder' => trans('laramie::register.name-placeholder') ]) }}
+                        {{ form()->text('firstname', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.name-placeholder') ]) }}
                     </div>
                     <!-- Email address -->
                     <div class="form-group">
                         <!-- Label -->
                         <label>
-                            @lang('laramie::register.user-label')
+                            @lang('nexus::register.user-label')
                         </label>
                         <!-- Input -->
-                        {{ form()->email('email', null, ['class' => 'form-control', 'placeholder' => trans('laramie::register.user-placeholder') ]) }}
+                        {{ form()->email('email', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.user-placeholder') ]) }}
                     </div>
                     <!-- Password -->
                     <div class="form-group">
                         <!-- Label -->
                         <label>
-                            @lang('laramie::register.password-label')
+                            @lang('nexus::register.password-label')
                         </label>
                         <!-- Input -->
-                        {{ form()->password('password', ['class' => 'form-control', 'placeholder' => trans('laramie::register.password-placeholder') ]) }}
+                        {{ form()->password('password', ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-placeholder') ]) }}
                     </div>
                     <!-- Password Confirmation -->
                     <div class="form-group">
                         <!-- Label -->
                         <label>
-                            @lang('laramie::register.password-confirmation-label')
+                            @lang('nexus::register.password-confirmation-label')
                         </label>
                         <!-- Input -->
-                        {{ form()->password('password_confirmation', ['class' => 'form-control', 'placeholder' => trans('laramie::register.password-confirmation-placeholder') ]) }}
+                        {{ form()->password('password_confirmation', ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-confirmation-placeholder') ]) }}
                     </div>
                     <!-- Submit -->
                     <button class="btn btn-lg btn-block btn-primary mb-3">
-                        @lang('laramie::register.submit-label')
+                        @lang('nexus::register.submit-label')
                     </button>
                     <!-- Link -->
                     <div class="text-center">
                         <span class="text-muted text-center">
-                            @lang('laramie::register.footer')
+                            @lang('nexus::register.footer')
                         </span>
                     </div>
                 </form>

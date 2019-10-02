@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Models;
+namespace Pandorga\Nexus\Models;
 
 use Illuminate\Auth\Authenticatable as BaseAutenticatable;
 use Illuminate\Auth\MustVerifyEmail;

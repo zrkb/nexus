@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers\Auth;
+namespace Pandorga\Nexus\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -34,7 +34,7 @@ class LoginController extends Controller
 	
 	public function showLoginForm()
 	{
-		return view('laramie::auth/login');
+		return view('nexus::auth/login');
 	}
 	
 	public function logout(Request $request)

@@ -1,21 +1,21 @@
 <?php
 
-namespace Pandorga\Laramie\Http\Controllers;
+namespace Pandorga\Nexus\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Pandorga\Laramie\Http\Controllers\BaseController;
-use Pandorga\Laramie\Models\Permission;
+use Pandorga\Nexus\Http\Controllers\BaseController;
+use Pandorga\Nexus\Models\Permission;
 
 class PermissionsController extends BaseResourceController
 {
-	protected $resource = '\Pandorga\Laramie\Resources\PermissionResource';
+	protected $resource = '\Pandorga\Nexus\Resources\PermissionResource';
 
     public function create()
     {
         $item = $this->resource::newModel(['guard_name' => 'admin']);
         $resource = new $this->resource($item);
 
-        return view('laramie::resources/create', compact('item', 'resource'));
+        return view('nexus::resources/create', compact('item', 'resource'));
     }
 
 	public function store(Request $request)

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Console\Commands;
+namespace Pandorga\Nexus\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -13,14 +13,14 @@ class InstallCommand extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'laramie:install';
+	protected $signature = 'nexus:install';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Install Laramie Admin Package';
+	protected $description = 'Install Nexus Admin Package';
 
 	/**
 	 * Install directory.
@@ -48,7 +48,7 @@ class InstallCommand extends Command
 	 */
 	public function handle()
 	{
-		$this->comment(PHP_EOL . 'Laramie installation started' . PHP_EOL);
+		$this->comment(PHP_EOL . 'Nexus installation started' . PHP_EOL);
 
 		$this->line('→ Publishing vendor files ... <info>✔</info>');
 		$this->callSilent('vendor:publish', ['--provider' => 'Spatie\Permission\PermissionServiceProvider']);
@@ -61,12 +61,12 @@ class InstallCommand extends Command
 			$this->callSilent('vendor:publish', ['--provider' => 'Plank\Mediable\MediableServiceProvider']);
 		}
 
-		$this->line('→ Publishing Laramie Service Provider ... <info>✔</info>');
+		$this->line('→ Publishing Nexus Service Provider ... <info>✔</info>');
 		$this->callSilent('vendor:publish', [
-			'--provider' => 'Pandorga\Laramie\LaramieServiceProvider',
+			'--provider' => 'Pandorga\Nexus\NexusServiceProvider',
 		]);
 		$this->callSilent('vendor:publish', [
-			'--tag' => 'laramie-factories',
+			'--tag' => 'nexus-factories',
 			'--force' => true,
 		]);
 
@@ -77,9 +77,9 @@ class InstallCommand extends Command
 
 	public function initializeBackendDir()
 	{
-		$this->line('→ Initializing Laramie directory ... <info>✔</info>');
+		$this->line('→ Initializing Nexus directory ... <info>✔</info>');
 
-		$this->directory = config('laramie.directory');
+		$this->directory = config('nexus.directory');
 		$this->makeDir('/');
 
 		$this->createAppController();
@@ -92,7 +92,7 @@ class InstallCommand extends Command
 	 */
 	public function createAppController()
 	{
-		$filename = config('laramie.controller');
+		$filename = config('nexus.controller');
 		
 		$appController = $this->directory . '/' . $filename . '.php';
 		$contents = $this->getStub($filename);

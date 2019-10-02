@@ -104,7 +104,7 @@ if (!function_exists('admin_base_path')) {
      */
     function admin_base_path($path = '')
     {
-        $prefix = '/'.trim(config('laramie.route.prefix'), '/');
+        $prefix = '/'.trim(config('nexus.route.prefix'), '/');
 
         $prefix = ($prefix == '/') ? '' : $prefix;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Database\Seeds;
+namespace Pandorga\Nexus\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 

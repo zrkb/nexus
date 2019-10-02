@@ -1,12 +1,12 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
 
-		@include('laramie::misc/models/restore-panel', ['model' => $permission])
+		@include('nexus::misc/models/restore-panel', ['model' => $permission])
 		
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<div class="float-right">
 					<a href="{{ resource('edit', ['id' => $permission->id]) }}" class="btn btn-success">
@@ -59,7 +59,7 @@
 			{{-- END col --}}
 
 			<div class="col-md-4">
-				@include('laramie::misc/models/additional-information', ['model' => $permission])
+				@include('nexus::misc/models/additional-information', ['model' => $permission])
 			</div>
 			{{-- END col --}}
 		</div>
@@ -67,7 +67,7 @@
 		
 		<div class="row mb-5 justify-content-center">
 			<div class="col-md-12">
-				@include('laramie::misc/models/delete-action', ['model' => $permission])
+				@include('nexus::misc/models/delete-action', ['model' => $permission])
 			</div>
 			{{-- END col --}}
 		</div>

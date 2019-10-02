@@ -1,13 +1,13 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<div class="float-right">
 					<a href="{{ resource('index') }}" class="btn btn-default">
-						@lang('laramie::resource.back-to-list')
+						@lang('nexus::resource.back-to-list')
 						<i class="bx bx-right-arrow-alt ml-1"></i>
 					</a>
 				</div>

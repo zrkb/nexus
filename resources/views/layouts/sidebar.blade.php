@@ -43,7 +43,7 @@
     <!-- Collapse -->
     <div class="collapse navbar-collapse mt-3 pt-3" id="sidebarCollapse">
 
-      @include('laramie::sidebar/general')
+      @include('nexus::sidebar/general')
 
       <!-- Push content down -->
       <div class="mt-auto"></div>

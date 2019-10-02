@@ -1,9 +1,9 @@
-@extends('laramie::layouts/app')
+@extends('nexus::layouts/app')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<div class="float-right">
 					<a href="{{ resource('index') }}" class="btn btn-default">
@@ -32,7 +32,7 @@
 						Completa los campos del formulario
 					</h5>
 
-					@include('laramie::admins/form')
+					@include('nexus::admins/form')
 
 					<div class="form-group mt-5 mb-3">
 						<a href="{{ resource('index') }}" class="btn btn-default mr-2">Cancelar</a>

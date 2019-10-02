@@ -1,11 +1,11 @@
 <?php
 
-namespace Pandorga\Laramie\Resources;
+namespace Pandorga\Nexus\Resources;
 
 use Illuminate\Http\Request;
-use Pandorga\Laramie\Fields\ID;
-use Pandorga\Laramie\Fields\PermissionActions;
-use Pandorga\Laramie\Fields\Text;
+use Pandorga\Nexus\Fields\ID;
+use Pandorga\Nexus\Fields\PermissionActions;
+use Pandorga\Nexus\Fields\Text;
 
 class PermissionResource extends Resource
 {
@@ -14,7 +14,7 @@ class PermissionResource extends Resource
      *
      * @var \Illuminate\Database\Eloquent\Model
      */
-    public static $model = \Pandorga\Laramie\Models\Permission::class;
+    public static $model = \Pandorga\Nexus\Models\Permission::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.

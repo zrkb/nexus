@@ -1,9 +1,9 @@
-@extends('laramie::layouts/table')
+@extends('nexus::layouts/table')
 
 @section('content')
 
 	<div class="root">
-		@component('laramie::misc/page-title')
+		@component('nexus::misc/page-title')
 			@slot('superactions')
 
 				<a href="{{ resource('create') }}" class="btn btn-primary lift">
@@ -12,14 +12,14 @@
 				</a>
 			@endslot
 
-			@include('laramie::misc/models/segments')
+			@include('nexus::misc/models/segments')
 
 			Administradores
 		@endcomponent
 
 		<div class="card">
 			<div class="card-header">
-				@include('laramie::misc/table-tools')
+				@include('nexus::misc/table-tools')
 			</div>
 
 			@if ($admins->isNotEmpty())
@@ -60,10 +60,10 @@
 										{{ $admin->roles->implode('name', ', ') }}
 									</td>
 									<td>
-										@include('laramie::misc/models/status-badge', ['model' => $admin])
+										@include('nexus::misc/models/status-badge', ['model' => $admin])
 									</td>
 									<td class="actions text-center">
-										@include('laramie::misc/models/crud-actions', ['model' => $admin])
+										@include('nexus::misc/models/crud-actions', ['model' => $admin])
 									</td>
 								</tr>
 							@endforeach
@@ -73,7 +73,7 @@
 				</div>
 				{{-- END table-responsive --}}
 			@else
-				@include('laramie::layouts/empty', [
+				@include('nexus::layouts/empty', [
 					'route' => resource('create'),
 				])
 			@endif

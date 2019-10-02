@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Libraries\ImageManager;
+namespace Pandorga\Nexus\Libraries\ImageManager;
 
 use Exception;
 

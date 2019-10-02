@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Fields;
+namespace Pandorga\Nexus\Fields;
 
 use Closure;
 use Illuminate\Contracts\Support\Htmlable;
@@ -128,7 +128,7 @@ abstract class Field extends FieldElement
     {
         $value = $item->getAttribute($this->attribute);
 
-        return view("laramie::fields/{$this->component}/index")->with([
+        return view("nexus::fields/{$this->component}/index")->with([
             'field' => $this,
             'item' => $item,
             'value' => $this->resolveForDisplay($item, $value),
@@ -138,7 +138,7 @@ abstract class Field extends FieldElement
 
     public function renderForForm($item, $resource)
     {
-        return view("laramie::fields/{$this->component}/form")->with([
+        return view("nexus::fields/{$this->component}/form")->with([
             'field' => $this,
             'item' => $item,
             'value' => $item->getAttribute($this->attribute),
@@ -148,7 +148,7 @@ abstract class Field extends FieldElement
 
     public function renderForShow($item)
     {
-        return view("laramie::fields/{$this->component}/show")->with([
+        return view("nexus::fields/{$this->component}/show")->with([
             'field' => $this,
             'item' => $item,
             'value' => $item->getAttribute($this->attribute),

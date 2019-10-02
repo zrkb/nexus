@@ -1,6 +1,6 @@
 <?php
 
-namespace Pandorga\Laramie\Presenters;
+namespace Pandorga\Nexus\Presenters;
 
 trait AdminPresenter
 {

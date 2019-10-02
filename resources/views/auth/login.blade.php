@@ -1,4 +1,4 @@
-@extends('laramie::layouts/master')
+@extends('nexus::layouts/master')
 
 @section('app')
 
@@ -8,7 +8,7 @@
             <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
                 <!-- Image -->
                 <div class="text-center">
-                    <img src="{{ asset('vendor/laramie/assets/img/illustrations/happiness.svg') }}" alt="..." class="img-fluid">
+                    <img src="{{ asset('vendor/nexus/assets/img/illustrations/happiness.svg') }}" alt="..." class="img-fluid">
                 </div>
             </div>
             <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
@@ -16,19 +16,19 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card-wrapper">
-                            @include('laramie::layouts/errors')
+                            @include('nexus::layouts/errors')
                         </div>
                     </div>
                 </div>
                 
                 <!-- Heading -->
                 <h1 class="display-4 text-center mb-3">
-                    @lang('laramie::login.welcome-title')
+                    @lang('nexus::login.welcome-title')
                 </h1>
                 
                 <!-- Subheading -->
                 <p class="text-muted text-center mb-5">
-                    @lang('laramie::login.welcome-slogan')
+                    @lang('nexus::login.welcome-slogan')
                 </p>
                 <!-- Form -->
                 <form action="{{ admin_base_path('login') }}" method="POST">
@@ -37,20 +37,20 @@
                     <div class="form-group">
                         <!-- Label -->
                         <label>
-                            @lang('laramie::login.user-label')
+                            @lang('nexus::login.user-label')
                         </label>
                         <!-- Input -->
                         <input
                             name="email"
                             type="email"
                             class="form-control"
-                            placeholder="@lang('laramie::login.user-placeholder')">
+                            placeholder="@lang('nexus::login.user-placeholder')">
                     </div>
                     <!-- Password -->
                     <div class="form-group">
                         <!-- Label -->
                         <label>
-                            @lang('laramie::login.password-label')
+                            @lang('nexus::login.password-label')
                         </label>
                         <!-- Input group -->
                         <div class="input-group input-group-merge">
@@ -59,7 +59,7 @@
                                 name="password"
                                 type="password"
                                 class="form-control form-control-appended"
-                                placeholder="@lang('laramie::login.password-placeholder')">
+                                placeholder="@lang('nexus::login.password-placeholder')">
                             <!-- Icon -->
                             <div class="input-group-append">
                                 <span class="input-group-text">
@@ -70,14 +70,14 @@
                     </div>
                     <!-- Submit -->
                     <button class="btn btn-lg btn-block btn-primary mb-3">
-                        @lang('laramie::login.submit-label')
+                        @lang('nexus::login.submit-label')
                     </button>
 
-                    @if (config('laramie.registration_enabled'))
+                    @if (config('nexus.registration_enabled'))
                         <!-- Link -->
                         <div class="text-center">
                             <span class="text-muted text-center">
-                                @lang('laramie::login.footer')
+                                @lang('nexus::login.footer')
                             </span>
                         </div>
                     @endif
