@@ -3,6 +3,7 @@
 namespace Nexus\Traits;
 
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\Arr;
 use Nexus\Exceptions\AuthorityException;
 use Nexus\Models\AuthorizeAction;
 
@@ -51,7 +52,7 @@ trait Authorizable
 			$resource = request()->route('resource');
 		}
 
-		$action = array_get($this->getAbilities(), $method);
+		$action = Arr::get($this->getAbilities(), $method);
 
 		return $action ? $action . '_' . $resource : $method . '_' . $resource;
 	}

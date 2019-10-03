@@ -4,6 +4,7 @@ namespace Nexus;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Nexus\Http\Middleware\AppLocale;
@@ -112,7 +113,7 @@ class NexusServiceProvider extends ServiceProvider
      */
 	protected function loadAdminAuthConfig()
     {
-        config(array_dot(config('nexus.auth', []), 'auth.'));
+        config(Arr::dot(config('nexus.auth', []), 'auth.'));
     }
 
 	public function loadResources()
