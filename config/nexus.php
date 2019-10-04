@@ -15,6 +15,8 @@ return [
 
     'backend_routes_file' => 'backend.php',
 
+    'general_sidebar_items' => 'nexus::sidebar/user',
+
     'models' => [
         'admin' => \App\Models\Admin::class,
     ],

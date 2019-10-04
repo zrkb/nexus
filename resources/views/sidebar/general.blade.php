@@ -12,7 +12,7 @@
 		</a>
 	</li>
 
-	@includeIf('nexus::sidebar/user')
+	@includeIf(config('nexus.general_sidebar_items'))
 	
 	{{-- <li class="nav-item">
 		<a class="nav-link" href="#sidebarDashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
