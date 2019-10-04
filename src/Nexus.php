@@ -41,16 +41,27 @@ class Nexus
      */
 	public function resource($name, $controller, array $options = [])
 	{
+		$this->group(function () use ($name, $controller, $options) {
+			Route::resource($name, $controller, $options);
+			Route::post("{$name}/{id}/restore", "{$controller}@restore")
+				 ->name("{$name}.restore");
+		});
+	}
+
+    /**
+     * Create a route group with shared attributes.
+     *
+     * @param  \Closure|string  $callback
+     * @return void
+     */
+	public function group($callback)
+	{
 		$attributes = [
 			'prefix'     => config('nexus.route.prefix'),
 			'namespace'  => config('nexus.route.namespace'),
 			'middleware' => config('nexus.route.middleware'),
 		];
 
-		Route::group($attributes, function () use ($name, $controller, $options) {
-			Route::resource($name, $controller, $options);
-			Route::post("{$name}/{id}/restore", "{$controller}@restore")
-				 ->name("{$name}.restore");
-		});
+		Route::group($attributes, $callback);
 	}
 }
