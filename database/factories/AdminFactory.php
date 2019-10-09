@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,6 @@ $factory->define(config('nexus.models.admin'), function (Faker $faker) {
 		'lastname' => $faker->lastName,
 		'email' => $faker->unique()->safeEmail,
 		'password' => bcrypt('secret'),
-		'remember_token' => str_random(10),
+		'remember_token' => Str::random(10),
 	];
 });
