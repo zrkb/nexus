@@ -12,6 +12,8 @@ class AdminsController extends BaseController
 	use PermissionModerator;
 	use HasResource;
 
+	protected $resource = '\Nexus\Resources\Admin';
+
 	public function index()
 	{
 		$admins = config('nexus.models.admin')::withTrashed()->get();
