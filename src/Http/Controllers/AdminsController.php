@@ -2,13 +2,15 @@
 
 namespace Nexus\Http\Controllers;
 
-use Nexus\Models\Role;
-use Nexus\Traits\PermissionModerator;
 use Illuminate\Http\Request;
+use Nexus\Models\Role;
+use Nexus\Traits\HasResource;
+use Nexus\Traits\PermissionModerator;
 
 class AdminsController extends BaseController
 {
 	use PermissionModerator;
+	use HasResource;
 
 	public function index()
 	{

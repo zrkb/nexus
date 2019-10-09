@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use Nexus\Http\Controllers\BaseController;
 use Nexus\Models\Permission;
 use Nexus\Models\Role;
+use Nexus\Traits\HasResource;
 use Nexus\Traits\PermissionModerator;
 
 class RolesController extends BaseController
 {
 	use PermissionModerator;
+	use HasResource;
 
 	protected $model = \Nexus\Models\Role::class;
 
