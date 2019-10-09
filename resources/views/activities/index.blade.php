@@ -42,7 +42,7 @@
 													{{ $activity->causer->initials }}
 												</span>
 											</div>
-											<a href="{{ route('admins.show', ['id' => $activity->causer->id]) }}">
+											<a href="{{ route('admins.show', $activity->causer->id) }}">
 												{{ $activity->causer->fullname }}
 											</a>
 										@else

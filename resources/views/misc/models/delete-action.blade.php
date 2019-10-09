@@ -23,7 +23,7 @@
 
 		<form
 			id="delete-form-{{ $model->getKey() }}"
-			action="{{ resource('destroy', ['id' => $model->getKey()]) }}"
+			action="{{ resource('destroy', $model->getKey()) }}"
 			method="POST"
 			class="d-none">
 			@csrf

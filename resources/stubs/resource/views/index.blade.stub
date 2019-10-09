@@ -45,7 +45,7 @@
 								<tr>
 									<td class="tid">{{ $SingularLowercaseBaseClass->id }}</td>
 									<td>
-										<a href="{{ resource('show', ['id' => $SingularLowercaseBaseClass->id]) }}">
+										<a href="{{ resource('show', $SingularLowercaseBaseClass->id) }}">
 											@if ($SingularLowercaseBaseClass->trashed())
 												<s class="text-muted">{{ $SingularLowercaseBaseClass->name }}</s>
 											@else

@@ -502,7 +502,7 @@
 
           <!-- Menu -->
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="{{ route('admins.show', ['id' => admin()->id]) }}">
+            <a class="dropdown-item" href="{{ route('admins.show', admin()->id) }}">
               {{ admin()->fullname }}
               <span class="text-muted d-block mt-2">{{ admin()->email }}</span>
             </a>

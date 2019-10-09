@@ -9,7 +9,7 @@
 		@component('nexus::misc/page-title')
 			@slot('superactions')
 				<div class="float-right">
-					<a href="{{ resource('edit', ['id' => $permission->id]) }}" class="btn btn-success">
+					<a href="{{ resource('edit', $permission->id) }}" class="btn btn-success">
 						<i data-feather="edit-2" class="mr-2"></i>
 						Editar
 					</a>

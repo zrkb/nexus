@@ -7,7 +7,7 @@
 			</span>
 
 			<form
-				action="{{ resource('restore', ['id' => $model->getKey()]) }}"
+				action="{{ resource('restore', $model->getKey()) }}"
 				method="POST">
 				@csrf
 				<button

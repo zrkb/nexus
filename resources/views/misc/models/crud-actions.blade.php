@@ -7,19 +7,19 @@
 
 	<div class="dropdown-menu dropdown-menu-right" aria-labelledby="crud-actions-{{ $model->getKey() }}">
 		<a
-			href="{{ resource('show', ['id' => $model->getKey()]) }}"
+			href="{{ resource('show', $model->getKey()) }}"
 			class="dropdown-item">
 			Ver Detalle
 		</a>
 
 		<a
-			href="{{ resource('edit', ['id' => $model->getKey()]) }}"
+			href="{{ resource('edit', $model->getKey()) }}"
 			class="dropdown-item">
 			Editar
 		</a>
 
 		<a
-			href="{{ resource('destroy', ['id' => $model->getKey()]) }}"
+			href="{{ resource('destroy', $model->getKey()) }}"
 			class="dropdown-item text-danger delete-record"
 			data-form="#delete-form-{{ $model->getKey() }}"
 			data-record="{{ $model->getKey() }}"
@@ -35,7 +35,7 @@
 
 		<form
 			id="delete-form-{{ $model->getKey() }}"
-			action="{{ resource('destroy', ['id' => $model->getKey()]) }}"
+			action="{{ resource('destroy', $model->getKey()) }}"
 			method="POST"
 			class="d-none">
 			@csrf

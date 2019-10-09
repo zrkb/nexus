@@ -42,7 +42,7 @@
 								<tr>
 									<td class="tid">{{ $permission->id }}</td>
 									<td>
-										<a href="{{ resource('show', ['id' => $permission->id]) }}">
+										<a href="{{ resource('show', $permission->id) }}">
 											{{ $permission->name }}
 										</a>
 									</td>
