@@ -2,6 +2,7 @@
 
 @section('content')
 
+	<!-- START page-title -->
 	@component('nexus::misc/page-title')
 		@slot('superactions')
 			<a href="{{ resource('create') }}" class="btn btn-primary lift">
@@ -14,69 +15,61 @@
 
 		{{ $resource->label() }}
 	@endcomponent
+	<!-- END page-title -->
 
+	<!-- START layout-messages -->
     @include('nexus::layouts/errors')
     @include('nexus::layouts/flash')
+	<!-- END layout-messages -->
 
-	<div class="card">
+	<!-- START table -->
+	@component('nexus::misc/table')
 
-		@if ($items->isNotEmpty())
-			<div class="card-header">
-				@include('nexus::misc/table-tools')
-			</div>
-			
-			<div class="table-responsive">
-				<table class="table table-hover card-table datatable">
-					<thead>
-						<tr>
-							@foreach ($resource->indexFields() as $field)
-								@php
-									$tdClass =  in_array($field->attribute, ['id', 'image']) ? 'class=tid' : ''
-								@endphp
-								<th {{ $tdClass }}>{{ $field->name }}</th>
-							@endforeach
+		<!-- START thead -->
+		@slot('thead')
+			@foreach ($resource->indexFields() as $field)
+				@php
+					$tdClass =  in_array($field->attribute, ['id', 'image']) ? 'class=tid' : ''
+				@endphp
+				<th {{ $tdClass }}>{{ $field->name }}</th>
+			@endforeach
 
-							@if ($resource::newModel()->hasSoftDelete())
-								<th class="text-center">Status</th>
-							@endif
+			@if ($resource::newModel()->hasSoftDelete())
+				<th class="text-center">Status</th>
+			@endif
 
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						@foreach($items as $item)
-							<tr>
-								@foreach ($resource->indexFields() as $field)
-									@php
-										$tdClass = $field->attribute == 'id' ? 'class=tid' : ''
-									@endphp
-									<td {{ $tdClass }}>
-										{!! html_entity_decode($field->renderForIndex($item, $resource)) !!}
-									</td>
-								@endforeach
+			<th></th>
+		@endslot
+		<!-- END thead -->
 
-								@if ($item->hasSoftDelete())
-									<td class="actions text-center">
-										@include('nexus::misc/models/status-badge', ['model' => $item])
-									</td>
-								@endif
-								
-								<td class="actions text-center">
-									@include('nexus::misc/models/crud-actions', ['model' => $item])
-								</td>
-							</tr>
-						@endforeach
-					</tbody>
-				</table>
-				{{-- END datatables --}}
-			</div>
-			{{-- END table-responsive --}}
-		@else
-			@include('nexus::layouts/empty', [
-				'route' => resource('create'),
-			])
-		@endif
-	</div>
-	<!-- END card -->
+		<!-- START tbody -->
+		@slot('tbody')
+			@foreach($items as $item)
+				<tr>
+					@foreach ($resource->indexFields() as $field)
+						@php
+							$tdClass = $field->attribute == 'id' ? 'class=tid' : ''
+						@endphp
+						<td {{ $tdClass }}>
+							{!! html_entity_decode($field->renderForIndex($item, $resource)) !!}
+						</td>
+					@endforeach
+
+					@if ($item->hasSoftDelete())
+						<td class="actions text-center">
+							@include('nexus::misc/models/status-badge', ['model' => $item])
+						</td>
+					@endif
+					
+					<td class="actions text-center">
+						@include('nexus::misc/models/crud-actions', ['model' => $item])
+					</td>
+				</tr>
+			@endforeach
+		@endslot
+		<!-- END tbody -->
+		
+	@endcomponent
+	<!-- END table -->
 
 @endsection
