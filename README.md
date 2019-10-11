@@ -41,8 +41,10 @@ $ ln -s ../nexus nexus
     "repositories": [
         {
             "type": "path",
-            "url": "nexus",
-            "symlink": true
+            "url": "../nexus",
+            "options": {
+                "symlink": true
+            }
         }
     ],
 ```
