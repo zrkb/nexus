@@ -23,7 +23,7 @@
 			@foreach($permissions as $name => $actions)
 				<tr>
 					<td>
-						<strong>{{ str_slug($name) }}</strong>
+						<strong>{{ Str::slug($name) }}</strong>
 					</td>
 					@foreach($actions as $action)
 
