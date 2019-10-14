@@ -1,41 +1,37 @@
-@if ($items->isNotEmpty())
-	<div class="card-header">
-		@include('nexus::misc/table-tools')
-	</div>
-	
-	<div class="table-responsive">
-		<table class="table table-hover card-table datatable">
+<div class="card">
+	@if ($items->isNotEmpty())
+		<div class="card-header">
+			@include('nexus::misc/table-tools')
+		</div>
+		
+		<div class="table-responsive">
+			<table class="table table-hover card-table datatable">
 
-			@isset($thead)
-				<thead>
-					<tr>
+				@isset($thead)
+					<thead>
 						{{ $thead }}
-					</tr>
-				</thead>
-			@endisset
+					</thead>
+				@endisset
 
-			@isset($tbody)
-				<tbody>
-						<tr>
-							{{ $tbody }}
-						</tr>
-				</tbody>
-			@endisset
+				@isset($tbody)
+					<tbody>
+						{{ $tbody }}
+					</tbody>
+				@endisset
 
-			@isset($tfoot)
-				<tfoot>
-						<tr>
-							{{ $tfoot }}
-						</tr>
-				</tfoot>
-			@endisset
+				@isset($tfoot)
+					<tfoot>
+						{{ $tfoot }}
+					</tfoot>
+				@endisset
 
-		</table>
-		{{-- END datatables --}}
-	</div>
-	{{-- END table-responsive --}}
-@else
-	@include('nexus::layouts/empty', [
-		'route' => resource('create'),
-	])
-@endif
+			</table>
+			{{-- END datatables --}}
+		</div>
+		{{-- END table-responsive --}}
+	@else
+		@include('nexus::layouts/empty', [
+			'route' => resource('create'),
+		])
+	@endif
+</div>

@@ -66,6 +66,7 @@ class NexusServiceProvider extends ServiceProvider
 
 		// Register Blade Components
 		Blade::component('nexus::components/model-property', 'modelProperty');
+		Blade::component('nexus::misc/table', 'table');
 	}
 
 	public function registerMiddlewares()
