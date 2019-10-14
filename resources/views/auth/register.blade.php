@@ -5,13 +5,7 @@
 <div class="d-flex align-items-center bg-auth border-top border-top-2 border-primary min-vh-100">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
-                <!-- Image -->
-                <div class="text-center">
-                    <img src="{{ asset('vendor/nexus/assets/img/illustrations/happiness.svg') }}" alt="..." class="img-fluid">
-                </div>
-            </div>
-            <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
+            <div class="col-10 col-md-5 col-lg-4 my-5 mx-auto" style="max-width: 320px;">
 
                 <div class="row">
                     <div class="col-12">
