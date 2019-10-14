@@ -11,7 +11,7 @@ return [
 
 	'controller' => 'AppController',
 
-    'registration_enabled' => true,
+    'registration_enabled' => false,
 
     'backend_routes_file' => 'backend.php',
 
