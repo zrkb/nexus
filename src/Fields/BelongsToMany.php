@@ -42,7 +42,7 @@ class BelongsToMany extends BelongsTo
     {
         parent::__construct($name, $attribute);
 
-        $resource = $resource ?? $this->guessResource($name);
+        $resource = $resource ?? $this->guessResource($attribute ?? $name);
 
         $this->resourceClass = $resource;
         $this->resourceName = $resource::uriKey();

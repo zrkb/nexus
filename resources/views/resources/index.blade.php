@@ -23,7 +23,7 @@
 	<!-- END layout-messages -->
 
 	<!-- START table -->
-	@component('nexus::misc/table')
+	@component('nexus::misc/table', ['items' => $items])
 
 		<!-- START thead -->
 		@slot('thead')

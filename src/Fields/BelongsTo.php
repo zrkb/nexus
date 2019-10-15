@@ -2,6 +2,8 @@
 
 namespace Nexus\Fields;
 
+use Illuminate\Support\Str;
+
 class BelongsTo extends Select
 {	
     /**
@@ -32,21 +34,24 @@ class BelongsTo extends Select
      */
     public $resourceName;
 
+    public $relationField;
+
     /**
      * Create a new field.
      *
      * @param  string  $name
      * @return void
      */
-    public function __construct($name = null, $attribute = null, $resource = null)
+    public function __construct($name = null, $attribute = null, $resource = null, $relationField = null)
     {
         parent::__construct($name, $attribute);
 
-        $resource = $resource ?? $this->guessResource($name);
+        $resource = $resource ?? $this->guessResource($attribute ?? $name);
 
         $this->resourceClass = $resource;
         $this->resourceName = $resource::uriKey();
         $this->belongsToRelationship = $this->attribute;
+        $this->relationField = $relationField ?? $attribute ?? $name;
 
         $this->populateWithRelation();
     }
@@ -86,5 +91,17 @@ class BelongsTo extends Select
             Str::studly(Str::singular($name)),
             $results[3]['class']
         );
+    }
+
+    public function renderForIndex($item, $resource)
+    {
+        $value = $item->getAttribute($this->attribute);
+
+        return view("nexus::fields/{$this->component}/index")->with([
+            'field' => $this,
+            'item' => $item,
+            'value' => $this->resolveForDisplay($item, $value),
+            'resource' => $resource,
+        ]);
     }
 }
