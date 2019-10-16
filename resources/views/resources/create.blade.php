@@ -13,9 +13,6 @@
 				Crear {{ $resource->singularLabel() }}
 			@endcomponent
 
-           @include('nexus::layouts/errors')
-    		@include('nexus::layouts/flash')
-
 			{{ form()->open(['url' => resource('store'), 'method' => 'post']) }}
 			
 				@include('nexus::resources/form', [

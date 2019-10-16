@@ -17,11 +17,6 @@
 	@endcomponent
 	<!-- END page-title -->
 
-	<!-- START layout-messages -->
-    @include('nexus::layouts/errors')
-    @include('nexus::layouts/flash')
-	<!-- END layout-messages -->
-
 	<!-- START table -->
 	@component('nexus::misc/table', ['items' => $items])
 

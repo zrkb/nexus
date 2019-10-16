@@ -12,9 +12,6 @@
 				Editar {{ $resource->singularLabel() }}
 			@endcomponent
 
-           	@include('nexus::layouts/errors')
-    		@include('nexus::layouts/flash')
-
 			{{ form()->model($item, ['route' => [$resource::uriKey() . '.update', $item->id], 'method' => 'PUT']) }}
 			
 				@include($resource->viewForForm, [

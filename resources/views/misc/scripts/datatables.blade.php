@@ -89,7 +89,7 @@
 
 				this.options = {
 					language: this.language,
-					dom: 'Bfrtp',
+					dom: 'Bfrt',
 					buttons: this.buttons,
 					bPaginate: false
 				};

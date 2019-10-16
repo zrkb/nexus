@@ -3,7 +3,7 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 	<script>
 		$(function() {
-			$('input[type="text"].daterange').daterangepicker({
+			$('input[data-toggle="daterangepicker"]').daterangepicker({
 				opens: 'center',
 				ranges: {
 		           'Hoy': [moment(), moment()],

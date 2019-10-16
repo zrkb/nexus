@@ -21,9 +21,6 @@
 		{{ $resource->title() }}
 	@endcomponent
 
-    @include('nexus::layouts/errors')
-    @include('nexus::layouts/flash')
-
 	<div class="row mb-5 justify-content-center">
 		<div class="col-md-8">
 			<div class="card">

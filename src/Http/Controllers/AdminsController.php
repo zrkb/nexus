@@ -3,6 +3,7 @@
 namespace Nexus\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Nexus\Models\Role;
 use Nexus\Traits\HasResource;
 use Nexus\Traits\PermissionModerator;
@@ -48,7 +49,7 @@ class AdminsController extends BaseController
 
 		$admin = config('nexus.models.admin')::create(array_merge($data, [
 			'email_verified_at' => now(),
-			'remember_token'    => str_random(10),
+			'remember_token'    => Str::random(10),
 		]));
 
 		if ($admin) {
