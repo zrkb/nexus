@@ -2,52 +2,40 @@
 
 @section('content')
 
-	<div class="root">
-		@component('nexus::misc/page-title')
-			@slot('superactions')
-				<div class="float-right">
-					<a href="{{ resource('index') }}" class="btn btn-default">
-						Volver a la lista
-					</a>
-				</div>
-			@endslot
+	<div class="row justify-content-center">
+		<div class="col-12 col-lg-10 col-xl-8">
+			@component('nexus::misc/page-title')
+				@slot('superactions')
+					@include('nexus::components/back-to-resource')
+				@endslot
 
-			@slot('icon')
-				<a class="page-icon">
-					<span class="bg-primary text-white">
-						<i data-feather="user" class="feather"></i>
-					</span>
-				</a>
-			@endslot
+				Crear Usuario
+			@endcomponent
 
-			Crear Usuario
-		@endcomponent
-
-		{{ form()->open(['route' => 'admins.store']) }}
-		
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title mb-4 pb-4 border-bottom">
-						<i data-feather="terminal" class="mr-2 text-primary"></i>
-						Completa los campos del formulario
-					</h5>
-
-					@include('nexus::admins/form')
-
-					<div class="form-group mt-5 mb-3">
-						<a href="{{ resource('index') }}" class="btn btn-default mr-2">Cancelar</a>
-
-						<button type="submit" class="btn btn-primary btn-activity">
-							Guardar
-						</button>
+			{{ form()->open(['route' => 'admins.store']) }}
+			
+				<div class="card">
+					<div class="card-body">
+						@include('nexus::admins/form')
 					</div>
 				</div>
-				{{-- END card-body --}}
-			</div>
-			{{-- END card --}}
 
-		{{ form()->close() }}
+				<hr>
+
+				<div class="form-group">
+					<a href="{{ resource('index') }}" class="btn btn-white mr-2">
+						@lang('nexus::resource.cancel-form-button')
+					</a>
+
+					<button type="submit" class="btn btn-primary btn-activity">
+						@lang('nexus::resource.submit-form-button')
+					</button>
+				</div>
+
+			{{ form()->close() }}
+		</div>
+		{{-- END col --}}
 	</div>
-	{{-- END root --}}
+	{{-- END row --}}
 
 @endsection

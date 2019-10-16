@@ -1,7 +1,4 @@
-@if (
-	(isset($admin) == false && admin()->can('add_admins')) ||
-	(isset($admin) && $admin->id != admin()->id && admin()->can('edit_admins'))
-)
+@if (admin()->can('add_admins') || admin()->can('edit_admins'))
 	<div class="form-group">
 		{{ Form::label('roles', 'Roles', ['class' => 'control-label']) }}
 

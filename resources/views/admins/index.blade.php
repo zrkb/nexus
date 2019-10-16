@@ -45,7 +45,7 @@
 												{{ $admin->initials }}
 											</span>
 										</div>
-										<a href="{{ resource('show', $admin->id) }}">
+										<a href="{{ resource('edit', $admin->id) }}">
 											@if ($admin->trashed())
 												<s class="text-muted">{{ $admin->fullname }}</s>
 											@else
