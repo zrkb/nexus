@@ -2,28 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Nexus\Models\BaseModel as Model;
 
 class DummyModel extends Model
 {
-	use SoftDeletes;
-
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
 	protected $fillable = [
 		'name',
-	];
-
-	/**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-	protected $casts = [
-		'deleted_at' => 'datetime',
 	];
 }

@@ -12,6 +12,7 @@ trait Authorizable
 	private $abilities = [
 		'index'		=> AuthorizeAction::View,
 		'show'		=> AuthorizeAction::View,
+		'export'		=> AuthorizeAction::View,
 
 		'create'	=> AuthorizeAction::Add,
 		'store'		=> AuthorizeAction::Add,
