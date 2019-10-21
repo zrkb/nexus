@@ -16,6 +16,7 @@
 		        },
 				locale: {
 					format: 'YYYY-MM-DD'
+					customRangeLabel: 'Rango Personalizado',
 				}
 			});
 		});
