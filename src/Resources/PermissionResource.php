@@ -42,7 +42,8 @@ class PermissionResource extends Resource
     {
         return [
             ID::make(),
-            Text::make('Nombre', 'name'),
+            Text::make('Nombre', 'name')
+                ->linkable(),
             Text::make('Guard', 'guard_name'),
             PermissionActions::make()
                 ->onlyOnForms()

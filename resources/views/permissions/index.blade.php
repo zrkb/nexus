@@ -24,52 +24,46 @@
 
 		@include('nexus::misc/table-tools')
 
-		<div class="card">
-			@if ($permissions->isNotEmpty())
-				<div class="table-responsive">
-					<table class="table table-striped datatable">
-						<thead>
-							<tr>
-								<th class="tid">#ID</th>
-								<th>Nombre</th>
-								<th>Canal</th>
-								<th>Creado</th>
-								<th class="text-center">Acciones</th>
-							</tr>
-						</thead>
-						<tbody>
-							@foreach($permissions as $permission)
-								<tr>
-									<td class="tid">{{ $permission->id }}</td>
-									<td>
-										<a href="{{ resource('show', $permission->id) }}">
-											{{ $permission->name }}
-										</a>
-									</td>
-									<td>
-										<span class="badge badge-secondary">{{ $permission->guard_name }}</span>
-									</td>
-									<td>
-										{{ $permission->created_at }}
-									</td>
-									<td class="actions text-center">
-										@include('nexus::misc/models/crud-actions', ['model' => $permission])
-									</td>
-								</tr>
-							@endforeach
-						</tbody>
-					</table>
-					{{-- END datatables --}}
-				</div>
-				{{-- END table-responsive --}}
-			@else
-				@include('nexus::layouts/empty', [
-					'route' => resource('create'),
-				])
-			@endif
-		</div>
-		<!-- END card -->
-	</div>
-	{{-- END root --}}
+	<!-- START table -->
+	@component('nexus::misc/table', ['items' => $permissions])
+
+		<!-- START thead -->
+		@slot('thead')
+			<tr>
+				<th class="tid">#ID</th>
+				<th>Nombre</th>
+				<th>Canal</th>
+				<th>Creado</th>
+				<th class="text-center">Acciones</th>
+			</tr>
+		@endslot
+		<!-- END thead -->
+
+		<!-- START tbody -->
+		@slot('tbody')
+			@foreach($permissions as $permission)
+				<tr>
+					<td class="tid">{{ $permission->id }}</td>
+					<td>
+						<a href="{{ resource('edit', $permission->id) }}">
+							{{ $permission->name }}
+						</a>
+					</td>
+					<td>
+						<span class="badge badge-secondary">{{ $permission->guard_name }}</span>
+					</td>
+					<td>
+						{{ $permission->created_at }}
+					</td>
+					<td class="actions text-center">
+						@include('nexus::misc/models/crud-actions', ['model' => $permission])
+					</td>
+				</tr>
+			@endforeach
+		@endslot
+		<!-- END tbody -->
+		
+	@endcomponent
+	<!-- END table -->
 
 @endsection
