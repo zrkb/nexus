@@ -1,6 +1,6 @@
 @foreach (['danger', 'warning', 'success', 'info'] as $type)
 	@if (session()->has($type))
-		<div class="alert alert-{{ $type }} m-0 mb-4" role="alert">
+		<div class="alert alert-{{ $type }} m-0 mt-4" role="alert">
 			<button type="button" class="close px-2" data-dismiss="alert" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			</button>
