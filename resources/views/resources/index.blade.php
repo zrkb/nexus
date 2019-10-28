@@ -17,6 +17,8 @@
 	@endcomponent
 	<!-- END page-title -->
 
+	@messages
+
 	<!-- START table -->
 	@component('nexus::misc/table', ['items' => $items])
 
@@ -24,7 +26,7 @@
 		@slot('thead')
 			@foreach ($resource->indexFields() as $field)
 				@php
-					$tdClass =  in_array($field->attribute, ['id', 'image']) ? 'class=tid' : ''
+					$tdClass = in_array($field->attribute, ['id', 'image']) ? 'class=tid' : ''
 				@endphp
 				<th {{ $tdClass }}>{{ $field->name }}</th>
 			@endforeach

@@ -13,6 +13,8 @@
 				Crear {{ $resource->singularLabel() }}
 			@endcomponent
 
+			@messages
+
 			{{ form()->open(['url' => resource('store'), 'method' => 'post']) }}
 			
 				@include('nexus::resources/form', [

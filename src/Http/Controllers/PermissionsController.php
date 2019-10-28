@@ -15,7 +15,7 @@ class PermissionsController extends BaseResourceController
         $item = $this->resource::newModel(['guard_name' => 'admin']);
         $resource = new $this->resource($item);
 
-        return view('nexus::resources/create', compact('item', 'resource'));
+        return view($resource->viewForCreation, compact('item', 'resource'));
     }
 
 	public function store(Request $request)

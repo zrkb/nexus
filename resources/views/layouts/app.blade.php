@@ -8,10 +8,7 @@
     <div class="main-content">
     	@include('nexus::layouts/nav')
 
-		<div class="container-fluid">
-            @include('nexus::layouts/errors')
-            @include('nexus::layouts/flash')
-    
+		<div class="container-fluid">    
     		@yield('content')
     	</div>
     </div>

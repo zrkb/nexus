@@ -12,6 +12,8 @@
 				Crear Usuario
 			@endcomponent
 
+			@messages
+
 			{{ form()->open(['route' => 'admins.store']) }}
 			
 				<div class="card">

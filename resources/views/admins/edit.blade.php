@@ -12,6 +12,8 @@
 				Editar Usuario
 			@endcomponent
 
+			@messages
+
 			{{ form()->model($admin, ['route' => ['admins.update', $admin->id], 'method' => 'PUT']) }}
 
 				<div class="card">		

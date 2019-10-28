@@ -17,6 +17,8 @@
 	@endcomponent
 	<!-- END page-title -->
 
+	@messages
+
 	<!-- START table -->
 	@component('nexus::misc/table', ['items' => $admins])
 

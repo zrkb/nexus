@@ -2,112 +2,95 @@
 
 @section('content')
 
-	<div class="root">
-
-		@include('nexus::misc/models/restore-panel', ['model' => $role])
+	@include('nexus::misc/models/restore-panel', ['model' => $role])
+	
+	@component('nexus::misc/page-title')
+		@slot('superactions')
+			<a href="{{ resource('edit', $role->id) }}" class="btn btn-success">
+				<i class="bx bx-pencil mr-2"></i>
+				Editar
+			</a>
 		
-		@component('nexus::misc/page-title')
-			@slot('superactions')
-				<div class="float-right">
-					<a href="{{ resource('edit', $role->id) }}" class="btn btn-success">
-						<i data-feather="edit-2" class="mr-2"></i>
-						Editar
-					</a>
-					<a href="{{ resource('index') }}" class="btn btn-default">
-						<i data-feather="list" class="mr-2"></i>
-						Volver
-					</a>
+			@include('nexus::components/back-to-resource')
 
-					@include('nexus::misc/models/prev-next-rows', ['model' => $role])
-				</div>
-			@endslot
+			@include('nexus::misc/models/prev-next-rows', ['model' => $role])
+		@endslot
 
-			@slot('icon')
-				<a class="page-icon">
-					<span class="bg-primary text-white">
-						<i data-feather="star" class="feather"></i>
-					</span>
-				</a>
-			@endslot
+		<span class="text-primary">#{{ $role->id }}</span>
+		<span class="text-muted">&rarr;</span>
+		{{ $role->name }}
+	@endcomponent
 
-			<span class="text-primary">#{{ $role->id }}</span>
-			<span class="text-muted">&rarr;</span>
-			{{ $role->name }}
-		@endcomponent
+	<div class="row mb-5 justify-content-center">
+		<div class="col-md-8">
+			<div class="card">
+				<div class="card-body">
+					<h3 class="card-title mb-4 pb-4 border-bottom font-weight-normal">
+						<i class="bx bx-layer text-primary mr-2"></i>
+						Datos del Registro
+					</h3>
 
-		<div class="row mb-5 justify-content-center">
-			<div class="col-md-8">
-				<div class="card">
-					<div class="card-body">
-						<h5 class="card-title mb-4 pb-4 border-bottom">
-							<i data-feather="layers" class="mr-2 text-primary"></i>
-							Datos del Registro
-						</h5>
+					<div class="form mt-3">
+						@modelProperty(['title' => 'Nombre'])
+							{{ $role->name }}
+						@endmodelProperty
 
-						<div class="form mt-3">
-							@modelProperty(['title' => 'Nombre'])
-								{{ $role->name }}
-							@endmodelProperty
-
-							@modelProperty
-								<table class="table">
-									<thead>
+						@modelProperty
+							<table class="table">
+								<thead>
+									<tr>
+										<th class="w-50">Permisos</th>
+										<th class="text-center" style="width: 12.5%">Ver</th>
+										<th class="text-center" style="width: 12.5%">Agregar</th>
+										<th class="text-center" style="width: 12.5%">Modificar</th>
+										<th class="text-center" style="width: 12.5%">Eliminar</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach($permissions as $name => $actions)
 										<tr>
-											<th class="w-50">Permisos</th>
-											<th class="text-center" style="width: 12.5%">Ver</th>
-											<th class="text-center" style="width: 12.5%">Agregar</th>
-											<th class="text-center" style="width: 12.5%">Modificar</th>
-											<th class="text-center" style="width: 12.5%">Eliminar</th>
-										</tr>
-									</thead>
-									<tbody>
-										@foreach($permissions as $name => $actions)
-											<tr>
-												<td>
-													<strong>{{ __m($name) }}</strong>
+											<td>
+												<strong>{{ __m($name) }}</strong>
+											</td>
+											@foreach($actions as $action)
+
+												@php
+													$roleHasPermission = isset($role) ? $role->hasPermissionTo($action->name) : false;
+												@endphp
+
+												<td class="text-center">
+													@if ($roleHasPermission)
+														<i class='bx bx-check text-primary'></i>
+													@endif
 												</td>
-												@foreach($actions as $action)
-
-													@php
-														$roleHasPermission = isset($role) ? $role->hasPermissionTo($action->name) : false;
-													@endphp
-
-													<td class="text-center">
-														@if ($roleHasPermission)
-															<i class='bx bx-check text-primary'></i>
-														@endif
-													</td>
-												@endforeach
-											</tr>
-										@endforeach
-									</tbody>
-								</table>
-							@endmodelProperty
-						</div>
-						{{-- END form --}}
+											@endforeach
+										</tr>
+									@endforeach
+								</tbody>
+							</table>
+						@endmodelProperty
 					</div>
-					{{-- END card-body --}}
+					{{-- END form --}}
 				</div>
-				{{-- END card --}}
+				{{-- END card-body --}}
 			</div>
-			{{-- END col --}}
-
-			<div class="col-md-4">
-				@include('nexus::misc/models/additional-information', ['model' => $role])
-			</div>
-			{{-- END col --}}
+			{{-- END card --}}
 		</div>
-		{{-- END row --}}
-		
-		<div class="row mb-5 justify-content-center">
-			<div class="col-md-12">
-				@include('nexus::misc/models/delete-action', ['model' => $role])
-			</div>
-			{{-- END col --}}
-		</div>
-		{{-- END row --}}
+		{{-- END col --}}
 
+		<div class="col-md-4">
+			@include('nexus::misc/models/additional-information', ['model' => $role])
+		</div>
+		{{-- END col --}}
 	</div>
-	{{-- END root --}}
+	{{-- END row --}}
+	
+	<div class="row mb-5 justify-content-center">
+		<div class="col-md-12">
+			@include('nexus::misc/models/delete-action', ['model' => $role])
+		</div>
+		{{-- END col --}}
+	</div>
+	{{-- END row --}}
 
 @endsection

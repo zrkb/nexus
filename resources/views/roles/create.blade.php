@@ -2,50 +2,42 @@
 
 @section('content')
 
-	<div class="root">
-		@component('nexus::misc/page-title')
-			@slot('superactions')
-				@include('nexus::components/back-to-resource')
-			@endslot
+	<div class="row justify-content-center">
+		<div class="col-12 col-lg-10 col-xl-8">
+			@component('nexus::misc/page-title')
+				@slot('superactions')
+					@include('nexus::components/back-to-resource')
+				@endslot
 
-			@slot('icon')
-				<a class="page-icon">
-					<span class="bg-primary text-white">
-						<i data-feather="star" class="feather"></i>
-					</span>
-				</a>
-			@endslot
+				Crear Rol
+			@endcomponent
 
-			Crear Rol
-		@endcomponent
+			@messages
 
-		{{ form()->open(['route' => 'roles.store']) }}
-		
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title mb-4 pb-4 border-bottom">
-						<i data-feather="terminal" class="mr-2 text-primary"></i>
-						Completa los campos del formulario
-					</h5>
-
-					@include('nexus::roles/form')
-
-					<div class="form-group mt-5 mb-3">
-						<a href="{{ resource('index') }}" class="btn btn-white mr-2">
-							@lang('nexus::resource.cancel-form-button')
-						</a>
-
-						<button type="submit" class="btn btn-primary btn-activity">
-							@lang('nexus::resource.submit-form-button')
-						</button>
+			{{ form()->open(['route' => 'roles.store']) }}
+			
+				<div class="card">
+					<div class="card-body">
+						@include('nexus::roles/form')
 					</div>
 				</div>
-				{{-- END card-body --}}
-			</div>
-			{{-- END card --}}
 
-		{{ form()->close() }}
+				<hr>
+
+				<div class="form-group">
+					<a href="{{ resource('index') }}" class="btn btn-white mr-2">
+						@lang('nexus::resource.cancel-form-button')
+					</a>
+
+					<button type="submit" class="btn btn-primary btn-activity">
+						@lang('nexus::resource.submit-form-button')
+					</button>
+				</div>
+
+			{{ form()->close() }}
+		</div>
+		{{-- END col --}}
 	</div>
-	{{-- END root --}}
+	{{-- END row --}}
 
 @endsection

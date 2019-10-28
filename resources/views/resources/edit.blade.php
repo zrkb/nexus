@@ -12,6 +12,8 @@
 				Editar {{ $resource->singularLabel() }}
 			@endcomponent
 
+			@messages
+
 			{{ form()->model($item, ['route' => [$resource::uriKey() . '.update', $item->id], 'method' => 'PUT']) }}
 			
 				@include($resource->viewForForm, [
