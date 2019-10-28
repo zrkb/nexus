@@ -2,30 +2,23 @@
 
 @section('content')
 
-	<div class="root">
-		@component('nexus::misc/page-title')
-			@slot('superactions')
-				<a href="{{ resource('create') }}" class="btn btn-primary">
-					Añadir 
-					<i data-feather="plus" class="feather"></i>
-				</a>
-			@endslot
+	<!-- START page-title -->
+	@component('nexus::misc/page-title')
+		@slot('superactions')
+			<a href="{{ resource('create') }}" class="btn btn-primary lift">
+				Añadir
+				<i class="bx bx-plus ml-1"></i>
+			</a>
+		@endslot
 
-			@slot('icon')
-				<a class="page-icon">
-					<span class="bg-primary text-white">
-						<i data-feather="shield" class="feather"></i>
-					</span>
-				</a>
-			@endslot
+		@include('nexus::misc/models/segments')
 
-			Permisos
-		@endcomponent
-
-		@include('nexus::misc/table-tools')
-
+		Administradores
+	@endcomponent
+	<!-- END page-title -->
+	
 	<!-- START table -->
-	@component('nexus::misc/table', ['items' => $permissions])
+	@component('nexus::misc/table', ['items' => $admins])
 
 		<!-- START thead -->
 		@slot('thead')
