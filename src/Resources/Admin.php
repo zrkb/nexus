@@ -3,8 +3,8 @@
 namespace Nexus\Resources;
 
 use Illuminate\Http\Request;
-use Pandorga\Laramie\Fields\ID;
-use Pandorga\Laramie\Fields\Text;
+use Nexus\Fields\ID;
+use Nexus\Fields\Text;
 
 class Admin extends Resource
 {
