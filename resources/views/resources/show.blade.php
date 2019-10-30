@@ -4,6 +4,7 @@
 
 	@include('nexus::misc/models/restore-panel', ['model' => $item])
 
+	<!-- START page-title -->
 	@component('nexus::misc/page-title')
 		@slot('superactions')
 			<a href="{{ resource('edit', $item->id) }}" class="btn btn-success">
@@ -20,46 +21,45 @@
 		<span class="text-muted">&rarr;</span>
 		{{ $resource->title() }}
 	@endcomponent
+	<!-- END page-title -->
 
 	@messages
 
+	<!-- START content -->
 	<div class="row mb-5 justify-content-center">
 		<div class="col-md-8">
-			<div class="card">
-				<div class="card-body">
-					<h3 class="card-title mb-4 pb-4 border-bottom font-weight-normal">
-						<i class="bx bx-layer text-primary mr-2"></i>
-						Datos del Registro
-					</h3>
 
-					<div class="form mt-3">
-						@foreach ($resource->detailFields() as $field)
-							@modelProperty(['title' => $field->name])
-								{{ $item->getAttribute($field->attribute) }}
-							@endmodelProperty
-						@endforeach
-					</div>
-					{{-- END form --}}
+			<!-- START card -->
+			<div class="card card-body">
+				<h3 class="card-title mb-4 pb-4 border-bottom font-weight-normal">
+					<i class="bx bx-layer text-primary mr-2"></i>
+					Datos del Registro
+				</h3>
+
+				<div class="form mt-3">
+					@foreach ($resource->detailFields() as $field)
+						@modelProperty(['title' => $field->name])
+							{{ $item->getAttribute($field->attribute) }}
+						@endmodelProperty
+					@endforeach
 				</div>
-				{{-- END card-body --}}
 			</div>
-			{{-- END card --}}
+			<!-- END card -->
+			
 		</div>
-		{{-- END col --}}
 
 		<div class="col-md-4">
 			@include('nexus::misc/models/additional-information', ['model' => $item])
 		</div>
-		{{-- END col --}}
 	</div>
-	{{-- END row --}}
+	<!-- END content -->
 
+	<!-- START danger-zone -->
 	<div class="row mb-5 justify-content-center">
 		<div class="col-md-12">
 			@include('nexus::misc/models/delete-action', ['model' => $item])
 		</div>
-		{{-- END col --}}
 	</div>
-	{{-- END row --}}
+	<!-- END danger-zone -->
 
 @endsection
