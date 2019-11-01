@@ -1,5 +1,5 @@
 {{-- Stylesheets --}}
-<link href="https://unpkg.com/boxicons@2.0.2/css/boxicons.min.css" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.0.4/css/boxicons.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('vendor/nexus/assets/fonts/feather/feather.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/nexus/assets/libs/flatpickr/dist/flatpickr.min.css') }}">
 <link rel="stylesheet" href="{{ asset('vendor/nexus/assets/libs/quill/dist/quill.core.css') }}">
