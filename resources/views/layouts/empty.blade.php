@@ -9,14 +9,12 @@
 			{{ $message ?? 'No se encontraron resultados' }}
 		</h1>
 
-		<!-- Subtitle -->
-		<p class="text-muted">
-			@if (isset($description))
+		@isset($description)
+			<!-- Subtitle -->
+			<p class="text-muted">
 				{{ $description }}
-			@else
-				Puedes agregar más items haciendo click en Agregar.
-			@endif
-		</p>
+			</p>
+		@endisset
 
 		<!-- Button -->
 		@isset($route)

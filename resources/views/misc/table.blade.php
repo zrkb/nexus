@@ -1,5 +1,5 @@
 <div class="card">
-	@if ($items->isNotEmpty())
+	@if (count($items))
 		<div class="card-header">
 			@include('nexus::misc/table-tools')
 		</div>
@@ -30,8 +30,6 @@
 		</div>
 		{{-- END table-responsive --}}
 	@else
-		@include('nexus::layouts/empty', [
-			'route' => resource('create'),
-		])
+		@include('nexus::layouts/empty')
 	@endif
 </div>
