@@ -1,5 +1,5 @@
 <div class="card">
-	@if (count($items))
+	@if ($items->isNotEmpty())
 		<div class="card-header">
 			@include('nexus::misc/table-tools')
 		</div>
