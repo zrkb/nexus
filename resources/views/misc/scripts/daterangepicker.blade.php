@@ -15,8 +15,8 @@
 		           'Este Año': [moment().startOf('year'), moment().endOf('year')],
 		        },
 				locale: {
-					format: 'YYYY-MM-DD'
-					customRangeLabel: 'Rango Personalizado',
+					format: 'YYYY-MM-DD',
+					customRangeLabel: 'Personalizado',
 				}
 			});
 		});
