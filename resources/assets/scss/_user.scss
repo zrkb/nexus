@@ -161,3 +161,19 @@ h1, h2, h3, h4, h5, h6,
 .form-control:disabled {
 	opacity: 0.3;
 }
+
+[data-dz-remove] {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	Z-index: 99999;
+}
+
+.progress {
+	display: none;
+	position: absolute;
+	width: 80%;
+	left: 11%;
+	top: 120px;
+	z-index: 999;
+}
