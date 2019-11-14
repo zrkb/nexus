@@ -2,6 +2,8 @@
 
 namespace Nexus\Filters;
 
+use Illuminate\Support\Collection;
+
 abstract class Filter
 {
 	/**
@@ -43,5 +45,8 @@ abstract class Filter
 	 * 
 	 * @return \Illuminate\Support\Collection
 	 */
-	abstract public function options();
+	public function options()
+	{
+		return new Collection();
+	}
 }
