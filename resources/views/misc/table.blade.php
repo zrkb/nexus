@@ -1,8 +1,10 @@
 <div class="card">
-	@if ($items->isNotEmpty())
-		<div class="card-header">
-			@include('nexus::misc/table-tools')
-		</div>
+	@if (count($items))
+		@if (isset($tools) == false || (isset($tools) && $tools != false))
+			<div class="card-header">
+				@include('nexus::misc/table-tools')
+			</div>
+		@endif
 		
 		<div class="table-responsive">
 			<table class="table table-hover card-table datatable">
