@@ -1,4 +1,8 @@
 <div class="card">
+	@isset ($title)
+	    @include('nexus::misc/card/card-header', ['title' => $title])
+	@endisset
+
 	@if (count($items))
 		@if (isset($tools) == false || (isset($tools) && $tools != false))
 			<div class="card-header">
@@ -7,7 +11,7 @@
 		@endif
 		
 		<div class="table-responsive">
-			<table class="table table-hover card-table datatable">
+			<table class="table table-hover table-stripe card-table datatable">
 
 				@isset($thead)
 					<thead>
