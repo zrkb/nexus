@@ -3,11 +3,11 @@
 // Use this to overwrite Bootstrap and Dashkit variables
 //
 
-// Example of a variable override to change Dashkit's background color
-// Remove the "//" to comment it in and see it in action!
-// $body-bg: #12263F;
+$modal-inner-padding:				1rem !default;
 
+$tooltip-color:						white !default;
+$tooltip-bg:						#3B4651 !default;
+$tooltip-padding-y:                 0.6875rem !default;
+$tooltip-padding-x:                 0.8125rem !default;
 
-$modal-inner-padding: 1rem !default;
-$tooltip-color: white !default;
-$tooltip-bg: #3B4651 !default;
+$badge-font-size:					82% !default;

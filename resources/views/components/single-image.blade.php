@@ -5,7 +5,7 @@
 <!-- Single -->
 <div class="dropzone dropzone-single"
 	data-toggle="dropzone-custom"
-	data-options='{ "url": "{{ route('images.store') }}", "maxFiles": 1, "acceptedFiles": "image/*"}'
+	data-options='{ "url": "{{ $route ?? route('images.store') }}", "maxFiles": 1, "acceptedFiles": "image/*"}'
 	data-input-name="{{ $name ?? "image-{$uniqid}" }}"
 	data-image-path="{{ $imagePath }}"
 	data-storage-url="{{ Storage::url($imagePath) }}"

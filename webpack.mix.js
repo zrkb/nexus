@@ -17,4 +17,5 @@ mix
     .copy('resources/assets/css', 'public/assets/css')
     .copy('resources/assets/fonts', 'public/assets/fonts')
     .copy('resources/assets/libs', 'public/assets/libs')
-    .copy('resources/assets/img', 'public/assets/img');
+    .copy('resources/assets/img', 'public/assets/img')
+    .version();
