@@ -12,6 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix
+	.setPublicPath(path.resolve('./'))
 	.js('resources/assets/js/app.js', 'public/assets/js')
 	.sass('resources/assets/scss/app.scss', 'public/assets/css')
     .copy('resources/assets/css', 'public/assets/css')
