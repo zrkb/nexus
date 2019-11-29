@@ -4,7 +4,11 @@
 	@endisset
 
 	@if (count($items))
-		@if (isset($tools) == false || (isset($tools) && $tools != false))
+		@if (isset($tools) && is_bool($tools) == false)
+			<div class="card-header">
+				{{ $tools }}
+			</div>
+		@elseif ((isset($tools) == false || (isset($tools) && $tools != false)))
 			<div class="card-header">
 				@include('nexus::misc/table-tools')
 			</div>
