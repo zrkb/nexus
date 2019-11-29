@@ -1,5 +1,18 @@
 <?php
 
+if (! function_exists('route_filter')) {
+	/**
+	 * Imprime todos los datos del objeto Request $request
+	 * 
+	 * @return array
+	 */
+	function route_filter($params = []) {
+		$params = array_merge($params, request()->all());
+
+		return route(request()->route()->getName(), $params);
+	}
+}
+
 if (! function_exists('rr')) {
 	/**
 	 * Imprime todos los datos del objeto Request $request
