@@ -35,7 +35,7 @@
 		</div>
 	</div>
 
-	<div class="progress">
+	<div class="progress progress-upload">
 		<div class="progress-bar progress-bar-striped bg-primary progress-bar-animated" role="progressbar" data-dz-uploadprogress>
 			<span class="progress-text"></span>
 		</div>
