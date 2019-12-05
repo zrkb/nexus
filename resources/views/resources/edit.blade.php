@@ -22,15 +22,7 @@
 
 				<hr>
 
-				<div class="form-group">
-					<a href="{{ resource('index') }}" class="btn btn-white mr-2">
-						@lang('nexus::resource.cancel-form-button')
-					</a>
-
-					<button type="submit" class="btn btn-primary btn-activity">
-						@lang('nexus::resource.submit-form-button')
-					</button>
-				</div>
+				@include('nexus::misc/form-buttons')
 
 			{{ form()->close() }}
 		</div>
