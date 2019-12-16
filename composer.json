@@ -19,7 +19,7 @@
         "spatie/laravel-activitylog": "^3.1",
         "spatie/laravel-permission": "^2.9 | ^3.0",
         "laravelcollective/html":"^5.8.0 | ^6.0",
-        "plank/laravel-mediable": "^2.9 | ^3.0"
+        "plank/laravel-mediable": "^2.9 | ^3.0 | ^4.0"
     },
     "require-dev": {
         "cybercog/laravel-whoops-editor": "^3.0",
