@@ -13,9 +13,9 @@
 				@include('nexus::misc/table-tools')
 			</div>
 		@endif
-		
+
 		<div class="table-responsive">
-			<table class="table table-hover table-stripe card-table datatable">
+			<table class="table table-hover table-striped card-table datatable">
 
 				@isset($thead)
 					<thead>
