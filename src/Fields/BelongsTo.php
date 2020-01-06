@@ -5,7 +5,7 @@ namespace Nexus\Fields;
 use Illuminate\Support\Str;
 
 class BelongsTo extends Select
-{	
+{
     /**
      * The field's component.
      *
@@ -34,7 +34,9 @@ class BelongsTo extends Select
      */
     public $resourceName;
 
-    public $relationField;
+	public $relationField;
+
+	public $isNullable = false;
 
     /**
      * Create a new field.
@@ -58,14 +60,14 @@ class BelongsTo extends Select
 
     /**
      * Populate component with relation data.
-     * 
+     *
      * @return $this
      */
     public function populateWithRelation()
     {
         $labelAttribute = $this->resourceClass::$title;
         $options = $this->relationItems()->pluck($labelAttribute, 'id');
-        
+
         $this->withOptions($options);
 
         return $this;
@@ -103,5 +105,12 @@ class BelongsTo extends Select
             'value' => $this->resolveForDisplay($item, $value),
             'resource' => $resource,
         ]);
-    }
+	}
+
+	public function nullable()
+	{
+		$this->isNullable = true;
+
+		return $this;
+	}
 }
