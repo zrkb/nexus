@@ -17,6 +17,8 @@ return [
 
     'general_sidebar_items' => 'nexus::sidebar/user',
 
+    'sidebar_color_scheme' => 'navbar-dark bg-dark',
+
     'models' => [
         'admin' => \Nexus\Models\Admin::class,
     ],
