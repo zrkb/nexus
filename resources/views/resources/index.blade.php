@@ -48,7 +48,7 @@
 							$tdClass = $field->attribute == 'id' ? 'class=tid' : ''
 						@endphp
 						<td {{ $tdClass }}>
-							{!! html_entity_decode($field->renderForIndex($item, $resource)) !!}
+							{!! html_entity_decode($field->renderForIndex($item, $resource)->render()) !!}
 						</td>
 					@endforeach
 
@@ -57,7 +57,7 @@
 							@include('nexus::misc/models/status-badge', ['model' => $item])
 						</td>
 					@endif
-					
+
 					<td class="actions text-center">
 						@include('nexus::misc/models/crud-actions', ['model' => $item])
 					</td>
@@ -65,7 +65,7 @@
 			@endforeach
 		@endslot
 		<!-- END tbody -->
-		
+
 	@endcomponent
 	<!-- END table -->
 
