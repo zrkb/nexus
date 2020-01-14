@@ -1,0 +1,13 @@
+@font-face
+{
+    font-family: 'boxicons';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('#{$path-to-fonts}/vendor/boxicons/boxicons.eot');
+    src: url('#{$path-to-fonts}/vendor/boxicons/boxicons.eot') format('embedded-opentype'),
+    url('#{$path-to-fonts}/vendor/boxicons/boxicons.woff2') format('woff2'),
+    url('#{$path-to-fonts}/vendor/boxicons/boxicons.woff') format('woff'),
+    url('#{$path-to-fonts}/vendor/boxicons/boxicons.ttf') format('truetype'),
+    url('#{$path-to-fonts}/vendor/boxicons/boxicons.svg?#boxicons') format('svg');
+}

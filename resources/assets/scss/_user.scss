@@ -1,9 +1,10 @@
-// 
+//
 // user.scss
 // Use this to write your custom SCSS
 //
 
 @import 'user/datatables';
+@import 'user/boxicons';
 @import 'user/daterangepicker';
 @import 'user/tags';
 
@@ -118,7 +119,7 @@
 			}
 		}
 	}
-	
+
 	a:active .action-item {
 		visibility: visible;
 	}
