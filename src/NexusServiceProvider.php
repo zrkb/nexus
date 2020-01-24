@@ -53,7 +53,7 @@ class NexusServiceProvider extends ServiceProvider
 		}
 
 		$this->loadResources();
-		
+
         if (! $this->app->configurationIsCached()) {
 			$this->mergeConfigFrom(__DIR__ . '/../config/nexus.php', 'nexus');
 		}
@@ -161,7 +161,7 @@ class NexusServiceProvider extends ServiceProvider
 	{
 		// Activity Log
 		$this->app->register(\Spatie\Activitylog\ActivitylogServiceProvider::class);
-		
+
 		// Laravel Collective: HTML
 		$this->app->register(\Collective\Html\HtmlServiceProvider::class);
 		AliasLoader::getInstance(['Form' => \Collective\Html\FormFacade::class]);
@@ -170,6 +170,8 @@ class NexusServiceProvider extends ServiceProvider
 		// Mediable
 		$this->app->register(\Plank\Mediable\MediableServiceProvider::class);
 		AliasLoader::getInstance(['MediaUploader' => \Plank\Mediable\MediaUploaderFacade::class]);
+
+		AliasLoader::getInstance(['Str' => \Illuminate\Support\Str::class]);
 	}
 
 	public function registerCommands()
