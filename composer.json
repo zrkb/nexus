@@ -14,7 +14,7 @@
     "homepage": "https://github.com/imfx/nexus",
     "require": {
         "php": ">=7.2",
-        "illuminate/support": "^5.7.15 | 5.8.* | ^6.0",
+        "illuminate/support": "^5.7.15 | 5.8.* | ^6.0 | ^7.0",
         "spatie/laravel-html": "^2.19",
         "spatie/laravel-activitylog": "^3.1",
         "spatie/laravel-permission": "^2.9 | ^3.0",
