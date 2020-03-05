@@ -180,6 +180,7 @@ class NexusServiceProvider extends ServiceProvider
 	public function registerCommands()
 	{
 		$this->commands([
+			Console\Commands\UserCommand::class,
 			Console\Commands\InstallCommand::class,
 			Console\Commands\SeedCommand::class,
 			Console\Commands\ForgeController::class,

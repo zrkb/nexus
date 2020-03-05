@@ -8,134 +8,137 @@ use Illuminate\Support\Collection;
 
 class InstallCommand extends Command
 {
-	/**
-	 * The name and signature of the console command.
-	 *
-	 * @var string
-	 */
-	protected $signature = 'nexus:install';
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'nexus:install';
 
-	/**
-	 * The console command description.
-	 *
-	 * @var string
-	 */
-	protected $description = 'Install Nexus Admin Package';
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Install Nexus Admin Package';
 
-	/**
-	 * Install directory.
-	 *
-	 * @var string
-	 */
-	protected $directory = '';
+    /**
+     * Install directory.
+     *
+     * @var string
+     */
+    protected $directory = '';
 
-	/**
-	 * Create a new command instance.
-	 *
-	 * @return void
-	 */
-	public function __construct(Filesystem $filesystem)
-	{
-		parent::__construct();
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct(Filesystem $filesystem)
+    {
+        parent::__construct();
 
-		$this->filesystem = $filesystem;
-	}
+        $this->filesystem = $filesystem;
+    }
 
-	/**
-	 * Execute the console command.
-	 *
-	 * @return mixed
-	 */
-	public function handle()
-	{
-		$this->comment(PHP_EOL . 'Nexus installation started' . PHP_EOL);
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        $this->comment(PHP_EOL . 'Nexus installation started' . PHP_EOL);
 
-		$this->line('→ Publishing vendor files ... <info>✔</info>');
-		$this->callSilent('vendor:publish', ['--provider' => 'Spatie\Permission\PermissionServiceProvider']);
+        $this->line('→ Publishing vendor files ... <info>✔</info>');
+        $this->callSilent('vendor:publish', ['--provider' => 'Spatie\Permission\PermissionServiceProvider']);
 
-		if ($this->migrationFileIsMissing('*_create_activity_log_table.php')) {
-			$this->callSilent('vendor:publish', ['--provider' => 'Spatie\Activitylog\ActivitylogServiceProvider']);
-		}
+        if ($this->migrationFileIsMissing('*_create_activity_log_table.php')) {
+            $this->callSilent('vendor:publish', ['--provider' => 'Spatie\Activitylog\ActivitylogServiceProvider']);
+        }
 
-		if ($this->migrationFileIsMissing('*_create_mediable_tables.php')) {
-			$this->callSilent('vendor:publish', ['--provider' => 'Plank\Mediable\MediableServiceProvider']);
-		}
+        if ($this->migrationFileIsMissing('*_create_mediable_tables.php')) {
+            $this->callSilent('vendor:publish', ['--provider' => 'Plank\Mediable\MediableServiceProvider']);
+        }
 
-		$this->line('→ Publishing Nexus Service Provider ... <info>✔</info>');
-		$this->callSilent('vendor:publish', [
-			'--provider' => 'Nexus\NexusServiceProvider',
-		]);
-		$this->callSilent('vendor:publish', [
-			'--tag' => 'nexus-factories',
-			'--force' => true,
-		]);
+        $this->line('→ Publishing Nexus Service Provider ... <info>✔</info>');
+        $this->callSilent('vendor:publish', [
+            '--provider' => 'Nexus\NexusServiceProvider',
+        ]);
+        $this->callSilent('vendor:publish', [
+            '--tag' => 'nexus-factories',
+            '--force' => true,
+        ]);
 
-		$this->initializeBackendDir();
+        $this->line('→ Seeding initial data ... <info>✔</info>');
+        $this->callSilent('nexus:seed');
 
-		$this->info(PHP_EOL . 'Done.');
-	}
+        $this->initializeBackendDir();
 
-	public function initializeBackendDir()
-	{
-		$this->line('→ Initializing Nexus directory ... <info>✔</info>');
+        $this->info(PHP_EOL . 'Done.');
+    }
 
-		$this->directory = config('nexus.directory');
-		$this->makeDir('/');
+    public function initializeBackendDir()
+    {
+        $this->line('→ Initializing Nexus directory ... <info>✔</info>');
 
-		$this->createAppController();
-	}
+        $this->directory = config('nexus.directory');
+        $this->makeDir('/');
 
-	/**
-	 * Create Backend Controller
-	 *
-	 * @return void
-	 */
-	public function createAppController()
-	{
-		$filename = config('nexus.controller');
-		
-		$appController = $this->directory . '/' . $filename . '.php';
-		$contents = $this->getStub($filename);
+        $this->createAppController();
+    }
 
-		$this->filesystem->put($appController, $contents);
-	}
+    /**
+     * Create Backend Controller
+     *
+     * @return void
+     */
+    public function createAppController()
+    {
+        $filename = config('nexus.controller');
 
-	/**
-	 * Get stub contents.
-	 *
-	 * @param $name
-	 *
-	 * @return string
-	 */
-	protected function getStub($name)
-	{
-		return $this->filesystem->get(__DIR__ . '/stubs/' . $name . '.stub');
-	}
+        $appController = $this->directory . '/' . $filename . '.php';
+        $contents = $this->getStub($filename);
 
-	/**
-	 * Make new directory.
-	 *
-	 * @param string $path
-	 */
-	protected function makeDir($path = '')
-	{
-		$this->filesystem->makeDirectory("{$this->directory}/$path", 0755, true, true);
-	}
+        $this->filesystem->put($appController, $contents);
+    }
 
-	/**
-	 * Check if migration file exists.
-	 *
-	 * @return bool
-	 */
-	protected function migrationFileIsMissing($filename) : bool
-	{
-		$timestamp = date('Y_m_d_His');
-		$folder = app()->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR;
+    /**
+     * Get stub contents.
+     *
+     * @param $name
+     *
+     * @return string
+     */
+    protected function getStub($name)
+    {
+        return $this->filesystem->get(__DIR__ . '/stubs/' . $name . '.stub');
+    }
 
-		return Collection::make($folder)
-			->flatMap(function ($path) use ($filename) {
-				return $this->filesystem->glob($path . $filename);
-			})
-			->isEmpty();
-	}
+    /**
+     * Make new directory.
+     *
+     * @param string $path
+     */
+    protected function makeDir($path = '')
+    {
+        $this->filesystem->makeDirectory("{$this->directory}/$path", 0755, true, true);
+    }
+
+    /**
+     * Check if migration file exists.
+     *
+     * @return bool
+     */
+    protected function migrationFileIsMissing($filename) : bool
+    {
+        $timestamp = date('Y_m_d_His');
+        $folder = app()->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . DIRECTORY_SEPARATOR;
+
+        return Collection::make($folder)
+            ->flatMap(function ($path) use ($filename) {
+                return $this->filesystem->glob($path . $filename);
+            })
+            ->isEmpty();
+    }
 }
