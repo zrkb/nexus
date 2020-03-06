@@ -1,13 +1,13 @@
 # Nexus
 
-> Nexus is an Admin Panel based on Laravel 5.8+ Framework
+> Nexus is an Admin Panel based on Laravel Framework
 
 ## Installation
 
 ### Requirements
 
 * Composer
-* Laravel Framework 5.8+
+* Laravel Framework 5.7+/6.0+/7.0+
 * Laravel Mix
 * Node.js & NPM
 
@@ -88,12 +88,12 @@ $ php artisan nexus:install
 $ php artisan migrate
 ```
 
-### Seeding
+### Admin User
 
-In order to init the wizard, run the next command:
+In order to create an user for the admin panel, run the next command:
 
 ```bash
-$ php artisan nexus:seed
+$ php artisan nexus:user
 ```
 
 ### Admin User Provider
@@ -118,10 +118,8 @@ Your admin user must subclass from Nexus Admin Model, you can change this in `ne
 You may want to generate a new resource using the `nexus:resource` Artisan command:
 
 ```bash
-$ php artisan nexus:resource bookmarks --icon=bookmark
+$ php artisan nexus:resource bookmarks
 ```
-
-> Specify an icon from [BoxIcons](https://feathericons.com/) with the `--icon` option.
 
 This will create the following files:
 
@@ -154,30 +152,19 @@ Once the resource are created, we need to add them to the project:
 Edit your `routes/web.php` and the new resource:
 
 ```php
-Route::group([
-	'prefix' => config('nexus.route.prefix'),
-	'middleware' => config('nexus.route.middleware'),
-], function () {
+Nexus::group(function () {
 	Route::resource('bookmarks', 'BookmarkController');
 });
 ```
 
-#### 2. Create permission
+#### 2. Add to sidebar
 
-Navigate to your application's `/admin` path in your browser, login and go to the **Permissions** section under the profile context menu and create new `bookmarks` permission.
-
-#### 3. Assign permission to role
-
-Now it's time to assign your new permissions your role. You can do so by navigating to the **Roles** section, edit your role and select all the new permissions created.
-
-#### 3. Add to sidebar
-
-Edit your `resources/views/vendor/nexus/sidebar/general.blade.php` file and add the code below:
+Edit your `resources/views/backend/sidebar/user.blade.php` file and add the code below:
 
 ```php
 <li>
 	<a href="{{ route('bookmarks.index') }}">
-		<i data-feather="bookmark" class="text-muted"></i>
+		<i class='bx bx-bookmarks'></i>
 		<span>Bookmarks</span>
 	</a>
 </li>
@@ -190,7 +177,7 @@ That's all! You may refresh your dashboard page and you'll see a new item in the
 
 * [x] Assign permissions automatically to role Developer when creating a resource
 * [x] Add middleware for [auth routes redirect](https://laracasts.com/discuss/channels/general-discussion/l5-register-a-route-middleware-at-package?page=1) when login
-* [ ] Migration file stub
+* [*] Migration file stub
 * [ ] Menus Admin
 * [ ] Media Library Admin
 * [ ] Conditionals for stubs files (Case: not all models will use SoftDelete feature)
