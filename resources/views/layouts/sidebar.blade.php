@@ -6,7 +6,7 @@
 
 	  <!-- Toggler -->
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebarCollapse" aria-controls="sidebarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
+		<i class='bx bx-menu'></i>
 	  </button>
 
 	  <!-- Brand -->
@@ -17,27 +17,7 @@
 
 	  <!-- User (xs) -->
 	  <div class="navbar-user d-md-none">
-
-		<!-- Dropdown -->
-		<div class="dropdown">
-
-		  <!-- Toggle -->
-		  <a href="#" id="sidebarIcon" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			<div class="avatar avatar-sm avatar-online">
-			  <img src="{{ assets_path() }}/assets/img/avatars/profiles/avatar-1.jpg" class="avatar-img rounded-circle" alt="...">
-			</div>
-		  </a>
-
-		  <!-- Menu -->
-		  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sidebarIcon">
-			<a href="profile-posts.html" class="dropdown-item">Profile</a>
-			<a href="settings.html" class="dropdown-item">Settings</a>
-			<hr class="dropdown-divider">
-			<a href="sign-in.html" class="dropdown-item">Logout</a>
-		  </div>
-
-		</div>
-
+		@include('nexus::layouts/menu')
 	  </div>
 
 	  <!-- Collapse -->

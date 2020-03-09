@@ -65,7 +65,7 @@
             color: $navbar-dark-hover-color;
           }
         }
-        
+
         .navbar-nav .show > .nav-link,
         .navbar-nav .dropdown-item.active,
         .navbar-nav .dropdown-item:active {
@@ -153,7 +153,7 @@
             color: $navbar-vibrant-hover-color;
           }
         }
-        
+
         .navbar-nav .show > .nav-link,
         .navbar-nav .dropdown-item.active,
         .navbar-nav .dropdown-item:active {
@@ -259,8 +259,14 @@
       left: 0;
       top: $nav-link-padding-y;
       bottom: $nav-link-padding-y;
-      border-left: 2px solid $primary;
+      border-left: 3px solid $primary;
     }
+  }
+  & > .bx {
+	  position: relative;
+	  top: -1px;
+	  min-width: 1.9rem;
+	  color: $text-light;
   }
 }
 
@@ -304,9 +310,9 @@
 
 
 // Expanded
-// 
+//
 // Expanded navbar specific styles
-        
+
 .navbar-expand {
 
   @each $breakpoint, $value in $grid-breakpoints {
@@ -324,7 +330,7 @@
 
         .navbar-collapse {
           flex-grow: inherit;
-          
+
           &:before {
             display: none;
           }
@@ -354,7 +360,7 @@
             }
           }
         }
-        
+
         // Toggle dropdown on hover
         @if ($navbar-dropdown-toggle-on-hover) {
           .dropup, .dropright, .dropdown, .dropleft {
@@ -518,9 +524,9 @@
 
 
   // Expanded
-  // 
+  //
   // Expanded navbar specific styles
-  
+
   &.navbar-expand {
 
     @each $breakpoint, $value in $grid-breakpoints {
@@ -647,9 +653,9 @@
 .navbar-vertical-sm {
 
   // Expanded
-  // 
+  //
   // Expanded navbar specific styles
-  
+
   &.navbar-expand {
 
     @each $breakpoint, $value in $grid-breakpoints {
