@@ -1,0 +1,58 @@
+/* --------------------------
+	Custom color scheme
+----------------------------*/
+$avatar-bg:						#ECEDF3;
+
+$bg:							#F8F9FC;
+$border-light:					#E5E5EB;
+$card-header-footer:			#EFF3FA;
+
+$modal-bg-color:				#1F2430;
+$border-color:					rgba(72, 94, 144, 0.16) !default;
+
+/* --------------------------
+	Bootstrap's colors
+----------------------------*/
+$text-light:					#a8afbb;
+$text-base: 					#647787;
+$text-bold:						#2b3035;
+
+$gray-100:						#f8f9fd !default;
+$gray-600:						$text-light !default;
+$gray-800:						#343C49 !default;
+$gray-900:						#1F2637 !default;
+
+$white:							#FFFFFF;
+
+$primary:						#137eff;
+$secondary:						$bg;
+$success:						#20CE53;
+$info:							#30CEF5;
+$warning:						#FCB338;
+$danger:						#F55753;
+$purple:						#6D5BAF;
+$light:							$gray-100;
+$dark:							$gray-900;
+$pink:							#FE6E98;
+$custom:						#1fb6ff;
+$default:						#FFFFFF;
+$orange:						#EA7005;
+
+// Overrides
+$theme-colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"success": $success,
+	"info": $info,
+	"warning": $warning,
+	"danger": $danger,
+	"purple": $purple,
+	"light": $light,
+	"dark": $dark,
+	"pink": $pink,
+	"custom": $custom,
+	"orange": $orange,
+);
+
+$navbar-dark-color:				rgba($white, .75) !default;
+$navbar-dark-hover-color:		rgba($white, .9) !default;

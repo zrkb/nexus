@@ -3,23 +3,13 @@
 // Use this to overwrite Bootstrap and Dashkit variables
 //
 
-
-
-/* --------------------------
-	Custom variables
-----------------------------*/
-$avatar-bg:						#ECEDF3;
 $form-control-height:			44px;
 $form-control-height-sm:		37px;
 
-$bg:							#F8F9FC;
-$border-light:					#E5E5EB;
-$card-header-footer:			#EFF3FA;
-
 $container-padding:				1.7rem 2rem !default;
 
-$navbar-vertical-width: 220px !default;
-$navbar-vertical-padding-x: 1.4rem !default;
+$navbar-vertical-width:			220px !default;
+$navbar-vertical-padding-x:		1.4rem !default;
 
 
 /* --------------------------
@@ -31,51 +21,9 @@ $type-300:						300;
 $type-400:						400;
 $type-500:						500;
 
-$text-light:					#a8afbb;
-$text-base: 					#647787;
-$text-bold:						#2b3035;
-
-$gray-100:						#f8f9fd !default;
-$gray-600:						$text-light !default;
-$gray-800:						#343C49 !default;
-$gray-900:						#1F2637 !default;
-
-$primary:						#137eff;
-$secondary:						$bg;
-$success:						#20CE53;
-$info:							#30CEF5;
-$warning:						#FCB338;
-$danger:						#F55753;
-$purple:						#6D5BAF;
-$light:							$gray-100;
-$dark:							$gray-900;
-$pink:							#FE6E98;
-$custom:						#1fb6ff;
-$default:						#FFFFFF;
-$orange:						#EA7005;
-
-// Overrides
-$theme-colors: (
-	"primary": $primary,
-	"secondary": $secondary,
-	"success": $success,
-	"info": $info,
-	"warning": $warning,
-	"danger": $danger,
-	"purple": $purple,
-	"light": $light,
-	"dark": $dark,
-	"pink": $pink,
-	"custom": $custom,
-	"orange": $orange,
-);
-
-
 // Misc
 $body-bg:						$bg !default;
 $body-color:					$text-base !default;
-$border-color:					rgba(72, 94, 144, 0.16) !default;
-
 // Font
 $font-size-base:				1rem !default; // Assumes the browser default, typically `16px`
 
@@ -118,7 +66,7 @@ $headings-font-weight:			$type-500 !default;
 $headings-color:				$text-bold !default;
 
 // Modals
-$modal-bg:						#1F2430;
+$modal-bg:						$modal-bg-color !default;
 $modal-inner-padding:			1.5rem !default;
 $modal-header-padding:			1.5rem !default;
 
@@ -133,14 +81,10 @@ $modal-footer-border-color:		transparent !default;
 $navbar-padding-y:				$spacer * 0.75 !default;
 $navbar-padding-x:				($spacer / 1.25) !default;
 
-
-$navbar-dark-color:				rgba(white, .75) !default;
-$navbar-dark-hover-color:		rgba(white, .9) !default;
-
 // Popover
 
-$popover-font-size:                 $font-size-base !default;
-$popover-max-width:                 95% !default;
+$popover-font-size:             $font-size-base !default;
+$popover-max-width:             95% !default;
 
 // Dropdown
 $dropdown-item-padding-y:		.5rem !default;
@@ -170,7 +114,7 @@ $input-placeholder-color:		$text-light !default;
 $input-group-addon-color:		$text-bold !default;
 $input-group-addon-bg:			$avatar-bg !default;
 
-$input-bg:						white !default;
+$input-bg:						$white !default;
 $input-disabled-bg:				$avatar-bg !default;
 
 // Badges

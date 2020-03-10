@@ -1,31 +1,50 @@
 <?php
 
 return [
-	'route' => [
-		'prefix' => 'app',
-		'namespace' => '\App\Http\Controllers\Backend',
-		'middleware' => ['web', 'admin'],
-	],
 
-	'directory' => app_path('Http/Controllers/Backend'),
-
-	'controller' => 'AppController',
-
-    'registration_enabled' => false,
+    /*
+    |--------------------------------------------------------------------------
+    | Backend Route Configurations
+    |--------------------------------------------------------------------------
+    */
 
     'backend_routes_file' => 'backend.php',
 
-    'general_sidebar_items' => 'nexus::sidebar/user',
+    'route' => [
+        'prefix' => 'app',
+        'namespace' => '\App\Http\Controllers\Backend',
+        'middleware' => ['web', 'admin'],
+    ],
 
-    'sidebar_color_scheme' => 'navbar-dark bg-dark',
+    'directory' => app_path('Http/Controllers/Backend'),
+
+    'controller' => 'AppController',
+
+    'registration_enabled' => true,
 
     'models' => [
         'admin' => \Nexus\Models\Admin::class,
     ],
 
+    'general_sidebar_items' => 'nexus::sidebar/user',
+
     /*
-     * Auth Guards
-     */
+    |--------------------------------------------------------------------------
+    | Theme Configuration
+    |--------------------------------------------------------------------------
+    |
+    | Supported: "app", "mango"
+    |
+    */
+    'theme' => 'app',
+
+    'sidebar_color_scheme' => 'navbar-dark bg-dark',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Auth Guards
+    |--------------------------------------------------------------------------
+    */
     'auth' => [
         'guards' => [
             'admin' => [

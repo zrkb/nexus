@@ -1,6 +1,7 @@
 {
     "/assets/js/app.js": "/assets/js/app.js",
     "/assets/css/app.css": "/assets/css/app.css",
+    "/assets/css/mango.css": "/assets/css/mango.css",
     "/assets/js/vendor.js": "/assets/js/vendor.js",
     "/assets/js/manifest.js": "/assets/js/manifest.js"
 }
