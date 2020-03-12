@@ -1,30 +1,7 @@
 /* --------------------------
 	Color Scheme
 ----------------------------*/
-$avatar-bg:						#ECEDF3;
-
-$bg:							white;
-$border-light:					#E5E5EB;
-$card-header-footer:			#EFF3FA;
-
-$modal-bg-color:				#1F2430;
-$border-color:					rgba(72, 94, 144, 0.16) !default;
-
-/* --------------------------
-	Bootstrap's colors
-----------------------------*/
-$text-light:					#a8afbb;
-$text-base: 					#647787;
-$text-bold:						#2b3035;
-
-$gray-100:						#f8f9fd !default;
-$gray-600:						$text-light !default;
-$gray-800:						#343C49 !default;
-$gray-900:						#1F2637 !default;
-
-$white:							#FFFFFF;
-
-$primary:						#FD6D2F;
+$primary:						#FFCB5F;
 $secondary:						#FCD555;
 $success:						#20CE53;
 $info:							#30CEF5;
@@ -53,6 +30,3 @@ $theme-colors: (
 	"custom": $custom,
 	"orange": $orange,
 );
-
-$navbar-dark-color:				rgba($white, .75) !default;
-$navbar-dark-hover-color:		rgba($white, .9) !default;
