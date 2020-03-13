@@ -10,9 +10,9 @@
 	  </button>
 
 	  <!-- Brand -->
-	  <a class="navbar-brand" href="{{ route('app') }}">
-		<img src="{{ assets_path() }}/assets/img/logo.svg" class="navbar-brand-img
-		mx-auto" alt="...">
+	  <a class="navbar-brand my-3 text-left" href="{{ route('app') }}">
+		<i class='bx bxs-cube-alt text-primary'></i>
+		Nexus
 	  </a>
 
 	  <!-- User (xs) -->
