@@ -119,10 +119,17 @@ class ForgeCRUD extends Command
         $permissions = [];
 
         foreach ($abilities as $ability) {
-            $permissions[] = [
-                'name' => $ability . '_' . $route,
-                'guard_name' => 'admin',
-            ];
+            $name = $ability . '_' . $route;
+
+            try {
+                Permission::findByName($name, 'admin');
+            }
+            catch (\Throwable $e) {
+                $permissions[] = [
+                    'name' => $name,
+                    'guard_name' => 'admin',
+                ];
+            }
         }
 
         // Create new permissions
