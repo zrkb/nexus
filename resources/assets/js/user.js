@@ -111,7 +111,7 @@ jQuery(document).ready(function ($) {
 	 | Vendor Plugins
 	 |--------------------------------------------------------------------
 	 */
-	
+
 	new TableCheckboxManager;
 
 	// Currency
@@ -124,7 +124,7 @@ jQuery(document).ready(function ($) {
 	 */
 	// Modal
 	// $('.modal[data-show="true"]').modal('show');
-	
+
 	// Tooltip
 	// $('[data-toggle="tooltip"]').tooltip();
 
@@ -190,13 +190,9 @@ jQuery(document).ready(function ($) {
 					}
 				}
 			},
-			animate: false,
-			closeButton: false
+			animate: true,
+			closeButton: true,
 		});
-
-		if (forceDelete) {
-			modal.find('.modal-header').addClass('bg-danger text-white');
-		}
 
 		modal.init();
 	});
