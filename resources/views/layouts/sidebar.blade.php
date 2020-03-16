@@ -11,8 +11,10 @@
 
 	  <!-- Brand -->
 	  <a class="navbar-brand my-3 text-left" href="{{ route('app') }}">
-		<i class='bx bxs-cube-alt text-primary'></i>
-		Nexus
+		<h3 class="text-inherit">
+            <i class='bx bxs-cube-alt text-primary'></i>
+		    Nexus
+        </h3>
 	  </a>
 
 	  <!-- User (xs) -->

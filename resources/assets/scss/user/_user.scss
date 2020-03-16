@@ -8,6 +8,11 @@
 @import 'daterangepicker';
 @import 'tags';
 
+.text-inherit {
+    color: inherit;
+    font-weight: inherit;
+}
+
 .bx {
     font-size: 1.2rem;
     line-height: 1.40625rem;
@@ -26,9 +31,18 @@
 	box-shadow: 0 0 40px rgba(0,0,0,.05);
 }
 
-.navbar-brand .bx {
-	position: relative;
-	top: 6px;
+.navbar-brand {
+    .bx {
+        position: relative;
+        top: 6px;
+        width: 2rem;
+    }
+}
+.navbar-dark {
+    .navbar-brand {
+        color: $white;
+        font-weight: 400;
+    }
 }
 
 .bx-wrapper .bx,
