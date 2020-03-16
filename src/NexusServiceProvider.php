@@ -2,12 +2,13 @@
 
 namespace Nexus;
 
-use Illuminate\Foundation\AliasLoader;
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\ServiceProvider;
 use Nexus\Http\Middleware\AppLocale;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Foundation\AliasLoader;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
+use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 
 class NexusServiceProvider extends ServiceProvider
 {
@@ -65,9 +66,12 @@ class NexusServiceProvider extends ServiceProvider
         $this->registerHelpers();
 
 		// Register Blade Components
-		Blade::component('nexus::components/model-property', 'modelProperty');
-		Blade::component('nexus::misc/table', 'table');
-		Blade::component('nexus::components/checkbox', 'checkbox');
+		$component = method_exists(BladeCompiler::class, 'aliasComponent') ?
+			'aliasComponent' : 'component';
+
+		Blade::{$component}('nexus::components/model-property', 'modelProperty');
+		Blade::{$component}('nexus::misc/table', 'table');
+		Blade::{$component}('nexus::components/checkbox', 'checkbox');
 
 		// Alias
 		Blade::include('nexus::layouts/messages', 'messages');
@@ -188,11 +192,18 @@ class NexusServiceProvider extends ServiceProvider
 			Console\Commands\UserCommand::class,
 			Console\Commands\InstallCommand::class,
 			Console\Commands\SeedCommand::class,
+
 			Console\Commands\ForgeController::class,
 			Console\Commands\ForgeModel::class,
+			Console\Commands\ForgeStoreRequest::class,
+			Console\Commands\ForgeUpdateRequest::class,
+
 			Console\Commands\ForgeResource::class,
 			Console\Commands\ForgeResourceModel::class,
-			Console\Commands\ForgeViews::class,
+
+			Console\Commands\ForgeCRUDController::class,
+			Console\Commands\ForgeCRUDViews::class,
+			Console\Commands\ForgeCRUD::class,
 		]);
 	}
 

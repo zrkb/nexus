@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Http\Requests;
+
+use App\Models\SingularBaseClass;
+use DB;
+use Nexus\Http\Requests\NexusFormRequest;
+
+class StoreSingularBaseClass extends NexusFormRequest
+{
+    /**
+     * Persist the request to the repository.
+     *
+     * @return mixed
+     */
+    public function persist()
+    {
+        return DB::transaction(function () {
+            $item = SingularBaseClass::create(
+                $this->only([
+                    'name',
+                ])
+            );
+
+            return $item;
+        });
+	}
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'name' => 'required',
+        ];
+    }
+}

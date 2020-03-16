@@ -15,7 +15,7 @@
 			@messages
 
 			{{ form()->open(['route' => 'admins.store']) }}
-			
+
 				<div class="card">
 					<div class="card-body">
 						@include('nexus::admins/form')

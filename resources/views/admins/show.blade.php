@@ -10,7 +10,7 @@
 				<i class="bx bx-pencil mr-2"></i>
 				Editar
 			</a>
-		
+
 			@include('nexus::components/back-to-resource')
 
 			@include('nexus::misc/models/prev-next-rows', ['model' => $admin])

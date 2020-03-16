@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Http\Requests;
+
+use App\Models\SingularBaseClass;
+use DB;
+use Nexus\Http\Requests\NexusFormRequest;
+
+class UpdateSingularBaseClass extends NexusFormRequest
+{
+    /**
+     * Persist the request to the repository.
+     *
+     * @return mixed
+     */
+    public function persist()
+    {
+        return DB::transaction(function () {
+			$item = $this->model();
+
+            return $item->update(
+                $this->only([
+                    'name',
+                ])
+            );
+        });
+	}
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+		$item = $this->model();
+
+        return [
+            'name' => 'required',
+        ];
+    }
+}

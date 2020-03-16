@@ -70,7 +70,7 @@
 			@endforeach
 		@endslot
 		<!-- END tbody -->
-		
+
 	@endcomponent
 	<!-- END table -->
 

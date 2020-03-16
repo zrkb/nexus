@@ -1,7 +1,5 @@
-<div class="card">
-	<div class="card-body">
-		@foreach ($fields as $field)
-			{!! $field->renderForForm($item, $resource)->render() !!}
-		@endforeach
-	</div>
+<div class="card card-body">
+    @foreach ($fields as $field)
+        {!! $field->renderForForm($item, $resource)->render() !!}
+    @endforeach
 </div>

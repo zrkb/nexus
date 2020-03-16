@@ -1,0 +1,67 @@
+<?php
+
+namespace ClassNamespace;
+
+use App\Http\Requests\StoreSingularBaseClass;
+use App\Http\Requests\UpdateSingularBaseClass;
+use App\Models\SingularBaseClass;
+use Illuminate\Http\Request;
+use Nexus\Http\Controllers\BaseController;
+
+class SingularBaseClassController extends BaseController
+{
+	public function index()
+	{
+		$PluralLowercaseBaseClass = SingularBaseClass::get();
+
+		return view('backend/PluralSnakeBaseClass/index', compact('PluralLowercaseBaseClass'));
+	}
+
+	public function show(SingularBaseClass $SingularLowercaseBaseClass)
+	{
+		return view('backend/PluralSnakeBaseClass/show', compact('SingularLowercaseBaseClass'));
+	}
+
+	public function create()
+	{
+		return view('backend/PluralSnakeBaseClass/create');
+	}
+
+	public function store(StoreSingularBaseClass $form)
+	{
+        if ($form->persist()) {
+            session()->flash('success', 'El registro ha sido creado exitosamente.');
+        } else {
+            session()->flash('error', 'Error al crear el registro. Consulte con el administrador.');
+        }
+
+		return redirect(resource('index'));
+	}
+
+	public function edit(SingularBaseClass $SingularLowercaseBaseClass)
+	{
+		return view('backend/PluralSnakeBaseClass/edit', compact('SingularLowercaseBaseClass'));
+	}
+
+	public function update(UpdateSingularBaseClass $form, SingularBaseClass $SingularLowercaseBaseClass)
+	{
+        if ($form->withModel($SingularLowercaseBaseClass)->persist()) {
+            session()->flash('success', 'El registro ha sido modificado exitosamente.');
+        } else {
+            session()->flash('error', 'Error al modificar el registro. Consulte con el administrador.');
+        }
+
+		return redirect(resource('edit', $SingularLowercaseBaseClass->id));
+	}
+
+    public function destroy(SingularBaseClass $SingularLowercaseBaseClass)
+    {
+		if ($SingularLowercaseBaseClass->delete()) {
+            session()->flash('success', 'El registro se ha eliminado exitosamente de la Base de Datos');
+        } else {
+            session()->flash('danger', 'No se pudo eliminar el registro. Por favor comuníquese con el administrador.');
+		}
+
+		return redirect(resource('index'));
+	}
+}

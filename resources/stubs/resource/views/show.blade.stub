@@ -2,77 +2,57 @@
 
 @section('content')
 
-	<div class="root">
+    @include('nexus::misc/models/restore-panel', ['model' => $SingularLowercaseBaseClass])
 
-		@include('nexus::misc/models/restore-panel', ['model' => $SingularLowercaseBaseClass])
-		
-		@component('nexus::misc/page-title')
-			@slot('superactions')
-				<div class="float-right">
-					<a href="{{ resource('edit', $SingularLowercaseBaseClass->id) }}" class="btn btn-success">
-						<i data-feather="edit-2" class="mr-2"></i>
-						Editar
-					</a>
-					<a href="{{ resource('index') }}" class="btn btn-default">
-						@lang('nexus::resource.back-to-list') <i data-feather="arrow-right" class="ml-2"></i>
-					</a>
-					
-					@include('nexus::misc/models/prev-next-rows', ['model' => $SingularLowercaseBaseClass])
-				</div>
-			@endslot
+    <!-- START page-title -->
+    @component('nexus::misc/page-title')
+        @slot('superactions')
+            @include('nexus::components/resources/edit-button', ['model' => $SingularLowercaseBaseClass])
+            @include('nexus::components/back-to-resource')
+            @include('nexus::misc/models/prev-next-rows', ['model' => $SingularLowercaseBaseClass])
+        @endslot
 
-			@slot('icon')
-				<a class="page-icon">
-					<span class="bg-primary text-white">
-						<i data-feather="BoxIcon" class="feather"></i>
-					</span>
-				</a>
-			@endslot
+        <span class="text-muted">SingularBaseClass</span>
+        <span class="text-primary">&rarr;</span>
+        {{ $SingularLowercaseBaseClass->name }}
+    @endcomponent
+    <!-- END page-title -->
 
-			<span class="text-primary">#{{ $SingularLowercaseBaseClass->id }}</span>
-			<span class="text-muted">&rarr;</span>
-			{{ $SingularLowercaseBaseClass->name }}
-		@endcomponent
+    @messages
 
-		<div class="row mb-5 justify-content-center">
-			<div class="col-md-8">
-				<div class="card card-body">
-					<h5 class="card-title mb-4 pb-3 border-bottom">
-						<i data-feather="layers" class="mr-2 text-primary"></i>
-						Datos del Registro
-					</h5>
+    <!-- START content -->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-md-8">
 
-					<div class="form mt-3">
-						@modelProperty(['title' => 'Nombre'])
-							{{ $SingularLowercaseBaseClass->name }}
-						@endmodelProperty
+            <!-- START card -->
+            <div class="card card-body">
+                <h3 class="card-title mb-4 pb-4 border-bottom font-weight-normal">
+                    <i class="bx bx-layer text-primary mr-2"></i>
+                    Datos del Registro
+                </h3>
 
-						@modelProperty(['title' => 'Creado hace'])
-							{{ $SingularLowercaseBaseClass->created_at->diffForHumans() }}
-						@endmodelProperty
-					</div>
-					{{-- END form --}}
-				</div>
-				{{-- END card --}}
-			</div>
-			{{-- END col --}}
+                <div class="form mt-3">
+                    @modelProperty(['title' => 'Nombre'])
+                        {{ $SingularLowercaseBaseClass->name }}
+                    @endmodelProperty
+                </div>
+            </div>
+            <!-- END card -->
 
-			<div class="col-md-4">
-				@include('nexus::misc/models/additional-information', ['model' => $SingularLowercaseBaseClass])
-			</div>
-			{{-- END col --}}
-		</div>
-		{{-- END row --}}
-		
-		<div class="row mb-5 justify-content-center">
-			<div class="col-md-12">
-				@include('nexus::misc/models/delete-action', ['model' => $SingularLowercaseBaseClass])
-			</div>
-			{{-- END col --}}
-		</div>
-		{{-- END row --}}
+        </div>
 
-	</div>
-	{{-- END root --}}
+        <div class="col-md-4">
+            @include('nexus::misc/models/additional-information', ['model' => $SingularLowercaseBaseClass])
+        </div>
+    </div>
+    <!-- END content -->
+
+    <!-- START danger-zone -->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-md-12">
+            @include('nexus::misc/models/delete-action', ['model' => $SingularLowercaseBaseClass])
+        </div>
+    </div>
+    <!-- END danger-zone -->
 
 @endsection

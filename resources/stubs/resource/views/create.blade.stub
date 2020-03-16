@@ -2,52 +2,31 @@
 
 @section('content')
 
-	<div class="root">
-		@component('nexus::misc/page-title')
-			@slot('superactions')
-				<div class="float-right">
-					<a href="{{ resource('index') }}" class="btn btn-default">
-						@lang('nexus::resource.back-to-list')
-						<i class="bx bx-right-arrow-alt ml-1"></i>
-					</a>
-				</div>
-			@endslot
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
 
-			@slot('icon')
-				<a class="page-icon">
-					<span class="bg-primary text-white">
-						<i class="bx bxs-BoxIcon"></i>
-					</span>
-				</a>
-			@endslot
+            @component('nexus::misc/page-title')
+                @slot('superactions')
+                    @include('nexus::components/back-to-resource')
+                @endslot
 
-			Crear SingularBaseClass
-		@endcomponent
+                Crear SingularBaseClass
+            @endcomponent
 
-		{{ form()->open(['route' => 'PluralSnakeBaseClass.store']) }}
-		
-			<div class="card card-body">
-				<h5 class="card-title mb-4 pb-3 border-bottom">
-					<i class="bx bxs-edit-alt mr-2 text-primary"></i>
-					@lang('nexus::resource.complete-form')
-				</h5>
+            @messages
 
-				@include('PluralSnakeBaseClass/form')
+            {{ form()->open(['url' => resource('store'), 'method' => 'post']) }}
 
-				<div class="form-group mt-5 mb-3">
-					<a href="{{ resource('index') }}" class="btn btn-light text-primary mr-2">
-						@lang('nexus::resource.cancel-form-button')
-					</a>
+                @include('backend/PluralLowercaseBaseClass/form')
 
-					<button type="submit" class="btn btn-primary btn-activity">
-						@lang('nexus::resource.submit-form-button')
-					</button>
-				</div>
-			</div>
-			{{-- END card --}}
+                <hr>
 
-		{{ form()->close() }}
-	</div>
-	{{-- END root --}}
+                @include('nexus::misc/form-buttons')
+
+            {{ form()->close() }}
+        </div>
+        {{-- END col --}}
+    </div>
+    {{-- END row --}}
 
 @endsection

@@ -1,4 +1,8 @@
-<div class="form-group">
-	{{ form()->label('name', 'Nombre', ['class' => 'control-label']) }}
-	{{ form()->text('name', null, ['class' => 'form-control']) }}
+<div class="card card-body">
+
+    <div class="form-group">
+        {{ form()->label('name', 'Nombre', ['class' => 'control-label']) }}
+        {{ form()->text('name', null, ['class' => 'form-control']) }}
+    </div>
+
 </div>

@@ -8,12 +8,13 @@
 <ul class="navbar-nav">
 	<li class="nav-item">
 		<a class="nav-link" href="{{ route('app') }}" role="button" aria-expanded="true">
-			<i class='bx bx-home-alt'></i> @lang('nexus::messages.sidebar-group-general-item-welcome')
+            <i class='bx bxs-home'></i>
+            @lang('nexus::messages.sidebar-group-general-item-welcome')
 		</a>
 	</li>
 
 	@includeIf(config('nexus.general_sidebar_items'))
-	
+
 	{{-- <li class="nav-item">
 		<a class="nav-link" href="#sidebarDashboards" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
 			<i class='bx bx-package'></i> Menu

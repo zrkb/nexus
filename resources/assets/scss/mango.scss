@@ -4,17 +4,17 @@
 // Bootstrap functions
 @import '../../../node_modules/bootstrap/scss/functions';
 
+// Default colors
+@import 'themes/default/colors';
+
 // Custom colors
 @import 'themes/mango/colors';
 
-// Custom colors
-@import 'themes/default/colors';
+// Default variables
+@import 'themes/default/variables';
 
 // Theme Variables
 @import 'themes/mango/variables';
-
-// Default variables
-@import 'themes/default/variables';
 
 // Dashkit variables
 @import 'dashkit/variables';

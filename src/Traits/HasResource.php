@@ -20,10 +20,10 @@ trait HasResource
 
         return $redirectTo;
     }
-    
+
     /**
      * Perform delete or forceDelete acording to model status.
-     * 
+     *
      * @return bool|null
      */
     public function destroyModel(Model $instance)
@@ -51,7 +51,7 @@ trait HasResource
 
     /**
      * Return resource model.
-     * 
+     *
      * @return string
      */
     public function getModel() : string
@@ -71,7 +71,7 @@ trait HasResource
 
         return $model::find($id);
     }
-    
+
     public function restore($id)
     {
         $instance = $this->getModel()::withTrashed()->find($id);

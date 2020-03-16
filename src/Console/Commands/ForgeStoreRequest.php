@@ -2,32 +2,33 @@
 
 namespace Nexus\Console\Commands;
 
-use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
+use Illuminate\Console\GeneratorCommand;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class ForgeController extends GeneratorCommand
+class ForgeStoreRequest extends GeneratorCommand
 {
 	/**
 	 * The name and signature of the console command.
 	 *
 	 * @var string
 	 */
-	protected $name = 'nexus:controller';
+	protected $name = 'nexus:store-request {name}';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Forge a new controller class';
+	protected $description = 'Forge a new Store Request class';
 
 	/**
 	 * The type of class being generated.
 	 *
 	 * @var string
 	 */
-	protected $type = 'Controller';
+	protected $type = 'Request';
 
     /**
      * Execute the console command.
@@ -39,17 +40,14 @@ class ForgeController extends GeneratorCommand
     {
         $name = $this->qualifyClass($this->getNameInput());
 
-    	$pluralBaseClass = Str::plural(Str::studly(class_basename($name)));
-        $path = $this->getPath($this->qualifyClass("{$pluralBaseClass}Controller"));
+    	$baseClass = Str::singular(Str::studly(class_basename($name)));
+        $path = $this->getPath($this->qualifyClass("Store{$baseClass}"));
 
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
-        if ((! $this->hasOption('force') ||
-             ! $this->option('force')) &&
-             $this->alreadyExists($this->getNameInput())) {
+        if ($this->option('force') == false && $this->alreadyExists('Store'.$this->getNameInput())) {
             $this->error($this->type.' already exists!');
-
             return false;
         }
 
@@ -81,11 +79,7 @@ class ForgeController extends GeneratorCommand
 
         $stub = parent::replaceClass($stub, $name);
 
-        // Extract first dash for class namespace
-        $baseNamespace = preg_replace('/\\\/', '', config('nexus.route.namespace'), 1);
-
         $substitutions = [
-            'ClassNamespace'             => $baseNamespace,
             'SingularBaseClass'          => $singularBaseClass,
             'PluralBaseClass'            => $pluralBaseClass,
             'SingularLowercaseBaseClass' => $singularLowercaseBaseClass,
@@ -103,7 +97,7 @@ class ForgeController extends GeneratorCommand
 	 */
 	protected function getStub()
 	{
-        return package_path('resources/stubs/resource/DummyController.stub');
+        return package_path('resources/stubs/resource/DummyStoreRequest.stub');
 	}
 
 	/**
@@ -114,7 +108,7 @@ class ForgeController extends GeneratorCommand
 	 */
 	protected function getDefaultNamespace($rootNamespace)
 	{
-		return $rootNamespace . '\Http\Controllers\Backend';
+		return $rootNamespace . '\Http\Requests';
 	}
 
     /**
@@ -125,7 +119,19 @@ class ForgeController extends GeneratorCommand
     protected function getArguments()
     {
         return [
-            ['name', InputArgument::REQUIRED, 'The name of the Controller.'],
+            ['name', InputArgument::REQUIRED, 'The name of the Request.'],
+        ];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['--force', 'f', InputOption::VALUE_NONE, 'The name of the Controller.'],
         ];
     }
 }

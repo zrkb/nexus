@@ -2,32 +2,32 @@
 
 @section('content')
 
-	<div class="row justify-content-center">
-		<div class="col-12 col-lg-10 col-xl-8">
-			@component('nexus::misc/page-title')
-				@slot('superactions')
-					@include('nexus::components/back-to-resource')
-				@endslot
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+            @component('nexus::misc/page-title')
+                @slot('superactions')
+                    @include('nexus::components/back-to-resource')
+                @endslot
 
-				Editar {{ $resource->singularLabel() }}
-			@endcomponent
+                Editar {{ $resource->singularLabel() }}
+            @endcomponent
 
-			@messages
+            @messages
 
-			{{ form()->model($item, ['route' => [$resource::uriKey() . '.update', $item->id], 'method' => 'PUT']) }}
-			
-				@include($resource->viewForForm, [
-					'fields' => $resource->updateFields(),
-				])
+            {{ form()->model($item, ['route' => [$resource::uriKey() . '.update', $item->id], 'method' => 'PUT']) }}
 
-				<hr>
+                @include($resource->viewForForm, [
+                    'fields' => $resource->updateFields(),
+                ])
 
-				@include('nexus::misc/form-buttons')
+                <hr>
 
-			{{ form()->close() }}
-		</div>
-		{{-- END col --}}
-	</div>
-	{{-- END row --}}
+                @include('nexus::misc/form-buttons')
+
+            {{ form()->close() }}
+        </div>
+        {{-- END col --}}
+    </div>
+    {{-- END row --}}
 
 @endsection

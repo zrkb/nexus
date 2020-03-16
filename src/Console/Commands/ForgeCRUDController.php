@@ -2,25 +2,26 @@
 
 namespace Nexus\Console\Commands;
 
-use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
+use Illuminate\Console\GeneratorCommand;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class ForgeController extends GeneratorCommand
+class ForgeCRUDController extends GeneratorCommand
 {
 	/**
 	 * The name and signature of the console command.
 	 *
 	 * @var string
 	 */
-	protected $name = 'nexus:controller';
+	protected $name = 'nexus:crud-controller';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Forge a new controller class';
+	protected $description = 'Forge a new CRUD controller class';
 
 	/**
 	 * The type of class being generated.
@@ -39,17 +40,14 @@ class ForgeController extends GeneratorCommand
     {
         $name = $this->qualifyClass($this->getNameInput());
 
-    	$pluralBaseClass = Str::plural(Str::studly(class_basename($name)));
-        $path = $this->getPath($this->qualifyClass("{$pluralBaseClass}Controller"));
+    	$baseClass = Str::singular(Str::studly(class_basename($name)));
+		$path = $this->getPath($this->qualifyClass("{$baseClass}Controller"));
 
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
-        if ((! $this->hasOption('force') ||
-             ! $this->option('force')) &&
-             $this->alreadyExists($this->getNameInput())) {
+        if ($this->option('force') == false && $this->alreadyExists($this->getNameInput().'Controller')) {
             $this->error($this->type.' already exists!');
-
             return false;
         }
 
@@ -103,7 +101,7 @@ class ForgeController extends GeneratorCommand
 	 */
 	protected function getStub()
 	{
-        return package_path('resources/stubs/resource/DummyController.stub');
+        return package_path('resources/stubs/resource/DummyCRUDController.stub');
 	}
 
 	/**
@@ -126,6 +124,18 @@ class ForgeController extends GeneratorCommand
     {
         return [
             ['name', InputArgument::REQUIRED, 'The name of the Controller.'],
+        ];
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['--force', 'f', InputOption::VALUE_NONE, 'The name of the Controller.'],
         ];
     }
 }

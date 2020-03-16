@@ -32,24 +32,24 @@ $border-light:					#E5E5EB;
 $card-header-footer:			#EFF3FA;
 
 $modal-bg-color:				$gray-900;
-$border-color:					rgba(72, 94, 144, 0.1) !default;
+$border-color:					$gray-200 !default;
 
 /* --------------------------
 	Colors Shades
 ----------------------------*/
 $primary:						#137eff;
 $secondary:						$bg;
-$success:						#20CE53;
-$info:							#30CEF5;
-$warning:						#FCB338;
-$danger:						#F55753;
+$success:						#00d97e;
+$info:							#39afd1;
+$warning:						#f6c343;
+$danger:						#e63757;
 $purple:						#6D5BAF;
 $light:							$gray-100;
 $dark:							$gray-900;
-$pink:							#FE6E98;
+$pink:							#ff679b;
 $custom:						#1fb6ff;
 $default:						#FFFFFF;
-$orange:						#EA7005;
+$orange:						#f3842a;
 
 // Overrides
 $theme-colors: (
