@@ -2,42 +2,30 @@
 
 @section('content')
 
-	<div class="row justify-content-center">
-		<div class="col-12 col-lg-10 col-xl-8">
-			@component('nexus::misc/page-title')
-				@slot('superactions')
-					@include('nexus::components/back-to-resource')
-				@endslot
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8">
+            @component('nexus::misc/page-title')
+                @slot('superactions')
+                    @include('nexus::components/back-to-resource')
+                @endslot
 
-				Editar Usuario
-			@endcomponent
+                Editar Usuario
+            @endcomponent
 
-			@messages
+            @messages
 
-			{{ form()->model($admin, ['route' => ['admins.update', $admin->id], 'method' => 'PUT']) }}
+            {{ form()->model($admin, ['route' => ['admins.update', $admin->id], 'method' => 'PUT']) }}
 
-				<div class="card">		
-					<div class="card-body">
-						@include('nexus::admins/form')
-					</div>
-				</div>
+                @include('nexus::admins/form')
 
-				<hr>
+                <hr>
 
-				<div class="form-group">
-					<a href="{{ resource('index') }}" class="btn btn-white mr-2">
-						@lang('nexus::resource.cancel-form-button')
-					</a>
+                @include('nexus::misc/form-buttons')
 
-					<button type="submit" class="btn btn-primary btn-activity">
-						@lang('nexus::resource.submit-form-button')
-					</button>
-				</div>
-			
-			{{ form()->close() }}
-		</div>
-		{{-- END col --}}
-	</div>
-	{{-- END row --}}
+            {{ form()->close() }}
+        </div>
+        {{-- END col --}}
+    </div>
+    {{-- END row --}}
 
 @endsection
