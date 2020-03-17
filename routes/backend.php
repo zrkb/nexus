@@ -36,7 +36,7 @@ Route::group([
         Route::resource('roles',					'RolesController');
         Route::resource('permissions',				'PermissionsController');
 
-
+        // Profile
         Route::group([
             'prefix'    => 'settings',
         ], function () {

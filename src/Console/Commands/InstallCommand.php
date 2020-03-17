@@ -65,10 +65,6 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', [
             '--provider' => 'Nexus\NexusServiceProvider',
         ]);
-        $this->callSilent('vendor:publish', [
-            '--tag' => 'nexus-factories',
-            '--force' => true,
-        ]);
 
         $this->line('→ Seeding initial data ... <info>✔</info>');
         $this->callSilent('nexus:seed');

@@ -3,12 +3,10 @@
 namespace Nexus;
 
 use Illuminate\Support\Arr;
-use Nexus\Http\Middleware\AppLocale;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
-use Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode;
 
 class NexusServiceProvider extends ServiceProvider
 {
@@ -20,10 +18,6 @@ class NexusServiceProvider extends ServiceProvider
     protected $routeMiddleware = [
         'admin.auth'       => \Nexus\Http\Middleware\Authenticate::class,
         'can_register'		=> \Nexus\Http\Middleware\CanRegister::class,
-        // 'admin.pjax'       => \Nexus\Middleware\Pjax::class,
-        // 'admin.log'        => \Nexus\Middleware\LogOperation::class,
-        // 'admin.permission' => \Nexus\Middleware\Permission::class,
-        // 'admin.bootstrap'  => \Nexus\Middleware\Bootstrap::class,
     ];
 
     /**
@@ -34,187 +28,173 @@ class NexusServiceProvider extends ServiceProvider
     protected $middlewareGroups = [
         'admin' => [
             'admin.auth',
-            // 'admin.pjax',
-            // 'admin.log',
-            // 'admin.bootstrap',
-            // 'admin.permission',
         ],
     ];
 
-	/**
-	 * Perform post-registration booting of services.
-	 *
-	 * @return void
-	 */
-	public function boot()
-	{
-		if ($this->app->runningInConsole()) {
-			$this->publishResources();
-			$this->registerCommands();
-		}
+    /**
+     * Perform post-registration booting of services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishResources();
+            $this->registerCommands();
+        }
 
-		$this->loadResources();
+        $this->loadResources();
 
         if (! $this->app->configurationIsCached()) {
-			$this->mergeConfigFrom(__DIR__ . '/../config/nexus.php', 'nexus');
-		}
-
-        // Middlewares
-        $this->registerMiddlewares();
+            $this->mergeConfigFrom(__DIR__ . '/../config/nexus.php', 'nexus');
+        }
 
         // Helpers
         $this->registerHelpers();
 
-		// Register Blade Components
-		$component = method_exists(BladeCompiler::class, 'aliasComponent') ?
-			'aliasComponent' : 'component';
+        // Register Blade Components
+        $component = method_exists(BladeCompiler::class, 'aliasComponent') ?
+            'aliasComponent' : 'component';
 
-		Blade::{$component}('nexus::components/model-property', 'modelProperty');
-		Blade::{$component}('nexus::misc/table', 'table');
-		Blade::{$component}('nexus::components/checkbox', 'checkbox');
+        Blade::{$component}('nexus::components/model-property', 'modelProperty');
+        Blade::{$component}('nexus::misc/table', 'table');
+        Blade::{$component}('nexus::components/checkbox', 'checkbox');
 
-		// Alias
-		Blade::include('nexus::layouts/messages', 'messages');
-	}
+        // Alias
+        Blade::include('nexus::layouts/messages', 'messages');
+    }
 
-	public function registerMiddlewares()
-	{
-		$this->app->singleton(CheckForMaintenanceMode::class, function($app){
-            return new AppLocale($app);
-        });
-	}
+    public function publishResources()
+    {
+        $this->publishes([
+            __DIR__ . '/../config/nexus.php' => config_path('nexus.php')
+        ], 'nexus-config');
 
-	public function publishResources()
-	{
-		$this->publishes([
-			__DIR__ . '/../config/nexus.php' => config_path('nexus.php')
-		], 'nexus-config');
+        $this->publishes([
+            __DIR__ . '/../public' => public_path('vendor/nexus')
+        ], 'nexus-assets');
 
-		$this->publishes([
-			__DIR__ . '/../public' => public_path('vendor/nexus')
-		], 'nexus-assets');
+        $this->publishes([
+            __DIR__ . '/../public/assets/css/app.css' => public_path('vendor/nexus/assets/css/app.css'),
+            __DIR__ . '/../public/assets/css/mango.css' => public_path('vendor/nexus/assets/css/mango.css'),
+        ], 'nexus-css');
 
-		$this->publishes([
-			__DIR__ . '/../public/assets/css/app.css' => public_path('vendor/nexus/assets/css/app.css'),
-			__DIR__ . '/../public/assets/css/mango.css' => public_path('vendor/nexus/assets/css/mango.css'),
-		], 'nexus-css');
+        $this->publishes([
+            __DIR__ . '/../database/factories' => database_path('factories')
+        ], 'nexus-factories');
 
-		$this->publishes([
-			__DIR__ . '/../database/factories' => database_path('factories')
-		], 'nexus-factories');
+        $this->publishes([
+            __DIR__ . '/../database/migrations' => database_path('migrations')
+        ], 'nexus-migrations');
 
-		$this->publishes([
-			__DIR__ . '/../database/migrations' => database_path('migrations')
-		], 'nexus-migrations');
+        $this->publishes([
+            __DIR__ . '/../resources/lang' => resource_path('lang/vendor/nexus')
+        ], 'nexus-translations');
 
-		$this->publishes([
-			__DIR__ . '/../resources/lang' => resource_path('lang/vendor/nexus')
-		], 'nexus-translations');
+        $this->publishes([
+            __DIR__ . '/../resources/views' => resource_path('views/vendor/nexus'),
+        ], 'nexus-views');
 
-		$this->publishes([
-			__DIR__ . '/../resources/views' => resource_path('views/vendor/nexus'),
-		], 'nexus-views');
-
-		$this->publishes([
-			__DIR__ . '/../resources/fonts' => public_path('fonts'),
-		], 'nexus-fonts');
-	}
+        $this->publishes([
+            __DIR__ . '/../resources/assets/fonts' => public_path('assets/fonts'),
+        ], 'nexus-fonts');
+    }
 
     /**
      * Setup auth configuration.
      *
      * @return void
      */
-	protected function loadAdminAuthConfig()
+    protected function loadAdminAuthConfig()
     {
         config(Arr::dot(config('nexus.auth', []), 'auth.'));
     }
 
-	public function loadResources()
-	{
-		// Migrations
-		$this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+    public function loadResources()
+    {
+        // Migrations
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
 
         // Translations
         $this->loadTranslationsFrom(__DIR__ . '/../resources/lang', 'nexus');
 
-		// Views
+        // Views
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'nexus');
 
-		// Route Initiator
-		$this->loadRoutes();
-	}
+        // Route Initiator
+        $this->loadRoutes();
+    }
 
-	public function loadRoutes()
-	{
+    public function loadRoutes()
+    {
         if (config('nexus.load_base_routes', true)) {
             $this->loadRoutesFrom(__DIR__ . '/../routes/backend.php');
         }
 
-		$userRouteFile = config('nexus.backend_routes_file', 'backend.php');
-		$userRoutePath = base_path('routes/' . $userRouteFile);
+        $userRouteFile = config('nexus.backend_routes_file', 'backend.php');
+        $userRoutePath = base_path('routes/' . $userRouteFile);
 
-		if (file_exists($userRoutePath)) {
-			$this->loadRoutesFrom($userRoutePath);
-		}
-	}
+        if (file_exists($userRoutePath)) {
+            $this->loadRoutesFrom($userRoutePath);
+        }
+    }
 
-	/**
-	 * Register any package services.
-	 *
-	 * @return void
-	 */
-	public function register()
-	{
+    /**
+     * Register any package services.
+     *
+     * @return void
+     */
+    public function register()
+    {
         $this->loadAdminAuthConfig();
-		$this->registerThirdPartyVendors();
+        $this->registerThirdPartyVendors();
         $this->registerRouteMiddleware();
-	}
+    }
 
-	public function registerThirdPartyVendors()
-	{
-		// Activity Log
-		$this->app->register(\Spatie\Activitylog\ActivitylogServiceProvider::class);
+    public function registerThirdPartyVendors()
+    {
+        // Activity Log
+        $this->app->register(\Spatie\Activitylog\ActivitylogServiceProvider::class);
 
-		// Laravel Collective: HTML
-		$this->app->register(\Collective\Html\HtmlServiceProvider::class);
-		AliasLoader::getInstance(['Form' => \Collective\Html\FormFacade::class]);
-		AliasLoader::getInstance(['Html' => \Collective\Html\HtmlFacade::class]);
+        // Laravel Collective: HTML
+        $this->app->register(\Collective\Html\HtmlServiceProvider::class);
+        AliasLoader::getInstance(['Form' => \Collective\Html\FormFacade::class]);
+        AliasLoader::getInstance(['Html' => \Collective\Html\HtmlFacade::class]);
 
-		// Mediable
-		$this->app->register(\Plank\Mediable\MediableServiceProvider::class);
-		AliasLoader::getInstance(['MediaUploader' => \Plank\Mediable\MediaUploaderFacade::class]);
+        // Mediable
+        $this->app->register(\Plank\Mediable\MediableServiceProvider::class);
+        AliasLoader::getInstance(['MediaUploader' => \Plank\Mediable\MediaUploaderFacade::class]);
 
-		AliasLoader::getInstance(['Str' => \Illuminate\Support\Str::class]);
-	}
+        AliasLoader::getInstance(['Str' => \Illuminate\Support\Str::class]);
+    }
 
-	public function registerCommands()
-	{
-		$this->commands([
-			Console\Commands\UserCommand::class,
-			Console\Commands\InstallCommand::class,
-			Console\Commands\SeedCommand::class,
+    public function registerCommands()
+    {
+        $this->commands([
+            Console\Commands\UserCommand::class,
+            Console\Commands\InstallCommand::class,
+            Console\Commands\SeedCommand::class,
 
-			Console\Commands\ForgeController::class,
-			Console\Commands\ForgeModel::class,
-			Console\Commands\ForgeStoreRequest::class,
-			Console\Commands\ForgeUpdateRequest::class,
+            Console\Commands\ForgeController::class,
+            Console\Commands\ForgeModel::class,
+            Console\Commands\ForgeStoreRequest::class,
+            Console\Commands\ForgeUpdateRequest::class,
 
-			Console\Commands\ForgeResource::class,
-			Console\Commands\ForgeResourceModel::class,
+            Console\Commands\ForgeResource::class,
+            Console\Commands\ForgeResourceModel::class,
 
-			Console\Commands\ForgeCRUDController::class,
-			Console\Commands\ForgeCRUDViews::class,
-			Console\Commands\ForgeCRUD::class,
-		]);
-	}
+            Console\Commands\ForgeCRUDController::class,
+            Console\Commands\ForgeCRUDViews::class,
+            Console\Commands\ForgeCRUD::class,
+        ]);
+    }
 
-	public function registerHelpers()
-	{
-		foreach (glob(__DIR__ . '/Helpers/*.php') as $filename) {
-			require_once($filename);
-		}
-	}
+    public function registerHelpers()
+    {
+        foreach (glob(__DIR__ . '/Helpers/*.php') as $filename) {
+            require_once($filename);
+        }
+    }
 
     /**
      * Register the route middleware.
