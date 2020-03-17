@@ -3,6 +3,7 @@
 // Use this to write your custom SCSS
 //
 
+@import 'mixins';
 @import 'datatables';
 @import 'boxicons';
 @import 'daterangepicker';
@@ -19,16 +20,16 @@
 }
 
 .bx {
-	font-size: 140%;
+    font-size: 140%;
 }
 
 // Cards
 .card-body {
-	padding: ($spacer * 1.4);
+    padding: ($spacer * 1.4);
 }
 
 .card-shadow {
-	box-shadow: 0 0 40px rgba(0,0,0,.05);
+    box-shadow: 0 0 40px rgba(0,0,0,.05);
 }
 
 .navbar-brand {
@@ -48,140 +49,157 @@
 .bx-wrapper .bx,
 .card-title .bx,
 .btn .bx {
-	font-size: 110%;
-	position: relative;
-	top: 2px;
+    font-size: 110%;
+    position: relative;
+    top: 2px;
 }
 
 .table {
-	margin: 0;
+    margin: 0;
 
-	tr {
-		&:hover .action-item {
-			visibility: visible;
-		}
-	}
+    tr {
+        &:hover .action-item {
+            visibility: visible;
+        }
+    }
 
-	&.table-dark {
-		th {
-			color: white;
-		}
-	}
+    &.table-dark {
+        th {
+            color: white;
+        }
+    }
 
-	th,
-	td {
-		vertical-align: middle;
+    th,
+    td {
+        vertical-align: middle;
 
-		&.tid {
-			text-align: center;
-			width: 3%;
-		}
-	}
+        &.tid {
+            text-align: center;
+            width: 3%;
+        }
+    }
 
-	th {
-		border-top: none;
-		font-size: .8rem;
-		text-transform: uppercase;
-		padding: 1rem;
-		border-width: 1px !important;
-	}
+    th {
+        border-top: none;
+        font-size: .8rem;
+        text-transform: uppercase;
+        padding: 1rem;
+        border-width: 1px !important;
+    }
 
-	td .action-item {
-		&:hover {
-			background-color: white;
-			box-shadow: 0 1px 2px 2px rgba(0, 0, 0, .1);
-		}
-	}
+    td .action-item {
+        &:hover {
+            background-color: white;
+            box-shadow: 0 1px 2px 2px rgba(0, 0, 0, .1);
+        }
+    }
 
-	th,
-	td {
-		&:first-child {
-			padding-left: 1.2rem;
-		}
+    th,
+    td {
+        &:first-child {
+            padding-left: 1.2rem;
+        }
 
-		&:last-child {
-			padding-right: 1.2rem;
-		}
-	}
+        &:last-child {
+            padding-right: 1.2rem;
+        }
+    }
 }
 
 
 // Dropdown
 .dropdown {
-	&.nav-item .dropdown-item {
-		padding-left: 1.5rem;
-		padding-right: 1.5rem;
-	}
+    &.nav-item .dropdown-item {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
 }
 .dropdown-menu {
-	top: 130%;
-	padding: 5px;
-	// animation-name: animate-flyout;
-	// animation-duration: 0.2s;
+    top: 130%;
+    padding: 5px;
 
-	.dropdown-item {
-		color: $text-bold;
-		font-size: .9rem;
-		@include border-radius(.25rem);
+    .dropdown-item {
+        color: $text-bold;
+        font-size: .9rem;
+        @include border-radius(.25rem);
 
-		&:focus,
-		&:hover,
-		&.active {
-			background: #f5f6fa;
-		}
+        &:focus,
+        &:hover,
+        &.active {
+            background: #f5f6fa;
+        }
 
-		span {
-			display: block;
-			color: $text-base;
-			font-size: .85rem;
-			margin-top: 3px;
-		}
-	}
+        span {
+            display: block;
+            color: $text-base;
+            font-size: .85rem;
+            margin-top: 3px;
+        }
+    }
+}
+
+.navbar {
+    .dropdown-menu {
+        animation-name: animate-flyout;
+        animation-duration: 0.2s;
+    }
+}
+
+// Animations
+@keyframes animate-flyout {
+    0% {
+        @include translateY(-10px);
+        @include opacity(0);
+    }
+    100% {
+        @include translateY(0);
+        @include opacity(1);
+    }
 }
 
 .actions {
-	.dropdown {
-		.action-item {
-			visibility: hidden;
-			display: inline-flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
+    .dropdown {
+        .action-item {
+            visibility: hidden;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-			width: 28px;
-			height: 28px;
+            width: 28px;
+            height: 28px;
 
-			@include border-radius(100rem);
-			@include transition(box-shadow 250ms ease);
-		}
+            @include border-radius(100rem);
+            @include transition(box-shadow 250ms ease);
+        }
 
-		&.is-active {
-			.action-item {
-				background-color: rgba(78,111,249,.18);
-				border: 1px solid $primary;
-				box-shadow: inset 0 0 0 1px white,
-			}
-		}
-	}
+        &.is-active {
+            .action-item {
+                background-color: rgba(78,111,249,.18);
+                border: 1px solid $primary;
+                box-shadow: inset 0 0 0 1px white,
+            }
+        }
+    }
 
-	a:active .action-item {
-		visibility: visible;
-	}
+    a:active .action-item {
+        visibility: visible;
+    }
 }
 
 //
 // Small
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-	small,
-	.small {
-		font-size: 80%;
-	}
+    small,
+    .small {
+        font-size: 80%;
+    }
 
-	.bx {
-	    position: relative;
-	    top: 0.19rem;
-	}
+    .bx {
+        position: relative;
+        top: 0.19rem;
+    }
 }
 
 
@@ -189,14 +207,14 @@ h1, h2, h3, h4, h5, h6,
     position: absolute;
     top: 7px;
     right: 7px;
-	display: block;
+    display: block;
 }
 
 .select2-sm {
-	.select2-container--default .select2-selection--single .select2-selection__arrow {
-	    top: 2px;
-	    right: 3px;
-	}
+    .select2-container--default .select2-selection--single .select2-selection__arrow {
+        top: 2px;
+        right: 3px;
+    }
 }
 
 .select2-auto .select2.select2-container {
@@ -204,21 +222,21 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .form-control:disabled {
-	opacity: 0.3;
+    opacity: 0.3;
 }
 
 [data-dz-remove] {
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	Z-index: 99999;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    Z-index: 99999;
 }
 
 .progress-upload {
-	display: none;
-	position: absolute;
-	width: 80%;
-	left: 11%;
-	top: 120px;
-	z-index: 999;
+    display: none;
+    position: absolute;
+    width: 80%;
+    left: 11%;
+    top: 120px;
+    z-index: 999;
 }

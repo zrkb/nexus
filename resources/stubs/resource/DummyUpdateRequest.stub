@@ -16,7 +16,7 @@ class UpdateSingularBaseClass extends NexusFormRequest
     public function persist()
     {
         return DB::transaction(function () {
-			$item = $this->model();
+            $item = $this->model();
 
             return $item->update(
                 $this->only([
@@ -24,7 +24,7 @@ class UpdateSingularBaseClass extends NexusFormRequest
                 ])
             );
         });
-	}
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -33,7 +33,7 @@ class UpdateSingularBaseClass extends NexusFormRequest
      */
     public function rules()
     {
-		$item = $this->model();
+        $item = $this->model();
 
         return [
             'name' => 'required',

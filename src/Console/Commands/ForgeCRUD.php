@@ -45,7 +45,7 @@ class ForgeCRUD extends Command
      */
     public function handle()
     {
-        // $this->createMigration();
+        $this->createMigration();
         $this->createModel();
         $this->createCRUDController();
         $this->createCRUDRequests();

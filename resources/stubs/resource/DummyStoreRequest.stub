@@ -24,7 +24,7 @@ class StoreSingularBaseClass extends NexusFormRequest
 
             return $item;
         });
-	}
+    }
 
     /**
      * Get the validation rules that apply to the request.

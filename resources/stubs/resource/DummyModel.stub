@@ -6,7 +6,7 @@ use Nexus\Models\BaseModel as Model;
 
 class DummyModel extends Model
 {
-	protected $fillable = [
-		'name',
-	];
+    protected $fillable = [
+        'name',
+    ];
 }
