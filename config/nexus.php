@@ -7,6 +7,7 @@ return [
     | Backend Route Configurations
     |--------------------------------------------------------------------------
     */
+    'load_base_routes' => true,
 
     'backend_routes_file' => 'backend.php',
 
