@@ -34,6 +34,19 @@ trait HasImage
         return $placeholder ? 'no-img' : '';
     }
 
+    public function updateImage($request)
+    {
+        if ($request->remove && $this->image) {
+            $this->image->delete();
+        }
+
+        if ($file = $request->file('image')) {
+            $this->attachImage($file);
+        }
+
+        return $this;
+    }
+
     /**
      * Set destination path
      *
