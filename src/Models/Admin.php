@@ -50,4 +50,9 @@ class Admin extends Authenticatable
     {
         return ['remember_token'];
     }
+
+    public function isDeveloper()
+    {
+        return $this->hasRole(dev_role());
+    }
 }
