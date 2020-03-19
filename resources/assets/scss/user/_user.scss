@@ -8,6 +8,7 @@
 @import 'boxicons';
 @import 'daterangepicker';
 @import 'tags';
+@import 'upload-box';
 
 .text-inherit {
     color: inherit;
@@ -15,12 +16,8 @@
 }
 
 .bx {
-    font-size: 1.2rem;
-    line-height: 1.40625rem;
-}
-
-.bx {
     font-size: 140%;
+    line-height: 1.40625rem;
 }
 
 // Cards
@@ -32,6 +29,13 @@
     box-shadow: 0 0 40px rgba(0,0,0,.05);
 }
 
+.card-img-top-equal {
+    width: 100%;
+    height: 16vh;
+    object-fit: cover;
+}
+
+// Cards
 .navbar-brand {
     .bx {
         position: relative;

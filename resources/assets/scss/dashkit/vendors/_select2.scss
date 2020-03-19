@@ -161,11 +161,11 @@
 }
 
 .select2-container--default .select2-search--dropdown .select2-search__field {
-  height: $input-height-sm;
-  padding: $input-padding-y-sm $input-padding-x-sm;
-  font-size: $font-size-sm;
-  line-height: $input-line-height-sm;
-  @include border-radius($input-border-radius-sm);
+  height: $input-height;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $input-line-height;
+  @include border-radius($input-border-radius);
 }
 
 
