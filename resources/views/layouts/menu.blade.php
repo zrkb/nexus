@@ -18,23 +18,19 @@
         <hr class="dropdown-divider">
 
         <a class="dropdown-item" href="{{ route('admins.index') }}">
-            <i data-feather="users" class="mr-2 text-muted"></i>
             @lang('nexus::messages.profile-menu-item-admins')
         </a>
 
         <a class="dropdown-item" href="{{ route('roles.index') }}">
-            <i data-feather="star" class="mr-2 text-muted"></i>
             @lang('nexus::messages.profile-menu-item-roles')
         </a>
 
         <a class="dropdown-item" href="{{ route('permissions.index') }}">
-            <i data-feather="shield" class="mr-2 text-muted"></i>
             @lang('nexus::messages.profile-menu-item-permissions')
         </a>
 
         <a class="dropdown-item text-danger mt-2" href="{{ admin_base_path('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-            <i data-feather="log-out" class="mr-2"></i>
             @lang('nexus::messages.profile-menu-item-logout')
         </a>
 

@@ -51,7 +51,7 @@ class BaseResourceController extends BaseController
         if ($item) {
             session()->flash('success', 'El registro ha sido creado exitosamente.');
         } else {
-            session()->flash('error', 'Error al crear el registro. Consulte con el administrador.');
+            session()->flash('danger', 'Error al crear el registro. Consulte con el administrador.');
         }
 
         return redirect(resource('index'));
@@ -79,7 +79,7 @@ class BaseResourceController extends BaseController
         if ($item->update($data)) {
             session()->flash('success', 'El registro ha sido modificado exitosamente.');
         } else {
-            session()->flash('error', 'Error al modificar el registro. Consulte con el administrador.');
+            session()->flash('danger', 'Error al modificar el registro. Consulte con el administrador.');
         }
 
         return redirect(resource('show', $id));

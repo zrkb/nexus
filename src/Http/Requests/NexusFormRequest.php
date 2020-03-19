@@ -39,7 +39,7 @@ abstract class NexusFormRequest extends FormRequest
      *
      * @return self
      */
-	public function withModel(Model $model)
+	public function withModel(Model $model = null)
 	{
 		$this->model = $model;
 

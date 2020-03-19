@@ -1,5 +1,5 @@
-<div class="form-group">
-	<a href="{{ $cancelRoute ?? resource('index') }}" class="btn btn-white mr-2">
+<div class="form-group d-flex justify-content-end">
+	<a href="{{ $cancelRoute ?? resource('index') }}" class="btn btn-link text-muted">
 		{{ $cancelTitle ?? trans('nexus::resource.cancel-form-button') }}
 	</a>
 

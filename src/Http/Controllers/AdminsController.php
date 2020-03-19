@@ -56,7 +56,7 @@ class AdminsController extends BaseController
 			$this->manageAdmin($request, $admin);
 			session()->flash('success', 'El registro ha sido creado exitosamente.');
 		} else {
-			session()->flash('error', 'Error al crear el registro. Consulte con el administrador.');
+			session()->flash('danger', 'Error al crear el registro. Consulte con el administrador.');
 		}
 
 		return redirect(resource('index'));
@@ -73,7 +73,7 @@ class AdminsController extends BaseController
 	public function update(Request $request, $id)
 	{
 		$admin = config('nexus.models.admin')::withTrashed()->find($id);
-		
+
 		$updateRules = $this->updateRules($admin->id);
 		$this->validate($request, $updateRules);
 
@@ -94,7 +94,7 @@ class AdminsController extends BaseController
 			$this->manageAdmin($request, $admin);
 			session()->flash('success', 'El registro ha sido modificado exitosamente.');
 		} else {
-			session()->flash('error', 'Error al modificar el registro. Consulte con el administrador.');
+			session()->flash('danger', 'Error al modificar el registro. Consulte con el administrador.');
 		}
 
 		return redirect(resource('show', $id));

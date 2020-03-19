@@ -62,6 +62,7 @@ class NexusServiceProvider extends ServiceProvider
 
         // Alias
         Blade::include('nexus::layouts/messages', 'messages');
+        Blade::include('nexus::components/file', 'file');
     }
 
     public function publishResources()
@@ -89,7 +90,7 @@ class NexusServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__ . '/../resources/lang' => resource_path('lang/vendor/nexus')
-        ], 'nexus-translations');
+        ], 'nexus-lang');
 
         $this->publishes([
             __DIR__ . '/../resources/views' => resource_path('views/vendor/nexus'),

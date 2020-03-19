@@ -24,7 +24,7 @@ class FilesController extends ResourceController
 	public function show($id)
 	{
 		$file = File::find($id);
-		
+
 		return view('files/show', compact('file'));
 	}
 
@@ -37,7 +37,7 @@ class FilesController extends ResourceController
 	{
 		$creationRules = $this->creationRules();
 		$this->validate($request, $creationRules);
-		
+
 		try{
 			$media = File::upload($request);
 			session()->flash('success', 'El registro ha sido creado exitosamente.');
@@ -63,14 +63,14 @@ class FilesController extends ResourceController
 
 		$updateRules = $this->updateRules($file->id);
 		$this->validate($request, $updateRules);
-		
+
 		try {
 			File::updateMedia($request, $file);
 			session()->flash('success', 'El registro ha sido modificado exitosamente.');
 
 			return redirect(resource('index'));
         } catch(MediaUploadException $e) {
-			session()->flash('error', "Error al modificar el registro: {$e->getMessage()}");
+			session()->flash('danger', "Error al modificar el registro: {$e->getMessage()}");
 
 			return redirect(resource('edit'));
         }

@@ -11,5 +11,5 @@ return [
     'back-to-list' => 'Back',
     'complete-form' => 'Complete the fields',
     'cancel-form-button' => 'Cancel',
-    'submit-form-button' => 'Save',
+    'submit-form-button' => 'Save changes',
 ];

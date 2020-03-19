@@ -27,7 +27,7 @@ class RolesController extends BaseController
 	{
 		$role = Role::find($id);
 		$permissions = Permission::groupedByRoutes();
-		
+
 		return view('nexus::roles/show', compact('role', 'permissions'));
 	}
 
@@ -52,7 +52,7 @@ class RolesController extends BaseController
 			$this->manageRole($request, $role);
 			session()->flash('success', 'El registro ha sido creado exitosamente.');
 		} else {
-			session()->flash('error', 'Error al crear el registro. Consulte con el administrador.');
+			session()->flash('danger', 'Error al crear el registro. Consulte con el administrador.');
 		}
 
 		return redirect(resource('index'));
@@ -80,7 +80,7 @@ class RolesController extends BaseController
 			$this->manageRole($request, $role);
 			session()->flash('success', 'El registro ha sido modificado exitosamente.');
 		} else {
-			session()->flash('error', 'Error al modificar el registro. Consulte con el administrador.');
+			session()->flash('danger', 'Error al modificar el registro. Consulte con el administrador.');
 		}
 
 		return redirect(resource('show', $id));
