@@ -1,4 +1,10 @@
 /* --------------------------
+	Bootstrap's colors
+----------------------------*/
+$gray-900:						#1F1F1F !default;
+$black: 						#000000 !default;
+
+/* --------------------------
 	Color Scheme
 ----------------------------*/
 
@@ -11,7 +17,7 @@ $info:							#30CEF5;
 $warning:						#FCB338;
 $danger:						#F55753;
 $purple:						#503A9F;
-$light:							$gray-100;
+$light:							$gray-300;
 $dark:							$gray-900;
 $pink:							#FE6E98;
 $custom:						#1fb6ff;
@@ -32,4 +38,5 @@ $theme-colors: (
 	"pink": $pink,
 	"custom": $custom,
 	"orange": $orange,
+	"black": $black,
 );
