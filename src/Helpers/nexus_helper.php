@@ -29,7 +29,7 @@ if (! function_exists('nexus')) {
 if (! function_exists('resource')) {
     /**
      * Create a route from an action.
-     * 
+     *
      * @return mixed
      */
     function resource($action = null, $params = []) : string
@@ -54,7 +54,7 @@ if (! function_exists('__m')) {
 if (! function_exists('admin')) {
     /**
      * Returns auth admin.
-     * 
+     *
      * @return \Nexus\Models\Admin
      */
     function admin()
@@ -66,7 +66,7 @@ if (! function_exists('admin')) {
 if (! function_exists('user')) {
     /**
      * Returns auth admin.
-     * 
+     *
      * @return \Nexus\Models\Admin
      */
     function user()
@@ -101,7 +101,7 @@ if (! function_exists('package_path')) {
     }
 }
 
-if (! function_exists('format_bytes')) {   
+if (! function_exists('format_bytes')) {
     /**
      * Format bytes to kb, mb, gb, tb
      *

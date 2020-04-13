@@ -26,17 +26,6 @@ if (! function_exists('rr')) {
     }
 }
 
-if (! function_exists('dev_role')) {
-    /**
-     * Retorna una cadena con el nombre del Rol Developer
-     *
-     * @todo Cambiar esta cadena hardcodeada
-     */
-    function dev_role() {
-        return 'Developer';
-    }
-}
-
 if (! function_exists('version')) {
     /**
      * Retorna una instancia de la Clase \PragmaRX\Version\Package\Version.
@@ -63,7 +52,7 @@ if (! function_exists('check')) {
     }
 }
 
-if (!function_exists('cached')) {
+if (! function_exists('cached')) {
     function cached()
     {
         $debug = config('app.env');
@@ -76,14 +65,14 @@ if (!function_exists('cached')) {
     }
 }
 
-if (!function_exists('truncate')) {
+if (! function_exists('truncate')) {
     function truncate($number, int $precision = null)
     {
         return round($number, $precision ?? cons('numeric_precision', 2));
     }
 }
 
-if (!function_exists('percent')) {
+if (! function_exists('percent')) {
     function percent($reached, $total)
     {
         $result = ($reached / $total) * 100;
@@ -93,7 +82,7 @@ if (!function_exists('percent')) {
     }
 }
 
-if (!function_exists('cons')) {
+if (! function_exists('cons')) {
     function cons($key = null)
     {
         $constants = config('constants');
