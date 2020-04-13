@@ -6,7 +6,7 @@
 // Fonts
 $font-size-base: .9375rem !default;
 $font-size-lg: ($font-size-base * 1.2) !default;
-$font-size-sm: ($font-size-base * .7) !default;
+$font-size-sm: ($font-size-base * .8) !default;
 
 $form-control-height:			44px;
 $form-control-height-sm:		37px;
@@ -122,7 +122,7 @@ $input-btn-focus-color:			$primary !default;
 $input-color:					$text-bold !default;
 $input-border-color:			$border-color !default;
 
-$input-placeholder-color:		$text-light !default;
+$input-placeholder-color:		$gray-500 !default;
 
 $input-group-addon-color:		$text-bold !default;
 $input-group-addon-bg:			$avatar-bg !default;
@@ -159,7 +159,8 @@ $modal-header-border-color:		$border-color !default;
 $small-font-size:				90% !default;
 
 // Tooltips
+$tooltip-color:                 $white !default;
 $tooltip-bg:					$dark !default;
 $tooltip-border-radius:			.15rem !default;
-$tooltip-padding-y:				.25rem !default;
+$tooltip-padding-y:				.3rem !default;
 $tooltip-padding-x:				.75rem !default;
