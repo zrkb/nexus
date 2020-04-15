@@ -1,5 +1,5 @@
 {
-    "name": "imfx/nexus",
+    "name": "zrkb/nexus",
     "description": "Nexus is an Admin Panela based on Laravel Framework",
     "keywords": [ "nexus", "admin", "laravel", "dashboard", "php"],
     "license": "MIT",
@@ -11,7 +11,7 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/imfx/nexus",
+    "homepage": "https://github.com/zrkb/nexus",
     "require": {
         "php": ">=7.2",
         "illuminate/support": "^5.7.15 | 5.8.* | ^6.0 | ^7.0",
