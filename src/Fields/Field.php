@@ -86,7 +86,7 @@ abstract class Field extends FieldElement
      * @return $this
      */
     public function displayUsing(callable $displayCallback)
-    {
+{
         $this->displayCallback = $displayCallback;
 
         return $this;
@@ -115,7 +115,6 @@ abstract class Field extends FieldElement
     public function resolveForDisplay($item, $value)
     {
         $attribute = $attribute ?? $this->attribute;
-        $value = htmlentities($value);
 
         if (! $this->displayCallback) {
             return $value;
@@ -148,6 +147,8 @@ abstract class Field extends FieldElement
 
     public function renderForShow($item)
     {
+        $value = $item->getAttribute($this->attribute);
+
         return view("nexus::fields/{$this->component}/show")->with([
             'field' => $this,
             'item' => $item,

@@ -34,7 +34,7 @@
                 <div class="form mt-3">
                     @foreach ($resource->detailFields() as $field)
                         @modelProperty(['title' => $field->name])
-                            {{ $item->getAttribute($field->attribute) }}
+                            {!! $field->renderForShow($item)->render() !!}
                         @endmodelProperty
                     @endforeach
                 </div>
