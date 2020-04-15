@@ -14,15 +14,25 @@ class BaseResourceController extends BaseController
 
     public function index()
     {
-        $items = $this->getModel()::all();
+        $model = $this->resource::newModel();
+
+        $items = $model->hasSoftDelete() ?
+            $this->getModel()::withTrashed()->get() :
+            $this->getModel()::all();
+
         $resource = new $this->resource($items);
 
-        return view($resource->viewForIndex, compact('items', 'resource'));
+        return view($resource->viewForIndex, compact('model', 'resource', 'items'));
     }
 
     public function show($id)
     {
-        $item = $this->getModel()::findOrFail($id);
+        $model = $this->resource::newModel();
+
+        $item = $model->hasSoftDelete() ?
+            $this->getModel()::withTrashed()->findOrFail($id) :
+            $this->getModel()::findOrFail($id);
+
         $resource = new $this->resource($item);
 
         return view($resource->viewForDetail, compact('item', 'resource'));
@@ -59,7 +69,12 @@ class BaseResourceController extends BaseController
 
     public function edit(Request $request, $id)
     {
-        $item = $this->getModel()::findOrFail($id);
+        $model = $this->resource::newModel();
+
+        $item = $model->hasSoftDelete() ?
+            $this->getModel()::withTrashed()->findOrFail($id) :
+            $this->getModel()::findOrFail($id);
+
         $resource = new $this->resource($item);
 
         return view($resource->viewForUpdate, compact('item', 'resource'));
@@ -69,7 +84,10 @@ class BaseResourceController extends BaseController
     {
         $model = $this->resource::newModel();
         $resource = new $this->resource($model);
-        $item = $model::findOrFail($id);
+
+        $item = $model->hasSoftDelete() ?
+            $this->getModel()::withTrashed()->findOrFail($id) :
+            $this->getModel()::findOrFail($id);
 
         $this->validate($request, $resource->updateRules($id));
 

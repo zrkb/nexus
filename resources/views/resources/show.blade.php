@@ -7,7 +7,7 @@
     <!-- START page-title -->
     @component('nexus::misc/page-title')
         @slot('superactions')
-            @include('nexus::components/resources/edit-button')
+            @include('nexus::components/resources/edit-button', ['model' => $item])
             @include('nexus::components/back-to-resource')
             @include('nexus::misc/models/prev-next-rows', ['model' => $item])
         @endslot

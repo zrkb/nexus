@@ -27,6 +27,10 @@ class Text extends Field
     public function linkable()
     {
     	return $this->displayUsing(function ($item, $value) {
+            if ($item->hasSoftDelete() && $item->trashed()) {
+                $value = "<s class=\"text-danger\">{$value}</s>";
+            }
+
             return html()->a(resource('edit', $item->id))->text($value);
         });
     }
