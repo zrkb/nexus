@@ -17,7 +17,7 @@ class BaseResourceController extends BaseController
         $model = $this->resource::newModel();
 
         $items = $model->hasSoftDelete() ?
-            $this->getModel()::withTrashed()->get() :
+            $this->getModel()::query()->withTrashed()->get() :
             $this->getModel()::all();
 
         $resource = new $this->resource($items);
