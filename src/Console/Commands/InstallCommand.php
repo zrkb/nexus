@@ -66,6 +66,9 @@ class InstallCommand extends Command
             '--provider' => 'Nexus\NexusServiceProvider',
         ]);
 
+        $this->line('→ Running migration files ... <info>✔</info>');
+        $this->callSilent('migrate');
+
         $this->line('→ Seeding initial data ... <info>✔</info>');
         $this->callSilent('nexus:seed');
 
