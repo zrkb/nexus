@@ -1,7 +1,5 @@
 {
-    "/assets/js/app.js": "/assets/js/app.js",
-    "/assets/css/app.css": "/assets/css/app.css",
-    "/assets/css/mango.css": "/assets/css/mango.css",
-    "/assets/js/vendor.js": "/assets/js/vendor.js",
-    "/assets/js/manifest.js": "/assets/js/manifest.js"
+    "/assets/js/app.js": "/assets/js/app.js?id=e89a852e77242fbede16",
+    "/assets/css/app.css": "/assets/css/app.css?id=c06b8fe894a15d30c5f2",
+    "/assets/css/mango.css": "/assets/css/mango.css?id=9614761e9c4ba8cefa6a"
 }
