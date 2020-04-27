@@ -63,6 +63,12 @@ class NexusServiceProvider extends ServiceProvider
         // Alias
         Blade::include('nexus::layouts/messages', 'messages');
         Blade::include('nexus::components/file', 'file');
+
+        // Custom Exception Handler
+        $this->app->bind(
+            \App\Exceptions\Handler::class,
+            \Nexus\Exceptions\Handler::class
+        );
     }
 
     public function publishResources()
