@@ -382,15 +382,12 @@ $pagination-hover-border-color: $gray-300 !default !default;
 $pagination-active-bg: $component-active-bg !default;
 $pagination-active-border-color: $pagination-active-bg !default;
 
-
 // Jumbotron
 
 $jumbotron-bg: $gray-200 !default;
 
-
 // Cards
-
-$card-spacer-y: 1rem !default;
+$card-spacer-y: 2.4rem !default;
 $card-spacer-x: $spacer !default;
 $card-border-width: $border-width !default;
 $card-border-radius: $border-radius-lg !default;
@@ -576,9 +573,6 @@ $card-spacer-x-sm: 1rem !default;
 
 $card-outline-color: $card-border-color !default;
 $card-box-shadow: 0 .75rem 1.5rem transparentize($black, .97) !default;
-
-$card-header-min-height: 3.75rem !default;
-
 
 // Charts
 

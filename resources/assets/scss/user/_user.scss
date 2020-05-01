@@ -16,8 +16,9 @@
 }
 
 .bx {
-    font-size: 140%;
-    line-height: 1.40625rem;
+    font-size: 110%;
+    line-height: inherit !important;
+    vertical-align: middle !important;
 }
 
 // Cards
@@ -38,9 +39,7 @@
 // Cards
 .navbar-brand {
     .bx {
-        position: relative;
-        top: 6px;
-        width: 2rem;
+        width: 1.9rem;
     }
 }
 .navbar-dark {
@@ -48,14 +47,6 @@
         color: $white;
         font-weight: 400;
     }
-}
-
-.bx-wrapper .bx,
-.card-title .bx,
-.btn .bx {
-    font-size: 110%;
-    position: relative;
-    top: 2px;
 }
 
 .table {
@@ -195,40 +186,71 @@
 // Small
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
-    small,
-    .small {
-        font-size: 80%;
-    }
 
     .bx {
         position: relative;
-        top: 0.19rem;
+        top: -0.1rem;
+    }
+
+    small,
+    .small {
+        font-size: 80% !important;
     }
 }
 
 
 .select2-container--default .select2-selection--single .select2-selection__arrow {
     position: absolute;
-    top: 7px;
+    top: 50%;
     right: 7px;
     display: block;
-}
-
-.select2-sm {
-    .select2-container--default .select2-selection--single .select2-selection__arrow {
-        top: 2px;
-        right: 3px;
-    }
+    transform: translateY(-50%);
 }
 
 .select2-auto .select2.select2-container {
   width: auto !important;
 }
 
+//
+// Tooltip Margin
+//
+.bs-tooltip-top {
+    top: $tooltip-distance * -1 !important;
+}
+
+.bs-tooltip-right {
+    left: $tooltip-distance !important;
+}
+
+.bs-tooltip-bottom {
+    top: $tooltip-distance !important;
+}
+
+.bs-tooltip-left {
+    left: $tooltip-distance * -1 !important;
+}
+
+//
+// Form
+//
 .form-control:disabled {
     opacity: 0.3;
 }
 
+.custom-checkbox .custom-control-label:before {
+    border-radius: 5%;
+}
+
+.custom-control-label:after,
+.custom-control-label:before {
+    top: 0.1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+//
+// Data Remove
+//
 [data-dz-remove] {
     position: absolute;
     right: 10px;
@@ -236,6 +258,9 @@ h1, h2, h3, h4, h5, h6,
     Z-index: 99999;
 }
 
+//
+// Progress
+//
 .progress-upload {
     display: none;
     position: absolute;

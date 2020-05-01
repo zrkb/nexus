@@ -1,17 +1,16 @@
 .main-content {
-	.navbar {
-		@extend .border-0;
-	}
+    .navbar {
+        @extend .border-0;
+    }
 }
 
 .bg-sidebar {
-	background-color: $bg-sidebar;
-	border: 1px solid red;
+    background-color: $bg-sidebar;
+    border: 1px solid red;
 }
 
-
 .navbar-nav .nav-link {
-	& > .bx {
-		color: darken($primary, 10%);
-	}
-  }
+    & > .bx {
+        color: darken($primary, 10%);
+    }
+}

@@ -1,42 +1,42 @@
 /* --------------------------
-	Bootstrap's colors
+    Bootstrap's colors
 ----------------------------*/
-$gray-900:						#1F1F1F !default;
-$black: 						#000000 !default;
+$gray-900:                        #1F1F1F !default;
+$black:                         #000000 !default;
 
 /* --------------------------
-	Color Scheme
+    Color Scheme
 ----------------------------*/
 
-$bg:							$white;
+$bg:                            $white;
 
-$primary:						#FFCB5F;
-$secondary:						#7CA870;
-$success:						#C6E48C;
-$info:							#30CEF5;
-$warning:						#FCB338;
-$danger:						#F55753;
-$purple:						#503A9F;
-$light:							$gray-300;
-$dark:							$gray-900;
-$pink:							#FE6E98;
-$custom:						#1fb6ff;
-$default:						#FFFFFF;
-$orange:						#EA7005;
+$primary:                        #FFCB5F;
+$secondary:                        #7CA870;
+$success:                        #C6E48C;
+$info:                            #30CEF5;
+$warning:                        #FCB338;
+$danger:                        #F55753;
+$purple:                        #503A9F;
+$light:                            $gray-300;
+$dark:                            $gray-900;
+$pink:                            #FE6E98;
+$custom:                        #1fb6ff;
+$default:                        #FFFFFF;
+$orange:                        #EA7005;
 
 // Overrides
 $theme-colors: (
-	"primary": $primary,
-	"secondary": $secondary,
-	"success": $success,
-	"info": $info,
-	"warning": $warning,
-	"danger": $danger,
-	"purple": $purple,
-	"light": $light,
-	"dark": $dark,
-	"pink": $pink,
-	"custom": $custom,
-	"orange": $orange,
-	"black": $black,
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "purple": $purple,
+    "light": $light,
+    "dark": $dark,
+    "pink": $pink,
+    "custom": $custom,
+    "orange": $orange,
+    "black": $black,
 );

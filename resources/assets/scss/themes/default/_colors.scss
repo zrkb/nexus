@@ -1,75 +1,75 @@
 /* --------------------------
-	Bootstrap's colors
+    Bootstrap's colors
 ----------------------------*/
 // stylelint-disable
-$white:							#FFFFFF;
-$gray-100:						#f8f9fd !default;
+$white:                            #FFFFFF;
+$gray-100:                        #f8f9fd !default;
 
-$gray-200: 						#eaebee !default;
-$gray-300: 						#dee2e6 !default;
-$gray-400: 						#ced4da !default;
-$gray-500: 						#adb5bd !default;
+$gray-200:                         #eaebee !default;
+$gray-300:                         #dee2e6 !default;
+$gray-400:                         #ced4da !default;
+$gray-500:                         #adb5bd !default;
 
-$gray-600:						#9BA8B4 !default;
+$gray-600:                        #9BA8B4 !default;
 
-$gray-700:						#495057 !default;
+$gray-700:                        #495057 !default;
 
-$gray-800:						#343C49 !default;
-$gray-900:						#1F2637 !default;
-$black: 						#10131c !default;
+$gray-800:                        #343C49 !default;
+$gray-900:                        #1F2637 !default;
+$black:                         #10131c !default;
 
-$text-light:					$gray-600;
-$text-base: 					$gray-700;
-$text-bold:						$gray-900;
-
-/* --------------------------
-	Custom color scheme
-----------------------------*/
-$avatar-bg:						$gray-200;
-
-$bg:							#F8F9FC;
-$border-light:					#E5E5EB;
-$card-header-footer:			#EFF3FA;
-
-$modal-bg-color:				$gray-900;
-$border-color:					$gray-200 !default;
+$text-light:                    $gray-600;
+$text-base:                     $gray-700;
+$text-bold:                        $gray-900;
 
 /* --------------------------
-	Colors Shades
+    Custom color scheme
 ----------------------------*/
-$primary:						#137eff;
-$secondary:						$bg;
-$success:						#00d97e;
-$info:							#39afd1;
-$warning:						#f6c343;
-$danger:						#e63757;
-$purple:						#6D5BAF;
-$light:							$gray-100;
-$dark:							$gray-900;
-$pink:							#ff679b;
-$custom:						#1fb6ff;
-$default:						#FFFFFF;
-$orange:						#f3842a;
+$avatar-bg:                        $gray-200;
+
+$bg:                            #F8F9FC;
+$border-light:                    #E5E5EB;
+$card-header-footer:            #EFF3FA;
+
+$modal-bg-color:                $gray-900;
+$border-color:                    $gray-200 !default;
+
+/* --------------------------
+    Colors Shades
+----------------------------*/
+$primary:                        #137eff;
+$secondary:                        $bg;
+$success:                        #00d97e;
+$info:                            #39afd1;
+$warning:                        #f6c343;
+$danger:                        #e63757;
+$purple:                        #6D5BAF;
+$light:                            $gray-100;
+$dark:                            $gray-900;
+$pink:                            #ff679b;
+$custom:                        #1fb6ff;
+$default:                        #FFFFFF;
+$orange:                        #f3842a;
 
 // Overrides
 $theme-colors: (
-	"primary": $primary,
-	"secondary": $secondary,
-	"success": $success,
-	"info": $info,
-	"warning": $warning,
-	"danger": $danger,
-	"purple": $purple,
-	"light": $light,
-	"dark": $dark,
-	"pink": $pink,
-	"custom": $custom,
-	"orange": $orange,
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "purple": $purple,
+    "light": $light,
+    "dark": $dark,
+    "pink": $pink,
+    "custom": $custom,
+    "orange": $orange,
 );
 
-$navbar-dark-color:				rgba($white, .75) !default;
-$navbar-dark-hover-color:		rgba($white, .9) !default;
+$navbar-dark-color:                rgba($white, .75) !default;
+$navbar-dark-hover-color:        rgba($white, .9) !default;
 
-$navbar-light-color:			$gray-800 !default;
-$navbar-light-hover-color:		$black !default;
-$navbar-light-active-color:		$black !default;
+$navbar-light-color:            $gray-800 !default;
+$navbar-light-hover-color:        $black !default;
+$navbar-light-active-color:        $black !default;

@@ -1,9 +1,9 @@
-// 
+//
 // card.scss
 // Extended from Bootstrap
 //
 
-// 
+//
 // Bootstrap Overrides =====================================
 //
 
@@ -19,7 +19,6 @@
   flex-direction: row;
   flex-grow: 1;
   align-items: center;
-  min-height: $card-header-min-height;
   padding-top: $card-spacer-y / 2;
   padding-bottom: $card-spacer-y / 2;
 
@@ -53,12 +52,6 @@
   margin-right: 0;
 }
 
-.card-header-tabs .nav-link {
-  padding-top: calc((#{$card-header-min-height} - 1em * #{$line-height-base}) / 2) !important;
-  padding-bottom: calc((#{$card-header-min-height} - 1em * #{$line-height-base}) / 2) !important;
-}
-
-
 // Card table
 //
 // Make sure the card table content is aligned with the rest of the
@@ -70,7 +63,7 @@
   thead th {
     border-top-width: 0;
   }
-  
+
   thead th, tbody td {
 
     &:first-child {

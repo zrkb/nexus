@@ -115,7 +115,11 @@ jQuery(document).ready(function ($) {
 	new TableCheckboxManager;
 
 	// Currency
-	// $('.input-currency').mask('#.##0', { reverse: true });
+	$('body [data-mask]').each(function (el) {
+        var el = $(el);
+
+        mask(el.data('mask'), { reverse: el.data('mask-reverse') })
+    });
 
 	/*
 	 |--------------------------------------------------------------------

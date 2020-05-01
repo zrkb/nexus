@@ -70,10 +70,10 @@
     border-radius: $input-border-radius;
 
     &:focus {
-      box-shadow: none;
-      
+    //   box-shadow: none;
+
       ~ [class*="input-group"] {
-        
+
         > .input-group-text {
           border-color: $input-focus-border-color;
         }

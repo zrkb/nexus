@@ -1,6 +1,4 @@
-<!-- JAVASCRIPT
-================================================== -->
-<!-- Libs JS -->
+{{-- Vendor --}}
 <script src="{{ assets_path() }}/assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="{{ assets_path() }}/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ assets_path() }}/assets/libs/@shopify/draggable/lib/es5/draggable.bundle.legacy.js"></script>
@@ -18,10 +16,8 @@
 <script src="{{ assets_path() }}/assets/libs/tags/tags.js"></script>
 <script src="{{ assets_path() }}/assets/libs/fancybox/fancybox.min.js"></script>
 
-<!-- Map -->
-<script src='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-
-<!-- Theme JS -->
+{{-- App --}}
 <script src="{{ mix('/assets/js/app.js', 'vendor/nexus') }}" defer></script>
 
+{{-- Extra --}}
 @stack('scripts')
