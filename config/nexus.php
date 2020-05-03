@@ -41,6 +41,8 @@ return [
 
     'sidebar_color_scheme' => 'navbar-dark bg-dark',
 
+    'welcome_illustration' => assets_path() . '/assets/img/illustrations/happiness.svg',
+
     /*
     |--------------------------------------------------------------------------
     | Auth Guards
