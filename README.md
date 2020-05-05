@@ -16,7 +16,7 @@
 Run the following command in your console terminal:
 
 ```bash
-$ composer require imfx/nexus
+$ composer require zrkb/nexus
 ```
 
 Or if you want to download the files, add the following configuration to the composer.json file:
@@ -57,7 +57,7 @@ Next, add the package to the require section of your composer.json file:
     "fideloper/proxy": "^4.0",
     "laravel/framework": "5.8.*",
     "laravel/tinker": "^1.0",
-    "imfx/nexus": "*"
+    "zrkb/nexus": "*"
 },
 ```
 
@@ -153,7 +153,7 @@ Edit your `routes/web.php` and the new resource:
 
 ```php
 Nexus::group(function () {
-	Route::resource('bookmarks', 'BookmarkController');
+    Route::resource('bookmarks', 'BookmarkController');
 });
 ```
 
@@ -163,10 +163,10 @@ Edit your `resources/views/backend/sidebar/user.blade.php` file and add the code
 
 ```php
 <li>
-	<a href="{{ route('bookmarks.index') }}">
-		<i class='bx bx-bookmarks'></i>
-		<span>Bookmarks</span>
-	</a>
+    <a href="{{ route('bookmarks.index') }}">
+        <i class='bx bx-bookmarks'></i>
+        <span>Bookmarks</span>
+    </a>
 </li>
 ```
 
@@ -177,7 +177,7 @@ That's all! You may refresh your dashboard page and you'll see a new item in the
 
 * [x] Assign permissions automatically to role Developer when creating a resource
 * [x] Add middleware for [auth routes redirect](https://laracasts.com/discuss/channels/general-discussion/l5-register-a-route-middleware-at-package?page=1) when login
-* [*] Migration file stub
+* [x] Migration file stub
 * [ ] Menus Admin
 * [ ] Media Library Admin
 * [ ] Conditionals for stubs files (Case: not all models will use SoftDelete feature)

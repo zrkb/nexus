@@ -35,6 +35,14 @@
         </div>
         <!-- END row -->
 
+        @isset($tabs)
+            <div class="row align-items-center">
+                <div class="col">
+                    {{ $tabs }}
+                </div>
+            </div>
+        @endisset
+
         {{ $segments ?? '' }}
     </div>
     <!-- END header-body -->

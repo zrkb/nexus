@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Schema;
 use Nexus\Models\Authenticatable;
-use Nexus\Presenters\AdminPresenter;
+use Nexus\Presenters\HasFullname;
 use Spatie\Permission\Traits\HasRoles;
 
-class Admin extends Authenticatable
+class Admin extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable, HasRoles, SoftDeletes, AdminPresenter;
+    use Notifiable, HasRoles, SoftDeletes, HasFullname;
 
     protected static $ignoreChangedAttributes = ['remember_token'];
 

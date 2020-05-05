@@ -2,11 +2,13 @@
 
 namespace Nexus\Http\Controllers\Auth;
 
+use Nexus\Models\Admin;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Nexus\Models\Admin;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Nexus\Http\Middleware\RedirectAdminIfAuthenticated;
 
 class RegisterController extends Controller
 {
@@ -30,7 +32,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware(RedirectAdminIfAuthenticated::class);
     }
 
     /**
@@ -87,5 +89,15 @@ class RegisterController extends Controller
     public function redirectTo()
     {
         return route('login');
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('admin');
     }
 }

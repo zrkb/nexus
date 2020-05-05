@@ -8,8 +8,22 @@ $font-size-base: .9375rem !default;
 $font-size-lg: ($font-size-base * 1.2) !default;
 $font-size-sm: ($font-size-base * .9) !default;
 
+ // Forms
+
 $form-control-height:            44px;
 $form-control-height-sm:        37px;
+
+// Links
+$link-color:                      darken($primary, 15%) !default;
+$link-hover-color:                darken($link-color, 5%) !default;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-rounded:              false !default;
+
+// Container
 
 $container-padding:                1.7rem 2rem !default;
 
@@ -132,9 +146,9 @@ $input-disabled-bg:                $avatar-bg !default;
 
 // Badges
 $badge-font-size:                80% !default;
-$badge-font-weight:                $type-500 !default;
-$badge-padding-y:                .6em !default;
-$badge-padding-x:                .6em !default;
+$badge-font-weight:                $type-300 !default;
+$badge-padding-y:                .46rem !default;
+$badge-padding-x:                .46rem !default;
 
 // Breadcrumbs
 $breadcrumb-bg:                    transparent !default;

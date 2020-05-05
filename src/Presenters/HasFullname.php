@@ -2,7 +2,7 @@
 
 namespace Nexus\Presenters;
 
-trait AdminPresenter
+trait HasFullname
 {
     public function getInitialsAttribute()
     {
@@ -13,7 +13,7 @@ trait AdminPresenter
     {
         return implode(' ', [$this->firstname, $this->lastname]);
     }
-    
+
     public function getAccountAgeAttribute()
     {
         return $this->created_at->diffForHumans();

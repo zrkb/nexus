@@ -30,5 +30,5 @@
   if (toggle) {
     init(toggle);
   }
-  
+
 })();
