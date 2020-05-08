@@ -9,10 +9,11 @@ return [
     */
     'load_base_routes' => true,
 
+    'load_custom_routes' => false,
+
     'backend_routes_file' => 'backend.php',
 
     'route' => [
-        'subdomain' => null,
         'prefix' => 'app',
         'namespace' => '\App\Http\Controllers\Backend',
         'middleware' => ['web', 'admin'],

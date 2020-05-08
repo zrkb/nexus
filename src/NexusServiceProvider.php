@@ -138,11 +138,16 @@ class NexusServiceProvider extends ServiceProvider
             $this->loadRoutesFrom(__DIR__ . '/../routes/backend.php');
         }
 
-        $userRouteFile = config('nexus.backend_routes_file', 'backend.php');
-        $userRoutePath = base_path('routes/' . $userRouteFile);
+        if (config('nexus.load_custom_routes', true)) {
+            $userRouteFile = config('nexus.backend_routes_file');
 
-        if (file_exists($userRoutePath)) {
-            $this->loadRoutesFrom($userRoutePath);
+            if (
+                $userRouteFile &&
+                ($userRoutePath = base_path('routes/' . $userRouteFile)) &&
+                file_exists($userRoutePath)
+                ) {
+                $this->loadRoutesFrom($userRoutePath);
+            }
         }
     }
 

@@ -62,12 +62,6 @@ class Nexus
             'middleware' => config('nexus.route.middleware'),
         ];
 
-        $subdomain = config('nexus.route.subdomain');
-
-        if ($subdomain && strlen($subdomain) > 0) {
-            array_merge($attributes, ['domain' => 'admin.' . parse_url(config('app.url'), PHP_URL_HOST)]);
-        }
-
         Route::group($attributes, $callback);
     }
 }
