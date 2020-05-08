@@ -10,7 +10,7 @@ use Nexus\Models\Authenticatable;
 use Nexus\Presenters\HasFullname;
 use Spatie\Permission\Traits\HasRoles;
 
-class Admin extends Authenticatable implements MustVerifyEmail
+class Admin extends Authenticatable
 {
     use Notifiable, HasRoles, SoftDeletes, HasFullname;
 
