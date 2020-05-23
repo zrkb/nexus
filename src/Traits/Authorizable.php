@@ -2,83 +2,84 @@
 
 namespace Nexus\Traits;
 
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Support\Arr;
-use Nexus\Exceptions\AuthorityException;
 use Nexus\Models\AuthorizeAction;
+use Illuminate\Support\Facades\Request;
+use Nexus\Exceptions\AuthorityException;
+use Illuminate\Auth\Access\AuthorizationException;
 
 trait Authorizable
 {
-	private $abilities = [
-		'index'		=> AuthorizeAction::View,
-		'show'		=> AuthorizeAction::View,
-		'export'		=> AuthorizeAction::View,
+    private $abilities = [
+        'index'   => AuthorizeAction::View,
+        'show'    => AuthorizeAction::View,
+        'export'  => AuthorizeAction::View,
 
-		'create'	=> AuthorizeAction::Add,
-		'store'		=> AuthorizeAction::Add,
+        'create'  => AuthorizeAction::Add,
+        'store'   => AuthorizeAction::Add,
 
-		'edit'		=> AuthorizeAction::Edit,
-		'update'	=> AuthorizeAction::Edit,
-		'restore'	=> AuthorizeAction::Edit,
-		
-		'destroy'	=> AuthorizeAction::Delete,
-	];
+        'edit'    => AuthorizeAction::Edit,
+        'update'  => AuthorizeAction::Edit,
+        'restore' => AuthorizeAction::Edit,
 
-	/**
-	 * Override of callAction to perform the authorization before
-	 *
-	 * @param $method
-	 * @param $parameters
-	 * @return mixed
-	 */
-	public function callAction($method, $parameters)
-	{
-		if( $ability = $this->getAbility($method) ) {
-			try {
-				$this->authorizeForUser(admin(), $ability);
-			} catch (AuthorizationException $e) {
-				throw new AuthorityException();
-			}
-		}
+        'destroy' => AuthorizeAction::Delete,
+    ];
 
-		return parent::callAction($method, $parameters);
-	}
+    /**
+     * Override of callAction to perform the authorization before
+     *
+     * @param $method
+     * @param $parameters
+     * @return mixed
+     */
+    public function callAction($method, $parameters)
+    {
+        if ($ability = $this->getAbility($method)) {
+            try {
+                $this->authorizeForUser(admin(), $ability);
+            } catch (AuthorizationException $e) {
+                throw new AuthorityException();
+            }
+        }
 
-	public function getAbility($method)
-	{
-		$routeName = $this->getRouteName();
-		$resource = $routeName[0];
+        return parent::callAction($method, $parameters);
+    }
 
-		if (strlen($resource) == 0) {
-			$resource = request()->route('resource');
-		}
+    public function getAbility($method)
+    {
+        $routeName = $this->getRouteName();
+        $resource = $routeName[0];
 
-		$action = Arr::get($this->getAbilities(), $method);
+        if (strlen($resource) == 0) {
+            $resource = request()->route('resource');
+        }
 
-		return $action ? $action . '_' . $resource : $method . '_' . $resource;
-	}
+        $action = Arr::get($this->getAbilities(), $method);
 
-	private function getRouteName() : array
-	{
-		$routeArray = explode('.', \Request::route()->getName());
+        return $action ? $action . '_' . $resource : $method . '_' . $resource;
+    }
 
-		if (count($routeArray) > 2) {
-			$ability = array_pop($routeArray);
-			$route = implode('.', $routeArray); 
+    private function getRouteName() : array
+    {
+        $routeArray = explode('.', Request::route()->getName());
 
-			return [$route, $ability];
-		}
+        if (count($routeArray) > 2) {
+            $ability = array_pop($routeArray);
+            $route = implode('.', $routeArray);
 
-		return $routeArray;
-	}
+            return [$route, $ability];
+        }
 
-	private function getAbilities()
-	{
-		return $this->abilities;
-	}
+        return $routeArray;
+    }
 
-	public function setAbilities($abilities)
-	{
-		$this->abilities = $abilities;
-	}
+    private function getAbilities()
+    {
+        return $this->abilities;
+    }
+
+    public function setAbilities($abilities)
+    {
+        $this->abilities = $abilities;
+    }
 }

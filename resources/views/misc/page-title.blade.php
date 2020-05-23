@@ -27,7 +27,7 @@
             <!-- END col -->
 
             @isset($superactions)
-                <div class="col-auto">
+                <div class="col-auto mt-4 mt-md-0">
                     {{ $superactions }}
                 </div>
                 <!-- END col -->

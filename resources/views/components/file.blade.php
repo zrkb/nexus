@@ -24,7 +24,9 @@
                 </h1>
             </div>
 
-            <span class="upload-dragndrop d-block small">Arrastra una imagen aquí o bien</span>
+            <span class="upload-dragndrop d-block small">
+                {{ $message ?? 'Arrastra una imagen aquí o bien' }}
+            </span>
             <span class="btn btn-link mt-1 text-primary">Selecciona un archivo</span>
         </label>
     </div>
