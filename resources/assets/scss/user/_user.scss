@@ -9,6 +9,7 @@
 @import 'daterangepicker';
 @import 'tags';
 @import 'upload-box';
+@import 'labels';
 
 .text-inherit {
     color: inherit;
@@ -235,6 +236,10 @@ h1, h2, h3, h4, h5, h6,
 //
 .form-control:disabled {
     opacity: 0.3;
+}
+
+.custom-control .custom-control-label {
+    font-weight: $type-400;
 }
 
 .custom-checkbox .custom-control-label:before {

@@ -14,7 +14,7 @@ $form-control-height:            44px;
 $form-control-height-sm:        37px;
 
 // Links
-$link-color:                      darken($primary, 15%) !default;
+$link-color:                      darken($primary, 10%) !default;
 $link-hover-color:                darken($link-color, 5%) !default;
 
 // Options
@@ -126,6 +126,12 @@ $table-hover-bg:                $gray-100 !default;
 
 // Forms
 $form-group-margin-bottom:        ($spacer * 1.5) !default;
+
+$form-label-margin-bottom:              .5rem !default;
+$form-label-font-size:                  null !default;
+$form-label-font-style:                 null !default;
+$form-label-font-weight:                $type-500 !default;
+$form-label-color:                      $black !default;
 
 $input-btn-padding-y:            .625rem !default;
 $input-btn-padding-x:            .75rem !default;
