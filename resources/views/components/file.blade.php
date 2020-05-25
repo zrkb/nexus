@@ -39,13 +39,14 @@
 
 @push('scripts')
     <script>
-        var isAdvancedUpload = function() {
+        'use strict';
+
+        let isAdvancedUpload = function () {
             var div = document.createElement('div');
             return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
         }();
-        'use strict';
 
-        ;( function( $, window, document, undefined ){
+        jQuery(document).ready(function ($) {
             // feature detection for drag&drop upload
             var isAdvancedUpload = function() {
                 var div = document.createElement('div');
@@ -53,11 +54,11 @@
             }();
 
             // applying the effect for every form
-            $('.upload-box').each(function(){
+            $('.upload-box').each(function() {
                 var $form		 = $(this),
                     $input		 = $form.find('input[type="file"]'),
                     $preview	 = $form.find('.upload-preview'),
-                    $box         = $form.find('.upload-input');
+                    $box         = $form.find('.upload-input'),
                     $label		 = $form.find('label'),
                     $errorMsg	 = $form.find('.upload-error span'),
                     $restart	 = $form.find('.upload-restart'),
@@ -75,6 +76,7 @@
                         reader.readAsDataURL(droppedFiles[0]);
                     };
 
+
                 $deleteBtn.on('click', function(e) {
                     $box.css('opacity', 1);
                     $box.css('height', 'auto');
@@ -91,7 +93,7 @@
                 });
 
                 // drag&drop files if the feature is available
-                if( isAdvancedUpload ) {
+                if ( isAdvancedUpload ) {
                     $form.addClass( 'has-advanced-upload' )
                         .on( 'drag dragstart dragend dragover dragenter dragleave drop', function( e ) {
                             // preventing the unwanted behaviours
@@ -114,6 +116,6 @@
                 });
             });
 
-        })( jQuery, window, document );
+        });
     </script>
 @endpush
