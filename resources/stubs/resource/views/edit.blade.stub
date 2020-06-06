@@ -9,7 +9,7 @@
                     @include('nexus::components/back-to-resource')
                 @endslot
 
-                Editar SingularLowercaseBaseClass
+                Editar SingularBaseClass
             @endcomponent
 
             @messages
