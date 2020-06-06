@@ -64,4 +64,9 @@ class Nexus
 
         Route::group($attributes, $callback);
     }
+
+    public function baseRouteFile()
+    {
+        return __DIR__ . '/../routes/backend.php';
+    }
 }
