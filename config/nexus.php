@@ -23,7 +23,7 @@ return [
 
     'controller' => 'AppController',
 
-    'registration_enabled' => true,
+    'registration_enabled' => false,
 
     'models' => [
         'admin' => \Nexus\Models\Admin::class,
