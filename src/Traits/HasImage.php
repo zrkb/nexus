@@ -6,10 +6,46 @@ use Nexus\Models\Media;
 use Illuminate\Http\Request;
 use Plank\Mediable\Mediable;
 use Illuminate\Support\HtmlString;
+use Illuminate\Database\Eloquent\Model;
 
 trait HasImage
 {
     use Mediable;
+
+    public static function bootHasImage()
+    {
+        static::saving(function (Model $model) {
+            if ($model->syncImageOnSave()) {
+                if ($model->exists == false) {
+                    $model->attachImageIfExists();
+                }
+
+                $model->syncImageIfExists();
+            }
+        });
+    }
+
+    public function attachImageIfExists(Request $request = null)
+    {
+        $request = $request ?? request();
+
+        if ($imageFile = $request->file('image')) {
+            $this->attachImage($imageFile);
+        }
+    }
+
+    public function syncImageIfExists(Request $request = null)
+    {
+        $request = $request ?? request();
+
+        if ($request->has('remove') && $this->image) {
+            $this->image->delete();
+        }
+
+        if ($file = $request->file('image')) {
+            $this->attachImage($file);
+        }
+    }
 
     public function getImageAttribute()
     {
@@ -55,5 +91,10 @@ trait HasImage
     public function destinationPath()
     {
         return 'uploads';
+    }
+
+    public function syncImageOnSave()
+    {
+        return true;
     }
 }
