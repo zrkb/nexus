@@ -14,12 +14,14 @@ trait HasImage
 
     public static function bootHasImage()
     {
-        static::saving(function (Model $model) {
+        static::created(function (Model $model) {
             if ($model->syncImageOnSave()) {
-                if ($model->exists == false) {
-                    $model->attachImageIfExists();
-                }
+                $model->attachImageIfExists();
+            }
+        });
 
+        static::saving(function (Model $model) {
+            if ($model->syncImageOnSave() && $model->exists) {
                 $model->syncImageIfExists();
             }
         });
