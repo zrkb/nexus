@@ -1,0 +1,15 @@
+//
+// Custom Colors
+//
+
+$bg-sidebar:        #FFF9ED;
+
+// Options
+//
+// Quickly modify global styling by enabling or disabling optional features.
+
+$enable-rounded:              false !default;
+
+// Links
+$link-color:                      darken($primary, 5%) !default;
+$link-hover-color:                darken($link-color, 5%) !default;

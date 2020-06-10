@@ -1,0 +1,42 @@
+/* --------------------------
+    Bootstrap's colors
+----------------------------*/
+$gray-900:                        #24223E;
+$black:                         #000000 !default;
+
+/* --------------------------
+    Color Scheme
+----------------------------*/
+
+$bg:                            $white;
+
+$primary:                        #675EDC;
+$secondary:                        #373462;
+$success:                        #38DA69;
+$info:                            #30CEF5;
+$warning:                        #FCB338;
+$danger:                        #DA3838;
+$purple:                        #503A9F;
+$light:                            $gray-300;
+$dark:                            $gray-900;
+$pink:                            #FE6E98;
+$custom:                        #1fb6ff;
+$default:                        #FFFFFF;
+$orange:                        #EA7005;
+
+// Overrides
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "purple": $purple,
+    "light": $light,
+    "dark": $dark,
+    "pink": $pink,
+    "custom": $custom,
+    "orange": $orange,
+    "black": $black,
+);

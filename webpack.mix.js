@@ -28,6 +28,7 @@ mix
     .js('resources/assets/js/app.js', 'public/assets/js')
     .sass('resources/assets/scss/app.scss', 'public/assets/css')
     .sass('resources/assets/scss/mango.scss', 'public/assets/css')
+    .sass('resources/assets/scss/berry.scss', 'public/assets/css')
 
     .setPublicPath('public') // Reset the public path before versioning
     .version()

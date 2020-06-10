@@ -1,0 +1,32 @@
+// Boxicons
+@import '../../../node_modules/boxicons/css/boxicons.min';
+
+// Bootstrap functions
+@import '../../../node_modules/bootstrap/scss/functions';
+
+// Default colors
+@import 'themes/default/colors';
+
+// Custom colors
+@import 'themes/berry/colors';
+
+// Default variables
+@import 'themes/default/variables';
+
+// Theme Variables
+@import 'themes/berry/variables';
+
+// Dashkit variables
+@import 'dashkit/variables';
+
+// Bootstrap core
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+
+// Dashkit core
+@import 'dashkit/dashkit';
+
+// User core
+@import 'user/user';
+
+// Custom
+@import 'themes/berry/custom';
