@@ -1,3 +1,17 @@
+@php
+    $checked = false;
+
+    if (old()) {
+        $checked = null;
+    } else {
+        if (isset($model) && $model) {
+            $checked = (bool) $model->{$field};
+        } else {
+            $checked = $default ?? null;
+        }
+    }
+@endphp
+
 <div class="row">
     <div class="col-12 col-md-6">
 
@@ -22,7 +36,7 @@
         <div class="form-group">
             <!-- Switch -->
             <div class="custom-control custom-switch d-inline-block">
-                {{ form()->checkbox($field, $value ?? 1, old() ? ($default ?? null) : (isset($model) && $model ? $model->{$field} : ($default ?? null)), ['class' => 'custom-control-input', 'id' => $field]) }}
+                {{ form()->checkbox($field, $value ?? 1, $checked, ['class' => 'custom-control-input', 'id' => $field]) }}
                 <label class="custom-control-label" for="{{ $field }}"></label>
             </div>
         </div>
