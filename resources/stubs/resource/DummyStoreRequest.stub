@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\SingularBaseClass;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Nexus\Http\Requests\NexusFormRequest;
 
 class StoreSingularBaseClass extends NexusFormRequest
