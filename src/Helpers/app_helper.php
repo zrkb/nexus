@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Route;
 
 if (! function_exists('route_filter')) {
     /**
@@ -113,5 +114,17 @@ if (!function_exists('admin_base_path')) {
         $prefix = ($prefix == '/') ? '' : $prefix;
 
         return $prefix.'/'.trim($path, '/');
+    }
+}
+
+if (! function_exists('is_route')) {
+    /**
+     * Check if user is viewing the specified route
+     *
+     * @return bool
+     */
+    function is_route(string $route): bool
+    {
+        return Route::currentRouteName() == $route;
     }
 }
