@@ -6,7 +6,10 @@ trait HasFullname
 {
     public function getInitialsAttribute()
     {
-        return $this->firstname[0] ?? 'X' . $this->lastname[0] ?? '';
+        $firstname = $this->firstname ?? 'N';
+        $lastname = $this->lastname ?? 'N';
+
+        return $firstname[0] . $lastname[0];
     }
 
     public function getFullnameAttribute()
