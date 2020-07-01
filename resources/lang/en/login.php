@@ -2,7 +2,7 @@
 
 return [
     'welcome-title' => 'Sign in',
-    'welcome-slogan' => 'Welcome to ' . env('APP_NAME'),
+    'welcome-slogan' => 'Welcome to ' . config('app.name'),
     'user-label' => 'Email',
     'user-placeholder' => 'user@example.com',
     'password-label' => 'Password',

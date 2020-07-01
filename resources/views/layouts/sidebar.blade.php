@@ -13,7 +13,7 @@
       <a class="navbar-brand my-3 text-left" href="{{ route('app') }}">
         <h3 class="text-inherit m-0">
             <i class='bx bxs-cube-alt text-primary'></i>
-            {{ env('APP_NAME') }}
+            {{ config('app.name') }}
         </h3>
       </a>
 

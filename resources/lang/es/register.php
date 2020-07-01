@@ -2,7 +2,7 @@
 
 return [
     'welcome-title' => 'Regístrate',
-    'welcome-slogan' => 'Bienvenido a ' . env('APP_NAME'),
+    'welcome-slogan' => 'Bienvenido a ' . config('app.name'),
     'name-label' => 'Nombre',
     'lastname-label' => 'Apellido',
     'name-placeholder' => 'Juan',
