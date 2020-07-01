@@ -83,9 +83,8 @@ class NexusServiceProvider extends ServiceProvider
         ], 'nexus-assets');
 
         $this->publishes([
-            __DIR__ . '/../public/assets/css/app.css' => public_path('vendor/nexus/assets/css/app.css'),
-            __DIR__ . '/../public/assets/css/mango.css' => public_path('vendor/nexus/assets/css/mango.css'),
-        ], 'nexus-css');
+            __DIR__ . '/../resources/assets/scss' => resource_path('vendor/nexus')
+        ], 'nexus-scss');
 
         $this->publishes([
             __DIR__ . '/../database/factories' => database_path('factories')
