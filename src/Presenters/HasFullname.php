@@ -26,4 +26,9 @@ trait HasFullname
     {
         return $this->updated_at->diffForHumans();
     }
+
+    public function getLastnameAttribute()
+    {
+        return $this->attributes['lastname'] ?? '';
+    }
 }

@@ -40,6 +40,6 @@
         </div>
         {{-- END table-responsive --}}
     @else
-        @include('nexus::layouts/empty')
+        @include('nexus::layouts/empty', $emptyLayout ?? [])
     @endif
 </div>
