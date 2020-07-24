@@ -25,7 +25,8 @@
     "require-dev": {
         "cybercog/laravel-whoops-editor": "^3.0",
         "phpunit/phpunit": ">=5.4.3",
-        "squizlabs/php_codesniffer": "^2.3"
+        "squizlabs/php_codesniffer": "^2.3",
+        "barryvdh/laravel-debugbar": "^3.0"
     },
     "autoload": {
         "psr-4": {
