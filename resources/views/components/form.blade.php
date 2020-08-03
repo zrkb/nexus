@@ -1,5 +1,10 @@
 @php
-    $config = ['url' => $url ?? './', 'method' => $method ?? 'post', 'id' => $id ?? null];
+    $config = [
+        'url' => $url ?? './',
+        'method' => $method ?? 'post',
+        'id' => $id ?? null,
+        'class' => $class ?? null,
+    ];
 @endphp
 
 {{ form()->open($config) }}
