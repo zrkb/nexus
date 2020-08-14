@@ -17,9 +17,10 @@ class AppLocale
     public function handle($request, Closure $next)
     {
         // Change Locale
-        setlocale(LC_ALL, config('app.locale'));
-        Carbon::setLocale(config('app.locale'));
-        
+        setlocale(LC_TIME, 'es_ES', 'es', 'ES');
+        \Carbon\Carbon::setUTF8(true);
+        \Carbon\Carbon::setLocale(config('app.locale'));
+
         return $next($request);
     }
 }

@@ -128,3 +128,19 @@ if (! function_exists('is_route')) {
         return Route::currentRouteName() == $route;
     }
 }
+
+if (! function_exists('is_resource_route')) {
+    /**
+     * Check if user is viewing the specified resource
+     *
+     * @return bool
+     */
+    function is_resource_route(string $resource): bool
+    {
+        $route = explode('.', Route::currentRouteName());
+        array_pop($route);
+        $resourceName = implode('.', $route);
+
+        return $resourceName == $resource;
+    }
+}
