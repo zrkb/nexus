@@ -16,7 +16,7 @@
 
             {{ form()->model($SingularLowercaseBaseClass, ['url' => resource('update', $SingularLowercaseBaseClass->id), 'method' => 'PUT']) }}
 
-                @include('backend/PluralLowercaseBaseClass/form')
+                @include('backend/PluralSnakeBaseClass/form')
 
                 <hr>
 

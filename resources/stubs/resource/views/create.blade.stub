@@ -17,7 +17,7 @@
 
             {{ form()->open(['url' => resource('store'), 'method' => 'post']) }}
 
-                @include('backend/PluralLowercaseBaseClass/form')
+                @include('backend/PluralSnakeBaseClass/form')
 
                 <hr>
 

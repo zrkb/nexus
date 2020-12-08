@@ -36,7 +36,7 @@
                     </td>
 
                     <td>
-                        <a href="{{ resource('show', $SingularLowercaseBaseClass->id) }}">
+                        <a href="{{ resource('edit', $SingularLowercaseBaseClass->id) }}">
                             {{ $SingularLowercaseBaseClass->name }}
                         </a>
                     </td>
