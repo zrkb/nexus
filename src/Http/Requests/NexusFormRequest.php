@@ -29,7 +29,7 @@ abstract class NexusFormRequest extends FormRequest
         return [];
 	}
 
-    public function model()
+    public function model(): ?Model
     {
         return $this->model;
 	}

@@ -14,60 +14,50 @@
         </p>
 
         <!-- Form -->
-        <form action="{{ admin_base_path('register') }}" method="POST">
-            @csrf
-            <!-- Name -->
-            <div class="form-group">
-                <!-- Label -->
-                <label>
-                    @lang('nexus::register.name-label')
-                </label>
-                <!-- Input -->
-                {{ form()->text('firstname', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.name-placeholder') ]) }}
-            </div>
+        {{ form()->open(['url' => admin_base_path('register'), 'method' => 'POST']) }}
 
-            <!-- Lastname -->
+            <!-- Firstname -->
             <div class="form-group">
-                <!-- Label -->
-                <label>
-                    @lang('nexus::register.lastname-label')
-                </label>
-                <!-- Input -->
-                {{ form()->text('lastname', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.lastname-placeholder') ]) }}
+                {{ form()->label('firstname', trans('nexus::register.firstname-label')) }}
+                {{ form()->text('firstname', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.firstname-placeholder')]) }}
             </div>
+            <!-- End Firstname -->
+
+            <!-- Lastnmame -->
+            <div class="form-group">
+                {{ form()->label('lastname', trans('nexus::register.lastname-label')) }}
+                {{ form()->text('lastname', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.lastname-placeholder')]) }}
+            </div>
+            <!-- End Lastnmame -->
 
             <!-- Email address -->
             <div class="form-group">
-                <!-- Label -->
-                <label>
-                    @lang('nexus::register.user-label')
-                </label>
-                <!-- Input -->
-                {{ form()->email('email', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.user-placeholder') ]) }}
+                {{ form()->label('email', trans('nexus::register.user-label')) }}
+                {{ form()->text('email', null, ['class' => 'form-control', 'placeholder' => trans(('nexus::register.user-placeholder'))]) }}
             </div>
+            <!-- End Email address -->
+
             <!-- Password -->
             <div class="form-group">
-                <!-- Label -->
-                <label>
-                    @lang('nexus::register.password-label')
-                </label>
-                <!-- Input -->
-                {{ form()->password('password', ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-placeholder') ]) }}
+                {{ form()->label('password', trans('nexus::register.password-label')) }}
+                {{ form()->password('password', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-placeholder')]) }}
             </div>
-            <!-- Password Confirmation -->
+            <!-- End Password -->
+
+            <!-- Password confirmation -->
             <div class="form-group">
-                <!-- Label -->
-                <label>
-                    @lang('nexus::register.password-confirmation-label')
-                </label>
-                <!-- Input -->
-                {{ form()->password('password_confirmation', ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-confirmation-placeholder') ]) }}
+                {{ form()->label('password_confirmation', trans('nexus::register.password-confirmation-label')) }}
+                {{ form()->password('password_confirmation', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-confirmation-placeholder')]) }}
             </div>
+            <!-- End Password confirmation -->
+
             <!-- Submit -->
             <button class="btn btn-block btn-primary mb-3">
                 @lang('nexus::register.submit-label')
             </button>
-        </form>
+            <!-- End Submit -->
+
+        {{ form()->close() }}
     </div>
 
     <!-- Link -->

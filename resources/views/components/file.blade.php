@@ -7,7 +7,7 @@
     $fileExists = is_null($file) == false;
 @endphp
 
-<div class="upload-box">
+<div class="upload-box {{ $name }}-upload-box">
 
     <div class="text-center">
         <img class="upload-preview img-fluid" src="{{ $fileExists ? $file->getUrl() : '' }}" @if ($fileNotExists) style="display: none;" @endif>
@@ -41,41 +41,34 @@
     <script>
         'use strict';
 
-        let isAdvancedUpload = function () {
-            var div = document.createElement('div');
-            return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
-        }();
-
-        jQuery(document).ready(function ($) {
-            // feature detection for drag&drop upload
-            var isAdvancedUpload = function() {
-                var div = document.createElement('div');
-                return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) ) && 'FormData' in window && 'FileReader' in window;
+        ;( function( $, window, document, undefined ){
+            let isAdvancedUpload = function() {
+                let div = document.createElement('div');
+                return (('draggable' in div) || ('ondragstart' in div && 'ondrop' in div)) && 'FormData' in window && 'FileReader' in window;
             }();
 
             // applying the effect for every form
-            $('.upload-box').each(function() {
-                var $form		 = $(this),
-                    $input		 = $form.find('input[type="file"]'),
-                    $preview	 = $form.find('.upload-preview'),
+            $('.{{ $name }}-upload-box').each(function(){
+                let $form        = $(this),
+                    $input       = $form.find('input[type="file"]'),
+                    $preview     = $form.find('.upload-preview'),
                     $box         = $form.find('.upload-input'),
-                    $label		 = $form.find('label'),
-                    $errorMsg	 = $form.find('.upload-error span'),
-                    $restart	 = $form.find('.upload-restart'),
+                    $label       = $form.find('label'),
+                    $errorMsg    = $form.find('.upload-error span'),
+                    $restart     = $form.find('.upload-restart'),
                     $deleteBtn   = $form.find('.delete-file'),
                     droppedFiles = false,
-                    showPreview = function(droppedFiles) {
-                        var reader = new FileReader();
+                    showPreview  = function(droppedFiles) {
+                        let reader = new FileReader();
                         reader.onload = function(e) {
                             $box.css('opacity', 0);
                             $box.css('height', 0);
                             $preview.attr('src', e.target.result).show();
                             $deleteBtn.show();
-                            $('[type="hidden"][name="remove"][value="1"]').remove();
+                            $('[type="hidden"][name="{{ $name }}-file"][value="remove"]').remove();
                         }
                         reader.readAsDataURL(droppedFiles[0]);
                     };
-
 
                 $deleteBtn.on('click', function(e) {
                     $box.css('opacity', 1);
@@ -84,7 +77,7 @@
                     $input.attr('type', null).attr('type', 'file').val(null);
                     $preview.hide().attr('src', null);
                     $deleteBtn.hide();
-                    $form.append('<input type="hidden" name="remove" value="1">');
+                    $form.append('<input type="hidden" name="{{ $name }}-file" value="remove">');
                 });
 
                 // automatically submit the form on file select
@@ -93,7 +86,7 @@
                 });
 
                 // drag&drop files if the feature is available
-                if ( isAdvancedUpload ) {
+                if( isAdvancedUpload ) {
                     $form.addClass( 'has-advanced-upload' )
                         .on( 'drag dragstart dragend dragover dragenter dragleave drop', function( e ) {
                             // preventing the unwanted behaviours
@@ -116,6 +109,6 @@
                 });
             });
 
-        });
+        })( jQuery, window, document );
     </script>
 @endpush

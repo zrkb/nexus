@@ -8,88 +8,98 @@ use Illuminate\Support\Str;
 
 trait HasCustomFilters
 {
-	/**
-	 * @var \Illuminate\Support\Collection
-	 */
-	protected $filters;
+    /**
+     * @var \Illuminate\Support\Collection
+     */
+    protected $filters;
 
-	/**
-	 * @var string
-	 */
-	protected $filterSuffix = '-filter';
+    /**
+     * @var string
+     */
+    protected $filterSuffix = '-filter';
 
-	public function scopeFilterBy($query, $request = null)
-	{
-		$request = $request ?? request()->all();
-		
-		$this->filters = $this->extractFiltersFrom($request);
+    protected $isDirty = false;
 
-		$this->filters->each(function($value, $key) use (&$query) {
-			$filter = str_replace($this->filterSuffix, '', $key);
-			$field = $this->getRelationFieldName($filter);
+    public function scopeFilterBy($query, $request = null)
+    {
+        $request = $request ?? request()->all();
 
-			if ($this->filterClassExists($filter)) {
-				$this->applyFilter($filter, $query, $value);
-			} else if ($this->columnExists($field)) {
-				$query->where($field, $value);
-			} else {
-				// TODO: Add bypass option
-				// throw new MissingFilterException(sprintf('There is no filter for "%s" key', $key));
-			}
-		});
+        $this->filters = $this->extractFiltersFrom($request);
 
-		return $query;
-	}
+        $this->filters->each(function($value, $key) use (&$query) {
+            $filter = str_replace($this->filterSuffix, '', $key);
+            $field = $this->getRelationFieldName($filter);
 
-	public function applyFilter($filterName, &$query, $value)
-	{
-		$filterInstance = $this->resolveFilter($filterName);
+            if ($this->filterClassExists($filter)) {
+                $this->isDirty = true;
+                $this->applyFilter($filter, $query, $value);
+            } else if ($this->columnExists($field)) {
+                $this->isDirty = true;
+                $query->where($field, $value);
+            } else {
+                $this->isDirty = false;
+                // TODO: Add bypass option
+                // throw new MissingFilterException(sprintf('There is no filter for "%s" key', $key));
+            }
+        });
 
-		return $filterInstance->apply($query, $value);
-	}
+        return $query;
+    }
 
-	public function resolveFilter($name)
-	{
-		return $this::filters()[$name];
-	}
+    public function applyFilter($filterName, &$query, $value)
+    {
+        $filterInstance = $this->resolveFilter($filterName);
 
-	public function getRelationFieldName($filter)
-	{
-		$relation = Str::snake($filter);
-		$field = "{$relation}_id";
+        return $filterInstance->apply($query, $value);
+    }
 
-		return $field;
-	}
+    public function resolveFilter($name)
+    {
+        return $this::filters()[$name];
+    }
 
-	/**
-	 * Extract all "filterable" elements from query string.
-	 * 
-	 * @return \Illuminate\Support\Collection
-	 */
-	public function extractFiltersFrom(array $request)
-	{
-		return collect($request)->filter(function ($input, $key) {
-			return preg_match('/'. $this->filterSuffix . '$/', $key);
-		});
-	}
+    public function getRelationFieldName($filter)
+    {
+        $relation = Str::snake($filter);
+        $field = "{$relation}_id";
 
-	/**
-	 * Check wheter the model has the specified filter.
-	 * 
-	 * @return bool
-	 */
-	public function filterClassExists($key)
-	{
-		return isset($this::filters()[$key]);
-	}
+        return $field;
+    }
 
-	/**
-	 * Return filter list.
-	 * 
-	 * @return array
-	 */
-	public static function filters() : array
-	{
-		return [];
-	}
+    /**
+     * Extract all "filterable" elements from query string.
+     *
+     * @return \Illuminate\Support\Collection
+     */
+    public function extractFiltersFrom(array $request)
+    {
+        return collect($request)->filter(function ($input, $key) {
+            return preg_match('/'. $this->filterSuffix . '$/', $key);
+        });
+    }
+
+    /**
+     * Check wheter the model has the specified filter.
+     *
+     * @return bool
+     */
+    public function filterClassExists($key)
+    {
+        return isset($this::filters()[$key]);
+    }
+
+    /**
+     * Return filter list.
+     *
+     * @return array
+     */
+    public static function filters() : array
+    {
+        return [];
+    }
+
+    public function dirty(): bool
+    {
+        return $this->isDirty;
+    }
 }

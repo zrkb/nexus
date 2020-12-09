@@ -51,6 +51,7 @@ class ForgeCRUD extends Command
         $this->createCRUDRequests();
         $this->createCRUDViews();
         $this->createAndAssignPermissions();
+        $this->printRoute();
     }
 
     public function createMigration()
@@ -107,7 +108,7 @@ class ForgeCRUD extends Command
 
     public function createAndAssignPermissions()
     {
-        $route = Str::plural(Str::snake(class_basename($this->argument('name'))));
+        $route = Str::plural(Str::slug(class_basename($this->argument('name'))));
 
         $abilities = [
             AuthorizeAction::View,
@@ -137,6 +138,18 @@ class ForgeCRUD extends Command
 
         // Asign to Developer Role
         (Role::findByName(dev_role(), 'admin'))->syncPermissions(Permission::all());
+    }
+
+    public function printRoute()
+    {
+        $name = $this->argument('name');
+        $slug = Str::slug(Str::plural(class_basename($name)));
+
+        $baseClass = Str::singular(Str::studly(class_basename($name)));
+        $controllerName = "{$baseClass}Controller";
+
+        $this->line(PHP_EOL . 'Add the following line to your routes file:');
+        $this->warn(PHP_EOL . "Nexus::resource('{$slug}', '{$controllerName}');" . PHP_EOL);
     }
 
     protected function getStub($type)
