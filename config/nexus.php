@@ -14,7 +14,7 @@ return [
     'backend_routes_file' => 'backend.php',
 
     'route' => [
-        'prefix' => 'app',
+        'prefix' => 'admin',
         'namespace' => '\App\Http\Controllers\Backend',
         'middleware' => ['web', 'admin'],
     ],
