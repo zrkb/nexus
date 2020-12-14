@@ -7,7 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 abstract class NexusFormRequest extends FormRequest
 {
-	private $model;
+    private $model;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -27,24 +27,24 @@ abstract class NexusFormRequest extends FormRequest
     public function rules()
     {
         return [];
-	}
+    }
 
     public function model(): ?Model
     {
         return $this->model;
-	}
+    }
 
     /**
      * Set model
      *
      * @return self
      */
-	public function withModel(Model $model = null)
-	{
-		$this->model = $model;
+    public function withModel(Model $model = null)
+    {
+        $this->model = $model;
 
-		return $this;
-	}
+        return $this;
+    }
 
     /**
      * Persist the request to the repository.

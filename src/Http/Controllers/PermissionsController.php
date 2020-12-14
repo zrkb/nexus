@@ -8,7 +8,7 @@ use Nexus\Models\Permission;
 
 class PermissionsController extends BaseResourceController
 {
-	protected $resource = '\Nexus\Resources\PermissionResource';
+    protected $resource = '\Nexus\Resources\PermissionResource';
 
     public function create()
     {
@@ -18,22 +18,22 @@ class PermissionsController extends BaseResourceController
         return view($resource->viewForCreation, compact('item', 'resource'));
     }
 
-	public function store(Request $request)
-	{
+    public function store(Request $request)
+    {
         $model = $this->resource::newModel();
         $resource = new $this->resource($model);
 
         $this->validate($request, $resource->createRules());
 
-		foreach ($request->actions as $action) {
-			Permission::create([
-				'name' => $action . '_' . $request->name,
-				'guard_name' => $request->guard_name,
-			]);
-		}
+        foreach ($request->actions as $action) {
+            Permission::create([
+                'name' => $action . '_' . $request->name,
+                'guard_name' => $request->guard_name,
+            ]);
+        }
 
-		session()->flash('success', 'Los Permisos han sido añadidos exitosamente.');
+        session()->flash('success', 'Los Permisos han sido añadidos exitosamente.');
 
-		return redirect(resource('index'));
-	}
+        return redirect(resource('index'));
+    }
 }

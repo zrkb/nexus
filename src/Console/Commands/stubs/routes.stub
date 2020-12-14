@@ -8,11 +8,11 @@
 Nexus::authRoutes();
 
 Route::group([
-	'prefix'        => config('nexus.route.prefix'),
-	'namespace'     => config('nexus.route.namespace'),
-	'middleware'    => config('nexus.route.middleware'),
+    'prefix'        => config('nexus.route.prefix'),
+    'namespace'     => config('nexus.route.namespace'),
+    'middleware'    => config('nexus.route.middleware'),
 ], function () {
-	
-	Route::get('/', 'AppController@index')->name('app');
+
+    Route::get('/', 'AppController@index')->name('app');
 
 });

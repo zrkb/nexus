@@ -9,26 +9,26 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ForgeUpdateRequest extends GeneratorCommand
 {
-	/**
-	 * The name and signature of the console command.
-	 *
-	 * @var string
-	 */
-	protected $name = 'nexus:update-request {name}';
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $name = 'nexus:update-request {name}';
 
-	/**
-	 * The console command description.
-	 *
-	 * @var string
-	 */
-	protected $description = 'Forge a new Update Request class';
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Forge a new Update Request class';
 
-	/**
-	 * The type of class being generated.
-	 *
-	 * @var string
-	 */
-	protected $type = 'Request';
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = 'Request';
 
     /**
      * Execute the console command.
@@ -40,7 +40,7 @@ class ForgeUpdateRequest extends GeneratorCommand
     {
         $name = $this->qualifyClass($this->getNameInput());
 
-    	$baseClass = Str::singular(Str::studly(class_basename($name)));
+        $baseClass = Str::singular(Str::studly(class_basename($name)));
         $path = $this->getPath($this->qualifyClass("Update{$baseClass}"));
 
         // First we will check to see if the class already exists. If it does, we don't want
@@ -90,26 +90,26 @@ class ForgeUpdateRequest extends GeneratorCommand
         return str_replace(array_keys($substitutions), array_values($substitutions), $stub);
     }
 
-	/**
-	 * Get the stub file for the generator.
-	 *
-	 * @return string
-	 */
-	protected function getStub()
-	{
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getStub()
+    {
         return package_path('resources/stubs/resource/DummyUpdateRequest.stub');
-	}
+    }
 
-	/**
-	 * Get the default namespace for the class.
-	 *
-	 * @param  string  $rootNamespace
-	 * @return string
-	 */
-	protected function getDefaultNamespace($rootNamespace)
-	{
-		return $rootNamespace . '\Http\Requests';
-	}
+    /**
+     * Get the default namespace for the class.
+     *
+     * @param  string  $rootNamespace
+     * @return string
+     */
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace . '\Http\Requests';
+    }
 
     /**
      * Get the console command arguments.

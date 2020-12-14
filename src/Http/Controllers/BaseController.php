@@ -11,5 +11,5 @@ use Nexus\Traits\Authorizable;
 class BaseController extends Controller
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-	use Authorizable;
+    use Authorizable;
 }

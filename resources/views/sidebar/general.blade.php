@@ -6,7 +6,7 @@
 <!-- Navigation -->
 <ul class="navbar-nav">
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('app') }}" role="button" aria-expanded="true">
+        <a class="nav-link {{ is_route('app') ? 'active' : '' }}" href="{{ route('app') }}" role="button">
             <i class='bx bxs-home'></i>
             @lang('nexus::messages.sidebar-group-general-item-welcome')
         </a>

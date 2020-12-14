@@ -83,46 +83,46 @@ class Media extends PlankMedia
      * @param  integer $precision
      * @return integer
      */
-     public static function formatBytes($size, $precision = 2)
-     {
-         if ($size > 0) {
-             $size = (int) $size;
-             $base = log($size) / log(1024);
-             $suffixes = array(' bytes', ' KB', ' MB', ' GB', ' TB');
+    public static function formatBytes($size, $precision = 2)
+    {
+        if ($size > 0) {
+            $size = (int) $size;
+            $base = log($size) / log(1024);
+            $suffixes = array(' bytes', ' KB', ' MB', ' GB', ' TB');
 
-             return round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor($base)];
-         } else {
-             return $size;
-         }
-     }
+            return round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor($base)];
+        } else {
+            return $size;
+        }
+    }
 
-     public static function allowedMimeTypes() : array
-     {
-         $mimeTypes = [
-             config('mediable.aggregate_types.' . PlankMedia::TYPE_PDF . '.mime_types'),
-             config('mediable.aggregate_types.' . PlankMedia::TYPE_IMAGE_VECTOR . '.mime_types'),
-             config('mediable.aggregate_types.' . PlankMedia::TYPE_IMAGE . '.mime_types'),
-         ];
+    public static function allowedMimeTypes() : array
+    {
+        $mimeTypes = [
+            config('mediable.aggregate_types.' . PlankMedia::TYPE_PDF . '.mime_types'),
+            config('mediable.aggregate_types.' . PlankMedia::TYPE_IMAGE_VECTOR . '.mime_types'),
+            config('mediable.aggregate_types.' . PlankMedia::TYPE_IMAGE . '.mime_types'),
+        ];
 
-         $mimeTypes = call_user_func_array('array_merge', $mimeTypes);
+        $mimeTypes = call_user_func_array('array_merge', $mimeTypes);
 
-         return $mimeTypes;
-     }
+        return $mimeTypes;
+    }
 
-     public static function upload($file, $directory)
-     {
-         // Configure Uploader
-         $uploader = MediaUploader::fromSource($file)
-             ->toDirectory($directory)
-             ->setAllowedMimeTypes(static::allowedMimeTypes())
-             ->setModelClass(self::class);
+    public static function upload($file, $directory)
+    {
+        // Configure Uploader
+        $uploader = MediaUploader::fromSource($file)
+            ->toDirectory($directory)
+            ->setAllowedMimeTypes(static::allowedMimeTypes())
+            ->setModelClass(self::class);
 
-         // Verify uploaded file
-         $uploader->verifyFile();
+        // Verify uploaded file
+        $uploader->verifyFile();
 
-         // Upload
-         $media = $uploader->upload();
+        // Upload
+        $media = $uploader->upload();
 
-         return $media;
-     }
+        return $media;
+    }
 }

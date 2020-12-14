@@ -12,111 +12,111 @@ use MediaUploader;
 
 class FilesController extends ResourceController
 {
-	protected $model = \App\Models\File::class;
+    protected $model = \App\Models\File::class;
 
-	public function index()
-	{
-		$files = File::all();
+    public function index()
+    {
+        $files = File::all();
 
-		return view('files/index', compact('files'));
-	}
+        return view('files/index', compact('files'));
+    }
 
-	public function show($id)
-	{
-		$file = File::find($id);
+    public function show($id)
+    {
+        $file = File::find($id);
 
-		return view('files/show', compact('file'));
-	}
+        return view('files/show', compact('file'));
+    }
 
-	public function create()
-	{
-		return view('files/create');
-	}
+    public function create()
+    {
+        return view('files/create');
+    }
 
-	public function store(Request $request)
-	{
-		$creationRules = $this->creationRules();
-		$this->validate($request, $creationRules);
+    public function store(Request $request)
+    {
+        $creationRules = $this->creationRules();
+        $this->validate($request, $creationRules);
 
-		try{
-			$media = File::upload($request);
-			session()->flash('success', 'El registro ha sido creado exitosamente.');
+        try{
+            $media = File::upload($request);
+            session()->flash('success', 'El registro ha sido creado exitosamente.');
 
-			return redirect(resource('index'));
+            return redirect(resource('index'));
         } catch(MediaUploadException $e) {
-			session()->flash('danger', "No se pudo levantar el archivo: {$e->getMessage()}");
+            session()->flash('danger', "No se pudo levantar el archivo: {$e->getMessage()}");
 
-			return redirect(resource('create'));
+            return redirect(resource('create'));
         }
-	}
+    }
 
-	public function edit($id)
-	{
-		$file = File::find($id);
+    public function edit($id)
+    {
+        $file = File::find($id);
 
-		return view('files/edit', compact('file'));
-	}
+        return view('files/edit', compact('file'));
+    }
 
-	public function update(Request $request, $id)
-	{
-		$file = File::find($id);
+    public function update(Request $request, $id)
+    {
+        $file = File::find($id);
 
-		$updateRules = $this->updateRules($file->id);
-		$this->validate($request, $updateRules);
+        $updateRules = $this->updateRules($file->id);
+        $this->validate($request, $updateRules);
 
-		try {
-			File::updateMedia($request, $file);
-			session()->flash('success', 'El registro ha sido modificado exitosamente.');
+        try {
+            File::updateMedia($request, $file);
+            session()->flash('success', 'El registro ha sido modificado exitosamente.');
 
-			return redirect(resource('index'));
+            return redirect(resource('index'));
         } catch(MediaUploadException $e) {
-			session()->flash('danger', "Error al modificar el registro: {$e->getMessage()}");
+            session()->flash('danger', "Error al modificar el registro: {$e->getMessage()}");
 
-			return redirect(resource('edit'));
+            return redirect(resource('edit'));
         }
 
-		return redirect(resource('index'));
-	}
+        return redirect(resource('index'));
+    }
 
-	public function destroy($id)
-	{
-		$file = File::find($id);
+    public function destroy($id)
+    {
+        $file = File::find($id);
 
-		if ($file->delete()) {
-			session()->flash('success', 'El registro se ha eliminado exitosamente de la Base de Datos');
-		} else {
-			session()->flash('danger', 'No se pudo eliminar el registro. Por favor comuníquese con el administrador.');
-		}
+        if ($file->delete()) {
+            session()->flash('success', 'El registro se ha eliminado exitosamente de la Base de Datos');
+        } else {
+            session()->flash('danger', 'No se pudo eliminar el registro. Por favor comuníquese con el administrador.');
+        }
 
-		return redirect(resource('index'));
-	}
+        return redirect(resource('index'));
+    }
 
-	private function creationRules() : array
-	{
-		return [
-			'name'		=> 'sometimes|nullable|unique:images,name',
-			'file'		=> 'required',
-		];
-	}
+    private function creationRules() : array
+    {
+        return [
+            'name'		=> 'sometimes|nullable|unique:images,name',
+            'file'		=> 'required',
+        ];
+    }
 
-	private function updateRules($id) : array
-	{
-		return [
-			'name'		=> 'sometimes|nullable|unique:images,name,' . $id,
-			'file'		=> 'sometimes|nullable',
-		];
-	}
+    private function updateRules($id) : array
+    {
+        return [
+            'name'		=> 'sometimes|nullable|unique:images,name,' . $id,
+            'file'		=> 'sometimes|nullable',
+        ];
+    }
 
-	protected function updateImage(Request $request, Image $image)
-	{
-		if ($request->has('image')) {
-			$this->validate($request, [
-				'image'	=> ImageUploader::formRules(),
-			]);
+    protected function updateImage(Request $request, Image $image)
+    {
+        if ($request->has('image')) {
+            $this->validate($request, [
+                'image'	=> ImageUploader::formRules(),
+            ]);
 
-			return ImageUploader::update($request, $image);
-		}
+            return ImageUploader::update($request, $image);
+        }
 
-		return $image->update(['name' => $request->name]);
-	}
+        return $image->update(['name' => $request->name]);
+    }
 }

@@ -23,13 +23,13 @@ abstract class Segment
      */
     public $default = false;
 
-	/**
-	 * Execute query for the segment.
-	 * 
-	 * @param &$query \Illuminate\Database\Eloquent\Builder
-	 * @return void
-	 */
-	abstract public function apply(&$query);
+    /**
+     * Execute query for the segment.
+     *
+     * @param &$query \Illuminate\Database\Eloquent\Builder
+     * @return void
+     */
+    abstract public function apply(&$query);
 
     /**
      * Get the key for the segment.
@@ -40,29 +40,29 @@ abstract class Segment
 
     /**
      * CSS Class for active segments.
-     * 
+     *
      * @return string
      */
-	public function class() : string
-	{
-		return $this->isActive() ? 'badge-primary' : '';
-	}
+    public function class() : string
+    {
+        return $this->isActive() ? 'badge-primary' : '';
+    }
 
     public function isDefault() : bool
     {
         return $this->default;
     }
 
-	public function isActive() : bool
-	{
-		$keyExists = request()->has('segment');
-		$keyMatch = request('segment') == $this->key();
-		$keyExistsAndMatch = $keyExists && $keyMatch;
+    public function isActive() : bool
+    {
+        $keyExists = request()->has('segment');
+        $keyMatch = request('segment') == $this->key();
+        $keyExistsAndMatch = $keyExists && $keyMatch;
 
-		if ($keyExistsAndMatch || ($keyExists == false && $this->default)) {
-			return true;
-		}
+        if ($keyExistsAndMatch || ($keyExists == false && $this->default)) {
+            return true;
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

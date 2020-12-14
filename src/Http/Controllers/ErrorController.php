@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class ErrorController extends Controller
 {
-	public function show(Request $request)
-	{
-		$error = $request->route('error');
+    public function show(Request $request)
+    {
+        $error = $request->route('error');
 
-		return view('nexus::errors/' . $error);
-	}
+        return view('nexus::errors/' . $error);
+    }
 }

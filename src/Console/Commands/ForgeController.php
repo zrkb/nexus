@@ -8,26 +8,26 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ForgeController extends GeneratorCommand
 {
-	/**
-	 * The name and signature of the console command.
-	 *
-	 * @var string
-	 */
-	protected $name = 'nexus:controller';
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $name = 'nexus:controller';
 
-	/**
-	 * The console command description.
-	 *
-	 * @var string
-	 */
-	protected $description = 'Forge a new controller class';
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Forge a new controller class';
 
-	/**
-	 * The type of class being generated.
-	 *
-	 * @var string
-	 */
-	protected $type = 'Controller';
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = 'Controller';
 
     /**
      * Execute the console command.
@@ -39,15 +39,15 @@ class ForgeController extends GeneratorCommand
     {
         $name = $this->qualifyClass($this->getNameInput());
 
-    	$pluralBaseClass = Str::plural(Str::studly(class_basename($name)));
+        $pluralBaseClass = Str::plural(Str::studly(class_basename($name)));
         $path = $this->getPath($this->qualifyClass("{$pluralBaseClass}Controller"));
 
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
         // code is untouched. Otherwise, we will continue generating this class' files.
         if ((! $this->hasOption('force') ||
-             ! $this->option('force')) &&
-             $this->alreadyExists($this->getNameInput())) {
+            ! $this->option('force')) &&
+            $this->alreadyExists($this->getNameInput())) {
             $this->error($this->type.' already exists!');
 
             return false;
@@ -96,26 +96,26 @@ class ForgeController extends GeneratorCommand
         return str_replace(array_keys($substitutions), array_values($substitutions), $stub);
     }
 
-	/**
-	 * Get the stub file for the generator.
-	 *
-	 * @return string
-	 */
-	protected function getStub()
-	{
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getStub()
+    {
         return package_path('resources/stubs/resource/DummyController.stub');
-	}
+    }
 
-	/**
-	 * Get the default namespace for the class.
-	 *
-	 * @param  string  $rootNamespace
-	 * @return string
-	 */
-	protected function getDefaultNamespace($rootNamespace)
-	{
-		return $rootNamespace . '\Http\Controllers\Backend';
-	}
+    /**
+     * Get the default namespace for the class.
+     *
+     * @param  string  $rootNamespace
+     * @return string
+     */
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace . '\Http\Controllers\Backend';
+    }
 
     /**
      * Get the console command arguments.

@@ -30,38 +30,10 @@ Or if you want to download the files, add the following configuration to the com
     ],
 ```
 
-or if you are symlinking the package locally:
+Now run:
 
 ```bash
-$ ln -s ../nexus nexus
-```
-
-```json
-
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../nexus",
-            "options": {
-                "symlink": true
-            }
-        }
-    ],
-```
-
-Next, add the package to the require section of your composer.json file:
-
-```json
-"require": {
-    ...
-    "zrkb/nexus": "*"
-},
-```
-
-Now run `composer update` command:
-
-```bash
-$ composer update
+$ composer require zrkb/nexus @dev
 ```
 
 ### Database Credentials
@@ -70,8 +42,8 @@ Next make sure to create a new database and add your database credentials to you
 
 ```ruby
 DB_HOST=localhost
-DB_DATABASE=homestead
-DB_USERNAME=homestead
+DB_DATABASE=laravel
+DB_USERNAME=laravel
 DB_PASSWORD=secret
 ```
 
@@ -110,10 +82,10 @@ Your admin user must subclass from Nexus Admin Model, you can change this in `ne
 
 ### Defining resources
 
-You may want to generate a new resource using the `nexus:resource` Artisan command:
+You may want to generate a new resource using the `nexus:crud` Artisan command:
 
 ```bash
-$ php artisan nexus:resource bookmarks
+$ php artisan nexus:crud Bookmark
 ```
 
 This will create the following files:
@@ -147,6 +119,12 @@ Once the resource are created, we need to add them to the project:
 Edit your `routes/web.php` and the new resource:
 
 ```php
+Nexus::resource('bookmarks', 'BookmarkController');
+```
+
+or the equivalent:
+
+```php
 Nexus::group(function () {
     Route::resource('bookmarks', 'BookmarkController');
 });
@@ -154,11 +132,13 @@ Nexus::group(function () {
 
 #### 2. Add to sidebar
 
-Edit your `resources/views/backend/sidebar/user.blade.php` file and add the code below:
+Edit your `resources/views/vendor/nexus/sidebar/user.blade.php` file and add the code below:
 
 ```php
 <li>
-    <a href="{{ route('bookmarks.index') }}">
+    <a href="{{ route('bookmarks.index') }}"
+        class="nav-link {{ is_route('bookmarks.index') ? 'active' : '' }}"
+        role="button">
         <i class='bx bx-bookmarks'></i>
         <span>Bookmarks</span>
     </a>

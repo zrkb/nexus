@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class AppController extends Controller
 {
-	public function index()
-	{
-		return view('nexus::app/index');
-	}
+    public function index()
+    {
+        return view('nexus::app/index');
+    }
 }

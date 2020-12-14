@@ -11,93 +11,93 @@ use Nexus\Traits\PermissionModerator;
 
 class RolesController extends BaseController
 {
-	use PermissionModerator;
-	use HasResource;
+    use PermissionModerator;
+    use HasResource;
 
-	protected $model = \Nexus\Models\Role::class;
+    protected $model = \Nexus\Models\Role::class;
 
-	public function index()
-	{
-		$roles = Role::all();
+    public function index()
+    {
+        $roles = Role::all();
 
-		return view('nexus::roles/index', compact('roles'));
-	}
+        return view('nexus::roles/index', compact('roles'));
+    }
 
-	public function show($id)
-	{
-		$role = Role::find($id);
-		$permissions = Permission::groupedByRoutes();
+    public function show($id)
+    {
+        $role = Role::find($id);
+        $permissions = Permission::groupedByRoutes();
 
-		return view('nexus::roles/show', compact('role', 'permissions'));
-	}
+        return view('nexus::roles/show', compact('role', 'permissions'));
+    }
 
-	public function create()
-	{
-		$permissions = Permission::groupedByRoutes();
+    public function create()
+    {
+        $permissions = Permission::groupedByRoutes();
 
-		return view('nexus::roles/create', compact('permissions'));
-	}
+        return view('nexus::roles/create', compact('permissions'));
+    }
 
-	public function store(Request $request)
-	{
-		$creationRules = $this->creationRules();
-		$this->validate($request, $creationRules);
+    public function store(Request $request)
+    {
+        $creationRules = $this->creationRules();
+        $this->validate($request, $creationRules);
 
-		// Remove unexistent data from rules
-		$data = array_intersect_key($request->all(), $creationRules);
+        // Remove unexistent data from rules
+        $data = array_intersect_key($request->all(), $creationRules);
 
-		$role = Role::create($data);
+        $role = Role::create($data);
 
-		if ($role) {
-			$this->manageRole($request, $role);
-			session()->flash('success', 'El registro ha sido creado exitosamente.');
-		} else {
-			session()->flash('danger', 'Error al crear el registro. Consulte con el administrador.');
-		}
+        if ($role) {
+            $this->manageRole($request, $role);
+            session()->flash('success', 'El registro ha sido creado exitosamente.');
+        } else {
+            session()->flash('danger', 'Error al crear el registro. Consulte con el administrador.');
+        }
 
-		return redirect(resource('index'));
-	}
+        return redirect(resource('index'));
+    }
 
-	public function edit($id)
-	{
-		$role = Role::find($id);
-		$permissions = Permission::groupedByRoutes();
+    public function edit($id)
+    {
+        $role = Role::find($id);
+        $permissions = Permission::groupedByRoutes();
 
-		return view('nexus::roles/edit', compact('role', 'permissions'));
-	}
+        return view('nexus::roles/edit', compact('role', 'permissions'));
+    }
 
-	public function update(Request $request, $id)
-	{
-		$role = Role::find($id);
+    public function update(Request $request, $id)
+    {
+        $role = Role::find($id);
 
-		$updateRules = $this->updateRules($role->id);
-		$this->validate($request, $updateRules);
+        $updateRules = $this->updateRules($role->id);
+        $this->validate($request, $updateRules);
 
-		// Remove unexistent data from rules
-		$data = array_intersect_key($request->all(), $updateRules);
+        // Remove unexistent data from rules
+        $data = array_intersect_key($request->all(), $updateRules);
 
-		if ($role->update($data)) {
-			$this->manageRole($request, $role);
-			session()->flash('success', 'El registro ha sido modificado exitosamente.');
-		} else {
-			session()->flash('danger', 'Error al modificar el registro. Consulte con el administrador.');
-		}
+        if ($role->update($data)) {
+            $this->manageRole($request, $role);
+            session()->flash('success', 'El registro ha sido modificado exitosamente.');
+        } else {
+            session()->flash('danger', 'Error al modificar el registro. Consulte con el administrador.');
+        }
 
-		return redirect(resource('show', $id));
-	}
+        return redirect(resource('show', $id));
+    }
 
-	private function creationRules() : array
-	{
-		return [
-			'name'			=> 'required|unique:roles,name',
-			'guard_name'	=> 'required',
-		];
-	}
+    private function creationRules() : array
+    {
+        return [
+            'name'			=> 'required|unique:roles,name',
+            'guard_name'	=> 'required',
+        ];
+    }
 
-	private function updateRules($id) : array
-	{
-		return [
-			'name' => 'required|unique:roles,name,' . $id,
-		];
-	}
+    private function updateRules($id) : array
+    {
+        return [
+            'name' => 'required|unique:roles,name,' . $id,
+        ];
+    }
 }

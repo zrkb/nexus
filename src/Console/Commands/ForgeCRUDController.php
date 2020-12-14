@@ -9,26 +9,26 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class ForgeCRUDController extends GeneratorCommand
 {
-	/**
-	 * The name and signature of the console command.
-	 *
-	 * @var string
-	 */
-	protected $name = 'nexus:crud-controller';
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $name = 'nexus:crud-controller';
 
-	/**
-	 * The console command description.
-	 *
-	 * @var string
-	 */
-	protected $description = 'Forge a new CRUD controller class';
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Forge a new CRUD controller class';
 
-	/**
-	 * The type of class being generated.
-	 *
-	 * @var string
-	 */
-	protected $type = 'Controller';
+    /**
+     * The type of class being generated.
+     *
+     * @var string
+     */
+    protected $type = 'Controller';
 
     /**
      * Execute the console command.
@@ -40,8 +40,8 @@ class ForgeCRUDController extends GeneratorCommand
     {
         $name = $this->qualifyClass($this->getNameInput());
 
-    	$baseClass = Str::singular(Str::studly(class_basename($name)));
-		$path = $this->getPath($this->qualifyClass("{$baseClass}Controller"));
+        $baseClass = Str::singular(Str::studly(class_basename($name)));
+        $path = $this->getPath($this->qualifyClass("{$baseClass}Controller"));
 
         // First we will check to see if the class already exists. If it does, we don't want
         // to create the class and overwrite the user's code. So, we will bail out so the
@@ -94,26 +94,26 @@ class ForgeCRUDController extends GeneratorCommand
         return str_replace(array_keys($substitutions), array_values($substitutions), $stub);
     }
 
-	/**
-	 * Get the stub file for the generator.
-	 *
-	 * @return string
-	 */
-	protected function getStub()
-	{
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getStub()
+    {
         return package_path('resources/stubs/resource/DummyCRUDController.stub');
-	}
+    }
 
-	/**
-	 * Get the default namespace for the class.
-	 *
-	 * @param  string  $rootNamespace
-	 * @return string
-	 */
-	protected function getDefaultNamespace($rootNamespace)
-	{
-		return $rootNamespace . '\Http\Controllers\Backend';
-	}
+    /**
+     * Get the default namespace for the class.
+     *
+     * @param  string  $rootNamespace
+     * @return string
+     */
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace . '\Http\Controllers\Backend';
+    }
 
     /**
      * Get the console command arguments.

@@ -6,10 +6,10 @@ use Nexus\Models\Activity;
 
 class ActivitiesController extends BaseController
 {
-	public function index()
-	{
-		$activities = Activity::latest()->get();
+    public function index()
+    {
+        $activities = Activity::latest()->get();
 
-		return view('nexus::activities/index', compact('activities'));
-	}
+        return view('nexus::activities/index', compact('activities'));
+    }
 }
