@@ -1,9 +1,9 @@
-// 
+//
 // list-group.scss
 // Extended from Bootstrap
 //
 
-// 
+//
 // Bootstrap Overrides =====================================
 //
 
@@ -30,3 +30,23 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+//
+// Dashkit ===================================
+//
+
+
+// Activity
+
+.list-group-activity .list-group-item {
+    border: 0;
+  }
+
+  .list-group-activity .list-group-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    top: $list-group-item-padding-y;
+    left: $avatar-size-sm / 2;
+    height: 100%;
+    border-left: $border-width solid $border-color;
+  }

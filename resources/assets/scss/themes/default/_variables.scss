@@ -76,7 +76,13 @@ $kbd-padding-x:                    .3rem !default;
 $kbd-bg:                        $dark !default;
 
 // Cards
+
+$card-margin-bottom: $spacer !default;
+$card-spacer-x-sm: 1rem !default;
+
 $card-border-color:                $border-color !default;
+
+$card-header-height: 60px !default;
 
 // Form
 $form-text-margin-top:             0.5rem;

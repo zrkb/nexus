@@ -17,14 +17,17 @@
 .card-header {
   display: flex;
   flex-direction: row;
-  flex-grow: 1;
   align-items: center;
   padding-top: $card-spacer-y / 2;
   padding-bottom: $card-spacer-y / 2;
 
-  > * {
+  > *:first-child {
     flex: 1;
   }
+}
+
+.card-header + .card-footer {
+  border-top-width: 0;
 }
 
 .card-title {
@@ -50,6 +53,11 @@
   margin-bottom: -$card-spacer-y / 2;
   margin-left: 0;
   margin-right: 0;
+}
+
+.card-header-tabs .nav-link {
+  padding-top: calc((#{$card-header-height} - 1em * #{$line-height-base}) / 2) !important;
+  padding-bottom: calc((#{$card-header-height} - 1em * #{$line-height-base}) / 2) !important;
 }
 
 // Card table
@@ -105,7 +113,8 @@
 
 .card-avatar {
   display: block !important;
-  margin-left: auto; margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
   margin-bottom: $card-spacer-y;
 }
 .card-avatar-top {
@@ -174,3 +183,116 @@
 .card-header-flush + .card-body {
   padding-top: 0;
 }
+
+// Card fill
+//
+// Fills the whole available space to fit the height of the neighboring card
+
+.card-fill {
+    height: calc(100% - #{$card-margin-bottom});
+  }
+
+  .card-fill .card-body {
+    flex-grow: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  // Responsive
+
+  .card-fill {
+
+    @each $breakpoint, $value in $grid-breakpoints {
+
+      &-#{$breakpoint} {
+
+        @include media-breakpoint-up(#{$breakpoint}) {
+          height: calc(100% - #{$card-margin-bottom});
+
+          .card-body {
+            flex-grow: 0;
+            margin-top: auto;
+            margin-bottom: auto;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Card adjust
+  //
+  // Limits the height to the height of the neighboring card and adds a scrollbar to the card body
+
+  .card-adjust {
+    height: 0;
+    min-height: 100%;
+  }
+
+  .card-adjust .card {
+    height: calc(100% - #{$card-margin-bottom});
+  }
+
+  .card-adjust .card-body {
+    height: calc(100% - #{$card-header-height});
+    overflow-y: auto;
+  }
+
+  // Responsive
+
+  .card-adjust {
+
+    @each $breakpoint, $value in $grid-breakpoints {
+
+      &-#{$breakpoint} {
+
+        @include media-breakpoint-up(#{$breakpoint}) {
+          height: 0;
+          min-height: 100%;
+
+          .card {
+            height: calc(100% - #{$card-margin-bottom});
+          }
+
+          .card-body {
+            height: calc(100% - #{$card-header-height});
+            overflow-y: auto;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Card footer boxed
+
+  .card-footer-boxed {
+    padding-right: 0;
+    padding-bottom: $card-spacer-x;
+    padding-left: 0;
+    margin-left: $card-spacer-x;
+    margin-right: $card-spacer-x;
+  }
+
+
+  // Card pagination
+
+  .card-pagination.pagination-tabs {
+    margin-top: -$card-spacer-y;
+    margin-bottom: -$card-spacer-y;
+    border: 0;
+  }
+
+  .card-pagination.pagination-tabs .page-link {
+    border-top-width: 0 !important;
+  }
+
+  .card-pagination.pagination-tabs .active .page-link {
+    border-width: 0 0 $border-width 0 !important;
+  }
+
+  // Card divider
+
+  .card-divider {
+    border-color: $card-border-color;
+  }

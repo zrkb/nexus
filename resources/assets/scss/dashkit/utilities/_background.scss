@@ -12,14 +12,14 @@
   background-attachment: fixed;
 }
 
-// Calculate the width of the main container because 
+// Calculate the width of the main container because
 // the background-attachment property will use 100vw instead
 
 .navbar-vertical ~ .main-content.bg-fixed-bottom {
   background-size: 100%;
 
   @include media-breakpoint-up(md) {
-    background-size: calc(100% - #{$navbar-vertical-width}); 
+    background-size: calc(100% - #{$navbar-vertical-width});
   }
 }
 
@@ -69,3 +69,11 @@
 .bg-lighter {
   background-color: $lighter !important;
 }
+
+// Soft colors
+
+@each $color, $value in $theme-colors {
+    .bg-#{$color}-soft {
+      background-color: theme-color-level($color, $bg-soft-level) !important;
+    }
+  }
