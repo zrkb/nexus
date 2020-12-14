@@ -53,10 +53,7 @@ Next, add the package to the require section of your composer.json file:
 
 ```json
 "require": {
-    "php": "^7.2",
-    "fideloper/proxy": "^4.0",
-    "laravel/framework": "5.8.*",
-    "laravel/tinker": "^1.0",
+    ...
     "zrkb/nexus": "*"
 },
 ```
@@ -84,8 +81,6 @@ Finally, run the install command and migrate Artisan commands.
 
 ```bash
 $ php artisan nexus:install
-
-$ php artisan migrate
 ```
 
 ### Admin User

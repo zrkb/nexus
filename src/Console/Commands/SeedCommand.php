@@ -33,41 +33,41 @@ class SeedCommand extends Command
 
         $this->line('→ Running wizard ... <info>✔</info>');
 
-		if ($this->option('refresh')) {
-			$this->call('migrate:refresh');
-			$this->warn("Data cleared, starting from blank database.");
-		}
+        if ($this->option('refresh')) {
+            $this->call('migrate:refresh');
+            $this->warn("Data cleared, starting from blank database.");
+        }
 
-		// Seed the default permissions
-		$permissions = Permission::defaultPermissions();
+        // Seed the default permissions
+        $permissions = Permission::defaultPermissions();
 
-		foreach ($permissions as $permission) {
-			Permission::firstOrCreate(
-				['name' => $permission],
-				['name' => $permission, 'guard_name' => 'admin']
-			);
-		}
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(
+                ['name' => $permission],
+                ['name' => $permission, 'guard_name' => 'admin']
+            );
+        }
 
-		$this->info('Default Permissions added.');
+        $this->info('Default Permissions added.');
 
-		// Add roles
-		foreach([dev_role(), 'Admin'] as $role) {
-			$role = Role::firstOrCreate(
-				['name' => trim($role)],
-				['name' => trim($role), 'guard_name' => 'admin']
-			);
+        // Add roles
+        foreach([dev_role(), 'Admin'] as $role) {
+            $role = Role::firstOrCreate(
+                ['name' => trim($role)],
+                ['name' => trim($role), 'guard_name' => 'admin']
+            );
 
-			// Assign all permissions
-			if ( $role->name == dev_role() ) {
-				$role->syncPermissions(Permission::all());
-				$this->info('Developer granted all the permissions');
-			} else {
-				// for others by default only read access
-				$role->syncPermissions(Permission::where('name', 'LIKE', 'view_%')->get());
-			}
-		}
+            // Assign all permissions
+            if ( $role->name == dev_role() ) {
+                $role->syncPermissions(Permission::all());
+                $this->info('Developer granted all the permissions');
+            } else {
+                // for others by default only read access
+                $role->syncPermissions(Permission::where('name', 'LIKE', 'view_%')->get());
+            }
+        }
 
-		$this->info('All roles has been added successfully');
+        $this->info('All roles has been added successfully');
 
         $this->info(PHP_EOL . 'Done.');
     }

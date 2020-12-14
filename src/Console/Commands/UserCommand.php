@@ -20,7 +20,7 @@ class UserCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Create a new user';
+    protected $description = 'Create a new user admin';
 
     /**
      * Execute the console command.
@@ -34,7 +34,7 @@ class UserCommand extends Command
         $email = $this->ask('Email Address', 'felix1262@gmail.com');
         $password = $this->ask('Password', 'secret');
 
-        $admin = factory(config('nexus.models.admin'))->create([
+        $admin = config('nexus.models.admin')::create([
             'firstname' => $firstname,
             'lastname' => $lastname,
             'email' => $email,
@@ -43,6 +43,6 @@ class UserCommand extends Command
 
         $admin->assignRole(dev_role());
 
-        $this->info('User created successfully.');
+        $this->info('User Admin created successfully.');
     }
 }
