@@ -15,18 +15,13 @@ class AuthorityException extends AuthorizationException
      */
     public function render($request)
     {
-    	return $this->unauthorized($request);
-    }
-
-    private function unauthorized($request)
-    {
         if ($request->expectsJson()) {
             return response()->json([
-            	'success' => false,
-            	'message' => 'Unauthorized call.'
+                'success' => false,
+                'message' => 'Unauthorized call.',
             ], 403);
         }
 
-        return redirect()->route('errors.show', 'unauthorized');
+        return view('nexus::errors/unauthorized');
     }
 }

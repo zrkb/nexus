@@ -1,4 +1,5 @@
 <div class="dropdown">
+
     <a href="javascript:;" id="crud-actions-{{ $model->getKey() }}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="action-item text-body">
             <i class='bx bx-dots-horizontal-rounded'></i>
@@ -6,6 +7,13 @@
     </a>
 
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="crud-actions-{{ $model->getKey() }}">
+
+        {{ $top ?? null }}
+
+        @isset($top)
+            <div class="dropdown-divider"></div>
+        @endisset
+
         <a
             href="{{ resource('show', $routeKey ?? $model->getKey()) }}"
             class="dropdown-item">
@@ -41,5 +49,11 @@
             @csrf
             @method('DELETE')
         </form>
+
+        @isset($bottom)
+            <div class="dropdown-divider"></div>
+        @endisset
+
+        {{ $bottom ?? null }}
     </div>
 </div>

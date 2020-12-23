@@ -1,44 +1,35 @@
-@extends('nexus::layouts/master')
+@extends('nexus::layouts/boxed')
 
-@section('app')
+@section('boxed')
 
-<div class="d-flex align-items-center bg-auth border-top border-top-4 border-primary min-vh-100">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-10 col-md-8 col-lg-6 col-xl-5 mx-auto">
+    <!-- Card -->
+    <div class="card" style="margin-top: 70px">
+        <div class="card-body text-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-xl-8">
+                    <!-- Image -->
+                    <img src="{{ assets_path() . '/assets/img/illustrations/unauthorized.svg' }}" alt="Error" class="img-fluid" style="max-width: 250px; margin-top: 35px; margin-bottom: 50px;">
 
-                <div class="text-center">
-
-                    @isset($pretitle)
-                        <!-- Preheading -->
-                        <h5 class="text-uppercase text-muted mb-4 font-weight-normal">
-                            {{ $pretitle }}
-                        </h5>
+                    @isset($preTitle)
+                        <!-- Pretitle -->
+                        <h6 class="header-pretitle">
+                            {{ $preTitle }}
+                        </h6>
                     @endisset
 
-                    <!-- Heading -->
-                    <h1 class="display-4 mb-4">
-                        {{ $title ?? 'Lo sentimos' }}
+                    <!-- Title -->
+                    <h1 class="header-title mb-3">
+                        Acceso Denegado
                     </h1>
 
                     @isset($message)
-                        <!-- Subheading -->
-                        <p class="mb-4">
+                        <!-- Content -->
+                        <p class="text-muted mb-5">
                             {{ $message }}
                         </p>
                     @endisset
-
-                    <!-- Button -->
-                    <a href="{{ $url ?? url()->previous() }}" class="btn btn-link btn-lg py-4 px-5">
-                        {{ $buttonTitle ?? 'Volver Atrás' }}
-                        <i class='bx bx-chevron-right'></i>
-                    </a>
-
                 </div>
-            </div>
+            </div> <!-- / .row -->
         </div>
-        <!-- / .row -->
     </div>
-</div>
-
 @endsection

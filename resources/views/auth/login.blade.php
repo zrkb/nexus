@@ -25,7 +25,16 @@
             <!-- Password -->
             <div class="form-group">
                 {{ form()->label('password', trans('nexus::login.password-label')) }}
-                {{ form()->password('password', ['class' => 'form-control', 'placeholder' => trans('nexus::login.password-placeholder')]) }}
+                <div class="input-group input-group-merge input-group-password">
+                    {{ form()->password('password', ['class' => 'form-control form-control-appended', 'placeholder' => trans('nexus::login.password-placeholder')]) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <a href="javascript:;" tabindex="-1">
+                                <i class='bx bxs-hide text-muted'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- End Password -->
 

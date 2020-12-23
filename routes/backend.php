@@ -28,8 +28,8 @@ Route::group([
         Route::get('activities', 'ActivitiesController@index')->name('activities.index');
 
         // Users
-        Route::resource('admins', 'AdminsController');
-        Route::post('admins/{admin}/restore', 'AdminsController@restore')->name('admins.restore');
+        Route::resource('admins', 'AdminController');
+        Route::post('admins/{admin}/restore', 'AdminController@restore')->name('admins.restore');
 
         // RBAC - Role Based Access Control
         Route::resource('roles', 'RolesController');
@@ -42,9 +42,6 @@ Route::group([
             Route::get('profile', 'ProfileController@edit')->name('profile.edit');
             Route::put('profile', 'ProfileController@update')->name('profile.update');
         });
-
-        // General Errors
-        Route::get('errors/{error}', 'ErrorController@show')->name('errors.show');
     });
 
 });

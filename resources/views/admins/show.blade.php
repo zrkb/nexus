@@ -18,7 +18,7 @@
 
         <span class="text-primary">#{{ $admin->id }}</span>
         <span class="text-muted">&rarr;</span>
-        {{ $admin->name }}
+        {{ $admin->fullname }}
     @endcomponent
 
     @messages
@@ -41,8 +41,12 @@
                             {{ $admin->email }}
                         @endmodelProperty
 
-                        @modelProperty(['title' => 'Creado'])
-                            {{ $admin->accountAge }}
+                        @modelProperty(['title' => 'Roles'])
+                            @foreach ($admin->roles as $role)
+                                <span class="badge badge-light">
+                                    {{ $role->name }}
+                                </span>
+                            @endforeach
                         @endmodelProperty
                     </div>
                     {{-- END form --}}

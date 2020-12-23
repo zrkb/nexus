@@ -2,7 +2,7 @@
 
 namespace Nexus\Http\Requests;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use Nexus\Http\Requests\NexusFormRequest;
 
 class UpdateProfile extends NexusFormRequest
@@ -35,19 +35,19 @@ class UpdateProfile extends NexusFormRequest
     public function rules()
     {
         return [
-            'firstname' => 'required',
-            'lastname'  => 'required',
-            'email'     => 'required|email|unique:admins,email,' . admin()->id,
-            'password'  => 'sometimes|nullable|min:6',
+            'firstname' => 'required|string|max:255',
+            'lastname'  => 'required|string|max:255',
+            'email'     => 'required|string|email|unique:admins,email,' . admin()->id,
+            'password'  => 'sometimes|nullable|string|min:6|max:255',
         ];
     }
 
     /**
-     * Prepare the data for validation.
+     * Handle a passed validation attempt.
      *
      * @return void
      */
-    protected function prepareForValidation()
+    protected function passedValidation()
     {
         // Encrypt password
         if ($this->has('password') && $this->password) {

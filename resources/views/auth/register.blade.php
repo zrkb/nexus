@@ -18,8 +18,8 @@
 
             <!-- Firstname -->
             <div class="form-group">
-                {{ form()->label('firstname', trans('nexus::register.firstname-label')) }}
-                {{ form()->text('firstname', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.firstname-placeholder')]) }}
+                {{ form()->label('firstname', trans('nexus::register.name-label')) }}
+                {{ form()->text('firstname', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.name-placeholder')]) }}
             </div>
             <!-- End Firstname -->
 
@@ -40,14 +40,32 @@
             <!-- Password -->
             <div class="form-group">
                 {{ form()->label('password', trans('nexus::register.password-label')) }}
-                {{ form()->password('password', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-placeholder')]) }}
+                <div class="input-group input-group-merge input-group-password">
+                    {{ form()->password('password', ['class' => 'form-control form-control-appended', 'placeholder' => trans('nexus::register.password-placeholder')]) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <a href="javascript:;" tabindex="-1">
+                                <i class='bx bxs-hide text-muted'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- End Password -->
 
             <!-- Password confirmation -->
             <div class="form-group">
                 {{ form()->label('password_confirmation', trans('nexus::register.password-confirmation-label')) }}
-                {{ form()->password('password_confirmation', null, ['class' => 'form-control', 'placeholder' => trans('nexus::register.password-confirmation-placeholder')]) }}
+                <div class="input-group input-group-merge input-group-password">
+                    {{ form()->password('password_confirmation', ['class' => 'form-control form-control-appended', 'placeholder' => trans('nexus::register.password-confirmation-placeholder')]) }}
+                    <div class="input-group-append">
+                        <div class="input-group-text bg-transparent">
+                            <a href="javascript:;" tabindex="-1">
+                                <i class='bx bxs-hide text-muted'></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- End Password confirmation -->
 

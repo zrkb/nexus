@@ -162,7 +162,7 @@ jQuery(document).ready(function ($) {
     // });
 
     // Delete Record
-    $('body').on('click', '.delete-record', function(event) {
+    $('body').on('click', '.delete-record, .destructive-action', function(event) {
 
         event.preventDefault();
 
@@ -170,22 +170,28 @@ jQuery(document).ready(function ($) {
         let form = $(el.data('form'));
         let forceDelete = el.data('delete') == 'hard';
 
-        let title = forceDelete ? 'Estás seguro de borrar este registro?' : 'Estás seguro de inactivar este registro?';
-        let message = forceDelete ? 'Una vez eliminado, ya no podrás recuperar este dato y todos los datos relacionados serán borrados de la Base de Datos!' : 'Para activar de vuelta este registro puedes usar el botón Restaurar.';
+        let modalTitle = el.data('modal-title');
+        let modalMessage = el.data('modal-message');
+
+        let title = modalTitle ? modalTitle : (forceDelete ? 'Estás seguro de borrar este registro?' : 'Estás seguro de inactivar este registro?');
+        let message = modalMessage ? modalMessage : (forceDelete ? 'Una vez eliminado, ya no podrás recuperar este dato y todos los datos relacionados serán borrados de la Base de Datos!' : 'Para activar de vuelta este registro puedes usar el botón Restaurar.');
+
+        let cancelButtonTitle = el.data('cancel-title');
+        let confirmButtonTitle = el.data('confirm-title');
 
         var modal = bootbox.dialog({
             title: title,
             message: message,
             buttons: {
                 cancel: {
-                    label: 'Cancelar',
+                    label: cancelButtonTitle ?? 'Cancelar',
                     className: 'btn-white btn-cancel-modal',
                 },
                 confirm: {
-                    label: 'Sí, eliminar registro',
+                    label: confirmButtonTitle ?? 'Sí, eliminar registro',
                     className: 'btn-danger btn-activity btn-loading',
                     callback: function () {
-                        form.submit();
+                        form.trigger('submit');
                     }
                 }
             },
@@ -255,5 +261,21 @@ jQuery(document).ready(function ($) {
         $input
             .on( 'focus', function(){ $input.addClass( 'has-focus' ); })
             .on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
+    });
+
+
+    $('.input-group-password a').on('click', function(event) {
+        event.preventDefault();
+
+        let el = $(event.currentTarget);
+        let input = el.parents('.input-group').first().find('input');
+
+        if (input.prop('type') == 'text') {
+            input.prop('type', 'password');
+            el.find('i').prop('class', 'bx bxs-hide text-muted');
+        } else if (input.prop('type') == 'password') {
+            input.prop('type', 'text');
+            el.find('i').prop('class', 'bx bxs-show text-primary');
+        }
     });
 });

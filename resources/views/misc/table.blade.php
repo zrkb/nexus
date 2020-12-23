@@ -5,11 +5,11 @@
 
     @if (count($items))
         @if (isset($tools) && is_bool($tools) == false)
-            <div class="card-header">
+            <div class="card-header py-3">
                 {{ $tools }}
             </div>
         @elseif ((isset($tools) == false || (isset($tools) && $tools != false)))
-            <div class="card-header">
+            <div class="card-header py-3">
                 @include('nexus::misc/table-tools')
             </div>
         @endif

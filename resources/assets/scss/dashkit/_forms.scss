@@ -10,263 +10,266 @@
 // Help text
 
 .form-text {
-  margin-top: 0;
-  margin-bottom: $label-margin-bottom;
-}
+    margin-top: 0;
+    margin-bottom: $label-margin-bottom;
+  }
 
 
-// Form validation
+  // Form validation
 
-.was-validated .form-control:valid:focus, .form-control.is-valid:focus,
-.was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
-  box-shadow: none;
-}
-
-
-//
-// Dashkit ===================================
-//
-
-// Form control flush
-//
-// Removes borders and paddings from inputs and text areas
-
-.form-control-flush {
-  padding-left: 0;
-  padding-right: 0;
-  border-color: transparent !important;
-  background-color: transparent !important;
-  resize: none;
-}
+  .was-validated .form-control:valid:focus, .form-control.is-valid:focus,
+  .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
+    box-shadow: none;
+  }
 
 
-// Form control auto
-//
-// Sets the height of the input to auto
+  //
+  // Dashkit ===================================
+  //
 
-.form-control-auto {
-  height: auto;
-  padding-top: 0;
-  padding-bottom: 0;
-}
+  // Form control flush
+  //
+  // Removes borders and paddings from inputs and text areas
+
+  .form-control-flush {
+    padding-left: 0;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    resize: none;
+  }
+
+  .form-control:not(.custom-select) {
+    padding-right: 0;
+  }
 
 
-// Form control rounded
-//
-// Makes input border radius round
+  // Form control auto
+  //
+  // Sets the height of the input to auto
 
-.form-control-rounded {
-  border-radius: 20rem;
-}
+  .form-control-auto {
+    height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 
 
-// Input group merge
-//
-// Makes input group text and form control visually the same element
+  // Form control rounded
+  //
+  // Makes input border radius round
 
-.input-group.input-group-merge {
+  .form-control-rounded {
+    border-radius: 20rem;
+  }
 
-  > .form-control {
-    border-radius: $input-border-radius;
 
-    &:focus {
-    //   box-shadow: none;
+  // Input group merge
+  //
+  // Makes input group text and form control visually the same element
 
-      ~ [class*="input-group"] {
+  .input-group.input-group-merge {
 
-        > .input-group-text {
-          border-color: $input-focus-border-color;
+    > .form-control {
+      border-radius: $input-border-radius;
+
+      &:focus {
+        box-shadow: none;
+
+        ~ [class*="input-group"] {
+
+          > .input-group-text {
+            border-color: $input-focus-border-color;
+          }
         }
+      }
+    }
+
+    > .form-control.is-valid ~ [class*="input-group"] > .input-group-text {
+      border-color: $success;
+    }
+
+    > .form-control.is-invalid ~ [class*="input-group"] > .input-group-text {
+      border-color: $danger;
+    }
+
+    > .form-control-prepended {
+      padding-left: $input-padding-x / 2;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+      border-left-width: 0;
+    }
+
+    > .form-control-appended {
+      padding-right: $input-padding-x / 2;
+      border-top-right-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+      border-right-width: 0;
+    }
+
+    > .input-group-prepend {
+      order: -1; // prepend always goes first
+
+      > .input-group-text {
+        padding-right: $input-padding-x / 2;
+        border-top-left-radius: $input-border-radius;
+        border-bottom-left-radius: $input-border-radius;
+        border-right-width: 0;
+        transition: $input-transition;
+      }
+    }
+
+    > .input-group-append {
+
+      > .input-group-text {
+        padding-left: $input-padding-x / 2;
+        border-top-right-radius: $input-border-radius;
+        border-bottom-right-radius: $input-border-radius;
+        border-left-width: 0;
+        transition: $input-transition;
       }
     }
   }
 
-  > .form-control.is-valid ~ [class*="input-group"] > .input-group-text {
-    border-color: $success;
-  }
+  .input-group-lg.input-group-merge {
 
-  > .form-control.is-invalid ~ [class*="input-group"] > .input-group-text {
-    border-color: $danger;
-  }
-
-  > .form-control-prepended {
-    padding-left: $input-padding-x / 2;
-    border-top-left-radius: 0 !important;
-    border-bottom-left-radius: 0 !important;
-    border-left-width: 0;
-  }
-
-  > .form-control-appended {
-    padding-right: $input-padding-x / 2;
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    border-right-width: 0;
-  }
-
-  > .input-group-prepend {
-    order: -1; // prepend always goes first
-
-    > .input-group-text {
-      padding-right: $input-padding-x / 2;
-      border-top-left-radius: $input-border-radius;
-      border-bottom-left-radius: $input-border-radius;
-      border-right-width: 0;
-      transition: $input-transition;
+    > .form-control {
+      border-radius: $input-border-radius-lg;
     }
-  }
 
-  > .input-group-append {
-
-    > .input-group-text {
-      padding-left: $input-padding-x / 2;
-      border-top-right-radius: $input-border-radius;
-      border-bottom-right-radius: $input-border-radius;
-      border-left-width: 0;
-      transition: $input-transition;
-    }
-  }
-}
-
-.input-group-lg.input-group-merge {
-
-  > .form-control {
-    border-radius: $input-border-radius-lg;
-  }
-
-  > .form-control-prepended {
-    padding-left: $input-padding-x-lg / 2;
-
-  }
-
-  > .form-control-appended {
-    padding-right: $input-padding-x-lg / 2;
-
-  }
-
-  > .input-group-prepend {
-
-    > .input-group-text {
-      padding-right: $input-padding-x-lg / 2;
-      border-top-left-radius: $input-border-radius-lg;
-      border-bottom-left-radius: $input-border-radius-lg;
-    }
-  }
-
-  > .input-group-append {
-
-    > .input-group-text {
+    > .form-control-prepended {
       padding-left: $input-padding-x-lg / 2;
-      border-top-right-radius: $input-border-radius-lg;
-      border-bottom-right-radius: $input-border-radius-lg;
+
     }
-  }
-}
 
-.input-group-sm.input-group-merge {
+    > .form-control-appended {
+      padding-right: $input-padding-x-lg / 2;
 
-  > .form-control {
-    border-radius: $input-border-radius-sm;
-  }
+    }
 
-  > .form-control-prepended {
-    padding-left: $input-padding-x-sm / 2;
+    > .input-group-prepend {
 
-  }
+      > .input-group-text {
+        padding-right: $input-padding-x-lg / 2;
+        border-top-left-radius: $input-border-radius-lg;
+        border-bottom-left-radius: $input-border-radius-lg;
+      }
+    }
 
-  > .form-control-appended {
-    padding-right: $input-padding-x-sm / 2;
-  }
+    > .input-group-append {
 
-  > .input-group-prepend {
-
-    > .input-group-text {
-      padding-right: $input-padding-x-sm / 2;
-      border-top-left-radius: $input-border-radius-sm;
-      border-bottom-left-radius: $input-border-radius-sm;
+      > .input-group-text {
+        padding-left: $input-padding-x-lg / 2;
+        border-top-right-radius: $input-border-radius-lg;
+        border-bottom-right-radius: $input-border-radius-lg;
+      }
     }
   }
 
-  > .input-group-append {
+  .input-group-sm.input-group-merge {
 
-    > .input-group-text {
+    > .form-control {
+      border-radius: $input-border-radius-sm;
+    }
+
+    > .form-control-prepended {
       padding-left: $input-padding-x-sm / 2;
-      border-top-right-radius: $input-border-radius-sm;
-      border-bottom-right-radius: $input-border-radius-sm;
+
+    }
+
+    > .form-control-appended {
+      padding-right: $input-padding-x-sm / 2;
+    }
+
+    > .input-group-prepend {
+
+      > .input-group-text {
+        padding-right: $input-padding-x-sm / 2;
+        border-top-left-radius: $input-border-radius-sm;
+        border-bottom-left-radius: $input-border-radius-sm;
+      }
+    }
+
+    > .input-group-append {
+
+      > .input-group-text {
+        padding-left: $input-padding-x-sm / 2;
+        border-top-right-radius: $input-border-radius-sm;
+        border-bottom-right-radius: $input-border-radius-sm;
+      }
     }
   }
-}
 
-.input-group-rounded.input-group-merge {
+  .input-group-rounded.input-group-merge {
 
-  > .form-control {
-    border-radius: 20rem;
-  }
+    > .form-control {
+      border-radius: 20rem;
+    }
 
-  > .input-group-prepend {
+    > .input-group-prepend {
 
-    > .input-group-text {
-      border-top-left-radius: 20rem;
-      border-bottom-left-radius: 20rem;
+      > .input-group-text {
+        border-top-left-radius: 20rem;
+        border-bottom-left-radius: 20rem;
+      }
+    }
+
+    > .input-group-append {
+
+      > .input-group-text {
+        border-top-right-radius: 20rem;
+        border-bottom-right-radius: 20rem;
+      }
     }
   }
 
-  > .input-group-append {
+  .input-group-flush {
 
-    > .input-group-text {
-      border-top-right-radius: 20rem;
-      border-bottom-right-radius: 20rem;
+    > .form-control {
+      padding-top: 0;
+      padding-bottom: 0;
+      border-color: transparent !important;
+      background-color: transparent !important;
+    }
+
+    > .input-group-prepend,
+    > .input-group-append {
+
+      > .input-group-text {
+        padding: 0;
+        border-width: 0;
+        background-color: transparent;
+      }
     }
   }
-}
 
-.input-group-flush {
 
-  > .form-control {
-    padding-top: 0;
-    padding-bottom: 0;
-    border-color: transparent !important;
-    background-color: transparent !important;
-  }
+  // Font size
 
-  > .input-group-prepend,
-  > .input-group-append {
+  .form-control {
 
-    > .input-group-text {
-      padding: 0;
-      border-width: 0;
-      background-color: transparent;
+    &.h1, &.h2, &.h3, &.h4, &.h5 {
+      margin-bottom: 0;
+      font-weight: $headings-font-weight;
+      letter-spacing: $headings-letter-spacing;
+    }
+
+    &.h1 {
+      font-size: $h1-font-size;
+    }
+
+    &.h2 {
+      font-size: $h2-font-size;
+    }
+
+    &.h3 {
+      font-size: $h3-font-size;
+    }
+
+    &.h4 {
+      font-size: $h4-font-size;
+    }
+
+    &.h5 {
+      font-size: $h5-font-size;
     }
   }
-}
-
-
-// Font size
-
-.form-control {
-
-  &.h1, &.h2, &.h3, &.h4, &.h5 {
-    margin-bottom: 0;
-    font-weight: $headings-font-weight;
-    letter-spacing: $headings-letter-spacing;
-  }
-
-  &.h1 {
-    font-size: $h1-font-size;
-  }
-
-  &.h2 {
-    font-size: $h2-font-size;
-  }
-
-  &.h3 {
-    font-size: $h3-font-size;
-  }
-
-  &.h4 {
-    font-size: $h4-font-size;
-  }
-
-  &.h5 {
-    font-size: $h5-font-size;
-  }
-}

@@ -39,4 +39,49 @@ class UpdateSingularBaseClass extends NexusFormRequest
             'name' => 'required',
         ];
     }
+
+    /**
+    * Get custom messages for validator errors.
+    *
+    * @return array
+    */
+    public function messages()
+    {
+        return [];
+    }
+
+    /**
+    * Configure the validator instance.
+    *
+    * @param  \Illuminate\Validation\Validator  $validator
+    * @return void
+    */
+    public function withValidator(Validator $validator)
+    {
+        $validator->after(function ($validator) {
+            // if (false) {
+            //     $validator->errors()->add('field', 'Invalid field.');
+            // }
+        });
+    }
+
+    /**
+    * Prepare the data for validation.
+    *
+    * @return void
+    */
+    protected function prepareForValidation()
+    {
+        //
+    }
+
+    /**
+    * Handle a passed validation attempt.
+    *
+    * @return void
+    */
+    protected function passedValidation()
+    {
+        //
+    }
 }

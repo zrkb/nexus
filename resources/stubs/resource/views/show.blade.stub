@@ -25,16 +25,20 @@
         <div class="col-md-8">
 
             <!-- START card -->
-            <div class="card card-body">
-                <h3 class="card-title mb-4 pb-4 border-bottom font-weight-normal">
-                    <i class="bx bx-layer text-primary mr-2"></i>
-                    Datos del Registro
-                </h3>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-header-title">
+                        <i class="bx bx-layer text-primary mr-2"></i>
+                        Datos del Registro
+                    </h4>
+                </div>
 
-                <div class="form mt-3">
-                    @modelProperty(['title' => 'Nombre'])
-                        {{ $SingularLowercaseBaseClass->name }}
-                    @endmodelProperty
+                <div class="card-body">
+                    <div class="form mt-3">
+                        @modelProperty(['title' => 'Nombre'])
+                            {{ $SingularLowercaseBaseClass->name }}
+                        @endmodelProperty
+                    </div>
                 </div>
             </div>
             <!-- END card -->

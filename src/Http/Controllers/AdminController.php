@@ -8,7 +8,7 @@ use Nexus\Models\Role;
 use Nexus\Traits\HasResource;
 use Nexus\Traits\PermissionModerator;
 
-class AdminsController extends BaseController
+class AdminController extends BaseController
 {
     use PermissionModerator;
     use HasResource;
@@ -79,7 +79,7 @@ class AdminsController extends BaseController
 
         // Encrypt password
         if ($request->password) {
-            $passwordRules = ['password' => 'sometimes|nullable|min:6'];
+            $passwordRules = ['password' => 'sometimes|nullable|string|min:6|max:255'];
             $this->validate($request, $passwordRules);
 
             $request->merge(['password' => bcrypt($request->password)]);
@@ -103,19 +103,19 @@ class AdminsController extends BaseController
     private function creationRules() : array
     {
         return [
-            'firstname'    => 'required',
-            'lastname'     => 'required',
-            'email'         => 'required|email|unique:admins,email',
-            'password'      => 'required|min:6',
+            'firstname'    => 'required|string|max:255',
+            'lastname'     => 'required|string|max:255',
+            'email'         => 'required|string|max:255|email|unique:admins,email',
+            'password'      => 'required|string|min:6|max:255',
         ];
     }
 
     private function updateRules($id) : array
     {
         return [
-            'firstname'    => 'required',
-            'lastname'     => 'required',
-            'email'         => 'required|email|unique:admins,email,' . $id,
+            'firstname'    => 'required|string|max:255',
+            'lastname'     => 'required|string|max:255',
+            'email'         => 'required|string|max:255|email|unique:admins,email,' . $id,
         ];
     }
 }

@@ -144,3 +144,15 @@ if (! function_exists('is_resource_route')) {
         return $resourceName == $resource;
     }
 }
+
+if (! function_exists('is_resource')) {
+    /**
+     * Check if user is viewing the specified route
+     *
+     * @return bool
+     */
+    function is_resource(string $resource): bool
+    {
+        return is_resource_route($resource);
+    }
+}

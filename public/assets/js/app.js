@@ -1677,47 +1677,124 @@ jQuery(document).ready(function () {
   !*** ./resources/assets/js/list.js ***!
   \*************************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
 //
 // list.js
-// Theme module
 //
-
-
 (function () {
-  //
-  // Variables
-  //
-  var toggle = document.querySelectorAll('[data-toggle="lists"]');
-  var toggleSort = document.querySelectorAll('[data-toggle="lists"] [data-sort]'); //
-  // Functions
-  //
+  var lists = document.querySelectorAll('[data-list]');
+  var sorts = document.querySelectorAll('[data-sort]');
 
-  function init(el) {
-    var options = el.dataset.options;
-    options = options ? JSON.parse(options) : {};
-    new List(el, options);
-  } //
-  // Events
-  //
+  function init(list) {
+    var listAlert = list.querySelector('.list-alert');
+    var listAlertCount = list.querySelector('.list-alert-count');
+    var listAlertClose = list.querySelector('.list-alert .close');
+    var listCheckboxes = list.querySelectorAll('.list-checkbox');
+    var listCheckboxAll = list.querySelector('.list-checkbox-all');
+    var listPaginationPrev = list.querySelector('.list-pagination-prev');
+    var listPaginationNext = list.querySelector('.list-pagination-next');
+    var listOptions = list.dataset.list && JSON.parse(list.dataset.list);
+    var defaultOptions = {
+      listClass: 'list',
+      searchClass: 'list-search',
+      sortClass: 'list-sort'
+    }; // Merge options
 
+    var options = Object.assign(defaultOptions, listOptions); // Init
 
-  if (typeof List !== 'undefined') {
-    if (toggle) {
-      [].forEach.call(toggle, function (el) {
-        init(el);
+    var listObj = new List(list, options); // Pagination (next)
+
+    if (listPaginationNext) {
+      listPaginationNext.addEventListener('click', function (e) {
+        e.preventDefault();
+        var nextItem = listObj.i + listObj.page;
+
+        if (nextItem <= listObj.size()) {
+          listObj.show(nextItem, listObj.page);
+        }
       });
-    }
+    } // Pagination (prev)
 
-    if (toggleSort) {
-      [].forEach.call(toggleSort, function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
+
+    if (listPaginationPrev) {
+      listPaginationPrev.addEventListener('click', function (e) {
+        e.preventDefault();
+        var prevItem = listObj.i - listObj.page;
+
+        if (prevItem > 0) {
+          listObj.show(prevItem, listObj.page);
+        }
+      });
+    } // Checkboxes
+
+
+    if (listCheckboxes) {
+      [].forEach.call(listCheckboxes, function (checkbox) {
+        checkbox.addEventListener('change', function () {
+          countCheckboxes(listCheckboxes, listAlert, listAlertCount);
+
+          if (listCheckboxAll) {
+            listCheckboxAll.checked = false;
+          }
         });
       });
+    } // Checkbox
+
+
+    if (listCheckboxAll) {
+      listCheckboxAll.addEventListener('change', function () {
+        [].forEach.call(listCheckboxes, function (checkbox) {
+          checkbox.checked = listCheckboxAll.checked;
+        });
+        countCheckboxes(listCheckboxes, listAlert, listAlertCount);
+      });
+    } // Alert
+
+
+    if (listAlertClose) {
+      listAlertClose.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if (listCheckboxAll) {
+          listCheckboxAll.checked = false;
+        }
+
+        [].forEach.call(listCheckboxes, function (checkbox) {
+          checkbox.checked = false;
+        });
+        countCheckboxes(listCheckboxes, listAlert, listAlertCount);
+      });
     }
+  }
+
+  ;
+
+  function countCheckboxes(listCheckboxes, listAlert, listAlertCount) {
+    var checked = [].slice.call(listCheckboxes).filter(function (checkbox) {
+      return checkbox.checked;
+    });
+
+    if (listAlert) {
+      checked.length ? listAlert.classList.add('show') : listAlert.classList.remove('show');
+      listAlertCount.innerHTML = checked.length;
+    }
+  }
+
+  ;
+
+  if (typeof List !== 'undefined' && lists) {
+    [].forEach.call(lists, function (list) {
+      init(list);
+    });
+  }
+
+  if (typeof List !== 'undefined' && sorts) {
+    [].forEach.call(sorts, function (sort) {
+      sort.addEventListener('click', function (e) {
+        e.preventDefault();
+      });
+    });
   }
 })();
 
@@ -1953,32 +2030,28 @@ jQuery(document).ready(function () {
   //
 
   function init(el) {
-    var elementOptions = el.dataset.options;
-    elementOptions = elementOptions ? JSON.parse(elementOptions) : {};
+    var elementOptions = el.dataset.options ? JSON.parse(el.dataset.options) : {};
     var defaultOptions = {
-      tags: $(el).data('dynamic-tags') || false
+      containerCssClass: el.getAttribute('class'),
+      dropdownAutoWidth: true,
+      dropdownCssClass: el.classList.contains('custom-select-sm') || el.classList.contains('form-control-sm') ? 'dropdown-menu dropdown-menu-sm show' : 'dropdown-menu show',
+      dropdownParent: el.closest('.modal') ? el.closest('.modal') : document.body,
+      templateResult: formatTemplate
     };
-    var options = Object.assign(elementOptions, defaultOptions);
-    console.log($(el).data('dynamic-tags'));
-    console.log(options);
+    var options = Object.assign(defaultOptions, elementOptions); // Init
+
     $(el).select2(options);
   }
 
   function formatTemplate(item) {
-    if (!item.id) {
+    // Quit if there's no avatar to display
+    if (!item.id || !item.element || !item.element.dataset.avatarSrc) {
       return item.text;
     }
 
-    var option = item.element;
-    var avatar = option.dataset.avatarSrc;
-
-    if (avatar) {
-      var content = document.createElement('div');
-      content.innerHTML = '<span class="avatar avatar-xs mr-3"><img class="avatar-img rounded-circle" src="' + avatar + '" alt="' + item.text + '"></span><span>' + item.text + '</span>';
-    } else {
-      var content = item.text;
-    }
-
+    var avatar = item.element.dataset.avatarSrc;
+    var content = document.createElement('div');
+    content.innerHTML = '<span class="avatar avatar-xs mr-3"><img class="avatar-img rounded-circle" src="' + avatar + '" alt="' + item.text + '"></span><span>' + item.text + '</span>';
     return content;
   } //
   // Events
@@ -2246,26 +2319,30 @@ jQuery(document).ready(function ($) {
   // });
   // Delete Record
 
-  $('body').on('click', '.delete-record', function (event) {
+  $('body').on('click', '.delete-record, .destructive-action', function (event) {
     event.preventDefault();
     var el = $(this);
     var form = $(el.data('form'));
     var forceDelete = el.data('delete') == 'hard';
-    var title = forceDelete ? 'Estás seguro de borrar este registro?' : 'Estás seguro de inactivar este registro?';
-    var message = forceDelete ? 'Una vez eliminado, ya no podrás recuperar este dato y todos los datos relacionados serán borrados de la Base de Datos!' : 'Para activar de vuelta este registro puedes usar el botón Restaurar.';
+    var modalTitle = el.data('modal-title');
+    var modalMessage = el.data('modal-message');
+    var title = modalTitle ? modalTitle : forceDelete ? 'Estás seguro de borrar este registro?' : 'Estás seguro de inactivar este registro?';
+    var message = modalMessage ? modalMessage : forceDelete ? 'Una vez eliminado, ya no podrás recuperar este dato y todos los datos relacionados serán borrados de la Base de Datos!' : 'Para activar de vuelta este registro puedes usar el botón Restaurar.';
+    var cancelButtonTitle = el.data('cancel-title');
+    var confirmButtonTitle = el.data('confirm-title');
     var modal = bootbox.dialog({
       title: title,
       message: message,
       buttons: {
         cancel: {
-          label: 'Cancelar',
+          label: cancelButtonTitle !== null && cancelButtonTitle !== void 0 ? cancelButtonTitle : 'Cancelar',
           className: 'btn-white btn-cancel-modal'
         },
         confirm: {
-          label: 'Sí, eliminar registro',
+          label: confirmButtonTitle !== null && confirmButtonTitle !== void 0 ? confirmButtonTitle : 'Sí, eliminar registro',
           className: 'btn-danger btn-activity btn-loading',
           callback: function callback() {
-            form.submit();
+            form.trigger('submit');
           }
         }
       },
@@ -2328,6 +2405,19 @@ jQuery(document).ready(function ($) {
     }).on('blur', function () {
       $input.removeClass('has-focus');
     });
+  });
+  $('.input-group-password a').on('click', function (event) {
+    event.preventDefault();
+    var el = $(event.currentTarget);
+    var input = el.parents('.input-group').first().find('input');
+
+    if (input.prop('type') == 'text') {
+      input.prop('type', 'password');
+      el.find('i').prop('class', 'bx bxs-hide text-muted');
+    } else if (input.prop('type') == 'password') {
+      input.prop('type', 'text');
+      el.find('i').prop('class', 'bx bxs-show text-primary');
+    }
   });
 });
 
