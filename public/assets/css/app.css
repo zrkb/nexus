@@ -8359,7 +8359,7 @@ pre code {
   color: #1F2637;
   background-color: #FFFFFF;
   background-clip: padding-box;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -10464,7 +10464,7 @@ input[type="button"].btn-block {
   text-align: center;
   white-space: nowrap;
   background-color: #eaebee;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   border-radius: 0.375rem;
 }
 
@@ -10693,7 +10693,7 @@ input[type="button"].btn-block {
   vertical-align: middle;
   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343C49' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
   background-color: #FFFFFF;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -10789,7 +10789,7 @@ input[type="button"].btn-block {
   line-height: 1.5;
   color: #1F2637;
   background-color: #FFFFFF;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   border-radius: 0.375rem;
 }
 
@@ -22928,7 +22928,7 @@ button:focus {
 .dz-message {
   padding: 5rem 1rem;
   background-color: #FFFFFF;
-  border: 1px dashed #eaebee;
+  border: 1px dashed #dee2e6;
   border-radius: 0.375rem;
   text-align: center;
   color: #9BA8B4;
@@ -23000,7 +23000,7 @@ button:focus {
 
 .flatpickr-calendar {
   background-color: #FFFFFF;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   color: #1F2637;
   box-shadow: none;
 }
@@ -23011,7 +23011,7 @@ button:focus {
 }
 
 .flatpickr-calendar.arrowTop:before {
-  border-bottom-color: #eaebee;
+  border-bottom-color: #dee2e6;
 }
 
 .flatpickr-calendar.arrowTop:after {
@@ -23038,7 +23038,7 @@ button:focus {
 
 .flatpickr-calendar .flatpickr-day:hover {
   background-color: #dee2e6;
-  border-color: #eaebee;
+  border-color: #dee2e6;
 }
 
 .flatpickr-calendar .flatpickr-day.prevMonthDay {
@@ -23070,7 +23070,7 @@ button:focus {
   position: relative;
   padding: 0.625rem 0.75rem;
   background-color: #FFFFFF;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   border-radius: 0.375rem 0.375rem 0 0;
   color: #1F2637;
 }
@@ -23094,7 +23094,7 @@ button:focus {
   color: #1F2637;
   background-color: #FFFFFF;
   background-clip: padding-box;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -23476,7 +23476,7 @@ button:focus {
   height: calc(1.75em + 0.25rem + 2px);
   padding: 0.125rem 0.5rem;
   background-color: #FFFFFF;
-  border: 1px solid #eaebee;
+  border: 1px solid #dee2e6;
   border-radius: 0.25rem;
   line-height: 1.75;
   font-size: 0.84375rem;
