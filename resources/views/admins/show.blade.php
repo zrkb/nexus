@@ -25,12 +25,16 @@
 
     <div class="row mb-5 justify-content-center">
         <div class="col-md-8">
+
             <div class="card">
-                <div class="card-body">
-                    <h3 class="card-title mb-4 pb-4 border-bottom font-weight-normal">
+                <div class="card-header">
+                    <h4 class="card-header-title">
                         <i class="bx bx-layer text-primary mr-2"></i>
                         Datos del Registro
-                    </h3>
+                    </h4>
+                </div>
+
+                <div class="card-body">
 
                     <div class="form mt-3">
                         @modelProperty(['title' => 'Nombre Completo'])
@@ -49,29 +53,23 @@
                             @endforeach
                         @endmodelProperty
                     </div>
-                    {{-- END form --}}
+
                 </div>
-                {{-- END card-body --}}
             </div>
-            {{-- END card --}}
+
         </div>
-        {{-- END col --}}
 
         <div class="col-md-4">
             @include('nexus::misc/models/additional-information', ['model' => $admin])
         </div>
-        {{-- END col --}}
     </div>
-    {{-- END row --}}
 
     @if ($admin->id != admin()->id)
         <div class="row mb-5 justify-content-center">
             <div class="col-md-12">
                 @include('nexus::misc/models/delete-action', ['model' => $admin])
             </div>
-            {{-- END col --}}
         </div>
-        {{-- END row --}}
     @endif
 
 @endsection
