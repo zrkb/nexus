@@ -51,5 +51,8 @@ abstract class NexusFormRequest extends FormRequest
      *
      * @return mixed
      */
-    abstract public function persist();
+    public function persist()
+    {
+        return true;
+    }
 }
