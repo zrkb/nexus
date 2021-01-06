@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\SingularBaseClass;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Validator;
 use Nexus\Http\Requests\NexusFormRequest;
 
 class UpdateSingularBaseClass extends NexusFormRequest

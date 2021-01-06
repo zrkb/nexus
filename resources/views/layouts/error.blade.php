@@ -19,7 +19,7 @@
 
                     <!-- Title -->
                     <h1 class="header-title mb-3">
-                        Acceso Denegado
+                        {{ $title ?? 'Acceso Denegado' }}
                     </h1>
 
                     @isset($message)
