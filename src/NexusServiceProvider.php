@@ -60,6 +60,7 @@ class NexusServiceProvider extends ServiceProvider
         Blade::{$component}('nexus::misc/table', 'table');
         Blade::{$component}('nexus::components/checkbox', 'checkbox');
         Blade::{$component}('nexus::components/form', 'form');
+        Blade::{$component}('nexus::components/logout-button', 'logout');
 
         // Alias
         Blade::include('nexus::layouts/messages', 'messages');
