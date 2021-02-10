@@ -17,17 +17,23 @@
 
         <hr class="dropdown-divider">
 
-        <a class="dropdown-item" href="{{ route('admins.index') }}">
-            @lang('nexus::messages.profile-menu-item-admins')
-        </a>
+        @can('view_admins')
+            <a class="dropdown-item" href="{{ route('admins.index') }}">
+                @lang('nexus::messages.profile-menu-item-admins')
+            </a>
+        @endcan
 
-        <a class="dropdown-item" href="{{ route('roles.index') }}">
-            @lang('nexus::messages.profile-menu-item-roles')
-        </a>
+        @can('view_roles')
+            <a class="dropdown-item" href="{{ route('roles.index') }}">
+                @lang('nexus::messages.profile-menu-item-roles')
+            </a>
+        @endcan
 
-        <a class="dropdown-item" href="{{ route('permissions.index') }}">
-            @lang('nexus::messages.profile-menu-item-permissions')
-        </a>
+        @can('view_permissions')
+            <a class="dropdown-item" href="{{ route('permissions.index') }}">
+                @lang('nexus::messages.profile-menu-item-permissions')
+            </a>
+        @endcan
 
         <a class="dropdown-item text-danger mt-2" href="{{ admin_base_path('logout') }}"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
