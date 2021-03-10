@@ -15,7 +15,10 @@
         @endif
 
         <div class="table-responsive">
-            <table class="table table-hover table-striped card-table datatable">
+            <table class="table table-hover table-striped card-table datatable"
+                @isset($exportTitle)
+                    data-export-title="{{ $exportTitle }}"
+                @endisset>
 
                 @isset($thead)
                     <thead>

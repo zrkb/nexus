@@ -43,41 +43,6 @@
                     }
                 };
 
-                this.buttons = [
-                    {
-                        extend: 'copy',
-                        text: 'Copiar',
-                        footer: true,
-                    },
-                    {
-                        extend: 'excelHtml5',
-                        text: 'Excel',
-                        footer: true
-                    },
-                    {
-                        extend: 'csvHtml5',
-                        text: 'CSV',
-                        footer: true
-                    },
-                    {
-                        extend: 'pdfHtml5',
-                        text: 'PDF',
-                        footer: true,
-                    },
-                    {
-                        extend: 'print',
-                        text: 'Imprimir',
-                        footer: true,
-                    }
-                ];
-
-                this.options = {
-                    language: this.language,
-                    dom: 'Bfrt',
-                    buttons: this.buttons,
-                    bPaginate: false
-                };
-
                 this.init();
             }
 
@@ -96,6 +61,7 @@
                 this.tables.each((index, element) => {
                     let table = $(element);
                     let userDefaults = {};
+                    let exportTitle = table.data('export-title') ?? document.title;
 
                     if (table.data('column-order')) {
                         let order = table.data('column-order').split(':');
@@ -105,6 +71,46 @@
                             order: [ [ order[0], order[1] ] ]
                         }
                     }
+
+                    this.buttons = [
+                        {
+                            extend: 'copy',
+                            text: 'Copiar',
+                            title: exportTitle,
+                            footer: true,
+                        },
+                        {
+                            extend: 'excelHtml5',
+                            text: 'Excel',
+                            title: exportTitle,
+                            footer: true
+                        },
+                        {
+                            extend: 'csvHtml5',
+                            text: 'CSV',
+                            title: exportTitle,
+                            footer: true
+                        },
+                        {
+                            extend: 'pdfHtml5',
+                            text: 'PDF',
+                            title: exportTitle,
+                            footer: true,
+                        },
+                        {
+                            extend: 'print',
+                            text: 'Imprimir',
+                            title: exportTitle,
+                            footer: true,
+                        }
+                    ];
+
+                    this.options = {
+                        language: this.language,
+                        dom: 'Bfrt',
+                        buttons: this.buttons,
+                        bPaginate: false
+                    };
 
                     let settings = $.extend({}, userDefaults, this.options);
 
