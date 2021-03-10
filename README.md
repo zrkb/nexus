@@ -7,7 +7,7 @@
 ### Requirements
 
 * Composer
-* Laravel Framework 5.7+/6.0+/7.0+
+* Laravel Framework 6.x/7.x/8.x
 * Laravel Mix
 * Node.js & NPM
 
