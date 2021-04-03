@@ -83,25 +83,57 @@
                             extend: 'excelHtml5',
                             text: 'Excel',
                             title: exportTitle,
-                            footer: true
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible',
+                                format: {
+                                    body: (data, row, column, node) => {
+                                        return this.parseDatacell(data, row, column, node);
+                                    }
+                                }
+                            }
                         },
                         {
                             extend: 'csvHtml5',
                             text: 'CSV',
                             title: exportTitle,
-                            footer: true
+                            footer: true,
+                            exportOptions: {
+                                columns: ':visible',
+                                format: {
+                                    body: (data, row, column, node) => {
+                                        return this.parseDatacell(data, row, column, node);
+                                    }
+                                }
+                            }
                         },
                         {
                             extend: 'pdfHtml5',
                             text: 'PDF',
                             title: exportTitle,
                             footer: true,
+                            exportOptions: {
+                                columns: ':visible',
+                                format: {
+                                    body: (data, row, column, node) => {
+                                        return this.parseDatacell(data, row, column, node);
+                                    }
+                                }
+                            }
                         },
                         {
                             extend: 'print',
                             text: 'Imprimir',
                             title: exportTitle,
                             footer: true,
+                            exportOptions: {
+                                columns: ':visible',
+                                format: {
+                                    body: (data, row, column, node) => {
+                                        return this.parseDatacell(data, row, column, node);
+                                    }
+                                }
+                            }
                         }
                     ];
 
@@ -120,6 +152,32 @@
 
                 $('.dt-buttons').detach().appendTo('#table-export-buttons');
                 $('.dataTables_filter').detach().appendTo('#table-search-filter');
+            }
+
+            parseDatacell(data, row, column, node)
+            {
+                if (! data) return;
+
+                let nodeDOM = $(node);
+                let nodeDOMExportData = nodeDOM.data('export-data');
+
+                if (nodeDOMExportData) {
+                    return nodeDOMExportData;
+                }
+
+                let htmlData = $(data);
+
+                if (htmlData.hasClass('numeric')) {
+                    data = htmlData.html();
+                    data = data.replace(/[$.]/g, '');
+                    data = data.replace(/[$,]/g, '');
+                    data = data.replace(/[$%]/g, '');
+                }
+
+                data = data.replace(/(&nbsp;|<(?:.|\n)*?>)/igm, '');
+                data = $.trim(data);
+
+                return data;
             }
         }
 
