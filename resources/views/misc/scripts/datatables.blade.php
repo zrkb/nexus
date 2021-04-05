@@ -78,6 +78,14 @@
                             text: 'Copiar',
                             title: exportTitle,
                             footer: true,
+                            exportOptions: {
+                                columns: ':visible',
+                                format: {
+                                    body: (data, row, column, node) => {
+                                        return this.parseDatacell(data, row, column, node);
+                                    }
+                                }
+                            }
                         },
                         {
                             extend: 'excelHtml5',
