@@ -173,14 +173,7 @@
                     return nodeDOMExportData;
                 }
 
-                let htmlData = $(data);
-
-                if (htmlData.hasClass('numeric')) {
-                    data = htmlData.html();
-                    data = data.replace(/[$.]/g, '');
-                    data = data.replace(/[$,]/g, '');
-                    data = data.replace(/[$%]/g, '');
-                }
+                let htmlData = $('<div>' + data + '</div>');
 
                 data = data.replace(/(&nbsp;|<(?:.|\n)*?>)/igm, '');
                 data = $.trim(data);
