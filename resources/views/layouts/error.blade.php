@@ -1,6 +1,6 @@
-@extends('nexus::layouts/boxed')
+@extends(admin() ? 'nexus::layouts/app' : 'nexus::layouts/master')
 
-@section('boxed')
+@section(admin() ? 'content' : 'app')
 
     <!-- Card -->
     <div class="card" style="margin-top: 70px">
