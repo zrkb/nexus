@@ -100,4 +100,15 @@ class RolesController extends BaseController
             'name' => 'required|unique:roles,name,' . $id,
         ];
     }
+
+    public function destroy(Role $role)
+    {
+        if ($role->delete()) {
+            session()->flash('success', 'El registro se ha eliminado exitosamente de la Base de Datos');
+        } else {
+            session()->flash('danger', 'No se pudo eliminar el registro. Por favor comuníquese con el administrador.');
+        }
+
+        return redirect()->back();
+    }
 }
