@@ -18,7 +18,6 @@ class AppLocale
     {
         // Change Locale
         setlocale(LC_TIME, 'es_ES', 'es', 'ES');
-        \Carbon\Carbon::setUTF8(true);
         \Carbon\Carbon::setLocale(config('app.locale'));
 
         return $next($request);

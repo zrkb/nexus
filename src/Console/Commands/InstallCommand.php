@@ -57,10 +57,6 @@ class InstallCommand extends Command
             $this->callSilent('vendor:publish', ['--provider' => 'Spatie\Activitylog\ActivitylogServiceProvider']);
         }
 
-        if ($this->migrationFileIsMissing('*_create_mediable_tables.php')) {
-            $this->callSilent('vendor:publish', ['--provider' => 'Plank\Mediable\MediableServiceProvider']);
-        }
-
         $this->line('→ Publishing Nexus Service Provider ... <info>✔</info>');
         $this->callSilent('vendor:publish', [
             '--provider' => 'Nexus\NexusServiceProvider',

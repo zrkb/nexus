@@ -91,9 +91,9 @@ class NexusServiceProvider extends ServiceProvider
             __DIR__ . '/../database/factories' => database_path('factories')
         ], 'nexus-factories');
 
-        $this->publishes([
-            __DIR__ . '/../database/migrations' => database_path('migrations')
-        ], 'nexus-migrations');
+        // $this->publishes([
+        //     __DIR__ . '/../database/migrations' => database_path('migrations')
+        // ], 'nexus-migrations');
 
         $this->publishes([
             __DIR__ . '/../resources/lang' => resource_path('lang/vendor/nexus')

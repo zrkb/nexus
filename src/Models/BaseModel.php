@@ -20,7 +20,7 @@ abstract class BaseModel extends Model
 
     public function getCreatedAttribute()
     {
-        return $this->created_at->formatLocalized('%b %d, %Y');
+        return $this->created_at->translatedFormat('M d, Y');
     }
 
     public function scopeSortedByName($query, $column = 'name')

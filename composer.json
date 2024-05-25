@@ -13,18 +13,16 @@
     ],
     "homepage": "https://github.com/zrkb/nexus",
     "require": {
-        "php": "^7.2.5 | ^8.0",
-        "illuminate/support": "^6.0 | ^7.0 | ^8.0",
-        "spatie/laravel-html": "^2.23",
-        "spatie/laravel-activitylog": "^3.8",
-        "spatie/laravel-permission": "^3.0",
-        "laravelcollective/html":"^6.0",
-        "plank/laravel-mediable": "^3.0 | ^4.0",
-        "laravel/ui": "^1.0 | ^2.0 | ^3.0"
+        "php": "^7.3|^8.0",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+        "konekt/html": "^6.5",
+        "spatie/laravel-activitylog": "^3.8|^4.0",
+        "spatie/laravel-permission": "^3.0|^4.0|^5.0|^6.0",
+        "plank/laravel-mediable": "^3.0|^4.0|^5.0|^6.0",
+        "laravel/ui": "^1.0|^2.0|^3.0|^4.0"
     },
     "require-dev": {
-        "cybercog/laravel-whoops-editor": "^3.0",
-        "phpunit/phpunit": "^8.0 | ^9.0",
+        "phpunit/phpunit": "^8.0|^9.0|^10.0",
         "barryvdh/laravel-debugbar": "^3.0"
     },
     "autoload": {
@@ -53,6 +51,6 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

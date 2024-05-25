@@ -2,29 +2,22 @@
 
 namespace Nexus\Traits;
 
+use Spatie\Activitylog\LogOptions;
 use Spatie\Activitylog\Traits\LogsActivity;
 
 trait ResourceModel
 {
 	use LogsActivity;
 
-	protected static $logAttributes = ['*'];
-	protected static $logAttributesToIgnore = [];
-	protected static $logOnlyDirty = true;
-
-    public function shouldLogOnlyDirty() : bool
+    /**
+     * Get the options for the activitylog.
+     */
+    public function getActivitylogOptions(): LogOptions
     {
-        return static::$logOnlyDirty;
-    }
-
-    public function getLogAttributes()
-    {
-        return static::$logAttributes;
-    }
-
-    public function getLogAttributesToIgnore()
-    {
-        return static::$logAttributesToIgnore;
+        return LogOptions::defaults()
+            ->logOnly(['*'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs();
     }
 
 	/**

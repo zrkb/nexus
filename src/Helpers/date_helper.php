@@ -60,9 +60,9 @@ if (! function_exists('now')) {
     /**
      * Get Carbon instance for current date and time
      *
-     * @return static
+     * @return \Carbon\Carbon
      */
-    function now()
+    function now(): Carbon
     {
         return Carbon::now();
     }
