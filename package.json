@@ -28,7 +28,7 @@
         "gulp-uglify": "3.0.2",
         "gulp-useref-plus": "0.0.8",
         "laravel-mix": "^5.0.9",
-        "resolve-url-loader": "^3.1.2",
+        "resolve-url-loader": "^5.0.0",
         "sass": "^1.23.1",
         "sass-loader": "^8.0.0",
         "vue-template-compiler": "^2.6.11"
