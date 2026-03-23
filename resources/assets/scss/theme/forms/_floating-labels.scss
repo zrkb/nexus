@@ -1,0 +1,12 @@
+// 
+// floating-labels.scss
+// Extended from Bootstrap
+//
+
+//
+// Bootstrap Overrides ===================================
+//
+
+.form-floating > label::after {
+  background-color: transparent !important;
+}

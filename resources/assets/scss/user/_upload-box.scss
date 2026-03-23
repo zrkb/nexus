@@ -25,7 +25,7 @@
 
     .upload-icon {
         width: 100%;
-        color: $text-light;
+        color: map-get($theme-colors, "light");
         display: block;
     }
 
@@ -133,7 +133,7 @@
     overflow: hidden;
     margin: 0 auto;
     text-align: center;
-    color: $text-base;
+    color: $gray-700;
 
     // strong {
     //     color: $primary;
@@ -150,7 +150,7 @@
 .upload-file:focus + label,
 .upload-file.has-focus + label
 {
-    outline: 1px dotted $text-base;
+    outline: 1px dotted $gray-700;
     outline: -webkit-focus-ring-color auto 5px;
 }
     .upload-file + label *

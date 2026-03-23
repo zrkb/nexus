@@ -1,36 +1,15 @@
 //
 // autosize.js
-// Theme module
+// Dashkit module
 //
 
-'use strict';
+import autosize from 'autosize';
 
-(function() {
-  
-  //
-  // Variables
-  //
+const toggles = document.querySelectorAll('[data-autosize]');
 
-  var toggle = document.querySelectorAll('[data-toggle="autosize"]');
+toggles.forEach((toggle) => {
+  autosize(toggle);
+});
 
-
-  //
-  // Function
-  //
-
-  function init(el) {
-    autosize(el);
-  }
-
-
-  //
-  // Event
-  //
-
-  if (typeof autosize !== 'undefined' && toggle) {
-    [].forEach.call(toggle, function(el) {
-      init(el);
-    });
-  }
-
-})();
+// Make available globally
+window.autosize = autosize;

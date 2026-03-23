@@ -1,36 +1,21 @@
-//
-// highlight.js
-// Theme module
-//
+// //
+// // highlight.js
+// // Dashkit module
+// //
 
-'use strict';
+// import hljs from 'highlight.js/lib/core';
+// import javascript from 'highlight.js/lib/languages/javascript';
+// import xml from 'highlight.js/lib/languages/xml';
 
-(function() {
+// const highlights = document.querySelectorAll('.highlight');
 
-  //
-  // Variables
-  //
+// // Only register the languages we need to reduce the download footprint
+// hljs.registerLanguage('xml', xml);
+// hljs.registerLanguage('javascript', javascript);
 
-  var highlight = document.querySelectorAll('.highlight');
+// highlights.forEach((highlight) => {
+//   hljs.highlightBlock(highlight);
+// });
 
-
-  //
-  // Functions
-  //
-
-  function init(el) {
-    hljs.highlightBlock(el);
-  }
-
-
-  //
-  // Events
-  //
-
-  if (typeof hljs !== 'undefined' && highlight) {
-    [].forEach.call(highlight, function(el) {
-      init(el);
-    });
-  }
-
-})();
+// // Make available globally
+// window.hljs = hljs;

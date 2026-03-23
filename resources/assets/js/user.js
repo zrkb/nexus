@@ -1,281 +1,589 @@
 //
 // user.js
-// User scripts
+// Use this to write your custom JS
 //
 
-'use strict';
+import './chart';
 
-// Dump & Die
-window.dd = console.log;
+import {
+  ArcElement,
+  BarController,
+  BarElement,
+  BubbleController,
+  CategoryScale,
+  Chart,
+  Decimation,
+  DoughnutController,
+  Filler,
+  Legend,
+  LineController,
+  LineElement,
+  LinearScale,
+  LogarithmicScale,
+  PieController,
+  PointElement,
+  PolarAreaController,
+  RadarController,
+  RadialLinearScale,
+  ScatterController,
+  TimeScale,
+  TimeSeriesScale,
+  Title,
+  Tooltip,
+} from 'chart.js';
 
-class TableCheckboxManager {
-    constructor() {
-        this.init();
-    }
+Chart.register(
+  ArcElement,
+  BarController,
+  BarElement,
+  BubbleController,
+  CategoryScale,
+  Decimation,
+  DoughnutController,
+  Filler,
+  Legend,
+  LinearScale,
+  LineController,
+  LineElement,
+  LogarithmicScale,
+  PieController,
+  PointElement,
+  PolarAreaController,
+  RadarController,
+  RadialLinearScale,
+  ScatterController,
+  TimeScale,
+  TimeSeriesScale,
+  Title,
+  Tooltip
+);
 
-    init() {
-        $('body').on('click', '.table-checkbox-manager', (event) => {
-            let el = $(event.target);
-            let tableCheckboxes = el.parents('table').find('.table-checkbox-item');
+// Audience chart
 
-            tableCheckboxes.prop('checked', el.is(':checked'));
-            tableCheckboxes.trigger('change');
-        });
+const audienceChart = document.getElementById('audienceChart');
 
-        $('body').on('change', '.table-checkbox-item', (event) => {
-
-            let el = $(event.target);
-            let checked = el.is(':checked');
-            let checkedItems = el.parents('table').find('.table-checkbox-item:checked');
-            let checkboxManager = el.parents('table').find('.table-checkbox-manager')
-
-            if (checkedItems.length == 0) {
-                checkboxManager.prop('checked', false)
-                               .prop('indeterminate', false);
-            } else if (checkedItems.length == el.parents('table').find('.table-checkbox-item').length) {
-                checkboxManager.prop('checked', true)
-                               .prop('indeterminate', false);
-            } else {
-                checkboxManager.prop('indeterminate', true)
-            }
-
-            if (checked) {
-                el.parents('tr').addClass('bg-light');
-            } else {
-                el.parents('tr').removeClass('bg-light');
-            }
-
-        })
-
-        $('.table-checkbox-item').trigger('change');
-    }
-}
-
-window.slugify = function(text, separator = '-') {
-    text = text.toString().toLowerCase().trim();
-
-    const sets = [
-        {to: 'a', from: '[ÀÁÂÃÄÅÆĀĂĄẠẢẤẦẨẪẬẮẰẲẴẶ]'},
-        {to: 'c', from: '[ÇĆĈČ]'},
-        {to: 'd', from: '[ÐĎĐÞ]'},
-        {to: 'e', from: '[ÈÉÊËĒĔĖĘĚẸẺẼẾỀỂỄỆ]'},
-        {to: 'g', from: '[ĜĞĢǴ]'},
-        {to: 'h', from: '[ĤḦ]'},
-        {to: 'i', from: '[ÌÍÎÏĨĪĮİỈỊ]'},
-        {to: 'j', from: '[Ĵ]'},
-        {to: 'ij', from: '[Ĳ]'},
-        {to: 'k', from: '[Ķ]'},
-        {to: 'l', from: '[ĹĻĽŁ]'},
-        {to: 'm', from: '[Ḿ]'},
-        {to: 'n', from: '[ÑŃŅŇ]'},
-        {to: 'o', from: '[ÒÓÔÕÖØŌŎŐỌỎỐỒỔỖỘỚỜỞỠỢǪǬƠ]'},
-        {to: 'oe', from: '[Œ]'},
-        {to: 'p', from: '[ṕ]'},
-        {to: 'r', from: '[ŔŖŘ]'},
-        {to: 's', from: '[ßŚŜŞŠ]'},
-        {to: 't', from: '[ŢŤ]'},
-        {to: 'u', from: '[ÙÚÛÜŨŪŬŮŰŲỤỦỨỪỬỮỰƯ]'},
-        {to: 'w', from: '[ẂŴẀẄ]'},
-        {to: 'x', from: '[ẍ]'},
-        {to: 'y', from: '[ÝŶŸỲỴỶỸ]'},
-        {to: 'z', from: '[ŹŻŽ]'},
-        {to: '-', from: '[·/_,:;\']'}
-    ];
-
-    sets.forEach(set => {
-        text = text.replace(new RegExp(set.from,'gi'), set.to);
-    });
-
-    text = text.toString().toLowerCase()
-        .replace(/\s+/g, '-')         // Replace spaces with -
-        .replace(/&/g, '-and-')       // Replace & with 'and'
-        .replace(/[^\w\-]+/g, '')     // Remove all non-word chars
-        .replace(/\--+/g, '-')        // Replace multiple - with single -
-        .replace(/^-+/, '')           // Trim - from start of text
-        .replace(/-+$/, '');          // Trim - from end of text
-
-    if ((typeof separator !== 'undefined') && (separator !== '-')) {
-        text = text.replace(/-/g, separator);
-    }
-
-    return text;
-}
-
-
-jQuery(document).ready(function ($) {
-    /*
-     |--------------------------------------------------------------------
-     | Vendor Plugins
-     |--------------------------------------------------------------------
-     */
-
-    new TableCheckboxManager;
-
-    // Currency
-    // $('body [data-mask]').each(function (el) {
-    //     var el = $(el);
-
-    //     el.mask(el.data('mask'), { reverse: el.data('mask-reverse') });
-    // });
-
-    /*
-     |--------------------------------------------------------------------
-     | Bootstrap Components
-     |--------------------------------------------------------------------
-     */
-    // Modal
-    $('.modal[data-show="true"]').modal('show');
-
-    // Tooltip
-    $('[data-toggle="tooltip"]').tooltip();
-
-    // Popover
-    // data-popover-content="#popover-container"
-    $('[data-toggle="popover"]').popover({
-        html : true,
-        trigger: 'focus',
-        container: '.root',
-        content: function() {
-            var content = $(this).attr("data-popover-content");
-            return $(content).children(".popover-body").html();
-        },
-        title: function() {
-            var title = $(this).attr("data-popover-content");
-            return $(title).children(".popover-heading").html();
-        }
-    });
-
-    /*
-     |--------------------------------------------------------------------
-     | Resource Form
-     |--------------------------------------------------------------------
-     */
-
-    // Delete File
-    // $('.delete-file').on('click', function (event) {
-    //     let el = $(event.currentTarget);
-    //     let uploadBox = el.parents('.upload-box');
-    //     let filePreview = uploadBox.find('.file-preview');
-    //     let uploadBox = parent.find('.upload-box');
-    //     filePreview.remove();
-    //     uploadBox.removeClass('d-none');
-    // });
-
-    // Delete Record
-    $('body').on('click', '.delete-record, .destructive-action', function(event) {
-
-        event.preventDefault();
-
-        let el = $(this);
-        let form = $(el.data('form'));
-        let forceDelete = el.data('delete') == 'hard';
-
-        let modalTitle = el.data('modal-title');
-        let modalMessage = el.data('modal-message');
-
-        let title = modalTitle ? modalTitle : (forceDelete ? 'Estás seguro de borrar este registro?' : 'Estás seguro de inactivar este registro?');
-        let message = modalMessage ? modalMessage : (forceDelete ? 'Una vez eliminado, ya no podrás recuperar este dato y todos los datos relacionados serán borrados de la Base de Datos!' : 'Para activar de vuelta este registro puedes usar el botón Restaurar.');
-
-        let cancelButtonTitle = el.data('cancel-title');
-        let confirmButtonTitle = el.data('confirm-title');
-
-        var modal = bootbox.dialog({
-            title: title,
-            message: message,
-            buttons: {
-                cancel: {
-                    label: cancelButtonTitle ?? 'Cancelar',
-                    className: 'btn-white btn-cancel-modal',
-                },
-                confirm: {
-                    label: confirmButtonTitle ?? 'Sí, eliminar registro',
-                    className: 'btn-danger btn-activity btn-loading',
-                    callback: function () {
-                        form.trigger('submit');
-                    }
-                }
+if (audienceChart) {
+  new Chart(audienceChart, {
+    type: 'line',
+    options: {
+      scales: {
+        yAxisOne: {
+          display: 'auto',
+          grid: {
+            color: '#283E59',
+          },
+          ticks: {
+            callback: function (value) {
+              return value + 'k';
             },
-            animate: true,
-            closeButton: true,
-        });
+          },
+        },
+        yAxisTwo: {
+          display: 'auto',
+          grid: {
+            color: '#283E59',
+          },
+          ticks: {
+            callback: function (value) {
+              return value + '%';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          label: 'Customers',
+          data: [0, 10, 5, 15, 10, 20, 15, 25, 20, 30, 25, 40],
+          yAxisID: 'yAxisOne',
+        },
+        {
+          label: 'Sessions',
+          data: [50, 75, 35, 25, 55, 87, 67, 53, 25, 80, 87, 45],
+          yAxisID: 'yAxisOne',
+          hidden: true,
+        },
+        {
+          label: 'Conversion',
+          data: [40, 57, 25, 50, 57, 32, 46, 28, 59, 34, 52, 48],
+          yAxisID: 'yAxisTwo',
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
 
-        modal.init();
+// Convertions chart
+
+const conversionsChart = document.getElementById('conversionsChart');
+
+if (conversionsChart) {
+  new Chart(conversionsChart, {
+    type: 'bar',
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            callback: function (val) {
+              return val + '%';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: [
+        'Oct 1',
+        'Oct 2',
+        'Oct 3',
+        'Oct 4',
+        'Oct 5',
+        'Oct 6',
+        'Oct 7',
+        'Oct 8',
+        'Oct 9',
+        'Oct 10',
+        'Oct 11',
+        'Oct 12',
+      ],
+      datasets: [
+        {
+          label: '2020',
+          data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32],
+        },
+        {
+          label: '2019',
+          data: [15, 10, 20, 12, 7, 0, 8, 16, 18, 16, 10, 22],
+          backgroundColor: '#d2ddec',
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
+
+// Traffic chart
+
+const trafficChart = document.getElementById('trafficChart');
+
+if (trafficChart) {
+  new Chart(trafficChart, {
+    type: 'doughnut',
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            afterLabel: function () {
+              return '%';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Direct', 'Organic', 'Referral'],
+      datasets: [
+        {
+          data: [60, 25, 15],
+          backgroundColor: ['#2C7BE5', '#A6C5F7', '#D2DDEC'],
+        },
+        {
+          data: [15, 45, 20],
+          backgroundColor: ['#2C7BE5', '#A6C5F7', '#D2DDEC'],
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
+
+// Traffic chart (alt)
+
+const trafficChartAlt = document.getElementById('trafficChartAlt');
+
+if (trafficChartAlt) {
+  new Chart(trafficChartAlt, {
+    type: 'doughnut',
+    options: {
+      plugins: {
+        tooltip: {
+          callbacks: {
+            afterLabel: function () {
+              return '%';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Direct', 'Organic', 'Referral'],
+      datasets: [
+        {
+          data: [60, 25, 15],
+          backgroundColor: ['#2C7BE5', '#A6C5F7', '#D2DDEC'],
+        },
+        {
+          data: [15, 45, 20],
+          backgroundColor: ['#2C7BE5', '#A6C5F7', '#D2DDEC'],
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
+
+// Sales chart
+
+const salesChart = document.getElementById('salesChart');
+
+if (salesChart) {
+  new Chart(salesChart, {
+    type: 'line',
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            callback: function (value) {
+              return '$' + value + 'k';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Oct 1', 'Oct 3', 'Oct 6', 'Oct 9', 'Oct 12', 'Oct 5', 'Oct 18', 'Oct 21', 'Oct 24', 'Oct 27', 'Oct 30'],
+      datasets: [
+        {
+          label: 'All',
+          data: [0, 10, 5, 15, 10, 20, 15, 25, 20, 30, 25],
+        },
+        {
+          label: 'Direct',
+          data: [7, 40, 12, 27, 34, 17, 19, 30, 28, 32, 24],
+          hidden: true,
+        },
+        {
+          label: 'Organic',
+          data: [2, 12, 35, 25, 36, 25, 34, 16, 4, 14, 15],
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
+
+// Orders chart
+
+const ordersChart = document.getElementById('ordersChart');
+
+if (ordersChart) {
+  new Chart(ordersChart, {
+    type: 'bar',
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            callback: function (value) {
+              return '$' + value + 'k';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          label: 'Sales',
+          data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32],
+        },
+        {
+          label: 'Affiliate',
+          data: [15, 10, 20, 12, 7, 0, 8, 16, 18, 16, 10, 22],
+          backgroundColor: '#d2ddec',
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
+
+// Earnings chart
+
+const earningsChart = document.getElementById('earningsChart');
+
+if (earningsChart) {
+  new Chart(earningsChart, {
+    type: 'bar',
+    options: {
+      scales: {
+        yAxisOne: {
+          display: 'auto',
+          ticks: {
+            callback: function (value) {
+              return '$' + value + 'k';
+            },
+          },
+        },
+        yAxisTwo: {
+          display: 'auto',
+          ticks: {
+            callback: function (value) {
+              return value + 'k';
+            },
+          },
+        },
+        yAxisThree: {
+          display: 'auto',
+          ticks: {
+            callback: function (value) {
+              return value + '%';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+      ],
+      datasets: [
+        {
+          label: 'Earnings',
+          data: [18, 10, 5, 15, 10, 20, 15, 25, 20, 26, 25, 29, 18, 10, 5, 15, 10, 20],
+          yAxisID: 'yAxisOne',
+        },
+        {
+          label: 'Sessions',
+          data: [50, 75, 35, 25, 55, 87, 67, 53, 25, 80, 87, 45, 50, 75, 35, 25, 55, 19],
+          yAxisID: 'yAxisTwo',
+          hidden: true,
+        },
+        {
+          label: 'Bounce',
+          data: [40, 57, 25, 50, 57, 32, 46, 28, 59, 34, 52, 48, 40, 57, 25, 50, 57, 29],
+          yAxisID: 'yAxisThree',
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
+
+// Weekly hours chart
+
+const weeklyHoursChart = document.getElementById('weeklyHoursChart');
+
+if (weeklyHoursChart) {
+  new Chart(weeklyHoursChart, {
+    type: 'bar',
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            callback: function (value) {
+              return value + 'hrs';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [
+        {
+          data: [21, 12, 28, 15, 5, 12, 17, 2],
+        },
+      ],
+    },
+  });
+}
+
+// Overview chart
+
+const overviewChart = document.getElementById('overviewChart');
+
+if (overviewChart) {
+  new Chart(overviewChart, {
+    type: 'line',
+    options: {
+      scales: {
+        yAxisOne: {
+          display: 'auto',
+          ticks: {
+            callback: function (value) {
+              return '$' + value + 'k';
+            },
+          },
+        },
+        yAxisTwo: {
+          display: 'auto',
+          ticks: {
+            callback: function (value) {
+              return value + 'hrs';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          label: 'Earned',
+          data: [0, 10, 5, 15, 10, 20, 15, 25, 20, 30, 25, 40],
+          yAxisID: 'yAxisOne',
+        },
+        {
+          label: 'Hours Worked',
+          data: [7, 35, 12, 27, 34, 17, 19, 30, 28, 32, 24, 39],
+          yAxisID: 'yAxisTwo',
+          hidden: true,
+        },
+      ],
+    },
+  });
+}
+
+// Sparkline chart
+
+const sparklineChart = document.getElementById('sparklineChart');
+
+if (sparklineChart) {
+  new Chart(sparklineChart, {
+    type: 'line',
+    options: {
+      scales: {
+        y: {
+          display: false,
+        },
+        x: {
+          display: false,
+        },
+      },
+      elements: {
+        line: {
+          borderWidth: 2,
+        },
+        point: {
+          hoverRadius: 0,
+        },
+      },
+      plugins: {
+        tooltip: {
+          external: () => false,
+        },
+      },
+    },
+    data: {
+      labels: new Array(12).fill('Label'),
+      datasets: [
+        {
+          data: [0, 15, 10, 25, 30, 15, 40, 50, 80, 60, 55, 65],
+        },
+      ],
+    },
+  });
+}
+
+// Sparkline chart (gray)
+
+const sparklineCharts = document.querySelectorAll(
+  '#sparklineChartSocialOne, #sparklineChartSocialTwo, #sparklineChartSocialThree, #sparklineChartSocialFour'
+);
+
+if (sparklineCharts) {
+  [].forEach.call(sparklineCharts, function (chart) {
+    new Chart(chart, {
+      type: 'line',
+      options: {
+        scales: {
+          y: {
+            display: false,
+          },
+          x: {
+            display: false,
+          },
+        },
+        elements: {
+          line: {
+            borderWidth: 2,
+            borderColor: '#D2DDEC',
+          },
+          point: {
+            hoverRadius: 0,
+          },
+        },
+        plugins: {
+          tooltip: {
+            external: () => false,
+          },
+        },
+      },
+      data: {
+        labels: new Array(12).fill('Label'),
+        datasets: [
+          {
+            data: [0, 15, 10, 25, 30, 15, 40, 50, 80, 60, 55, 65],
+          },
+        ],
+      },
     });
+  });
+}
 
-    // Input File
-    // $('.custom-file input[type="file"]').change(function(event){
-    // 	let el = $(this);
-    // 	let filename = event.target.files[0].name;
-    // 	el.parent().find('.custom-file-label').html(filename);
-    // });
+// Feed chart
 
-    // feature detection for drag&drop upload
-    var isAdvancedUpload = function() {
-        var div = document.createElement('div');
-        return ( ( 'draggable' in div ) || ( 'ondragstart' in div && 'ondrop' in div ) ) && 'FormData' in window && 'FileReader' in window;
-    }();
+const feedChart = document.getElementById('feedChart');
 
-    $('form').each(function () {
-        var $form		 = $(this),
-            $wrapper	 = $form.find('.upload-wrapper'),
-            $box		 = $wrapper.find('.upload-box'),
-            $input		 = $box.find('input[type="file"]'),
-            $multipleAttr= $input.attr('multiple'),
-            $label		 = $wrapper.find('.upload-dragndrop'),
-            $errorMsg	 = $wrapper.find('.upload-error span'),
-            $restart	 = $wrapper.find('.upload-restart'),
-            droppedFiles = false,
-            $fileHasMultipleAttr = (typeof $multipleAttr !== typeof undefined && $multipleAttr !== false),
-            showFiles	 = function( files, isMultiple )
-            {
-                $label.text( isMultiple && files.length > 1 ? ( $input.attr( 'data-multiple-caption' ) || '' ).replace( '{count}', files.length ) : files[ 0 ].name );
-            };
-
-        $input.on('change', function (e) {
-            showFiles(e.target.files, $fileHasMultipleAttr);
-        });
-
-        // drag&drop files if the feature is available
-        if (isAdvancedUpload) {
-            $wrapper
-            .addClass( 'has-advanced-upload' ) // letting the CSS part to know drag&drop is supported by the browser
-            .on( 'drag dragstart dragend dragover dragenter dragleave drop', function (e) {
-                // preventing the unwanted behaviours
-                e.preventDefault();
-                e.stopPropagation();
-            })
-            .on( 'dragover dragenter', function () {
-                $box.addClass( 'is-dragover' );
-            })
-            .on( 'dragleave dragend drop', function () {
-                $box.removeClass( 'is-dragover' );
-            })
-            .on( 'drop', function (e) {
-                droppedFiles = e.originalEvent.dataTransfer.files;
-                showFiles( droppedFiles, $fileHasMultipleAttr );
-                $input.get(0).files = droppedFiles;
-            });
-        }
-
-        // Firefox focus bug fix for file input
-        $input
-            .on( 'focus', function(){ $input.addClass( 'has-focus' ); })
-            .on( 'blur', function(){ $input.removeClass( 'has-focus' ); });
-    });
-
-
-    $('.input-group-password a').on('click', function(event) {
-        event.preventDefault();
-
-        let el = $(event.currentTarget);
-        let input = el.parents('.input-group').first().find('input');
-
-        if (input.prop('type') == 'text') {
-            input.prop('type', 'password');
-            el.find('i').prop('class', 'bx bxs-hide text-muted');
-        } else if (input.prop('type') == 'password') {
-            input.prop('type', 'text');
-            el.find('i').prop('class', 'bx bxs-show text-primary');
-        }
-    });
-});
+if (feedChart) {
+  new Chart(feedChart, {
+    type: 'bar',
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            callback: function (value) {
+              return '$' + value + 'k';
+            },
+          },
+        },
+      },
+    },
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [
+        {
+          label: 'Sales',
+          data: [25, 20, 30, 22, 17, 10, 18, 26, 28, 26, 20, 32],
+        },
+        {
+          label: 'Affiliate',
+          data: [15, 10, 20, 12, 7, 0, 8, 16, 18, 16, 10, 22],
+          backgroundColor: '#d2ddec',
+          hidden: true,
+        },
+      ],
+    },
+  });
+}

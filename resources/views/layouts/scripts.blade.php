@@ -13,7 +13,6 @@
 <script src="{{ assets_path() }}/assets/libs/select2/dist/js/select2.full.min.js"></script>
 <script src="{{ assets_path() }}/assets/libs/chart.js/Chart.extension.min.js"></script>
 <script src="{{ assets_path() }}/assets/libs/bootbox/bootbox.js"></script>
-<script src="{{ assets_path() }}/assets/libs/tags/tags.js"></script>
 <script src="{{ assets_path() }}/assets/libs/fancybox/fancybox.min.js"></script>
 
 {{-- App --}}

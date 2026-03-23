@@ -1,0 +1,274 @@
+// 
+// variables-dark.scss
+// Dashkit dark version
+//
+
+// 
+// Bootstrap Overrides ===================================
+//
+
+
+// Color system
+
+$gray-600-dark: #244166 !default;
+$gray-700-dark: #1E3A5C !default;
+$gray-800-dark: #152E4D !default;
+$gray-900-dark: #132A46 !default;
+
+$light-dark: $gray-800-dark !default;
+$lighter-dark: $gray-900-dark !default;
+
+$primary-bg-subtle-dark: shift-color($primary, 55%) !default;
+$secondary-bg-subtle-dark: shift-color($secondary, 55%) !default;
+$success-bg-subtle-dark: shift-color($success, 55%) !default;
+$info-bg-subtle-dark: shift-color($info, 55%) !default;
+$warning-bg-subtle-dark: shift-color($warning, 55%) !default;
+$danger-bg-subtle-dark: shift-color($danger, 55%) !default;
+$light-bg-subtle-dark: shift-color($light, 55%) !default;
+$dark-bg-subtle-dark: shift-color($dark, 55%) !default;
+
+$link-color-dark: $link-color !default;
+$link-hover-color-dark: $link-hover-color !default;
+$code-color-dark: $code-color !default;
+
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg-dark: $black !default;
+$body-color-dark: $white !default;
+$body-secondary-color-dark: $gray-700 !default;
+
+
+// Components
+//
+// Define common padding and border radius sizes and more.
+
+$border-color-dark: $gray-700-dark !default;
+
+
+// Tables
+//
+// Customizes the `.table` component with basic values, each used across all table variations.
+
+$table-border-color-dark: var(--#{$prefix}border-color) !default;
+
+$table-striped-bg-dark: var(--#{$prefix}gray-900-dark) !default;
+$table-active-bg-dark: var(--#{$prefix}gray-900-dark) !default;
+$table-hover-bg-dark: var(--#{$prefix}gray-900-dark) !default;
+
+
+// Forms
+
+$input-bg-dark: var(--#{$prefix}gray-700-dark) !default;
+$input-color-dark: var(--#{$prefix}white) !default;
+$input-border-color-dark: var(--#{$prefix}gray-700-dark) !default;
+
+$input-focus-bg-dark: $input-bg-dark;
+$input-focus-color-dark: $input-color-dark;
+
+$input-disabled-bg-dark: $input-bg-dark;
+$input-disabled-color-dark: $input-color-dark;
+$input-disabled-border-color-dark: $input-border-color-dark;
+
+$input-placeholder-color-dark: var(--#{$prefix}gray-600) !default;
+
+$input-group-addon-bg-dark: $input-bg-dark !default;
+$input-group-addon-border-color-dark: $input-border-color-dark !default;
+
+$form-check-input-bg-dark: var(--#{$prefix}gray-600-dark) !default;
+
+$form-switch-color-dark: $gray-800-dark !default;
+$form-switch-bg-image-dark: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-color-dark}'/></svg>") !default;
+
+$form-switch-focus-color-dark: $gray-800-dark !default;
+$form-switch-focus-bg-image-dark: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-focus-color-dark}'/></svg>")) !default;
+
+$form-switch-checked-color-dark: $white !default;
+$form-switch-checked-bg-image-dark: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$form-switch-checked-color-dark}'/></svg>")) !default;
+
+$form-valid-color-dark: $success !default;
+$form-valid-border-color-dark: $success !default;
+$form-invalid-color-dark: $danger !default;
+$form-invalid-border-color-dark: $danger !default;
+
+$form-select-indicator-color-dark: $gray-600 !default;
+$form-select-indicator-dark: escape-svg(url("data:image/svg+xml,<svg viewBox='0 0 9 5' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M1 1L4.25 4.25L7.5 1' stroke='#{$form-select-indicator-color-dark}' stroke-width='1.08333' stroke-linecap='round' stroke-linejoin='round'/></svg>")) !default;
+
+
+// Navbar
+
+$navbar-light-hover-color-dark: var(--#{$prefix}white) !default;
+$navbar-light-active-color-dark: $navbar-light-hover-color-dark !default;
+$navbar-light-brand-color-dark: $navbar-light-hover-color-dark !default;
+$navbar-light-brand-hover-color-dark: $navbar-light-hover-color-dark !default;
+
+
+// Dropdowns
+//
+// Dropdown menu container and contents.
+
+$dropdown-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+$dropdown-border-color-dark: var(--#{$prefix}black) !default;
+$dropdown-divider-bg-dark: var(--#{$prefix}black) !default;
+
+$dropdown-link-color-dark: var(--#{$prefix}secondary-color) !default;
+$dropdown-link-hover-color-dark: var(--#{$prefix}white) !default;
+
+
+// Pagination
+
+$pagination-color-dark: var(--#{$prefix}white) !default;
+$pagination-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+$pagination-border-color-dark: var(--#{$prefix}gray-600-dark) !default;
+
+$pagination-hover-color-dark: var(--#{$prefix}white) !default;
+$pagination-hover-bg-dark: var(--#{$prefix}gray-900-dark) !default;
+$pagination-hover-border-color-dark: var(--#{$prefix}gray-700-dark) !default;
+
+$pagination-focus-color-dark: var(--#{$prefix}white) !default;
+$pagination-focus-bg-dark: var(--#{$prefix}gray-900-dark) !default;
+$pagination-focus-border-color-dark: var(--#{$prefix}gray-700-dark) !default;
+
+$pagination-disabled-bg-dark: var(--#{$prefix}gray-900-dark) !default;
+$pagination-disabled-border-color-dark: var(--#{$prefix}gray-700-dark) !default;
+
+
+// Cards
+
+$card-border-color-dark: var(--#{$prefix}border-color) !default;
+$card-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+
+
+// Accordion
+
+$accordion-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+
+
+// Tooltips
+
+$tooltip-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+$tooltip-color-dark: var(--#{$prefix}white) !default;
+
+
+// Popovers
+
+$popover-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+$popover-border-color-dark: var(--#{$prefix}black) !default;
+$popover-header-color-dark: var(--#{$prefix}white) !default;
+
+
+// Toasts
+
+$toast-background-color-dark: var(--#{$prefix}gray-800-dark) !default;
+$toast-header-background-color-dark: $toast-background-color-dark !default;
+
+
+// Modals
+
+$modal-content-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+$modal-content-border-color-dark: var(--#{$prefix}black) !default;
+
+
+// Progress bars
+
+$progress-bg-dark: var(--#{$prefix}gray-600-dark) !default;
+
+
+// List groups
+
+$list-group-border-color-dark: var(--#{$prefix}border-color) !default;
+$list-group-hover-bg-dark: var(--#{$prefix}gray-900-dark) !default;
+
+
+// Offcanvas
+
+$offcanvas-bg-color-dark: #{$modal-content-bg-dark} !default;
+
+
+// 
+// Theme =====================================
+//
+
+
+// Charts
+
+$chart-colors-dark: (
+  "gray-300": $gray-300,
+  "gray-600": $gray-600,
+  "gray-700": $gray-700,
+  "gray-800": $gray-800,
+  "gray-900": $gray-900,
+  "primary-100": "#D2DDEC",
+  "primary-300": "#A6C5F7",
+  "primary-700": $primary,
+  "default-color": $gray-700,
+  "default-font-color": $gray-700,
+  "arc-border-color": $gray-800-dark,
+  "arc-hover-border-color": $gray-800-dark,
+  "grid-line-color": $gray-900,
+) !default;
+
+
+// Tables
+
+$table-head-bg-dark: var(--#{$prefix}black) !default;
+
+
+// Forms
+
+$form-check-input-focus-bg-dark: var(--#{$prefix}gray-700-dark) !default;
+
+
+// Pagination
+
+$pagination-tabs-bg-dark: transparent !default;
+$pagination-tabs-border-color-dark: var(--#{$prefix}border-color) !default;
+$pagination-tabs-color-dark: var(--#{$prefix}secondary-color) !default;
+
+$pagination-tabs-hover-bg-dark: $pagination-tabs-bg !default;
+$pagination-tabs-hover-color-dark: var(--#{$prefix}body-color) !default;
+
+$pagination-tabs-focus-bg-dark: $pagination-tabs-hover-bg !default;
+$pagination-tabs-focus-color-dark: $pagination-tabs-hover-color !default;
+
+$pagination-tabs-active-bg-dark: $pagination-tabs-bg !default;
+$pagination-tabs-active-border-color-dark: var(--#{$prefix}primary) !default;
+$pagination-tabs-active-color-dark: var(--#{$prefix}body-color) !default;
+
+
+// Navbar
+
+$navbar-light-bg-dark: var(--#{$prefix}gray-800-dark) !default;
+$navbar-light-border-color-dark: var(--#{$prefix}gray-800-dark) !default;
+
+
+// Cards
+
+$card-outline-color-dark: var(--#{$prefix}gray-800-dark) !default;
+$card-box-shadow-dark: 0 .75rem 1.5rem rgba(var(--#{$prefix}black-rgb), .5) !default;
+
+
+// Auth
+
+$auth-bg-dark: $body-bg-dark !default;
+
+
+// Avatar
+
+$avatar-title-bg-dark: var(--#{$prefix}gray-600-dark) !default;
+
+
+// Comment
+
+$comment-body-bg-dark: var(--#{$prefix}gray-700-dark) !default;
+
+
+// Header
+
+$header-bg-dark: var(--#{$prefix}black) !default;
+$header-color-dark: var(--#{$prefix}white) !default;
+
+$header-tabs-link-color-dark: var(--#{$prefix}white) !default;
+$header-tabs-link-hover-color-dark: var(--#{$prefix}white) !default;

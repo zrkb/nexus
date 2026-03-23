@@ -1,0 +1,48 @@
+//
+// root.scss
+// Extended from Bootstrap
+//
+
+:root,
+[data-bs-theme=light] {
+  --#{$prefix}lighter: #{$lighter};
+  --#{$prefix}lighter-rgb: #{to-rgb($lighter)};
+  --#{$prefix}auth-bg: #{$auth-bg};
+  --#{$prefix}auth-bg-rgb: #{to-rgb($auth-bg)};
+  --#{$prefix}card-bg-rgb: #{to-rgb($card-bg)};
+
+  @each $color, $value in $grays {
+    --#{$prefix}gray-#{$color}-rgb: #{to-rgb($value)};
+  }
+
+  @each $color, $value in $chart-colors {
+    --#{$prefix}chart-#{$color}: #{$value};
+  }
+}
+
+
+// Dark mode
+
+@include color-mode(dark) {
+  --#{$prefix}gray-600-dark: #{$gray-600-dark};
+  --#{$prefix}gray-600-dark-rgb: #{to-rgb($gray-600-dark)};
+  --#{$prefix}gray-700-dark: #{$gray-700-dark};
+  --#{$prefix}gray-700-dark-rgb: #{to-rgb($gray-700-dark)};
+  --#{$prefix}gray-800-dark: #{$gray-800-dark};
+  --#{$prefix}gray-800-dark-rgb: #{to-rgb($gray-800-dark)};
+  --#{$prefix}gray-900-dark: #{$gray-900-dark};
+  --#{$prefix}gray-900-dark-rgb: #{to-rgb($gray-900-dark)};
+  --#{$prefix}black: #{$black};
+  --#{$prefix}black-rgb: #{to-rgb($black)};
+  --#{$prefix}light: #{$light-dark};
+  --#{$prefix}light-rgb: #{to-rgb($light-dark)};
+  --#{$prefix}lighter: #{$lighter-dark};
+  --#{$prefix}lighter-rgb: #{to-rgb($lighter-dark)};
+  --#{$prefix}auth-bg: #{$auth-bg-dark};
+  --#{$prefix}auth-bg-rgb: #{to-rgb($auth-bg-dark)};
+  --#{$prefix}card-bg-rgb: #{to-rgb($gray-800-dark)};
+
+  @each $color, $value in $chart-colors-dark {
+    --#{$prefix}chart-#{$color}: #{$value};
+  }
+}

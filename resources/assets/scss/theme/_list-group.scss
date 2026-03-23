@@ -1,0 +1,65 @@
+//
+// list-group.scss
+// Extended from Bootstrap
+//
+
+//
+// Bootstrap Overrides =====================================
+//
+
+// Contextual variants
+//
+// Changing the Bootstrap color modifier classes to be full opacity background with yiq calculated font color
+
+// List group sizing
+
+.list-group-lg {
+  --#{$prefix}list-group-item-padding-y: #{$list-group-item-padding-y-lg};
+}
+
+// List group flush
+
+.list-group-flush {
+  --#{$prefix}list-group-item-padding-x: 0;
+}
+
+.list-group-flush:not(:last-child) > .list-group-item:last-child {
+  border-bottom-width: var(--#{$prefix}list-group-border-width);
+}
+
+// List group focus
+
+.list-group-focus .list-group-item:focus .text-focus {
+  color: var(--#{$prefix}link-color) !important;
+}
+
+//
+// Theme ===================================
+//
+
+// Activity
+
+.list-group-activity .list-group-item {
+  border: 0;
+}
+
+.list-group-activity .list-group-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  top: var(--#{$prefix}list-group-item-padding-y);
+  left: $avatar-size-sm * 0.5;
+  height: 100%;
+  border-left: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+}
+
+
+//
+// Dark mode ===================================
+//
+
+@include color-mode(dark) {
+  .list-group {
+    --#{$prefix}list-group-border-color: #{$list-group-border-color-dark};
+    --#{$prefix}list-group-action-hover-bg: #{$list-group-hover-bg-dark};
+  }
+}

@@ -1,0 +1,102 @@
+//
+// pagination.scss
+// Extended from Bootstrap
+//
+
+//
+// Bootstrap Overrides =====================================
+//
+
+.page-link {
+  --#{$prefix}pagination-line-height: #{$pagination-line-height};
+  line-height: var(--#{$prefix}pagination-line-height);
+}
+
+.pagination-lg .page-link {
+  --#{$prefix}pagination-font-size: #{$pagination-font-size-lg};
+  --#{$prefix}pagination-line-height: #{$pagination-line-height-lg};
+}
+
+.pagination-sm .page-link {
+  --#{$prefix}pagination-font-size: #{$pagination-font-size-sm};
+  --#{$prefix}pagination-line-height: #{$pagination-line-height-sm};
+}
+
+//
+// Theme =====================================
+//
+
+// Pagination tabs
+
+.pagination-tabs {
+  --#{$prefix}pagination-padding-x: #{$pagination-tabs-padding-x};
+  --#{$prefix}pagination-padding-y: #{$pagination-tabs-padding-y};
+  --#{$prefix}pagination-color: #{$pagination-tabs-color};
+  --#{$prefix}pagination-bg: #{$pagination-tabs-bg};
+  --#{$prefix}pagination-border-color: #{$pagination-tabs-border-color};
+  --#{$prefix}pagination-border-radius: 0;
+  --#{$prefix}pagination-hover-color: #{$pagination-tabs-hover-color};
+  --#{$prefix}pagination-hover-bg: #{$pagination-tabs-hover-bg};
+  --#{$prefix}pagination-focus-color: #{$pagination-tabs-focus-color};
+  --#{$prefix}pagination-focus-bg: #{$pagination-tabs-focus-bg};
+  --#{$prefix}pagination-active-color: #{$pagination-tabs-active-color};
+  --#{$prefix}pagination-active-bg: #{$pagination-tabs-active-bg};
+  --#{$prefix}pagination-active-border-color: #{$pagination-tabs-active-border-color};
+  border-top: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+}
+
+.pagination-tabs .page-link {
+  margin-top: calc(var(--#{$prefix}border-width) * -1);
+  border-width: var(--#{$prefix}border-width) 0 0 0;
+}
+
+// Pagination overflow
+//
+// Allow links to overflow and make horizontally scrollable
+
+.pagination-overflow {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.pagination-overflow::-webkit-scrollbar {
+  display: none;
+}
+
+.pagination-overflow .page-link {
+  white-space: nowrap;
+}
+
+
+//
+// Dark mode =====================================
+//
+
+@include color-mode(dark) {
+  .pagination {
+    --#{$prefix}pagination-color: #{$pagination-color-dark};
+    --#{$prefix}pagination-bg: #{$pagination-bg-dark};
+    --#{$prefix}pagination-border-color: #{$pagination-border-color-dark};
+    --#{$prefix}pagination-hover-color: #{$pagination-hover-color-dark};
+    --#{$prefix}pagination-hover-bg: #{$pagination-hover-bg-dark};
+    --#{$prefix}pagination-hover-border-color: #{$pagination-hover-border-color-dark};
+    --#{$prefix}pagination-focus-color: #{$pagination-focus-color-dark};
+    --#{$prefix}pagination-focus-bg: #{$pagination-focus-bg-dark};
+    --#{$prefix}pagination-focus-border-color: #{$pagination-focus-border-color-dark};
+    --#{$prefix}pagination-disabled-bg: #{$pagination-disabled-bg-dark};
+    --#{$prefix}pagination-disabled-border-color: #{$pagination-disabled-border-color-dark};
+  }
+
+  .pagination-tabs {
+    --#{$prefix}pagination-bg: #{$pagination-tabs-bg-dark};
+    --#{$prefix}pagination-border-color: #{$pagination-tabs-border-color-dark};
+    --#{$prefix}pagination-color: #{$pagination-tabs-color-dark};
+    --#{$prefix}pagination-hover-color: #{$pagination-tabs-hover-color-dark};
+    --#{$prefix}pagination-hover-bg: #{$pagination-tabs-hover-bg-dark};
+    --#{$prefix}pagination-focus-color: #{$pagination-tabs-focus-color-dark};
+    --#{$prefix}pagination-focus-bg: #{$pagination-tabs-focus-bg-dark};
+    --#{$prefix}pagination-active-color: #{$pagination-tabs-active-color-dark};
+    --#{$prefix}pagination-active-bg: #{$pagination-tabs-active-bg-dark};
+    --#{$prefix}pagination-active-border-color: #{$pagination-tabs-active-border-color-dark};
+  }
+}

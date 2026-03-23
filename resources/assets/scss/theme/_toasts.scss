@@ -1,0 +1,15 @@
+//
+// toasts.scss
+// Extended from Bootstrap
+//
+
+//
+// Dark mode =====================================
+//
+
+@include color-mode(dark) {
+  .toast {
+    --#{$prefix}toast-bg: #{$toast-background-color-dark};
+    --#{$prefix}toast-header-bg: #{$toast-header-background-color-dark};
+  }
+}

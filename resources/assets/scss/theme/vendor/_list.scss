@@ -1,0 +1,52 @@
+//
+// list.scss
+// List.js plugin overrides
+//
+
+// Pagination
+
+.page {
+  @extend .page-link;
+}
+
+.list-pagination > li + li {
+  margin-left: calc(#{$pagination-border-width} * -1);
+}
+
+.list-pagination > li:first-child > .page {
+  border-top-left-radius: var(--#{$prefix}pagination-border-radius);
+  border-bottom-left-radius: var(--#{$prefix}pagination-border-radius);
+}
+
+.list-pagination > li:last-child > .page {
+  border-top-right-radius: var(--#{$prefix}pagination-border-radius);
+  border-bottom-right-radius: var(--#{$prefix}pagination-border-radius);
+}
+
+
+// Alert
+
+.list-alert {
+  position: fixed;
+  bottom: $spacer;
+  left: 50%;
+  z-index: $zindex-fixed;
+  min-width: $list-alert-min-width;
+  margin-bottom: 0;
+  transform: translateX(-50%);
+}
+
+.list-alert:not(.show) {
+  pointer-events: none;
+}
+
+@include media-breakpoint-up($navbar-vertical-expand-breakpoint) {
+  .navbar-vertical:not(.navbar-vertical-sm):not([style*="display: none"]) ~ .main-content .list-alert {
+    left: calc(50% + #{$navbar-vertical-width * .5});
+  }
+}
+
+.list-alert .btn-close {
+  top: 50%;
+  transform: translateY(-50%);
+}

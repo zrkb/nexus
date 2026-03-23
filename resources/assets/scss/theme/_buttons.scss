@@ -1,0 +1,119 @@
+//
+// buttons.scss
+// Extended from Bootstrap
+//
+
+//
+// Bootstrap Overrides =====================================
+//
+
+// Sizing
+
+.btn-lg {
+  line-height: $btn-line-height-lg;
+}
+
+.btn-sm {
+  line-height: $btn-line-height-sm;
+}
+
+//
+// Theme ===================================
+//
+
+// Button white
+
+.btn-white {
+  --#{$prefix}btn-bg: var(--#{$prefix}white);
+  --#{$prefix}btn-border-color: var(--#{$prefix}gray-300);
+  --#{$prefix}btn-hover-bg: var(--#{$prefix}gray-100);
+  --#{$prefix}btn-hover-border-color: var(--#{$prefix}gray-400);
+  --#{$prefix}btn-active-bg: var(--#{$prefix}gray-100);
+  --#{$prefix}btn-active-border-color: var(--#{$prefix}gray-400);
+  --#{$prefix}btn-disabled-bg: var(--#{$prefix}white);
+  --#{$prefix}btn-disabled-border-color: var(--#{$prefix}gray-300);
+}
+
+.btn-group-toggle .btn-white:not(:disabled):not(.disabled):active,
+.btn-group-toggle .btn-white:not(:disabled):not(.disabled).active,
+.btn-group-toggle .btn-check:checked + .btn-white {
+  background-color: $input-bg;
+  border-color: $input-focus-border-color;
+  box-shadow: none;
+  color: var(--#{$prefix}primary);
+}
+
+.btn-group-toggle .btn-white:focus,
+.btn-group-toggle .btn-white.focus {
+  box-shadow: none;
+}
+
+// Button outline secondary
+
+.btn-outline-secondary {
+  &:not(:hover):not([aria-expanded='true']):not([aria-pressed='true']) {
+    border-color: var(--#{$prefix}gray-400);
+  }
+}
+
+// Button rounded
+//
+// Creates circle button variations
+
+.btn-rounded-circle {
+  --#{$prefix}btn-padding-x: 0;
+  --#{$prefix}btn-border-radius: 50%;
+  --#{$prefix}btn-circle-width: calc(1em * #{var(--#{$prefix}btn-line-height)} + #{$input-btn-padding-y * 2} + #{var(--#{$prefix}btn-border-width)} * 2);
+  width: var(--#{$prefix}btn-circle-width);
+}
+
+.btn-rounded-circle.btn-lg {
+  --#{$prefix}btn-circle-width: calc(1em * #{$btn-line-height-lg} + #{$input-btn-padding-y-lg * 2} + #{var(--#{$prefix}btn-border-width)} * 2);
+}
+
+.btn-rounded-circle.btn-sm {
+  --#{$prefix}btn-circle-width: calc(1em * #{$btn-line-height-sm} + #{$input-btn-padding-y-sm * 2} + #{var(--#{$prefix}btn-border-width)} * 2);
+}
+
+
+//
+// Dark mode ===================================
+//
+
+@include color-mode(dark) {
+  .btn-white, .btn-light {
+    --#{$prefix}btn-bg: var(--#{$prefix}gray-800-dark);
+    --#{$prefix}btn-border-color: var(--#{$prefix}gray-600-dark);
+    --#{$prefix}btn-color: var(--#{$prefix}white);
+    --#{$prefix}btn-hover-bg: var(--#{$prefix}black);
+    --#{$prefix}btn-hover-border-color: var(--#{$prefix}gray-700-dark);
+    --#{$prefix}btn-hover-color: var(--#{$prefix}white);
+    --#{$prefix}btn-active-bg: var(--#{$prefix}black);
+    --#{$prefix}btn-active-border-color: var(--#{$prefix}gray-700-dark);
+    --#{$prefix}btn-active-color: var(--#{$prefix}white);
+    --#{$prefix}btn-disabled-bg: var(--#{$prefix}gray-800-dark);
+    --#{$prefix}btn-disabled-border-color: var(--#{$prefix}gray-600-dark);
+    --#{$prefix}btn-disabled-color: var(--#{$prefix}white);
+  }
+
+  .btn-outline-light {
+    --#{$prefix}btn-border-color: var(--#{$prefix}light);
+    --#{$prefix}btn-color: var(--#{$prefix}white);
+    --#{$prefix}btn-hover-bg: var(--#{$prefix}light);
+    --#{$prefix}btn-hover-border-color: var(--#{$prefix}light);
+    --#{$prefix}btn-hover-color: var(--#{$prefix}white);
+    --#{$prefix}btn-active-bg: var(--#{$prefix}light);
+    --#{$prefix}btn-active-border-color: var(--#{$prefix}light);
+    --#{$prefix}btn-active-color: var(--#{$prefix}white);
+    --#{$prefix}btn-disabled-border-color: var(--#{$prefix}light);
+    --#{$prefix}btn-disabled-color: var(--#{$prefix}white);
+  }
+
+  .btn-group-toggle .btn-white:not(:disabled):not(.disabled):active,
+  .btn-group-toggle .btn-white:not(:disabled):not(.disabled).active,
+  .btn-group-toggle .btn-check:checked + .btn-white {
+    background-color: var(--#{$prefix}gray-700-dark);
+    border-color: var(--#{$prefix}primary);
+    color: var(--#{$prefix}primary);
+  }
+}

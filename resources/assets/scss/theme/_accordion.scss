@@ -1,0 +1,14 @@
+//
+// accordion.scss
+// Extended from Bootstrap
+//
+
+//
+// Dark mode =====================================
+//
+
+@include color-mode(dark) {
+  .accordion {
+    --#{$prefix}accordion-bg: #{$accordion-bg-dark};
+  }
+}

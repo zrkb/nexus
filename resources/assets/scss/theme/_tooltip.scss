@@ -1,0 +1,15 @@
+// 
+// tooltip.scss
+// Extended from Bootstrap
+//
+
+//
+// Dark mode =====================================
+//
+
+@include color-mode(dark) {
+  .tooltip {
+    --#{$prefix}tooltip-bg: #{$tooltip-bg-dark};
+    --#{$prefix}tooltip-color: #{$tooltip-color-dark};
+  }
+}

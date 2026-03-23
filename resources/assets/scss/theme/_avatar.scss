@@ -1,0 +1,151 @@
+//
+// avatar.scss
+// Dashkit component
+//
+
+// General
+
+.avatar {
+  --#{$prefix}avatar-size: #{$avatar-size-base};
+  --#{$prefix}avatar-title-bg: #{$avatar-title-bg};
+  --#{$prefix}avatar-title-color: #{$avatar-title-color};
+  position: relative;
+  display: inline-block;
+  width: var(--#{$prefix}avatar-size);
+  height: var(--#{$prefix}avatar-size);
+  font-size: calc(var(--#{$prefix}avatar-size) / 3);
+
+  // Loads mask images so they don't lag on hover
+
+  &:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-image: url(#{$path-to-img}/masks/avatar-status.svg), url(#{$path-to-img}/masks/avatar-group.svg),
+      url(#{$path-to-img}/masks/avatar-group-hover.svg), url(#{$path-to-img}/masks/avatar-group-hover-last.svg);
+  }
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  line-height: 0;
+  background-color: var(--#{$prefix}avatar-title-bg);
+  color: var(--#{$prefix}avatar-title-color);
+}
+
+// Status
+
+.avatar-online,
+.avatar-offline {
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 20%;
+    height: 20%;
+    border-radius: 50%;
+  }
+
+  .avatar-img {
+    mask-image: url(#{$path-to-img}/masks/avatar-status.svg);
+    mask-size: 100% 100%;
+  }
+}
+
+.avatar-online::before {
+  background-color: var(--#{$prefix}success);
+}
+
+.avatar-offline::before {
+  background-color: var(--#{$prefix}gray-500);
+}
+
+// Sizing
+
+.avatar-xs {
+  --#{$prefix}avatar-size: #{$avatar-size-xs};
+}
+
+.avatar-sm {
+  --#{$prefix}avatar-size: #{$avatar-size-sm};
+}
+
+.avatar-lg {
+  --#{$prefix}avatar-size: #{$avatar-size-lg};
+}
+
+.avatar-xl {
+  --#{$prefix}avatar-size: #{$avatar-size-xl};
+}
+
+.avatar-xxl {
+  --#{$prefix}avatar-size: #{$avatar-size-xl};
+
+  @include media-breakpoint-up(md) {
+    --#{$prefix}avatar-size: #{$avatar-size-xxl};
+  }
+}
+
+// Ratio
+
+.avatar.avatar-4by3 {
+  width: calc(var(--#{$prefix}avatar-size) * 4 / 3);
+}
+
+// Group
+
+.avatar-group {
+  display: inline-flex;
+
+  // Shift every next avatar left
+
+  .avatar + .avatar {
+    margin-left: calc(var(--#{$prefix}avatar-size) * 0.25 * -1);
+  }
+
+  // Add some spacing between avatars
+
+  .avatar:not(:last-child) {
+    mask-image: url(#{$path-to-img}/masks/avatar-group.svg);
+    mask-size: 100% 100%;
+  }
+
+  // Bring an avatar to front on hover
+
+  .avatar:hover {
+    mask-image: none;
+    z-index: 1;
+
+    + .avatar {
+      mask-image: url(#{$path-to-img}/masks/avatar-group-hover.svg);
+      mask-size: 100% 100%;
+
+      &:last-child {
+        mask-image: url(#{$path-to-img}/masks/avatar-group-hover-last.svg);
+      }
+    }
+  }
+}
+
+
+//
+// Dark mode =====================================
+//
+
+@include color-mode(dark) {
+  .avatar {
+    --#{$prefix}avatar-title-bg: #{$avatar-title-bg-dark};
+  }
+}

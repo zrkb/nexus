@@ -1,0 +1,79 @@
+//
+// header.scss
+// Dashkit component
+//
+
+// Header
+//
+// General styles
+
+.header {
+  --#{$prefix}header-margin-bottom: #{$header-margin-bottom};
+  --#{$prefix}header-spacing-y: #{$header-spacing-y};
+  --#{$prefix}header-bg: #{$header-bg};
+  --#{$prefix}header-color: #{$header-color};
+  --#{$prefix}header-body-border-width: #{$header-body-border-width};
+  --#{$prefix}header-body-border-color: #{$header-body-border-color};
+  --#{$prefix}header-tabs-link-color: #{$header-tabs-link-color};
+  --#{$prefix}header-tabs-link-hover-color: #{$header-tabs-link-hover-color};
+  margin-bottom: var(--#{$prefix}header-margin-bottom);
+  background-color: var(--#{$prefix}header-bg);
+  color: var(--#{$prefix}header-color);
+}
+
+.header-img-top {
+  width: 100%; height: auto;
+}
+
+.header-body {
+  padding-top: var(--#{$prefix}header-spacing-y);
+  padding-bottom: var(--#{$prefix}header-spacing-y);
+  border-bottom: var(--#{$prefix}header-body-border-width) solid var(--#{$prefix}header-body-border-color);
+}
+
+.header-footer {
+  padding-top: var(--#{$prefix}header-spacing-y);
+  padding-bottom: var(--#{$prefix}header-spacing-y);
+}
+
+.header-pretitle {
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--#{$prefix}secondary-color);
+}
+
+.header-title {
+  margin-bottom: 0;
+}
+
+.header-subtitle {
+  margin-top: map-get($spacers, 2);
+  margin-bottom: 0;
+  color: var(--#{$prefix}secondary-color);
+}
+
+.header-tabs {
+  margin-bottom: calc(var(--#{$prefix}header-spacing-y) * -1);
+  border-bottom-width: 0;
+
+  .nav-link {
+    --#{$prefix}nav-link-color: var(--#{$prefix}header-tabs-link-color);
+    --#{$prefix}nav-link-hover-color: var(--#{$prefix}header-tabs-link-hover-color);
+    padding-top: var(--#{$prefix}header-spacing-y);
+    padding-bottom: var(--#{$prefix}header-spacing-y);
+  }
+}
+
+
+//
+// Dark theme =====================================
+//
+
+@include color-mode(dark) {
+  .header {
+    --#{$prefix}header-bg: #{$header-bg-dark};
+    --#{$prefix}header-color: #{$header-color-dark};
+    --#{$prefix}header-tabs-link-color: #{$header-tabs-link-color-dark};
+    --#{$prefix}header-tabs-link-hover-color: #{$header-tabs-link-hover-color-dark};
+  }
+}

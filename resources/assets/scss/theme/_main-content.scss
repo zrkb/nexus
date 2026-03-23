@@ -1,0 +1,57 @@
+//
+// main-content.scss
+// Dashkit component
+//
+
+*:has(.navbar-vertical:not([style*="display: none"])) ~ .main-content {
+  --#{$prefix}navbar-vertical-width: #{$navbar-vertical-width};
+}
+
+*:has(.navbar-vertical-sm:not([style*="display: none"])) ~ .main-content {
+  --#{$prefix}navbar-vertical-width: #{$navbar-vertical-width-sm};
+}
+
+
+// Main content
+//
+// General styles
+
+*:has(.navbar-vertical:not([style*="display: none"])) ~  .main-content,
+*:has(.navbar-vertical-sm:not([style*="display: none"])) ~  .main-content {
+
+  .container,
+  .container-fluid {
+
+    @include media-breakpoint-up(md) {
+      padding-left: ($main-content-padding-x + $grid-gutter-width * .5) !important;
+      padding-right: ($main-content-padding-x + $grid-gutter-width * .5) !important;
+    }
+  }
+}
+
+
+// Main content offset
+//
+// Offsets the main content depending on the sidebar positioning
+
+.navbar-vertical.navbar-expand {
+
+  @each $breakpoint, $value in $grid-breakpoints {
+    &-#{$breakpoint} {
+      @include media-breakpoint-up(#{$breakpoint}) {
+
+        // Left
+
+        *:has(&.fixed-start:not([style*="display: none"])) ~ .main-content {
+          margin-left: var(--#{$prefix}navbar-vertical-width);
+        }
+
+        // Right
+
+        :has(&.fixed-end:not([style*="display: none"])) ~ .main-content {
+          margin-right: var(--#{$prefix}navbar-vertical-width);
+        }
+      }
+    }
+  }
+}

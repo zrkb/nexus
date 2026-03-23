@@ -3,82 +3,54 @@
 // Dashkit module
 //
 
-'use strict';
+import { Sortable } from '@shopify/draggable';
 
-(function() {
-  
-  //
-  // Variables
-  //
+const categories = document.querySelectorAll('.kanban-category');
+const links = document.querySelectorAll('.kanban-add-link');
+const forms = document.querySelectorAll('.kanban-add-form');
 
-  var categories = document.querySelectorAll('.kanban-category');
-  var links = document.querySelectorAll('.kanban-add-link');
-  var forms = document.querySelectorAll('.kanban-add-form');
+function toggleItems(el) {
+  const parent = el.closest('.kanban-add');
+  const card = parent.querySelector('.card');
+  const link = parent.querySelector('.kanban-add-link');
+  const form = parent.querySelector('.kanban-add-form');
 
+  link.classList.toggle('d-none');
+  form.classList.toggle('d-none');
 
-  //
-  // Functions
-  //
-
-  function init(categories) {
-    new Draggable.Sortable(categories, {
-      draggable: '.kanban-item',
-      mirror: {
-        constrainDimensions: true
-      }
-    });
-  }
-
-  function toggleItems(el) {
-    var parent = el.closest('.kanban-add');
-    var card = parent.querySelector('.card');
-    var link = parent.querySelector('.kanban-add-link');
-    var form = parent.querySelector('.kanban-add-form');
-
-    link.classList.toggle('d-none');
-    form.classList.toggle('d-none');
-
-    if (card) {
-      if (card.classList.contains('card-sm')) {
-        if (card.classList.contains('card-flush')) {
-          card.classList.remove('card-flush');
-        } else {
-          card.classList.add('card-flush');
-        }
-      }
+  if (card && card.classList.contains('card-sm')) {
+    if (card.classList.contains('card-flush')) {
+      card.classList.remove('card-flush');
+    } else {
+      card.classList.add('card-flush');
     }
   }
+}
 
+if (categories) {
+  new Sortable(categories, {
+    draggable: '.kanban-item',
+    mirror: {
+      constrainDimensions: true,
+    },
+  });
+}
 
-  //
-  // Events
-  //
+links.forEach((link) => {
+  link.addEventListener('click', () => {
+    toggleItems(link);
+  });
+});
 
-  if (typeof Draggable !== 'undefined' && categories) {
-    init(categories);
-  }
+forms.forEach((form) => {
+  form.addEventListener('reset', function () {
+    toggleItems(form);
+  });
 
-  if (links) {
-    [].forEach.call(links, function(el) {
-      el.addEventListener('click', function() {
-        toggleItems(el);
-      });
-    });
-  }
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+  });
+});
 
-  if (forms) {
-    [].forEach.call(forms, function(el) {
-
-      // Reset
-      el.addEventListener('reset', function() {
-        toggleItems(el);
-      });
-
-      // Submit
-      el.addEventListener('submit', function(e) {
-        e.preventDefault();
-      });
-    });
-  }
-
-})();
+// Make available globally
+window.Sortable = Sortable;

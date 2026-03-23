@@ -1,0 +1,93 @@
+//
+// nav.scss
+// Extended from Bootstrap
+//
+
+//
+// Bootstrap Overrides =====================================
+//
+
+// Changing nav tabs to be bottom highlight style
+
+.nav-tabs {
+  --#{$prefix}nav-link-color: #{$nav-tabs-link-color};
+  --#{$prefix}nav-link-hover-color: #{$nav-tabs-link-hover-color};
+  --#{$prefix}nav-tabs-link-margin-x: #{$nav-tabs-link-margin-x};
+  --#{$prefix}nav-tabs-link-padding-y: #{$nav-tabs-link-padding-y};
+  --#{$prefix}nav-tabs-link-active-border-width: #{$nav-tabs-link-active-border-width};
+
+  .nav-item {
+    margin-left: var(--#{$prefix}nav-tabs-link-margin-x);
+    margin-right: var(--#{$prefix}nav-tabs-link-margin-x);
+  }
+
+  .nav-link {
+    padding: var(--#{$prefix}nav-tabs-link-padding-y) 0;
+    border-bottom: var(--#{$prefix}nav-tabs-link-active-border-width) solid transparent;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+  }
+
+  .nav-item:first-child {
+    margin-left: 0;
+  }
+
+  .nav-item:last-child {
+    margin-right: 0;
+  }
+
+  // Removes the primary color underline from dropdowns in .nav-tabs
+  .nav-item.show .nav-link {
+    border-color: transparent;
+  }
+}
+
+//
+// Theme =====================================
+//
+
+// Nav overflow
+//
+// Allow links to overflow and make horizontally scrollable
+
+.nav-overflow {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: 1px; // to prevent active links border bottom from hiding
+
+  // Hide scrollbar
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// Creates a small version of the .nav
+
+.nav-sm {
+  --#{$prefix}nav-link-font-size: #{$nav-link-font-size-sm};
+}
+
+// Creates a small version of the .nav-tabs
+
+.nav-tabs-sm {
+  --#{$prefix}nav-link-font-size: #{$nav-tabs-font-size-sm};
+  --#{$prefix}nav-tabs-link-margin-x: #{$nav-tabs-link-margin-x-sm};
+  --#{$prefix}nav-tabs-link-padding-y: #{(divide($font-size-base, $nav-tabs-font-size-sm) * $nav-tabs-link-padding-y)};
+}
+
+
+// Nav + button group
+//
+// Change the look of .btn-white when .active
+
+.nav.btn-group {
+  
+  .btn-white.active {
+    background-color: var(--#{$prefix}primary);
+    border-color: var(--#{$prefix}primary);
+    color: var(--#{$prefix}white);
+  }
+}

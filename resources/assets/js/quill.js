@@ -3,44 +3,38 @@
 // Theme module
 //
 
-'use strict';
+import Quill from 'quill';
 
-(function() {
+const toggles = document.querySelectorAll('[data-quill]');
 
-  //
-  // Variables
-  //
+toggles.forEach((toggle) => {
+  const elementOptions = toggle.dataset.quill ? JSON.parse(toggle.dataset.quill) : {};
 
-  var toggle = document.querySelectorAll('[data-toggle="quill"]');
+  const defaultOptions = {
+    modules: {
+      toolbar: [
+        ['bold', 'italic'],
+        ['link', 'blockquote', 'code', 'image'],
+        [
+          {
+            list: 'ordered',
+          },
+          {
+            list: 'bullet',
+          },
+        ],
+      ],
+    },
+    theme: 'snow',
+  };
 
+  const options = {
+    ...elementOptions,
+    ...defaultOptions,
+  };
 
-  //
-  // Functions
-  //
+  new Quill(toggle, options);
+});
 
-  function init(el) {
-    var elementOptions = el.dataset.options;
-        elementOptions = elementOptions ? JSON.parse(elementOptions) : {};
-    var defaultOptions = {
-      modules: {
-        toolbar: [['bold', 'italic'], ['link', 'blockquote', 'code', 'image'], [{'list': 'ordered'}, {'list': 'bullet'}]]
-      },
-      theme: 'snow'
-    };
-    var options = Object.assign(elementOptions, defaultOptions);
-
-    new Quill(el, options);
-  }
-
-
-  //
-  // Events
-  //
-
-  if (typeof Quill !== 'undefined' && toggle) {
-    [].forEach.call(toggle, function(el) {
-      init(el);
-    });
-  }
-  
-})();
+// Make available globally
+window.Quill = Quill;

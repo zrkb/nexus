@@ -1,34 +1,12 @@
 //
-// tooltip.js
+// popover.js
 // Theme module
 //
 
-'use strict';
+import { Tooltip } from 'bootstrap';
 
-(function() {
+const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
 
-  //
-  // Variables
-  //
-
-  var toggle = document.querySelectorAll('[data-toggle="tooltip"]');
-
-
-  //
-  // Functions
-  //
-
-  function init(toggle) {
-    $(toggle).tooltip();
-  }
-
-
-  //
-  // Events
-  //
-
-  if (toggle) {
-    init(toggle);
-  }
-
-})();
+tooltips.forEach(tooltip => {
+  new Tooltip(tooltip);
+});

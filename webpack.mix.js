@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 
 /*
  |--------------------------------------------------------------------------
@@ -16,8 +17,9 @@ mix
     .setPublicPath(path.resolve('./'))
 
     // Fonts
-    .copy('node_modules/boxicons/fonts', 'resources/assets/fonts/vendor/boxicons')
-    .copy('resources/assets/fonts', 'public/assets/fonts')
+    // .copy('node_modules/boxicons/fonts', 'resources/assets/fonts/vendor/boxicons')
+    // .copy('resources/assets/fonts', 'public/assets/fonts')
+    .copy('node_modules/boxicons/fonts', 'public/assets/fonts/vendor/boxicons')
 
     // Copy
     .copy('resources/assets/css', 'public/assets/css')
@@ -27,9 +29,9 @@ mix
     // App
     .js('resources/assets/js/app.js', 'public/assets/js')
     .sass('resources/assets/scss/app.scss', 'public/assets/css')
-    .sass('resources/assets/scss/mango.scss', 'public/assets/css')
-    .sass('resources/assets/scss/berry.scss', 'public/assets/css')
+    // .sass('resources/assets/scss/mango.scss', 'public/assets/css')
+    // .sass('resources/assets/scss/berry.scss', 'public/assets/css')
 
-    .setPublicPath('public') // Reset the public path before versioning
+    // .setPublicPath('public') // Reset the public path before versioning
     .version()
 ;

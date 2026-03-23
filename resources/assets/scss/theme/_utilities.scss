@@ -1,0 +1,98 @@
+//
+// utilities.scss
+// Extended from Bootstrap
+//
+
+@import "bootstrap/scss/functions";
+@import "./variables";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+@import 'utilities/background';
+@import 'utilities/lift';
+
+// Bootstrap overrides
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "background-color": map-merge(
+      map-get($utilities, "background-color"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "background-color"), "values"),
+          (
+            "auth": rgba(var(--#{$prefix}auth-bg-rgb), var(--#{$prefix}bg-opacity)),
+            "lighter": rgba(var(--#{$prefix}lighter-rgb), var(--#{$prefix}bg-opacity))
+          ),
+        )
+      ),
+    ),
+    "bg-opacity": map-merge(
+      map-get($utilities, "bg-opacity"),
+      (
+        state: hover,
+        values: map-merge(
+          map-get(map-get($utilities, "bg-opacity"), "values"),
+          (
+            15: .15,
+            20: .2
+          ),
+        )
+      ),
+    ),
+    "border-top-width": (
+      property: border-top-width,
+      class: border-top,
+      values: $border-widths
+    ),
+    "border-end-width": (
+      property: border-end-width,
+      class: border-end,
+      values: $border-widths
+    ),
+    "border-bottom-width": (
+      property: border-bottom-width,
+      class: border-bottom,
+      values: $border-widths
+    ),
+    "border-start-width": (
+      property: border-start-width,
+      class: border-start,
+      values: $border-widths
+    ),
+    "border-color": map-merge(
+      map-get($utilities, "border-color"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "border-color"), "values"),
+          (
+            "body": rgba(var(--#{$prefix}body-bg-rgb), var(--#{$prefix}border-opacity)),
+            "card": rgba(var(--#{$prefix}card-bg-rgb), var(--#{$prefix}border-opacity)),
+          ),
+        )
+      ),
+    ),
+    "color": map-merge(
+      map-get($utilities, "color"),
+      (
+        values: map-merge(
+          map-get(map-get($utilities, "color"), "values"),
+          (
+            "gray-100": rgba(var(--#{$prefix}gray-100-rgb), var(--#{$prefix}text-opacity)),
+            "gray-200": rgba(var(--#{$prefix}gray-200-rgb), var(--#{$prefix}text-opacity)),
+            "gray-300": rgba(var(--#{$prefix}gray-300-rgb), var(--#{$prefix}text-opacity)),
+            "gray-400": rgba(var(--#{$prefix}gray-400-rgb), var(--#{$prefix}text-opacity)),
+            "gray-500": rgba(var(--#{$prefix}gray-500-rgb), var(--#{$prefix}text-opacity)),
+            "gray-600": rgba(var(--#{$prefix}gray-600-rgb), var(--#{$prefix}text-opacity)),
+            "gray-700": rgba(var(--#{$prefix}gray-700-rgb), var(--#{$prefix}text-opacity)),
+            "gray-800": rgba(var(--#{$prefix}gray-800-rgb), var(--#{$prefix}text-opacity)),
+            "gray-900": rgba(var(--#{$prefix}gray-900-rgb), var(--#{$prefix}text-opacity))
+          ),
+        )
+      ),
+    ),
+  )
+);

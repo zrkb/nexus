@@ -3,37 +3,15 @@
 // Theme module
 //
 
-'use strict';
+import flatpickr from 'flatpickr';
 
-(function() {
+const toggles = document.querySelectorAll('[data-flatpickr]');
 
-  //
-  // Variables
-  //
+toggles.forEach((toggle) => {
+  const options = toggle.dataset.flatpickr ? JSON.parse(toggle.dataset.flatpickr) : {};
 
-  var toggle = document.querySelectorAll('[data-toggle="flatpickr"]');
+  flatpickr(toggle, options);
+});
 
-
-  //
-  // Functions
-  //
-
-  function init(el) {
-    var options = el.dataset.options;
-        options = options ? JSON.parse(options) : {};
-
-    flatpickr(el, options);
-  }
-
-
-  //
-  // Events
-  //
-
-  if (typeof flatpickr !== 'undefined' && toggle) {
-    [].forEach.call(toggle, function(el) {
-      init(el);
-    });
-  }
-
-})();
+// Make available globally
+window.flatpickr = flatpickr;

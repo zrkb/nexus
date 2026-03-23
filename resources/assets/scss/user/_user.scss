@@ -3,13 +3,15 @@
 // Use this to write your custom SCSS
 //
 
+@import '../../../node_modules/boxicons/css/boxicons.min.css';
+
 @import 'mixins';
 @import 'datatables';
 @import 'boxicons';
 @import 'daterangepicker';
 @import 'tags';
 @import 'upload-box';
-@import 'labels';
+@import 'dropzone';
 
 .text-inherit {
     color: inherit;
@@ -20,6 +22,18 @@
     font-size: 110%;
     // line-height: inherit !important;
     vertical-align: middle !important;
+}
+
+.navbar-nav .nav-link > .bx {
+    min-width: $navbar-icon-min-width;
+    padding-bottom: 0.125em;
+    font-size: $font-size-lg;
+    line-height: ($font-size-base * $line-height-base);
+}
+
+    .navbar-nav .nav-link > .bx {
+    display: inline-block;
+    min-width: $navbar-icon-min-width;
 }
 
 // Cards
@@ -104,42 +118,42 @@
 
 
 // Dropdown
-.dropdown {
-    &.nav-item .dropdown-item {
-        padding-left: 1.5rem;
-        padding-right: 1.5rem;
-    }
-}
-.dropdown-menu {
-    top: 130%;
-    padding: 5px;
+// .dropdown {
+//     &.nav-item .dropdown-item {
+//         padding-left: 1.5rem;
+//         padding-right: 1.5rem;
+//     }
+// }
+// .dropdown-menu {
+//     top: 130%;
+//     padding: 5px;
 
-    .dropdown-item {
-        color: $text-bold;
-        font-size: .9rem;
-        @include border-radius(.25rem);
+//     .dropdown-item {
+//         color: $gray-900;
+//         font-size: .9rem;
+//         @include border-radius(.25rem);
 
-        &:focus,
-        &:hover,
-        &.active {
-            background: #f5f6fa;
-        }
+//         &:focus,
+//         &:hover,
+//         &.active {
+//             background: #f5f6fa;
+//         }
 
-        span {
-            display: block;
-            color: $text-base;
-            font-size: .85rem;
-            margin-top: 3px;
-        }
-    }
-}
+//         span {
+//             display: block;
+//             color: $gray-700;
+//             font-size: .85rem;
+//             margin-top: 3px;
+//         }
+//     }
+// }
 
-.navbar {
-    .dropdown-menu {
-        animation-name: animate-flyout;
-        animation-duration: 0.2s;
-    }
-}
+// .navbar {
+//     .dropdown-menu {
+//         animation-name: animate-flyout;
+//         animation-duration: 0.2s;
+//     }
+// }
 
 // Animations
 @keyframes animate-flyout {
@@ -206,38 +220,27 @@ h1, h2, h3, h4, h5, h6,
 //
 // Tooltip Margin
 //
-.bs-tooltip-top {
-    top: $tooltip-distance * -1 !important;
-}
+// .bs-tooltip-top {
+//     top: $tooltip-distance * -1 !important;
+// }
 
-.bs-tooltip-right {
-    left: $tooltip-distance !important;
-}
+// .bs-tooltip-right {
+//     left: $tooltip-distance !important;
+// }
 
-.bs-tooltip-bottom {
-    top: $tooltip-distance !important;
-}
+// .bs-tooltip-bottom {
+//     top: $tooltip-distance !important;
+// }
 
-.bs-tooltip-left {
-    left: $tooltip-distance * -1 !important;
-}
+// .bs-tooltip-left {
+//     left: $tooltip-distance * -1 !important;
+// }
 
 //
 // Form
 //
 .form-control:disabled {
     opacity: 0.3;
-}
-
-.custom-control .custom-control-label {
-    font-weight: $type-400;
-}
-
-.custom-control-label:after,
-.custom-control-label:before {
-    top: 0.1rem;
-    width: 1.2rem;
-    height: 1.2rem;
 }
 
 //
@@ -253,12 +256,14 @@ h1, h2, h3, h4, h5, h6,
 //
 // Progress
 //
+.progress-container {
+    display: none ;
+}
 .progress {
-    display: none;
     position: absolute;
     width: 80%;
     left: 11%;
-    top: 120px;
+    top: 50%;
     z-index: 999;
 }
 

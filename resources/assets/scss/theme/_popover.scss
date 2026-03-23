@@ -1,0 +1,56 @@
+// 
+// popover.scss
+// Extended from Bootstrap
+//
+
+// 
+// Bootstrap Overrides =====================================
+//
+
+.popover {
+  --#{$prefix}popover-padding-x: #{$popover-padding-x}; 
+  --#{$prefix}popover-padding-y: #{$popover-padding-y};
+  --#{$prefix}popover-header-margin-bottom: #{$popover-header-margin-bottom};
+  padding: var(--#{$prefix}popover-padding-y) var(--#{$prefix}popover-padding-x);
+
+  &:hover {
+    visibility: visible !important;
+  }
+}
+
+.popover-header {
+  margin-bottom: var(--#{$prefix}popover-header-margin-bottom);
+  border-bottom: 0;
+}
+
+.popover-body-indicator {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  margin-right: .25rem;
+  border-radius: 50%;
+}
+
+
+// Large 
+
+.popover-lg {
+  --#{$prefix}popover-max-width: #{$popover-max-width-lg};
+}
+
+
+// 
+// Dark mode =====================================
+//
+
+@include color-mode(dark) {
+  .popover {
+    --#{$prefix}popover-bg: #{$popover-bg-dark};
+    --#{$prefix}popover-border-color: #{$popover-border-color-dark};
+    --#{$prefix}popover-header-color: #{$popover-header-color-dark};
+  }
+
+  .popover > .popover-header {
+    font-weight: $font-weight-normal;
+  }
+}

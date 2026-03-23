@@ -1,0 +1,23 @@
+//
+// offcanvas.scss
+//
+
+// Header
+
+.offcanvas-header {
+  --#{$prefix}offcanvas-header-padding-y: #{$offcanvas-header-padding-y};
+  --#{$prefix}offcanvas-header-padding-x: #{$offcanvas-header-padding-x};
+  padding: var(--#{$prefix}offcanvas-header-padding-y) var(--#{$prefix}offcanvas-header-padding-x);
+  border-bottom: var(--#{$prefix}border-width) solid var(--#{$prefix}border-color);
+}
+
+
+//
+// Dark mode ===================================
+//
+
+@include color-mode(dark) {
+  .offcanvas {
+    --#{$prefix}offcanvas-bg: #{$offcanvas-bg-color-dark};
+  }
+}

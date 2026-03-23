@@ -11,67 +11,80 @@ jQuery(document).ready(function() {
     // Functions
     //
     function init(el) {
-        var currentFile = undefined;
         var parentForm = $(el);
-        var elementOptions = el.dataset.options;
-            elementOptions = elementOptions ? JSON.parse(elementOptions) : {};
-        var defaultOptions = {
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
+
+        const elementOptions = el.dataset.options ? JSON.parse(el.dataset.options) : {};
+
+        const defaultOptions = {
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
             maxFilesize: 20, // MB
-            thumbnailWidth: 500,
-            thumbnailHeight: 1000,
-            resizeQuality: 1.0,
-            thumbnailMethod: 'contain',
-            maxThumbnailFilesize: 20,
+            // thumbnailWidth: 500,
+            // thumbnailHeight: 1000,
+            // resizeQuality: 1.0,
+            // thumbnailMethod: 'contain',
+            // maxThumbnailFilesize: 20,
             uploadprogress: function(file, progress, bytesSent) {
                 if (file.previewElement) {
-                    var parent = $(file.previewElement).parents(".dropzone.dropzone-single");
-                    var parentElement = parent.get(0);
+                    const parent = $(file.previewElement).parents(".dropzone.dropzone-single");
+                    const parentElement = parent.get(0);
 
-                    var container = parentElement.querySelector('.progress');
+                    const container = parentElement.querySelector('.progress-container');
                     container.style.display = "block";
 
-                    var progressElement = parentElement.querySelector("[data-dz-uploadprogress]");
-                    progressElement.style.width = progress + "%";
-                    progressElement.querySelector(".progress-text").textContent = parseInt(progress) + "%";
+                    const progressParent = parentElement.querySelector('.progress');
+                    progressParent.style.display = "flex";
 
-                    if (progress >= 100) {
-                        container.style.display = "none";
-                    }
+                    const progressElement = parentElement.querySelector("[data-dz-uploadprogress]");
+                    progressElement.style.display = "block";
+                    progressElement.style.width = Math.floor(progress) + "%";
                 }
             },
-            previewsContainer: el.querySelector('.dz-preview'),
-            previewTemplate: el.querySelector('.dz-preview').innerHTML,
+            previewTemplate: document.querySelector('#dz-template-' + el.dataset.inputName)?.innerHTML,
+            previewsContainer: el.querySelector('.dz-preview-list'),
             init: function() {
-                this.on('addedfile', function(file) {
-                    var maxFiles = elementOptions.maxFiles;
+                const dz = this;
 
-                    if (maxFiles == 1 && currentFile) {
-                        this.removeFile(currentFile);
-                    }
-
-                    currentFile = file;
+                dz.on('addedfile', function(file) {
+                    el.querySelector('.dz-message').style.display = 'none';
                 });
 
-                this.on('sending', function(file, xhr, formData){
+                dz.on('sending', function(file, xhr, formData){
                     formData.append('path', $(el).data('image-path'));
                 });
 
-                this.on("error", function(file, message) {
+                dz.on("error", function(file, message) {
                     alert(message);
-                    this.removeFile(file);
+                    dz.removeFile(file);
+                });
+
+                dz.on("complete", function(file) {
+                    // setTimeout(() => {
+                        const parent = $(file.previewElement).parents(".dropzone.dropzone-single");
+                        const parentElement = parent.get(0);
+                        const container = parentElement.querySelector('.progress-container');
+                        if (container) container.style.display = "none";
+                    // }, 500);
                 });
             },
             success: function (file, response) {
                 parentForm.parents('form').append('<input type="hidden" name="' + $(el).data('input-name') + '" data-target="' + file.name + '" value="' + response.name + '">');
                 uploadedDocumentMap[file.name] = response.name;
+                if (file.previewElement) {
+                    var removeImageButton = file.previewElement.querySelector("[data-dz-remove]");
+                    removeImageButton.style.display = 'block';
+                   file.previewElement.classList.add("dz-success");
+                }
+
+                el.querySelector('.dz-message').style.display = 'none';
             },
             removedfile: function (file) {
-                file.previewElement.remove();
-                $(el).removeClass('dz-max-files-reached');
-                $(el).find('.progress').hide();
+                if (file.previewElement != null && file.previewElement.parentNode != null) {
+                    file.previewElement.parentNode.removeChild(file.previewElement);
+                }
+
+                // $(el).removeClass('dz-max-files-reached');
+                $(el).find('.progress-container').hide();
+                el.querySelector('.dz-message').style.display = 'flex';
 
                 var name = '';
 
@@ -82,21 +95,24 @@ jQuery(document).ready(function() {
                 }
 
                 $('input:hidden[data-target="' + file.name + '"][value="' + name + '"]').remove()
+
+                return this._updateMaxFilesReachedClass();
             },
         }
 
         var options = Object.assign(elementOptions, defaultOptions);
 
-        // Clear preview
-        el.querySelector('.dz-preview').innerHTML = '';
-
         // Init dropzone
         let myDropzone = new Dropzone(el, options);
         let image = $(el).data('image');
+        let filename = $(el).data('filename');
+
+        // Clear preview
+        // el.querySelector('.dz-preview').innerHTML = '';
 
         if (image) {
             // Create the mock file:
-            var mockFile = { name: image, size: 1 };
+            const mockFile = { name: image, size: 1, accepted: true };
 
             // Call the default addedfile event handler
             myDropzone.emit("addedfile", mockFile);
@@ -107,9 +123,9 @@ jQuery(document).ready(function() {
             // Make sure that there is no progress bar, etc...
             myDropzone.emit("complete", mockFile);
 
-            parentForm.parents('form').append('<input type="hidden" name="' + $(el).data('input-name') + '" data-target="' + image + '" value="' + image + '">');
+            parentForm.parents('form').append('<input type="hidden" name="' + $(el).data('input-name') + '" data-target="' + image + '" value="' + filename + '">');
 
-            window.uploadedDocumentMap[image] = image;
+            window.uploadedDocumentMap[image] = filename;
 
             $(el).addClass('dz-max-files-reached');
         }
