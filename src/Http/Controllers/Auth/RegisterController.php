@@ -88,7 +88,7 @@ class RegisterController extends Controller
      */
     public function redirectTo()
     {
-        return route('login');
+        return route('admin.login');
     }
 
     /**

@@ -14,5 +14,5 @@ return [
     'password-confirmation-label' => 'Confirm Password',
     'password-confirmation-placeholder' => 'Confirm your password',
     'submit-label' => 'Register',
-    'footer' => 'Already have an account? <a href="' . route('login') .'">Sign in</a>.',
+    'footer' => 'Already have an account? <a href="' . route('admin.login') .'">Sign in</a>.',
 ];

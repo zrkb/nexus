@@ -24,7 +24,7 @@ class Nexus
                 Route::post('register', 'RegisterController@register');
             });
 
-            Route::get('login', 'LoginController@showLoginForm')->name('login');
+            Route::get('login', 'LoginController@showLoginForm')->name('admin.login');
             Route::post('login', 'LoginController@login');
             Route::post('logout', 'LoginController@logout');
         });

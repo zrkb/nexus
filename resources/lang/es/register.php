@@ -14,5 +14,5 @@ return [
     'password-confirmation-label' => 'Confirmar contraseña',
     'password-confirmation-placeholder' => 'Confirma tu contraseña',
     'submit-label' => 'Register',
-    'footer' => 'Ya tienes una cuenta? <a href="' . route('login') .'">Inicia Sesión</a>.',
+    'footer' => 'Ya tienes una cuenta? <a href="' . route('admin.login') .'">Inicia Sesión</a>.',
 ];
