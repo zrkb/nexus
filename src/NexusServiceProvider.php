@@ -164,6 +164,11 @@ class NexusServiceProvider extends ServiceProvider
         $this->registerRouteMiddleware();
     }
 
+    /**
+     * Register the third-party providers and aliases the package depends on.
+     *
+     * @return void
+     */
     public function registerThirdPartyVendors()
     {
         // Activity Log
@@ -176,7 +181,7 @@ class NexusServiceProvider extends ServiceProvider
 
         // Mediable
         $this->app->register(\Plank\Mediable\MediableServiceProvider::class);
-        AliasLoader::getInstance(['MediaUploader' => \Plank\Mediable\MediaUploaderFacade::class]);
+        AliasLoader::getInstance(['MediaUploader' => \Plank\Mediable\Facades\MediaUploader::class]);
 
         AliasLoader::getInstance(['Str' => \Illuminate\Support\Str::class]);
     }
