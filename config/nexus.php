@@ -43,6 +43,17 @@ return [
 
     'sidebar_color_scheme' => 'navbar-dark bg-dark',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Mapbox Access Token
+    |--------------------------------------------------------------------------
+    |
+    | Public access token used by the theme's map module ([data-map] elements).
+    | Leave it empty to disable maps. Get one at https://account.mapbox.com/
+    |
+    */
+    'mapbox_token' => env('MAPBOX_TOKEN', ''),
+
     'welcome_illustration' => assets_path() . '/assets/img/illustrations/happiness.svg',
 
     /*

@@ -4,9 +4,12 @@
 //
 
 const maps = document.querySelectorAll('[data-map]');
-const accessToken = '';
 
-if (typeof mapboxgl !== 'undefined') {
+// Read the Mapbox token from <meta name="mapbox-token"> (see config/nexus.php)
+const tokenMeta = document.querySelector('meta[name="mapbox-token"]');
+const accessToken = tokenMeta ? tokenMeta.content : '';
+
+if (typeof mapboxgl !== 'undefined' && accessToken) {
   maps.forEach(map => {
     const elementOptions = map.dataset.map ? JSON.parse(map.dataset.map) : {};
 

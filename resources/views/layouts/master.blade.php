@@ -8,6 +8,10 @@
     {{-- CSRF Token --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    @if (config('nexus.mapbox_token'))
+        <meta name="mapbox-token" content="{{ config('nexus.mapbox_token') }}">
+    @endif
+
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ isset($title) ? $title  . ' -' : '' }} {{ config('app.name') }} - Admin</title>
 
